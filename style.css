@@ -83,41 +83,41 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 6px 18px;
   background: rgba(255, 255, 255, 0.92);
-  border-radius: 28px;
-  box-shadow: 0 8px 24px rgba(0, 50, 100, 0.15);
-  border: 4px solid #fff;
+  border-radius: 22px;
+  box-shadow: 0 6px 18px rgba(0, 50, 100, 0.15);
+  border: 3px solid #fff;
 }
 
 .level-badge {
   background: #ff5e7e;
   color: #fff;
-  padding: 8px 24px;
-  border-radius: 20px;
-  font-size: 2rem;
-  box-shadow: 0 5px 0 #c72b4c;
+  padding: 5px 16px;
+  border-radius: 16px;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 0 #c72b4c;
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 6px;
 }
 
 .badge-label {
-  font-size: 1.3rem;
+  font-size: 1.05rem;
   opacity: 0.9;
 }
 
 .instruction-box {
   display: flex;
   align-items: center;
-  gap: 14px;
-  font-size: 2.2rem;
+  gap: 10px;
+  font-size: 1.6rem;
   color: #1f3d59;
   letter-spacing: 0.5px;
 }
 
 .instruction-icon {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   animation: wiggle 2s infinite ease-in-out;
 }
 
@@ -129,8 +129,8 @@ body {
 
 .stars-container {
   display: flex;
-  gap: 6px;
-  font-size: 1.8rem;
+  gap: 4px;
+  font-size: 1.3rem;
 }
 
 .star {
@@ -154,25 +154,25 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 24px;
-  padding: 10px 40px;
-  max-width: 1400px;
+  gap: 18px;
+  padding: 10px 20px;
+  max-width: 1200px;
   margin: 0 auto;
   align-content: center;
 }
 
 .dino-arena.dense {
-  gap: 14px;
+  gap: 10px;
 }
 
 .dino-arena.dense .dino-card svg {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .dino-arena.sparse .dino-card svg {
-  width: 155px;
-  height: 155px;
+  width: 125px;
+  height: 125px;
 }
 
 /* Kartu Dinosaurus */
@@ -187,7 +187,9 @@ body {
 }
 
 .dino-card svg {
-  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.18));
+  width: 105px;
+  height: 105px;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
   transition: transform 0.25s ease;
 }
 
@@ -201,25 +203,25 @@ body {
 
 @keyframes dino-bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
+  50% { transform: translateY(-12px); }
 }
 
 /* Tag nomor di atas dinosaurus saat fitur "Bantu Hitung" aktif */
 .dino-number-tag {
   position: absolute;
-  top: -24px;
+  top: -16px;
   background: #ffea00;
   color: #d32f2f;
-  border: 4px solid #fff;
+  border: 3px solid #fff;
   border-radius: 50%;
-  width: 54px;
-  height: 54px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 900;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transform: scale(0);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -229,8 +231,8 @@ body {
 }
 
 .dino-card.counted svg {
-  transform: scale(1.18);
-  filter: drop-shadow(0 0 20px rgba(255, 230, 0, 0.8));
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 16px rgba(255, 230, 0, 0.8));
 }
 
 /* Latar Belakang Gunung & Bukit Rumput */
@@ -239,17 +241,17 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 280px;
+  height: 210px;
   pointer-events: none;
   z-index: 2;
 }
 
 .mountains {
   position: absolute;
-  bottom: 120px;
+  bottom: 80px;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 140px;
   background:
     radial-gradient(ellipse at 25% 100%, #6eb388 0%, #4a8d67 60%, transparent 62%),
     radial-gradient(ellipse at 70% 100%, #5ba878 0%, #3e7f58 65%, transparent 67%);
@@ -261,10 +263,10 @@ body {
   bottom: 0;
   left: -5%;
   width: 110%;
-  height: 140px;
+  height: 105px;
   background: linear-gradient(180deg, #4ade80 0%, #22c55e 40%, #16a34a 100%);
-  border-top: 8px solid #86efac;
-  border-radius: 50% 50% 0 0 / 25px 25px 0 0;
+  border-top: 6px solid #86efac;
+  border-radius: 50% 50% 0 0 / 20px 20px 0 0;
 }
 
 /* Panel Bawah (Pilihan Telur Angka) */
@@ -274,53 +276,54 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 16px;
+  margin-bottom: 6px;
 }
 
 .hint-text {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: #ffffff;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 6px 20px;
-  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 16px;
+  border-radius: 16px;
   backdrop-filter: blur(4px);
 }
 
 .remote-hint-badge {
   background: #ffea00;
   color: #111;
-  padding: 2px 10px;
-  border-radius: 8px;
+  padding: 2px 8px;
+  border-radius: 6px;
   font-weight: 900;
-  margin-right: 6px;
+  font-size: 0.95rem;
+  margin-right: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .choices-container {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 36px;
 }
 
 /* Telur Dinosaurus Pilihan Angka */
 .egg-choice {
   position: relative;
-  width: 160px;
-  height: 185px;
+  width: 125px;
+  height: 148px;
   background: radial-gradient(circle at 35% 30%, #fff7d6 0%, #ffd166 60%, #f4a261 100%);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  border: 7px solid #ffffff;
+  border: 6px solid #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5rem;
+  font-size: 3.8rem;
   font-weight: 900;
   color: #7c2d12;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -329,38 +332,38 @@ body {
 .egg-choice::before {
   content: '';
   position: absolute;
-  top: 25px;
-  left: 35px;
-  width: 22px;
-  height: 18px;
+  top: 18px;
+  left: 26px;
+  width: 16px;
+  height: 14px;
   background: rgba(224, 115, 30, 0.3);
   border-radius: 50%;
 }
 .egg-choice::after {
   content: '';
   position: absolute;
-  bottom: 40px;
-  right: 35px;
-  width: 32px;
-  height: 24px;
+  bottom: 30px;
+  right: 26px;
+  width: 24px;
+  height: 18px;
   background: rgba(224, 115, 30, 0.3);
   border-radius: 50%;
 }
 
-/* Indikator FOKUS REMOTE TV (Sangat Jelas & Bercahaya) */
+/* Indikator FOKUS REMOTE TV (Sangat Jelas & Bercahaya, tidak menabrak hint bar) */
 .egg-choice.focused {
-  transform: translateY(-24px) scale(1.18);
+  transform: translateY(-16px) scale(1.12);
   border-color: #00f0ff;
   box-shadow:
-    0 0 0 10px #ffe600,
-    0 0 35px 12px rgba(255, 230, 0, 0.85),
-    0 25px 35px rgba(0, 0, 0, 0.4);
+    0 0 0 8px #ffe600,
+    0 0 28px 10px rgba(255, 230, 0, 0.85),
+    0 18px 28px rgba(0, 0, 0, 0.4);
   animation: egg-glow 1.2s infinite alternate ease-in-out;
 }
 
 @keyframes egg-glow {
-  0% { transform: translateY(-22px) scale(1.16); box-shadow: 0 0 0 10px #ffe600, 0 0 25px 8px rgba(255, 230, 0, 0.8); }
-  100% { transform: translateY(-28px) scale(1.22); box-shadow: 0 0 0 12px #00f0ff, 0 0 45px 16px rgba(0, 240, 255, 0.9); }
+  0% { transform: translateY(-14px) scale(1.10); box-shadow: 0 0 0 8px #ffe600, 0 0 20px 6px rgba(255, 230, 0, 0.8); }
+  100% { transform: translateY(-18px) scale(1.14); box-shadow: 0 0 0 10px #00f0ff, 0 0 35px 12px rgba(0, 240, 255, 0.9); }
 }
 
 /* Saat jawaban salah */
