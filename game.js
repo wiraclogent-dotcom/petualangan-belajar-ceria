@@ -1,14 +1,15 @@
 /**
- * Dino Hitung Ceria - Game TV untuk Anak Usia 4 Tahun
- * Kontrol: Tombol Panah (Kiri, Kanan, Atas) & Tombol OK (Enter) Remote TV
+ * Petualangan Belajar Ceria - Platform Edukasi TV Anak
+ * Modul: Menu Utama (Hub), Hitung Dino, Tambah Bergambar, & Kereta Abjad A-Z
  */
 
-// ==========================================
-// 1. DESAIN SVG DINOSAURUS LUCU & WARNA-WARNI
-// ==========================================
+// ==============================================
+// 1. DATA ASSETS & KAMUS PEMBELAJARAN
+// ==============================================
+
 const DINO_SVGS = [
   // 1. T-Rex Hijau Lucu
-  `<svg viewBox="0 0 160 160" width="130" height="130">
+  `<svg viewBox="0 0 160 160" width="105" height="105">
     <ellipse cx="80" cy="95" rx="42" ry="48" fill="#4ade80" />
     <circle cx="95" cy="55" r="32" fill="#4ade80" />
     <path d="M 115 50 Q 140 55 125 70 Z" fill="#4ade80" />
@@ -17,94 +18,103 @@ const DINO_SVGS = [
     <circle cx="109" cy="46" r="1.5" fill="#ffffff" />
     <ellipse cx="118" cy="62" rx="5" ry="3" fill="#fb7185" opacity="0.6" />
     <path d="M 100 68 Q 115 78 126 68" stroke="#166534" stroke-width="3.5" fill="none" stroke-linecap="round" />
-    <!-- Perut Kuning Cerah -->
     <ellipse cx="72" cy="102" rx="26" ry="32" fill="#fef08a" />
-    <!-- Tangan Mungil -->
     <path d="M 96 90 Q 110 92 108 98" stroke="#4ade80" stroke-width="8" stroke-linecap="round" fill="none" />
-    <!-- Kaki -->
     <ellipse cx="65" cy="142" rx="14" ry="9" fill="#22c55e" />
     <ellipse cx="90" cy="142" rx="14" ry="9" fill="#22c55e" />
-    <!-- Ekor Lucu -->
     <path d="M 45 110 Q 20 120 15 100 Q 25 90 48 95 Z" fill="#4ade80" />
   </svg>`,
 
   // 2. Brachiosaurus Leher Panjang Kuning
-  `<svg viewBox="0 0 160 160" width="130" height="130">
+  `<svg viewBox="0 0 160 160" width="105" height="105">
     <ellipse cx="65" cy="110" rx="45" ry="35" fill="#facc15" />
-    <!-- Leher Melengkung Tinggi -->
     <path d="M 75 105 Q 98 60 92 35 Q 82 30 75 40 Q 82 65 62 100 Z" fill="#facc15" />
-    <!-- Kepala -->
     <circle cx="94" cy="34" r="16" fill="#facc15" />
     <circle cx="99" cy="31" r="5" fill="#ffffff" />
     <circle cx="100" cy="31" r="3" fill="#1e293b" />
     <circle cx="101" cy="30" r="1" fill="#ffffff" />
     <path d="M 95 40 Q 104 44 106 38" stroke="#854d0e" stroke-width="2.5" fill="none" stroke-linecap="round" />
-    <!-- Bintik Ceria di Punggung -->
     <circle cx="48" cy="98" r="6" fill="#f97316" />
     <circle cx="62" cy="95" r="8" fill="#f97316" />
     <circle cx="42" cy="115" r="5" fill="#f97316" />
-    <!-- Kaki-kaki -->
     <rect x="40" y="130" width="14" height="20" rx="7" fill="#eab308" />
     <rect x="75" y="130" width="14" height="20" rx="7" fill="#eab308" />
-    <!-- Ekor -->
     <path d="M 30 115 Q 12 110 8 125 Q 18 130 35 125 Z" fill="#facc15" />
   </svg>`,
 
   // 3. Triceratops Biru Ceria
-  `<svg viewBox="0 0 160 160" width="130" height="130">
-    <!-- Badan -->
+  `<svg viewBox="0 0 160 160" width="105" height="105">
     <ellipse cx="75" cy="105" rx="42" ry="36" fill="#38bdf8" />
-    <!-- Mahkota Tanduk -->
     <circle cx="105" cy="70" r="28" fill="#0284c7" />
-    <!-- Kepala -->
     <circle cx="110" cy="78" r="22" fill="#38bdf8" />
-    <!-- Tanduk Putih Lucu -->
     <polygon points="120,55 126,40 128,58" fill="#f8fafc" />
     <polygon points="102,48 106,32 110,50" fill="#f8fafc" />
     <polygon points="128,78 138,76 128,84" fill="#f8fafc" />
-    <!-- Mata & Pipi -->
     <circle cx="116" cy="72" r="5" fill="#ffffff" />
     <circle cx="117" cy="72" r="3" fill="#0f172a" />
     <ellipse cx="110" cy="85" rx="4" ry="2.5" fill="#f43f5e" opacity="0.6" />
     <path d="M 118 85 Q 124 90 128 85" stroke="#0369a1" stroke-width="2.5" fill="none" stroke-linecap="round" />
-    <!-- Kaki -->
     <rect x="52" y="128" width="15" height="18" rx="7" fill="#0284c7" />
     <rect x="85" y="128" width="15" height="18" rx="7" fill="#0284c7" />
-    <!-- Ekor -->
     <path d="M 40 115 Q 15 122 18 105 Q 28 102 42 106 Z" fill="#38bdf8" />
   </svg>`,
 
-  // 4. Stegosaurus Ungu / Oranye dengan Duri Punggung Bulat
-  `<svg viewBox="0 0 160 160" width="130" height="130">
-    <!-- Duri Punggung Daun Oranye -->
+  // 4. Stegosaurus Ungu Lucu
+  `<svg viewBox="0 0 160 160" width="105" height="105">
     <ellipse cx="50" cy="65" rx="10" ry="16" fill="#fb923c" transform="rotate(-15 50 65)" />
     <ellipse cx="72" cy="58" rx="11" ry="18" fill="#fb923c" />
     <ellipse cx="94" cy="65" rx="10" ry="16" fill="#fb923c" transform="rotate(15 94 65)" />
-    <!-- Badan -->
     <ellipse cx="72" cy="105" rx="45" ry="35" fill="#c084fc" />
-    <!-- Kepala -->
     <ellipse cx="120" cy="108" rx="16" ry="12" fill="#c084fc" />
     <circle cx="124" cy="104" r="4.5" fill="#ffffff" />
     <circle cx="125" cy="104" r="2.5" fill="#1e1b4b" />
     <path d="M 122 112 Q 128 116 132 112" stroke="#6b21a8" stroke-width="2.5" fill="none" />
-    <!-- Kaki -->
     <rect x="48" y="128" width="14" height="18" rx="6" fill="#9333ea" />
     <rect x="82" y="128" width="14" height="18" rx="6" fill="#9333ea" />
-    <!-- Ekor berujung duri -->
     <path d="M 35 110 Q 12 112 10 95 Q 22 98 38 102 Z" fill="#c084fc" />
     <circle cx="10" cy="95" r="4" fill="#fb923c" />
   </svg>`
 ];
 
-// Kata Indonesia untuk angka 1 - 10
 const NUMBER_WORDS = [
   "", "Satu", "Dua", "Tiga", "Empat", "Lima",
-  "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh"
+  "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh",
+  "Sebelas", "Dua Belas", "Tiga Belas", "Empat Belas"
 ];
 
-// ==========================================
+// Data Alfabet A - Z untuk Balita
+const ALPHABET_DATA = [
+  { letter: "A", word: "APEL", emoji: "🍎", phonic: "A! A untuk Apel" },
+  { letter: "B", word: "BEBEK", emoji: "🦆", phonic: "B! B untuk Bebek" },
+  { letter: "C", word: "CERI", emoji: "🍒", phonic: "C! C untuk Ceri" },
+  { letter: "D", word: "DINO", emoji: "🦕", phonic: "D! D untuk Dinosaurus" },
+  { letter: "E", word: "ELANG", emoji: "🦅", phonic: "E! E untuk Elang" },
+  { letter: "F", word: "FLAMINGO", emoji: "🦩", phonic: "F! F untuk Flamingo" },
+  { letter: "G", word: "GAJAH", emoji: "🐘", phonic: "G! G untuk Gajah" },
+  { letter: "H", word: "HIU", emoji: "🦈", phonic: "H! H untuk Hiu" },
+  { letter: "I", word: "IKAN", emoji: "🐟", phonic: "I! I untuk Ikan" },
+  { letter: "J", word: "JERAPAH", emoji: "🦒", phonic: "J! J untuk Jerapah" },
+  { letter: "K", word: "KUCING", emoji: "🐱", phonic: "K! K untuk Kucing" },
+  { letter: "L", word: "LUMBA", emoji: "🐬", phonic: "L! L untuk Lumba-lumba" },
+  { letter: "M", word: "MOBIL", emoji: "🚗", phonic: "M! M untuk Mobil" },
+  { letter: "N", word: "NANAS", emoji: "🍍", phonic: "N! N untuk Nanas" },
+  { letter: "O", word: "ORANGUTAN", emoji: "🦧", phonic: "O! O untuk Orangutan" },
+  { letter: "P", word: "PESAWAT", emoji: "✈️", phonic: "P! P untuk Pesawat" },
+  { letter: "Q", word: "QURAN", emoji: "📖", phonic: "Q! Q untuk Quran" },
+  { letter: "R", word: "ROKET", emoji: "🚀", phonic: "R! R untuk Roket" },
+  { letter: "S", word: "SINGA", emoji: "🦁", phonic: "S! S untuk Singa" },
+  { letter: "T", word: "TRUK", emoji: "🚚", phonic: "T! T untuk Truk" },
+  { letter: "U", word: "UDANG", emoji: "🦐", phonic: "U! U untuk Udang" },
+  { letter: "V", word: "VAS", emoji: "🏺", phonic: "V! V untuk Vas Bunga" },
+  { letter: "W", word: "WORTEL", emoji: "🥕", phonic: "W! W untuk Wortel" },
+  { letter: "X", word: "XILOFON", emoji: "🎵", phonic: "X! X untuk Xilofon" },
+  { letter: "Y", word: "YOYO", emoji: "🪀", phonic: "Y! Y untuk Yoyo" },
+  { letter: "Z", word: "ZEBRA", emoji: "🦓", phonic: "Z! Z untuk Zebra" }
+];
+
+// ==============================================
 // 2. SISTEM AUDIO RAMAH ANAK (WEB AUDIO API)
-// ==========================================
+// ==============================================
 class SoundFX {
   constructor() {
     this.ctx = null;
@@ -120,14 +130,13 @@ class SoundFX {
     }
   }
 
-  // Nada geser tombol remote (Kiri / Kanan)
   playNavigate() {
     this.init();
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     osc.type = 'sine';
     osc.frequency.setValueAtTime(440, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(587.33, this.ctx.currentTime + 0.08); // A4 ke D5
+    osc.frequency.exponentialRampToValueAtTime(587.33, this.ctx.currentTime + 0.08);
     gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
     osc.connect(gain);
@@ -136,29 +145,25 @@ class SoundFX {
     osc.stop(this.ctx.currentTime + 0.09);
   }
 
-  // Nada saat menghitung dinosaurus (1.. 2.. 3..)
   playCount(index) {
     this.init();
-    // Skala tangga nada ceria Do Re Mi Fa Sol La Si Do
     const scale = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25, 587.33, 659.25];
     const freq = scale[(index - 1) % scale.length];
-
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-    gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.35);
+    gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.3);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
     osc.start();
-    osc.stop(this.ctx.currentTime + 0.36);
+    osc.stop(this.ctx.currentTime + 0.32);
   }
 
-  // Nada gembira saat jawaban BENAR! (Akord Kemenangan Ceria)
   playCorrect() {
     this.init();
-    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+    const notes = [523.25, 659.25, 783.99, 1046.50];
     notes.forEach((freq, i) => {
       setTimeout(() => {
         const osc = this.ctx.createOscillator();
@@ -166,32 +171,30 @@ class SoundFX {
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
         gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.4);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.35);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start();
-        osc.stop(this.ctx.currentTime + 0.42);
+        osc.stop(this.ctx.currentTime + 0.37);
       }, i * 90);
     });
   }
 
-  // Suara lembut saat belum tepat (Tidak menyeramkan, seperti kartun lucu)
   playOops() {
     this.init();
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     osc.type = 'sine';
     osc.frequency.setValueAtTime(280, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(180, this.ctx.currentTime + 0.25);
+    osc.frequency.exponentialRampToValueAtTime(180, this.ctx.currentTime + 0.22);
     gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.22);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
     osc.start();
-    osc.stop(this.ctx.currentTime + 0.26);
+    osc.stop(this.ctx.currentTime + 0.24);
   }
 
-  // Suara terompet kemenangan besar saat tamat tingkat 10
   playVictory() {
     this.init();
     const melody = [
@@ -217,25 +220,22 @@ class SoundFX {
   }
 }
 
-// Bantuan Suara Bicara Bahasa Indonesia (Web Speech API)
 function speakText(text) {
   if ('speechSynthesis' in window) {
     try {
-      window.speechSynthesis.cancel(); // batalkan suara sebelumnya jika ada
+      window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'id-ID';
-      utterance.rate = 0.95; // sedikit santai untuk anak
-      utterance.pitch = 1.25; // suara sedikit ceria / ramah
+      utterance.rate = 0.95;
+      utterance.pitch = 1.2;
       window.speechSynthesis.speak(utterance);
     } catch (e) {
-      console.log('Speech synthesis unsupported or restricted');
+      console.log('Speech synthesis unavailable');
     }
   }
 }
 
-// ==========================================
-// 3. EFEK PERAYAAN KONFETI BINTANG
-// ==========================================
+// Efek Konfeti Bintang
 class ConfettiCannon {
   constructor(canvas) {
     this.canvas = canvas;
@@ -251,15 +251,15 @@ class ConfettiCannon {
     this.canvas.height = window.innerHeight;
   }
 
-  fire(amount = 70) {
+  fire(amount = 60) {
     const colors = ['#f43f5e', '#38bdf8', '#facc15', '#4ade80', '#c084fc', '#fb923c'];
     for (let i = 0; i < amount; i++) {
       this.particles.push({
         x: this.canvas.width / 2 + (Math.random() - 0.5) * 200,
         y: this.canvas.height / 2,
-        vx: (Math.random() - 0.5) * 22,
-        vy: -Math.random() * 18 - 8,
-        size: Math.random() * 14 + 8,
+        vx: (Math.random() - 0.5) * 20,
+        vy: -Math.random() * 16 - 8,
+        size: Math.random() * 12 + 6,
         color: colors[Math.floor(Math.random() * colors.length)],
         rotation: Math.random() * 360,
         rotSpeed: (Math.random() - 0.5) * 12,
@@ -281,9 +281,9 @@ class ConfettiCannon {
       const p = this.particles[i];
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.5; // gravitasi
+      p.vy += 0.5;
       p.rotation += p.rotSpeed;
-      p.opacity -= 0.008;
+      p.opacity -= 0.01;
 
       if (p.opacity <= 0 || p.y > this.canvas.height + 50) {
         this.particles.splice(i, 1);
@@ -307,362 +307,561 @@ class ConfettiCannon {
   }
 }
 
-// ==========================================
-// 4. LOGIKA UTAMA PERMAINAN (10 TINGKAT)
-// ==========================================
-class DinoGame {
+// ==============================================
+// 3. CORE ROUTER & LEARNING HUB MANAGER
+// ==============================================
+class LearningHub {
   constructor() {
     this.sound = new SoundFX();
     this.confetti = new ConfettiCannon(document.getElementById('confetti-canvas'));
 
-    // State Game
-    this.currentLevel = 1;
-    this.totalLevels = 10;
-    this.correctCount = 1;
-    this.selectedChoiceIndex = 1; // Mulai dari pilihan tengah
-    this.choices = [];
+    // Current State
+    this.currentView = 'HUB'; // 'HUB', 'MENU_MATH', 'GAME_COUNTING', 'GAME_ADDITION', 'GAME_ALPHABET'
+    this.hubIndex = 0; // 0: Matematika, 1: Abjad, 2: Warna
+    this.mathIndex = 0; // 0: Hitung, 1: Tambah
+    this.alphabetIndex = 0; // 0 - 25
+
+    // Game Counting State
+    this.countLevel = 1;
+    this.countChoices = [];
+    this.countSelectedChoice = 1;
     this.isInputLocked = false;
-    this.gameState = 'START'; // 'START', 'PLAYING', 'CELEBRATION', 'VICTORY'
 
-    // DOM Elements
-    this.dinoArena = document.getElementById('dino-arena');
-    this.choicesContainer = document.getElementById('choices-container');
-    this.levelIndicator = document.getElementById('current-level');
-    this.starsContainer = document.getElementById('stars-container');
-    this.instructionText = document.getElementById('instruction-text');
+    // Game Addition State
+    this.addLevel = 1;
+    this.addNum1 = 1;
+    this.addNum2 = 1;
+    this.addTotal = 2;
+    this.addChoices = [];
+    this.addSelectedChoice = 1;
 
-    this.startOverlay = document.getElementById('start-overlay');
-    this.celebrationOverlay = document.getElementById('celebration-overlay');
-    this.victoryOverlay = document.getElementById('victory-overlay');
-
-    this.celebrationTitle = document.getElementById('celebration-title');
-    this.celebrationMessage = document.getElementById('celebration-message');
-
-    this.initStars();
-    this.attachEventListeners();
+    this.initViews();
+    this.attachEvents();
   }
 
-  // Membuat 10 slot bintang di atas
-  initStars() {
-    this.starsContainer.innerHTML = '';
-    for (let i = 1; i <= this.totalLevels; i++) {
+  initViews() {
+    this.showView('HUB');
+    this.updateHubFocus();
+  }
+
+  showView(viewName) {
+    this.currentView = viewName;
+    document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById('celebration-overlay').classList.remove('active');
+    document.getElementById('victory-overlay').classList.remove('active');
+
+    switch (viewName) {
+      case 'HUB':
+        document.getElementById('view-hub').classList.add('active');
+        this.updateHubFocus();
+        speakText("Pilih permainan seru!");
+        break;
+      case 'MENU_MATH':
+        document.getElementById('view-menu-math').classList.add('active');
+        this.updateMathFocus();
+        speakText("Pilih permainan matematika!");
+        break;
+      case 'GAME_COUNTING':
+        document.getElementById('view-game-counting').classList.add('active');
+        this.initCountingGame();
+        break;
+      case 'GAME_ADDITION':
+        document.getElementById('view-game-addition').classList.add('active');
+        this.initAdditionGame();
+        break;
+      case 'GAME_ALPHABET':
+        document.getElementById('view-game-alphabet').classList.add('active');
+        this.initAlphabetGame();
+        break;
+    }
+  }
+
+  // --- 3.1 MENU UTAMA (HUB) LOGIC ---
+  updateHubFocus() {
+    document.querySelectorAll('.hub-card').forEach((card, idx) => {
+      if (idx === this.hubIndex) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleHubKey(key) {
+    if (key === 'ArrowLeft' && this.hubIndex > 0) {
+      this.hubIndex--;
+      this.sound.playNavigate();
+      this.updateHubFocus();
+    } else if (key === 'ArrowRight' && this.hubIndex < 2) {
+      this.hubIndex++;
+      this.sound.playNavigate();
+      this.updateHubFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      this.sound.playNavigate();
+      if (this.hubIndex === 0) {
+        this.showView('MENU_MATH');
+      } else if (this.hubIndex === 1) {
+        this.showView('GAME_ALPHABET');
+      } else if (this.hubIndex === 2) {
+        speakText("Segera hadir! Petualangan warna dan bentuk!");
+      }
+    }
+  }
+
+  // --- 3.2 SUB-MENU MATEMATIKA LOGIC ---
+  updateMathFocus() {
+    document.querySelectorAll('.sub-card').forEach((card, idx) => {
+      if (idx === this.mathIndex) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleMathKey(key) {
+    if (key === 'ArrowLeft' && this.mathIndex > 0) {
+      this.mathIndex--;
+      this.sound.playNavigate();
+      this.updateMathFocus();
+    } else if (key === 'ArrowRight' && this.mathIndex < 1) {
+      this.mathIndex++;
+      this.sound.playNavigate();
+      this.updateMathFocus();
+    } else if (key === 'ArrowUp') {
+      this.showView('HUB');
+    } else if (key === 'Enter' || key === ' ') {
+      this.sound.playNavigate();
+      if (this.mathIndex === 0) {
+        this.showView('GAME_COUNTING');
+      } else if (this.mathIndex === 1) {
+        this.showView('GAME_ADDITION');
+      }
+    }
+  }
+
+  // ==============================================
+  // 4. GAME MODUL 1: HITUNG DINOSAURUS (1-10)
+  // ==============================================
+  initCountingGame() {
+    this.countLevel = 1;
+    this.initStars('stars-container');
+    this.loadCountingLevel(this.countLevel);
+  }
+
+  initStars(containerId) {
+    const cont = document.getElementById(containerId);
+    cont.innerHTML = '';
+    for (let i = 1; i <= 10; i++) {
       const star = document.createElement('span');
       star.classList.add('star');
-      star.id = `star-${i}`;
+      star.id = `${containerId}-star-${i}`;
       star.innerText = '★';
-      this.starsContainer.appendChild(star);
+      cont.appendChild(star);
     }
   }
 
-  // Mulai Permainan
-  startGame() {
-    this.startOverlay.classList.remove('active');
-    this.gameState = 'PLAYING';
-    this.currentLevel = 1;
-    this.resetStars();
-    this.loadLevel(this.currentLevel);
-  }
-
-  resetStars() {
-    document.querySelectorAll('.star').forEach(s => s.classList.remove('earned'));
-  }
-
-  // Memuat Level Tertentu
-  loadLevel(level) {
-    this.currentLevel = level;
-    this.levelIndicator.innerText = level;
+  loadCountingLevel(lvl) {
+    this.countLevel = lvl;
+    document.getElementById('current-level').innerText = lvl;
     this.isInputLocked = false;
 
-    // Menentukan jumlah dinosaurus pada level ini:
-    // Level 1: 1 dino, Level 2: 2 dino, ..., Level 10: 10 dino
-    this.correctCount = level;
+    // Render Dino
+    const arena = document.getElementById('dino-arena');
+    arena.innerHTML = '';
+    arena.classList.remove('sparse', 'dense');
+    if (lvl <= 3) arena.classList.add('sparse');
+    else if (lvl >= 7) arena.classList.add('dense');
 
-    // Render Dinosaurus
-    this.renderDinosaurs(this.correctCount);
-
-    // Siapkan 3 pilihan angka telur (1 benar, 2 pengecoh yang dekat & tidak negatif)
-    this.generateChoices(this.correctCount);
-
-    // Reset fokus remote ke telur tengah (indeks 1)
-    this.selectedChoiceIndex = 1;
-    this.updateChoiceFocus();
-
-    // Suara sapaan awal level
-    speakText(`Tingkat ${level}. Ada berapa dinosaurus?`);
-  }
-
-  // Tampilkan dinosaurus ke arena
-  renderDinosaurs(count) {
-    this.dinoArena.innerHTML = '';
-    this.dinoArena.classList.remove('sparse', 'dense');
-
-    if (count <= 3) {
-      this.dinoArena.classList.add('sparse');
-    } else if (count >= 7) {
-      this.dinoArena.classList.add('dense');
-    }
-
-    for (let i = 1; i <= count; i++) {
+    for (let i = 1; i <= lvl; i++) {
       const card = document.createElement('div');
       card.classList.add('dino-card');
-      card.id = `dino-${i}`;
-
-      // Tag nomor (untuk fitur "Bantu Hitung")
-      const tag = document.createElement('div');
-      tag.classList.add('dino-number-tag');
-      tag.innerText = i;
-      card.appendChild(tag);
-
-      // Gambar dinosaurus acak dari 4 jenis
-      const randomDinoSvg = DINO_SVGS[(i - 1) % DINO_SVGS.length];
-      const svgContainer = document.createElement('div');
-      svgContainer.innerHTML = randomDinoSvg;
-      card.appendChild(svgContainer);
-
-      // Bisa diklik juga jika anak menunjuk layar sentuh / mouse
-      card.addEventListener('click', () => {
-        this.sound.playCount(i);
-        card.classList.add('counted');
-        speakText(NUMBER_WORDS[i]);
-      });
-
-      this.dinoArena.appendChild(card);
+      card.innerHTML = `
+        <div class="dino-number-tag">${i}</div>
+        <div>${DINO_SVGS[(i - 1) % DINO_SVGS.length]}</div>
+      `;
+      arena.appendChild(card);
     }
+
+    // Pilihan Telur
+    this.generateEggs('choices-container', lvl, (chosen) => {
+      this.submitCountingAnswer(chosen);
+    });
+
+    this.countSelectedChoice = 1;
+    this.updateEggFocus('choices-container', this.countSelectedChoice);
+    speakText(`Tingkat ${lvl}. Ada berapa dinosaurus?`);
   }
 
-  // Generate 3 pilihan jawaban (1 jawaban benar + 2 pilihan salah unik)
-  generateChoices(correct) {
-    const wrongOptions = [];
+  generateEggs(containerId, correct, onClickCallback) {
     const pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(n => n !== correct);
-
-    // Prioritaskan angka yang selisih 1 atau 2 agar menantang secara edukatif
     pool.sort((a, b) => Math.abs(a - correct) - Math.abs(b - correct));
+    const wrong1 = pool[0];
+    const wrong2 = pool[1];
+    const choices = [correct, wrong1, wrong2].sort(() => Math.random() - 0.5);
 
-    // Ambil 2 angka acak terdekat
-    const candidates = pool.slice(0, 4).sort(() => Math.random() - 0.5);
-    wrongOptions.push(candidates[0], candidates[1]);
+    if (containerId === 'choices-container') this.countChoices = choices;
+    else this.addChoices = choices;
 
-    // Gabungkan dan acak susunan 3 telur
-    this.choices = [correct, wrongOptions[0], wrongOptions[1]].sort(() => Math.random() - 0.5);
-
-    // Render ke HTML
-    this.choicesContainer.innerHTML = '';
-    this.choices.forEach((num, index) => {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    choices.forEach((num, idx) => {
       const egg = document.createElement('div');
       egg.classList.add('egg-choice');
-      egg.id = `choice-${index}`;
+      egg.id = `${containerId}-egg-${idx}`;
       egg.innerText = num;
-
-      // Event klik mouse / touch
       egg.addEventListener('click', () => {
-        this.selectedChoiceIndex = index;
-        this.updateChoiceFocus();
-        this.submitAnswer();
+        if (containerId === 'choices-container') this.countSelectedChoice = idx;
+        else this.addSelectedChoice = idx;
+        this.updateEggFocus(containerId, idx);
+        onClickCallback(num);
       });
-
-      this.choicesContainer.appendChild(egg);
+      container.appendChild(egg);
     });
   }
 
-  // Update visual fokus telur saat navigasi remote (Kiri / Kanan)
-  updateChoiceFocus() {
-    document.querySelectorAll('.egg-choice').forEach((egg, idx) => {
-      if (idx === this.selectedChoiceIndex) {
-        egg.classList.add('focused');
-      } else {
-        egg.classList.remove('focused');
-      }
+  updateEggFocus(containerId, activeIdx) {
+    document.querySelectorAll(`#${containerId} .egg-choice`).forEach((egg, idx) => {
+      if (idx === activeIdx) egg.classList.add('focused');
+      else egg.classList.remove('focused');
     });
   }
 
-  // Geser pilihan dengan remote
-  moveFocus(direction) {
-    if (this.isInputLocked || this.gameState !== 'PLAYING') return;
+  handleCountingKey(key) {
+    if (this.isInputLocked) return;
 
-    if (direction === 'left' && this.selectedChoiceIndex > 0) {
-      this.selectedChoiceIndex--;
+    if (key === 'ArrowLeft' && this.countSelectedChoice > 0) {
+      this.countSelectedChoice--;
       this.sound.playNavigate();
-      this.updateChoiceFocus();
-    } else if (direction === 'right' && this.selectedChoiceIndex < this.choices.length - 1) {
-      this.selectedChoiceIndex++;
+      this.updateEggFocus('choices-container', this.countSelectedChoice);
+    } else if (key === 'ArrowRight' && this.countSelectedChoice < 2) {
+      this.countSelectedChoice++;
       this.sound.playNavigate();
-      this.updateChoiceFocus();
+      this.updateEggFocus('choices-container', this.countSelectedChoice);
+    } else if (key === 'ArrowUp') {
+      this.countAlong('dino-arena');
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.countChoices[this.countSelectedChoice];
+      this.submitCountingAnswer(chosen);
     }
   }
 
-  // Fitur "Bantu Hitung" (Tekan Panah Atas di Remote)
-  // Menghitung dinosaurus 1 per 1 secara otomatis dengan animasi & suara
-  countAlong() {
-    if (this.isInputLocked || this.gameState !== 'PLAYING') return;
+  countAlong(arenaId) {
+    if (this.isInputLocked) return;
     this.isInputLocked = true;
-
-    const cards = document.querySelectorAll('.dino-card');
+    const cards = document.querySelectorAll(`#${arenaId} .dino-card`);
     cards.forEach(c => c.classList.remove('counted'));
 
-    let current = 0;
+    let cur = 0;
     const interval = setInterval(() => {
-      if (current < cards.length) {
-        const card = cards[current];
-        card.classList.add('counted');
-        const num = current + 1;
-        this.sound.playCount(num);
-        speakText(NUMBER_WORDS[num]);
-        current++;
+      if (cur < cards.length) {
+        cards[cur].classList.add('counted');
+        const n = cur + 1;
+        this.sound.playCount(n);
+        speakText(NUMBER_WORDS[n]);
+        cur++;
       } else {
         clearInterval(interval);
-        setTimeout(() => {
-          this.isInputLocked = false;
-        }, 600);
+        setTimeout(() => { this.isInputLocked = false; }, 500);
       }
-    }, 750);
+    }, 700);
   }
 
-  // Memeriksa Jawaban saat tombol OK ditekan
-  submitAnswer() {
-    if (this.isInputLocked || this.gameState !== 'PLAYING') return;
+  submitCountingAnswer(chosen) {
+    if (this.isInputLocked) return;
+    const egg = document.getElementById(`choices-container-egg-${this.countSelectedChoice}`);
 
-    const selectedEgg = document.getElementById(`choice-${this.selectedChoiceIndex}`);
-    const chosenNumber = this.choices[this.selectedChoiceIndex];
+    if (chosen === this.countLevel) {
+      this.isInputLocked = true;
+      egg.classList.add('correct');
+      this.sound.playCorrect();
+      this.confetti.fire(60);
 
-    if (chosenNumber === this.correctCount) {
-      // JAWABAN BENAR!
-      this.handleCorrectAnswer(selectedEgg);
+      const star = document.getElementById(`stars-container-star-${this.countLevel}`);
+      if (star) star.classList.add('earned');
+
+      speakText(`Hebat! Ada ${this.countLevel} dinosaurus!`);
+
+      setTimeout(() => {
+        if (this.countLevel >= 10) {
+          this.showVictory();
+        } else {
+          this.showCelebration(`Benar! Ada ${this.countLevel} Dinosaurus!`, () => {
+            this.loadCountingLevel(this.countLevel + 1);
+          });
+        }
+      }, 1200);
     } else {
-      // JAWABAN SALAH (Ramah & Tidak Menghukum)
-      this.handleWrongAnswer(selectedEgg);
+      this.sound.playOops();
+      egg.classList.add('wrong');
+      speakText("Coba hitung lagi ya!");
+      setTimeout(() => egg.classList.remove('wrong'), 500);
     }
   }
 
-  handleCorrectAnswer(eggElement) {
-    this.isInputLocked = true;
-    eggElement.classList.add('correct');
-    this.sound.playCorrect();
-    this.confetti.fire(70);
+  // ==============================================
+  // 5. GAME MODUL 2: PENJUMLAHAN BERGAMBAR (ADDITION)
+  // ==============================================
+  initAdditionGame() {
+    this.addLevel = 1;
+    this.initStars('add-stars-container');
+    this.loadAdditionLevel(this.addLevel);
+  }
 
-    // Bintang pencapaian level ini menyala
-    const star = document.getElementById(`star-${this.currentLevel}`);
-    if (star) star.classList.add('earned');
+  loadAdditionLevel(lvl) {
+    this.addLevel = lvl;
+    document.getElementById('add-level').innerText = lvl;
+    this.isInputLocked = false;
 
-    // Buat semua dino melompat gembira
-    document.querySelectorAll('.dino-card').forEach(d => {
-      d.classList.add('counted');
+    // Soal bergambar bertahap untuk anak 4 tahun
+    const additionProblems = [
+      { a: 1, b: 1 }, // Lvl 1: 1 + 1 = 2
+      { a: 2, b: 1 }, // Lvl 2: 2 + 1 = 3
+      { a: 1, b: 2 }, // Lvl 3: 1 + 2 = 3
+      { a: 2, b: 2 }, // Lvl 4: 2 + 2 = 4
+      { a: 3, b: 1 }, // Lvl 5: 3 + 1 = 4
+      { a: 3, b: 2 }, // Lvl 6: 3 + 2 = 5
+      { a: 2, b: 3 }, // Lvl 7: 2 + 3 = 5
+      { a: 4, b: 1 }, // Lvl 8: 4 + 1 = 5
+      { a: 3, b: 3 }, // Lvl 9: 3 + 3 = 6
+      { a: 4, b: 2 }  // Lvl 10: 4 + 2 = 6
+    ];
+
+    const curProblem = additionProblems[lvl - 1];
+    this.addNum1 = curProblem.a;
+    this.addNum2 = curProblem.b;
+    this.addTotal = curProblem.a + curProblem.b;
+
+    // Render Grup 1 & Grup 2 Dino
+    const g1 = document.getElementById('add-group-1');
+    const g2 = document.getElementById('add-group-2');
+    g1.innerHTML = '';
+    g2.innerHTML = '';
+
+    for (let i = 0; i < this.addNum1; i++) {
+      g1.innerHTML += DINO_SVGS[0]; // T-Rex Hijau
+    }
+    for (let i = 0; i < this.addNum2; i++) {
+      g2.innerHTML += DINO_SVGS[1]; // Brachio Kuning
+    }
+
+    // Pilihan Telur
+    this.generateEggs('add-choices-container', this.addTotal, (chosen) => {
+      this.submitAdditionAnswer(chosen);
     });
 
-    const praiseWords = ['Hebat sekali!', 'Pintar!', 'Luar biasa!', 'Benar sekali!'];
-    const randomPraise = praiseWords[Math.floor(Math.random() * praiseWords.length)];
-    speakText(`${randomPraise} Ada ${this.correctCount} dinosaurus!`);
+    this.addSelectedChoice = 1;
+    this.updateEggFocus('add-choices-container', this.addSelectedChoice);
+    speakText(`${this.addNum1} ditambah ${this.addNum2}, totalnya berapa?`);
+  }
 
-    setTimeout(() => {
-      if (this.currentLevel >= this.totalLevels) {
-        // TUNTAS SEMUA 10 LEVEL!
-        this.showVictoryScreen();
-      } else {
-        // Lanjut ke level berikutnya
-        this.showCelebrationScreen();
+  handleAdditionKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.addSelectedChoice > 0) {
+      this.addSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateEggFocus('add-choices-container', this.addSelectedChoice);
+    } else if (key === 'ArrowRight' && this.addSelectedChoice < 2) {
+      this.addSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateEggFocus('add-choices-container', this.addSelectedChoice);
+    } else if (key === 'ArrowUp') {
+      speakText(`${this.addNum1} dinosaurus hijau ditambah ${this.addNum2} dinosaurus kuning.`);
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.addChoices[this.addSelectedChoice];
+      this.submitAdditionAnswer(chosen);
+    }
+  }
+
+  submitAdditionAnswer(chosen) {
+    if (this.isInputLocked) return;
+    const egg = document.getElementById(`add-choices-container-egg-${this.addSelectedChoice}`);
+
+    if (chosen === this.addTotal) {
+      this.isInputLocked = true;
+      egg.classList.add('correct');
+      this.sound.playCorrect();
+      this.confetti.fire(60);
+
+      const star = document.getElementById(`add-stars-container-star-${this.addLevel}`);
+      if (star) star.classList.add('earned');
+
+      speakText(`Pintar sekali! ${this.addNum1} ditambah ${this.addNum2} sama dengan ${this.addTotal}!`);
+
+      setTimeout(() => {
+        if (this.addLevel >= 10) {
+          this.showVictory();
+        } else {
+          this.showCelebration(`Benar! ${this.addNum1} + ${this.addNum2} = ${this.addTotal}!`, () => {
+            this.loadAdditionLevel(this.addLevel + 1);
+          });
+        }
+      }, 1200);
+    } else {
+      this.sound.playOops();
+      egg.classList.add('wrong');
+      speakText("Coba hitung lagi ya!");
+      setTimeout(() => egg.classList.remove('wrong'), 500);
+    }
+  }
+
+  // ==============================================
+  // 6. GAME MODUL 3: DUNIA ABJAD A - Z
+  // ==============================================
+  initAlphabetGame() {
+    this.alphabetIndex = 0;
+    this.renderAlphabetCard();
+  }
+
+  renderAlphabetCard() {
+    const item = ALPHABET_DATA[this.alphabetIndex];
+    document.getElementById('current-letter-index').innerText = this.alphabetIndex + 1;
+    document.getElementById('letter-giant').innerText = item.letter;
+    document.getElementById('letter-illustration').innerText = item.emoji;
+    document.getElementById('letter-word').innerText = item.word;
+    document.getElementById('letter-phonic').innerText = item.phonic;
+
+    this.sound.playNavigate();
+    speakText(item.phonic);
+  }
+
+  handleAlphabetKey(key) {
+    if (key === 'ArrowLeft') {
+      if (this.alphabetIndex > 0) {
+        this.alphabetIndex--;
+        this.renderAlphabetCard();
       }
-    }, 1200);
+    } else if (key === 'ArrowRight') {
+      if (this.alphabetIndex < ALPHABET_DATA.length - 1) {
+        this.alphabetIndex++;
+        this.renderAlphabetCard();
+      }
+    } else if (key === 'Enter' || key === ' ') {
+      const item = ALPHABET_DATA[this.alphabetIndex];
+      speakText(item.phonic);
+    } else if (key === 'ArrowUp') {
+      this.showView('HUB');
+    }
   }
 
-  handleWrongAnswer(eggElement) {
-    this.sound.playOops();
-    eggElement.classList.add('wrong');
-    speakText("Hampir tepat! Coba hitung lagi ya.");
-
-    setTimeout(() => {
-      eggElement.classList.remove('wrong');
-    }, 600);
+  // ==============================================
+  // 7. SELEBRASI & KEMENANGAN OVERLAY
+  // ==============================================
+  showCelebration(msg, onNextCallback) {
+    this.isCelebrationActive = true;
+    this.nextLevelCallback = onNextCallback;
+    document.getElementById('celebration-message').innerText = msg;
+    document.getElementById('celebration-overlay').classList.add('active');
   }
 
-  // Tampilkan Popup Selebrasi antar level
-  showCelebrationScreen() {
-    this.gameState = 'CELEBRATION';
-    this.celebrationTitle.innerText = "HEBAT SEKALI! ⭐";
-    this.celebrationMessage.innerText = `Benar! Ada ${this.correctCount} Dinosaurus!`;
-    this.celebrationOverlay.classList.add('active');
-  }
-
-  nextLevel() {
-    this.celebrationOverlay.classList.remove('active');
-    this.gameState = 'PLAYING';
-    this.loadLevel(this.currentLevel + 1);
-  }
-
-  // Layar Kemenangan Akhir (Level 10 Selesai)
-  showVictoryScreen() {
-    this.gameState = 'VICTORY';
+  showVictory() {
+    this.isVictoryActive = true;
     this.sound.playVictory();
     this.confetti.fire(160);
-    this.victoryOverlay.classList.add('active');
-    speakText("Hore! Selamat! Kamu berhasil menyelesaikan semua tingkat dinosaurus!");
+    document.getElementById('victory-overlay').classList.add('active');
+    speakText("Hore! Selamat! Kamu berhasil menyelesaikan semua tingkat!");
   }
 
-  restartGame() {
-    this.victoryOverlay.classList.remove('active');
-    this.startGame();
-  }
-
-  // ==========================================
-  // 5. PENDETEKSI REMOTE TV & KEYBOARD
-  // ==========================================
-  attachEventListeners() {
+  // ==============================================
+  // 8. GLOBAL EVENT LISTENERS (TV REMOTE & KEYBOARD)
+  // ==============================================
+  attachEvents() {
     window.addEventListener('keydown', (e) => {
-      // Mencegah scroll default browser TV
       if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space', 'Enter'].includes(e.key)) {
         e.preventDefault();
       }
 
-      // 1. Jika masih di Layar Awal
-      if (this.gameState === 'START') {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          this.startGame();
+      // Tombol Back di Remote TV (Escape)
+      if (e.key === 'Escape' || e.key === 'Backspace') {
+        if (this.currentView === 'GAME_COUNTING' || this.currentView === 'GAME_ADDITION') {
+          this.showView('MENU_MATH');
+        } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET') {
+          this.showView('HUB');
         }
         return;
       }
 
-      // 2. Jika di Pop-up Selebrasi Level
-      if (this.gameState === 'CELEBRATION') {
+      // Jika Pop-up Aktif
+      if (this.isCelebrationActive) {
         if (e.key === 'Enter' || e.key === ' ') {
-          this.nextLevel();
+          this.isCelebrationActive = false;
+          document.getElementById('celebration-overlay').classList.remove('active');
+          if (this.nextLevelCallback) this.nextLevelCallback();
         }
         return;
       }
 
-      // 3. Jika di Pop-up Kemenangan Akhir
-      if (this.gameState === 'VICTORY') {
+      if (this.isVictoryActive) {
         if (e.key === 'Enter' || e.key === ' ') {
-          this.restartGame();
+          this.isVictoryActive = false;
+          document.getElementById('victory-overlay').classList.remove('active');
+          this.showView('HUB');
         }
         return;
       }
 
-      // 4. Jika sedang bermain (PLAYING)
-      if (this.gameState === 'PLAYING') {
-        switch (e.key) {
-          case 'ArrowLeft':
-            this.moveFocus('left');
-            break;
-          case 'ArrowRight':
-            this.moveFocus('right');
-            break;
-          case 'ArrowUp':
-            this.countAlong();
-            break;
-          case 'Enter':
-          case ' ':
-            this.submitAnswer();
-            break;
-        }
+      // Berdasarkan View yang Aktif
+      switch (this.currentView) {
+        case 'HUB':
+          this.handleHubKey(e.key);
+          break;
+        case 'MENU_MATH':
+          this.handleMathKey(e.key);
+          break;
+        case 'GAME_COUNTING':
+          this.handleCountingKey(e.key);
+          break;
+        case 'GAME_ADDITION':
+          this.handleAdditionKey(e.key);
+          break;
+        case 'GAME_ALPHABET':
+          this.handleAlphabetKey(e.key);
+          break;
       }
     });
 
-    // Event Listener Klik untuk Tombol-tombol di Layar
-    document.getElementById('start-btn').addEventListener('click', () => this.startGame());
-    document.getElementById('next-level-btn').addEventListener('click', () => this.nextLevel());
-    document.getElementById('restart-btn').addEventListener('click', () => this.restartGame());
+    // Event Klik Mouse / Touch
+    document.querySelectorAll('.game-exit-btn').forEach(btn => {
+      btn.addEventListener('click', () => this.showView('HUB'));
+    });
+
+    document.getElementById('math-back-btn').addEventListener('click', () => {
+      this.showView('HUB');
+    });
+
+    document.getElementById('next-level-btn').addEventListener('click', () => {
+      this.isCelebrationActive = false;
+      document.getElementById('celebration-overlay').classList.remove('active');
+      if (this.nextLevelCallback) this.nextLevelCallback();
+    });
+
+    document.getElementById('restart-btn').addEventListener('click', () => {
+      this.isVictoryActive = false;
+      document.getElementById('victory-overlay').classList.remove('active');
+      this.showView('HUB');
+    });
+
+    // Klik Kartu Hub
+    document.querySelectorAll('.hub-card').forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        this.hubIndex = idx;
+        this.updateHubFocus();
+        this.handleHubKey('Enter');
+      });
+    });
+
+    // Klik Sub-Card Math
+    document.querySelectorAll('.sub-card').forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        this.mathIndex = idx;
+        this.updateMathFocus();
+        this.handleMathKey('Enter');
+      });
+    });
   }
 }
 
-// Inisialisasi game saat dokumen siap
 window.addEventListener('DOMContentLoaded', () => {
-  window.game = new DinoGame();
+  window.app = new LearningHub();
 });
