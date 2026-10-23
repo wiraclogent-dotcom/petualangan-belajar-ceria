@@ -752,16 +752,23 @@ class LearningHub {
     this.loadCountingLevel(this.countLevel);
   }
 
-  initStars(containerId) {
+  initStars(containerId, max = 10) {
     const cont = document.getElementById(containerId);
+    if (!cont) return;
     cont.innerHTML = '';
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= max; i++) {
       const star = document.createElement('span');
       star.classList.add('star');
       star.id = `${containerId}-star-${i}`;
       star.innerText = '★';
       cont.appendChild(star);
     }
+  }
+
+  updateStar(lvl, containerId) {
+    if (!containerId) return;
+    const star = document.getElementById(`${containerId}-star-${lvl}`);
+    if (star) star.classList.add('earned');
   }
 
   loadCountingLevel(lvl) {
@@ -1084,7 +1091,7 @@ class LearningHub {
   // ==============================================
   initShapesGame() {
     this.shapeLevel = 1;
-    this.initStars('shape-stars-container');
+    this.initStars('shape-stars-container', 5);
     this.loadShapeLevel(this.shapeLevel);
   }
 
@@ -1156,7 +1163,7 @@ class LearningHub {
         card.classList.add('correct');
         this.sound.playCorrect();
         this.confetti.fire(35);
-        this.updateStar(this.shapeLevel - 1, 'shape-stars-container');
+        this.updateStar(this.shapeLevel, 'shape-stars-container');
 
         const slot = document.getElementById('shape-nest-slot');
         slot.classList.add('matched');
@@ -1189,7 +1196,7 @@ class LearningHub {
   // ==============================================
   initColorsGame() {
     this.colorLevel = 1;
-    this.initStars('color-stars-container');
+    this.initStars('color-stars-container', 6);
     this.loadColorLevel(this.colorLevel);
   }
 
@@ -1260,7 +1267,7 @@ class LearningHub {
         card.classList.add('correct');
         this.sound.playCorrect();
         this.confetti.fire(35);
-        this.updateStar(this.colorLevel - 1, 'color-stars-container');
+        this.updateStar(this.colorLevel, 'color-stars-container');
 
         speakText(`Pintar sekali! Ini warna ${chosen.name}! ${chosen.english}!`);
 
@@ -1321,7 +1328,7 @@ class LearningHub {
   // ==============================================
   initOddGame() {
     this.oddLevel = 1;
-    this.initStars('odd-stars-container');
+    this.initStars('odd-stars-container', 5);
     this.loadOddLevel(this.oddLevel);
   }
 
@@ -1386,7 +1393,7 @@ class LearningHub {
         card.classList.add('correct');
         this.sound.playCorrect();
         this.confetti.fire(35);
-        this.updateStar(this.oddLevel - 1, 'odd-stars-container');
+        this.updateStar(this.oddLevel, 'odd-stars-container');
 
         speakText(`Hebat sekali! ${chosen.reason}`);
 
@@ -1414,7 +1421,7 @@ class LearningHub {
   // ==============================================
   initSequenceGame() {
     this.sequenceLevel = 1;
-    this.initStars('sequence-stars-container');
+    this.initStars('sequence-stars-container', 5);
     this.loadSequenceLevel(this.sequenceLevel);
   }
 
@@ -1502,7 +1509,7 @@ class LearningHub {
         card.classList.add('correct');
         this.sound.playCorrect();
         this.confetti.fire(35);
-        this.updateStar(this.sequenceLevel - 1, 'sequence-stars-container');
+        this.updateStar(this.sequenceLevel, 'sequence-stars-container');
 
         // Isi slot target
         const slot = document.getElementById('sequence-target-slot');
