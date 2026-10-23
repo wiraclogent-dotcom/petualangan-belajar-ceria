@@ -977,6 +977,7 @@ class LearningHub {
         card.classList.remove('focused');
       }
     });
+    this.reportTVState();
   }
 
   handleHubKey(key) {
@@ -1012,6 +1013,7 @@ class LearningHub {
         card.classList.remove('focused');
       }
     });
+    this.reportTVState();
   }
 
   handleAlphabetMenuKey(key) {
@@ -1239,6 +1241,7 @@ class LearningHub {
         card.classList.remove('focused');
       }
     });
+    this.reportTVState();
   }
 
   handleMathKey(key) {
@@ -1583,6 +1586,7 @@ class LearningHub {
         card.classList.remove('focused');
       }
     });
+    this.reportTVState();
   }
 
   handleShapesMenuKey(key) {
@@ -1822,6 +1826,7 @@ class LearningHub {
         card.classList.remove('focused');
       }
     });
+    this.reportTVState();
   }
 
   handleLogicMenuKey(key) {
