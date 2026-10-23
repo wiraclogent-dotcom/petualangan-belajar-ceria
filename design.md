@@ -93,3 +93,17 @@ Layar TV ruang keluarga dilihat dari jarak 2–3 meter. Seluruh elemen harus mem
 
 2. **Sintesis Efek Suara (Web Audio API):**
    * Seluruh efek suara navigasi (geser, ketuk telur, nada benar, nada riang selebrasi) disintesis secara matematis menggunakan Web Audio API Oscillator (bebas jeda file audio eksternal dan 100% instan).
+
+---
+
+## 7. Standar Kinerja & Efisiensi TV (TV Hardware Performance Guidelines)
+
+Hardware Smart TV memiliki CPU/GPU dan RAM yang sangat terbatas dibanding PC atau ponsel flagship. Untuk mencegah *freeze* dan GPU crash:
+1. **Tidak Memaksa Hardware Layer pada WebView:**
+   * Dilarang menggunakan `webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)` karena memicu kehabisan VRAM (*Tile Memory Limits Exceeded*) dan *Context Lost GL*. Biarkan Chromium mengelola compositing internalnya sendiri.
+2. **Bebas Animasi Filter Berat (No Heavy Animated Shadows):**
+   * Dilarang menganimasikan `box-shadow` dengan blur besar atau `filter: drop-shadow(...)` secara loop *infinite*. Gunakan `transform: scale()` atau `translateY()` yang murni di-render oleh GPU tanpa *repaint* ulang.
+3. **Pemuatan Aset Proporsional:**
+   * Hindari memuat puluhan file SVG ke memori gambar secara serentak. Muat aset saat layar huruf/permainan aktif.
+4. **Failsafe Tombol Back:**
+   * Menekan tombol Back dua kali secara cepat (< 700ms) bertindak sebagai *Emergency Escape* yang langsung menutup aplikasi secara bersih tanpa terhalang antrean proses.

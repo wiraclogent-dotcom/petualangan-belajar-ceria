@@ -50,8 +50,9 @@ public class MainActivity extends Activity {
         settings.setDatabaseEnabled(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
 
-        // Optimize rendering performance & caching for TV
-        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        // Optimization: Do NOT force LAYER_TYPE_HARDWARE on WebView.
+        // Android WebView manages its own internal hardware compositor.
+        // Forcing LAYER_TYPE_HARDWARE causes tile memory exhaustion and GPU context loss on TV GPUs.
         webView.setFocusable(true);
         webView.setFocusableInTouchMode(true);
         webView.requestFocus();
@@ -128,7 +129,17 @@ public class MainActivity extends Activity {
         triggerWebBack();
     }
 
+    private long lastBackPressTime = 0;
+
     private void triggerWebBack() {
+        long now = System.currentTimeMillis();
+        // Failsafe 1: Double-press Back within 700ms exits app unconditionally
+        if (now - lastBackPressTime < 700) {
+            finish();
+            return;
+        }
+        lastBackPressTime = now;
+
         if (webView != null) {
             // Call window.handleRemoteBack() in JavaScript single page app
             webView.evaluateJavascript("window.handleRemoteBack ? window.handleRemoteBack() : false;", value -> {
@@ -176,24 +187,36 @@ public class MainActivity extends Activity {
 
     public class AndroidTTSBridge {
         @JavascriptInterface
-        public void speak(String text) {
+        public void speak(final String text) {
             if (text == null || text.trim().isEmpty()) {
                 return;
             }
-            if (tts != null && isTtsReady) {
-                tts.stop();
-                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "TTS_" + System.currentTimeMillis());
-            } else {
-                pendingSpeech = text;
-                Log.d(TAG, "TTS initializing, queued utterance: " + text);
-            }
+            runOnUiThread(() -> {
+                if (tts != null && isTtsReady) {
+                    try {
+                        tts.stop();
+                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "TTS_" + System.currentTimeMillis());
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error speaking text", e);
+                    }
+                } else {
+                    pendingSpeech = text;
+                    Log.d(TAG, "TTS initializing, queued utterance: " + text);
+                }
+            });
         }
 
         @JavascriptInterface
         public void stop() {
-            if (tts != null && isTtsReady) {
-                tts.stop();
-            }
+            runOnUiThread(() -> {
+                if (tts != null && isTtsReady) {
+                    try {
+                        tts.stop();
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error stopping TTS", e);
+                    }
+                }
+            });
         }
 
         @JavascriptInterface

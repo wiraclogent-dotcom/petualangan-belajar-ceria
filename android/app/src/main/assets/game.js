@@ -264,7 +264,7 @@ class ConfettiCannon {
     this.canvas.height = window.innerHeight;
   }
 
-  fire(amount = 60) {
+  fire(amount = 25) {
     const colors = ['#f43f5e', '#38bdf8', '#facc15', '#4ade80', '#c084fc', '#fb923c'];
     for (let i = 0; i < amount; i++) {
       this.particles.push({
@@ -358,6 +358,12 @@ class LearningHub {
   }
 
   showView(viewName) {
+    if (window.AndroidTTS && typeof window.AndroidTTS.stop === 'function') {
+      try { window.AndroidTTS.stop(); } catch (e) {}
+    }
+    if ('speechSynthesis' in window) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+    }
     this.currentView = viewName;
     document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
     document.getElementById('celebration-overlay').classList.remove('active');
@@ -722,11 +728,6 @@ class LearningHub {
   // ==============================================
   initAlphabetGame() {
     this.alphabetIndex = 0;
-    // Pre-cache semua 26 gambar vektor agar navigasi instan tanpa loading
-    ALPHABET_DATA.forEach(item => {
-      const img = new Image();
-      img.src = `assets/images/alphabet/${item.file}`;
-    });
     this.renderAlphabetCard();
   }
 
@@ -781,7 +782,16 @@ class LearningHub {
   // 7. SISTEM NAVIGASI MUNDUR RESMI (REMOTE BACK KEY)
   // ==============================================
   navigateBack() {
-    this.sound.playNavigate();
+    try {
+      this.sound.playNavigate();
+    } catch (e) {}
+
+    if (window.AndroidTTS && typeof window.AndroidTTS.stop === 'function') {
+      try { window.AndroidTTS.stop(); } catch (e) {}
+    }
+    if ('speechSynthesis' in window) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+    }
 
     // 1. Jika pop-up selebrasi sedang aktif, tutup pop-up
     if (this.isCelebrationActive) {
