@@ -42,6 +42,9 @@ public class MainActivity extends Activity {
         webView = new WebView(this);
         setContentView(webView);
 
+        // Enable Chrome DevTools Protocol remote debugging
+        WebView.setWebContentsDebuggingEnabled(true);
+
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);

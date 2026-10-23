@@ -222,6 +222,8 @@ class SoundFX {
 
 function speakText(text) {
   if (!text) return;
+  window.lastSpokenText = text;
+  console.log("TV_SPEECH:" + text);
 
   // 1. Prioritaskan Android Native Text-to-Speech Bridge (Khusus Android TV & APK)
   if (window.AndroidTTS && typeof window.AndroidTTS.speak === 'function') {
@@ -921,6 +923,37 @@ class LearningHub {
         this.initSequenceGame();
         break;
     }
+    this.reportTVState();
+  }
+
+  getTVState() {
+    return {
+      view: this.currentView,
+      hubIndex: this.hubIndex,
+      mathIndex: this.mathIndex,
+      alphabetSubIndex: this.alphabetSubIndex,
+      shapesSubIndex: this.shapesSubIndex,
+      logicSubIndex: this.logicSubIndex,
+      countLevel: this.countLevel,
+      addLevel: this.addLevel,
+      phonicsLevel: this.phonicsLevel,
+      wordsLevel: this.wordsLevel,
+      shapeLevel: this.shapeLevel,
+      colorLevel: this.colorLevel,
+      oddLevel: this.oddLevel,
+      sequenceLevel: this.sequenceLevel,
+      isInputLocked: this.isInputLocked,
+      isCelebrationActive: this.isCelebrationActive,
+      isVictoryActive: this.isVictoryActive,
+      lastSpeech: window.lastSpokenText || null
+    };
+  }
+
+  reportTVState() {
+    window.tvGame = this;
+    const state = this.getTVState();
+    console.log("TV_STATE:" + JSON.stringify(state));
+    return state;
   }
 
   // --- 3.1 MENU UTAMA (HUB) LOGIC ---
