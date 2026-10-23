@@ -711,6 +711,11 @@ class LearningHub {
   // ==============================================
   initAlphabetGame() {
     this.alphabetIndex = 0;
+    // Pre-cache semua 26 gambar vektor agar navigasi instan tanpa loading
+    ALPHABET_DATA.forEach(item => {
+      const img = new Image();
+      img.src = `assets/images/alphabet/${item.file}`;
+    });
     this.renderAlphabetCard();
   }
 
