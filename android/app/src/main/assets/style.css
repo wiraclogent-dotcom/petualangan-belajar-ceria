@@ -261,12 +261,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  padding: 10px 40px;
+  gap: 32px;
+  padding: 10px 30px;
 }
 
 .sub-card {
-  width: 380px;
+  width: 360px;
   height: 280px;
   background: #ffffff;
   border-radius: 28px;
@@ -1390,4 +1390,296 @@ body {
   animation: correct-jump 0.8s ease;
   border-color: #22c55e;
   background: #f0fdf4;
+}
+
+/* =================================================== */
+/* GAME: SAHABAT 10 (TEN-FRAME & NUMBER BONDS)        */
+/* =================================================== */
+.bonds-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.bonds-equation-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 32px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 4px solid #e2e8f0;
+}
+
+.bonds-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 3.2rem;
+  color: #1e293b;
+  min-width: 48px;
+  text-align: center;
+}
+
+.bonds-operator {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #0284c7;
+}
+
+.bonds-blank {
+  color: #f97316;
+  background: #ffedd5;
+  border-radius: 14px;
+  padding: 0 14px;
+  border: 3px dashed #f97316;
+}
+
+.bonds-target {
+  color: #22c55e;
+}
+
+.ten-frame-board {
+  display: grid;
+  grid-template-columns: repeat(5, 84px);
+  grid-template-rows: repeat(2, 84px);
+  gap: 12px;
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 24px;
+  border: 6px solid #38bdf8;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.ten-frame-cell {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 3px dashed #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  transition: all 0.3s ease;
+}
+
+.ten-frame-cell.filled {
+  background: radial-gradient(circle at 35% 30%, #fff7d6 0%, #ffd166 60%, #f4a261 100%);
+  border: 3px solid #f59e0b;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+  animation: egg-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ten-frame-cell.filled-bonus {
+  background: radial-gradient(circle at 35% 30%, #dcfce7 0%, #4ade80 60%, #16a34a 100%);
+  border: 3px solid #16a34a;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+  animation: correct-jump 0.6s ease;
+}
+
+@keyframes egg-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* =================================================== */
+/* GAME: BANDING UKURAN & KUANTITAS                   */
+/* =================================================== */
+.compare-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.compare-prompt-bubble {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 28px;
+  border-radius: 20px;
+  border: 3px solid #38bdf8;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0369a1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.compare-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.compare-card-item {
+  width: 310px;
+  height: 250px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 5px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.compare-card-item.focused {
+  transform: translateY(-12px) scale(1.08);
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 6px #ffe600, 0 14px 24px rgba(0, 0, 0, 0.3);
+}
+
+.compare-card-item.wrong {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.compare-card-item.correct {
+  animation: correct-jump 0.8s ease;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.compare-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+.scale-large { font-size: 6.2rem; }
+.scale-small { font-size: 2.8rem; }
+.scale-wide { font-size: 5rem; letter-spacing: 4px; }
+.scale-tall { font-size: 6rem; }
+.scale-short { font-size: 3.2rem; }
+.scale-medium { font-size: 3.6rem; }
+
+.compare-item-name {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.compare-item-desc {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+/* =================================================== */
+/* GAME: DETEKTIF PASANGAN                            */
+/* =================================================== */
+.pairs-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.pairs-display-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.pairs-card-target {
+  width: 200px;
+  height: 190px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 5px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.pairs-target-icon {
+  font-size: 4.8rem;
+}
+
+.pairs-target-name {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.pairs-connector-arrow {
+  font-size: 3.5rem;
+  color: #0284c7;
+  font-weight: 900;
+}
+
+.pairs-slot-blank {
+  border: 5px dashed #f59e0b;
+  background: #fffbeb;
+}
+
+.pairs-slot-blank.matched {
+  border: 5px solid #22c55e;
+  background: #f0fdf4;
+  animation: correct-jump 0.6s ease;
+}
+
+.pairs-choice-card {
+  width: 210px;
+  height: 145px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 4px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pairs-choice-card.focused {
+  transform: translateY(-10px) scale(1.08);
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 6px #ffe600, 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.pairs-choice-card.wrong {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.pairs-choice-card.correct {
+  animation: correct-jump 0.8s ease;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.pairs-choice-icon {
+  font-size: 3.2rem;
+}
+
+.pairs-choice-name {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #1e293b;
 }

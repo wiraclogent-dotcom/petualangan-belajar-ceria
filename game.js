@@ -778,6 +778,282 @@ const WORDS_DATA = [
 ];
 
 // ==============================================
+// 2.8 DATA PENJUMLAHAN BERGAMBAR (ADDITION)
+// ==============================================
+const ADDITION_PROBLEMS = [
+  { a: 1, b: 1 },
+  { a: 2, b: 1 },
+  { a: 1, b: 2 },
+  { a: 2, b: 2 },
+  { a: 3, b: 1 },
+  { a: 1, b: 3 },
+  { a: 3, b: 2 },
+  { a: 2, b: 3 },
+  { a: 4, b: 1 },
+  { a: 3, b: 3 }
+];
+
+// ==============================================
+// 2.9 DATA SAHABAT 10 (TEN-FRAME & NUMBER BONDS)
+// ==============================================
+const BONDS_DATA = [
+  { filled: 7, missing: 3, formula: '7 + 3 = 10', hint: 'Tujuh ditambah berapa jadi sepuluh?' },
+  { filled: 8, missing: 2, formula: '8 + 2 = 10', hint: 'Delapan ditambah berapa jadi sepuluh?' },
+  { filled: 5, missing: 5, formula: '5 + 5 = 10', hint: 'Lima ditambah berapa jadi sepuluh?' },
+  { filled: 6, missing: 4, formula: '6 + 4 = 10', hint: 'Enam ditambah berapa jadi sepuluh?' },
+  { filled: 9, missing: 1, formula: '9 + 1 = 10', hint: 'Sembilan ditambah berapa jadi sepuluh?' },
+  { filled: 4, missing: 6, formula: '4 + 6 = 10', hint: 'Empat ditambah berapa jadi sepuluh?' },
+  { filled: 3, missing: 7, formula: '3 + 7 = 10', hint: 'Tiga ditambah berapa jadi sepuluh?' },
+  { filled: 2, missing: 8, formula: '2 + 8 = 10', hint: 'Dua ditambah berapa jadi sepuluh?' },
+  { filled: 1, missing: 9, formula: '1 + 9 = 10', hint: 'Satu ditambah berapa jadi sepuluh?' },
+  { filled: 5, missing: 5, formula: '5 + 5 = 10', hint: 'Lima telur butuh berapa lagi agar genap sepuluh?' }
+];
+
+// ==============================================
+// 2.10 DATA PERBANDINGAN UKURAN & KUANTITAS
+// ==============================================
+const COMPARE_DATA = [
+  {
+    id: 1,
+    question: 'Manakah hewan yang LEBIH BESAR?',
+    speechQuestion: 'Manakah hewan yang lebih besar?',
+    correctId: 'elephant',
+    reason: 'Hebat! Gajah badannya sangat besar, sedangkan tikus badannya kecil!',
+    items: [
+      { id: 'elephant', name: 'Gajah', icon: '🐘', scale: 'scale-large', desc: 'Badan Besar' },
+      { id: 'mouse', name: 'Tikus', icon: '🐭', scale: 'scale-small', desc: 'Badan Kecil' }
+    ]
+  },
+  {
+    id: 2,
+    question: 'Manakah hewan yang LEBIH KECIL?',
+    speechQuestion: 'Manakah hewan yang lebih kecil?',
+    correctId: 'ant',
+    reason: 'Pintar sekali! Semut bertubuh mungil, sedangkan singa bertubuh besar!',
+    items: [
+      { id: 'lion', name: 'Singa', icon: '🦁', scale: 'scale-large', desc: 'Badan Besar' },
+      { id: 'ant', name: 'Semut', icon: '🐜', scale: 'scale-small', desc: 'Badan Kecil' }
+    ]
+  },
+  {
+    id: 3,
+    question: 'Manakah yang LEBIH PANJANG?',
+    speechQuestion: 'Manakah benda yang lebih panjang?',
+    correctId: 'ruler',
+    reason: 'Luar biasa! Penggaris itu panjang, sedangkan rautan itu pendek!',
+    items: [
+      { id: 'ruler', name: 'Penggaris', icon: '📏', scale: 'scale-wide', desc: 'Lebih Panjang' },
+      { id: 'sharpener', name: 'Rautan', icon: '🪒', scale: 'scale-small', desc: 'Lebih Pendek' }
+    ]
+  },
+  {
+    id: 4,
+    question: 'Manakah yang LEBIH BANYAK?',
+    speechQuestion: 'Manakah yang isinya lebih banyak permen?',
+    correctId: 'many_candies',
+    reason: 'Juara! Toples ini berisi 5 permen banyak, yang satunya hanya 1 sedikit!',
+    items: [
+      { id: 'few_candies', name: '1 Permen', icon: '🍬', scale: 'scale-small', desc: 'Sedikit (1)' },
+      { id: 'many_candies', name: '5 Permen', icon: '🍬🍬🍬', scale: 'scale-medium', desc: 'Banyak (5)' }
+    ]
+  },
+  {
+    id: 5,
+    question: 'Manakah yang LEBIH TINGGI?',
+    speechQuestion: 'Manakah hewan yang lebih tinggi?',
+    correctId: 'giraffe',
+    reason: 'Hebat! Jerapah lehernya sangat tinggi, sedangkan kelinci pendek!',
+    items: [
+      { id: 'giraffe', name: 'Jerapah', icon: '🦒', scale: 'scale-tall', desc: 'Tinggi Sekali' },
+      { id: 'rabbit', name: 'Kelinci', icon: '🐰', scale: 'scale-short', desc: 'Lebih Pendek' }
+    ]
+  },
+  {
+    id: 6,
+    question: 'Manakah yang LEBIH PENDEK?',
+    speechQuestion: 'Manakah hewan yang lebih pendek?',
+    correctId: 'caterpillar',
+    reason: 'Tepat sekali! Ulat mungil lebih pendek daripada ular yang panjang!',
+    items: [
+      { id: 'snake', name: 'Ular', icon: '🐍', scale: 'scale-wide', desc: 'Panjang Menjalar' },
+      { id: 'caterpillar', name: 'Ulat', icon: '🐛', scale: 'scale-small', desc: 'Pendek Mungil' }
+    ]
+  },
+  {
+    id: 7,
+    question: 'Manakah yang LEBIH SEDIKIT?',
+    speechQuestion: 'Manakah piring yang kuenya lebih sedikit?',
+    correctId: 'few_cookies',
+    reason: 'Bagus sekali! Piring ini hanya ada 2 kue sedikit, yang satu lagi ada 6 banyak!',
+    items: [
+      { id: 'many_cookies', name: '6 Kue', icon: '🍪🍪🍪', scale: 'scale-medium', desc: 'Banyak (6)' },
+      { id: 'few_cookies', name: '2 Kue', icon: '🍪', scale: 'scale-small', desc: 'Sedikit (2)' }
+    ]
+  },
+  {
+    id: 8,
+    question: 'Manakah yang LEBIH BERAT?',
+    speechQuestion: 'Manakah benda yang lebih berat?',
+    correctId: 'rock',
+    reason: 'Benar! Batu besar sangat berat, sedangkan bulu burung sangat ringan!',
+    items: [
+      { id: 'rock', name: 'Batu Besar', icon: '🪨', scale: 'scale-large', desc: 'Sangat Berat' },
+      { id: 'feather', name: 'Bulu Burung', icon: '🪶', scale: 'scale-small', desc: 'Sangat Ringan' }
+    ]
+  },
+  {
+    id: 9,
+    question: 'Manakah yang LEBIH CEPAT?',
+    speechQuestion: 'Manakah yang melaju lebih cepat?',
+    correctId: 'racecar',
+    reason: 'Hebat! Mobil balap melaju kencang, sedangkan siput berjalan lambat!',
+    items: [
+      { id: 'racecar', name: 'Mobil Balap', icon: '🏎️', scale: 'scale-large', desc: 'Melaju Kencang' },
+      { id: 'snail', name: 'Siput', icon: '🐌', scale: 'scale-small', desc: 'Berjalan Lambat' }
+    ]
+  },
+  {
+    id: 10,
+    question: 'Manakah bangunan yang LEBIH TINGGI?',
+    speechQuestion: 'Manakah bangunan yang lebih tinggi?',
+    correctId: 'tower',
+    reason: 'Juara! Gedung menara bertingkat tinggi menjulang ke awan!',
+    items: [
+      { id: 'tower', name: 'Gedung Menara', icon: '🏙️', scale: 'scale-tall', desc: 'Tinggi Menjulang' },
+      { id: 'cottage', name: 'Rumah Kecil', icon: '🏡', scale: 'scale-short', desc: 'Lebih Rendah' }
+    ]
+  }
+];
+
+// ==============================================
+// 2.11 DATA DETEKTIF PASANGAN (MATCHING PAIRS)
+// ==============================================
+const PAIRS_DATA = [
+  {
+    id: 1,
+    target: { id: 'key', name: 'KUNCI', icon: '🔑' },
+    prompt: 'Benda apakah pasangan dari KUNCI?',
+    correctChoice: { id: 'lock', name: 'Gembok', icon: '🔒' },
+    distractors: [
+      { id: 'shoe', name: 'Sepatu', icon: '👟' },
+      { id: 'book', name: 'Buku', icon: '📚' }
+    ],
+    reason: 'Kunci berpasangan dengan gembok untuk membuka pintu!'
+  },
+  {
+    id: 2,
+    target: { id: 'toothbrush', name: 'SIKAT GIGI', icon: '🪥' },
+    prompt: 'Benda apakah pasangan dari SIKAT GIGI?',
+    correctChoice: { id: 'toothpaste', name: 'Pasta Gigi', icon: '🧴' },
+    distractors: [
+      { id: 'cap', name: 'Topi', icon: '🧢' },
+      { id: 'spoon', name: 'Sendok', icon: '🥄' }
+    ],
+    reason: 'Sikat gigi membutuhkan pasta gigi agar gigi bersih bersinar!'
+  },
+  {
+    id: 3,
+    target: { id: 'bird', name: 'BURUNG', icon: '🐦' },
+    prompt: 'Di manakah sarang tempat tinggal BURUNG?',
+    correctChoice: { id: 'nest', name: 'Sarang', icon: '🪺' },
+    distractors: [
+      { id: 'car', name: 'Mobil', icon: '🚗' },
+      { id: 'chair', name: 'Kursi', icon: '🪑' }
+    ],
+    reason: 'Burung terbang pulang ke sarangnya yang hangat!'
+  },
+  {
+    id: 4,
+    target: { id: 'rain', name: 'HUJAN', icon: '🌧️' },
+    prompt: 'Saat HUJAN turun, kita memakai apa?',
+    correctChoice: { id: 'umbrella', name: 'Payung', icon: '☂️' },
+    distractors: [
+      { id: 'ball', name: 'Bola', icon: '⚽' },
+      { id: 'pillow', name: 'Bantal', icon: '🛋️' }
+    ],
+    reason: 'Saat hujan turun, kita memakai payung agar tetap kering!'
+  },
+  {
+    id: 5,
+    target: { id: 'socks', name: 'KAUS KAKI', icon: '🧦' },
+    prompt: 'KAUS KAKI dipakai berpasangan dengan apa?',
+    correctChoice: { id: 'shoes', name: 'Sepatu', icon: '👟' },
+    distractors: [
+      { id: 'cup', name: 'Gelas', icon: '🥛' },
+      { id: 'broom', name: 'Sapu', icon: '🧹' }
+    ],
+    reason: 'Kaus kaki berpasangan dengan sepatu agar kaki nyaman!'
+  },
+  {
+    id: 6,
+    target: { id: 'bee', name: 'LEBAH', icon: '🐝' },
+    prompt: 'LEBAH suka hinggap mencari nektar di mana?',
+    correctChoice: { id: 'flower', name: 'Bunga', icon: '🌸' },
+    distractors: [
+      { id: 'pencil', name: 'Pensil', icon: '✏️' },
+      { id: 'pan', name: 'Wajan', icon: '🍳' }
+    ],
+    reason: 'Lebah hinggap di bunga manis untuk menghisap madu!'
+  },
+  {
+    id: 7,
+    target: { id: 'pencil', name: 'PENSIL', icon: '✏️' },
+    prompt: 'PENSIL digunakan untuk menulis di mana?',
+    correctChoice: { id: 'notebook', name: 'Buku Tulis', icon: '📖' },
+    distractors: [
+      { id: 'shirt', name: 'Baju', icon: '👕' },
+      { id: 'tire', name: 'Ban Truk', icon: '🛞' }
+    ],
+    reason: 'Pensil digunakan untuk menulis dan menggambar di buku tulis!'
+  },
+  {
+    id: 8,
+    target: { id: 'baby', name: 'BAYI', icon: '👶' },
+    prompt: 'BAYI meminum susu lezat menggunakan apa?',
+    correctChoice: { id: 'baby_bottle', name: 'Botol Susu', icon: '🍼' },
+    distractors: [
+      { id: 'hammer', name: 'Palu', icon: '🔨' },
+      { id: 'scissors', name: 'Gunting', icon: '✂️' }
+    ],
+    reason: 'Bayi meminum susu hangat dari botol susunya!'
+  },
+  {
+    id: 9,
+    target: { id: 'spoon', name: 'SENDOK', icon: '🥄' },
+    prompt: 'SENDOK makan selalu berpasangan dengan apa?',
+    correctChoice: { id: 'fork', name: 'Garpu', icon: '🍴' },
+    distractors: [
+      { id: 'key', name: 'Kunci', icon: '🔑' },
+      { id: 'guitar', name: 'Gitar', icon: '🎸' }
+    ],
+    reason: 'Sendok berpasangan dengan garpu saat kita makan enak!'
+  },
+  {
+    id: 10,
+    target: { id: 'fish', name: 'IKAN', icon: '🐟' },
+    prompt: 'IKAN berenang lincah di dalam apa?',
+    correctChoice: { id: 'water', name: 'Air Kolam', icon: '🌊' },
+    distractors: [
+      { id: 'bed', name: 'Kasur', icon: '🛏️' },
+      { id: 'tv', name: 'Televisi', icon: '📺' }
+    ],
+    reason: 'Ikan berenang riang gembira di dalam air!'
+  }
+];
+
+// ==============================================
+// 2.12 MESIN PENGACAK ANTI-POLA (FISHER-YATES SHUFFLE)
+// ==============================================
+function shuffleArray(arr) {
+  const array = [...arr];
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// ==============================================
 // 3. CORE ROUTER & LEARNING HUB MANAGER
 // ==============================================
 class LearningHub {
@@ -786,58 +1062,93 @@ class LearningHub {
     this.confetti = new ConfettiCannon(document.getElementById('confetti-canvas'));
 
     // Current State
-    this.currentView = 'HUB'; // 'HUB', 'MENU_MATH', 'GAME_COUNTING', 'GAME_ADDITION', 'GAME_ALPHABET'
-    this.hubIndex = 0; // 0: Matematika, 1: Abjad, 2: Warna
-    this.mathIndex = 0; // 0: Hitung, 1: Tambah
+    this.currentView = 'HUB';
+    this.hubIndex = 0; // 0: Matematika, 1: Abjad, 2: Warna, 3: Logika
+    this.mathIndex = 0; // 0: Hitung, 1: Tambah, 2: Sahabat 10
     this.alphabetSubIndex = 0; // 0: Kereta, 1: Phonics, 2: Words
-    this.phonicsLevel = 1;
-    this.phonicsChoices = [];
-    this.phonicsSelectedChoice = 1;
-    this.currentPhonicsData = null;
+    this.shapesSubIndex = 0; // 0: Sarang Bentuk, 1: Kuas Warna, 2: Banding Ukuran
+    this.logicSubIndex = 0; // 0: Detektif Benda, 1: Urutan Cerita, 2: Detektif Pasangan
 
-    this.wordsLevel = 1;
-    this.wordsChoices = [];
-    this.wordsSelectedChoice = 1;
-    this.currentWordsData = null;
-    this.alphabetIndex = 0; // 0 - 25
-
-    // Game Counting State
+    // Game Counting State (Anti-Pattern Dynamic Pool)
     this.countLevel = 1;
     this.countChoices = [];
-    this.countSelectedChoice = 1;
+    this.countSelectedChoice = 0;
+    this.countTargetPool = [];
+    this.currentCountTarget = 1;
     this.isInputLocked = false;
 
-    // Game Addition State
+    // Game Addition State (Anti-Pattern Dynamic Pool)
     this.addLevel = 1;
     this.addNum1 = 1;
     this.addNum2 = 1;
     this.addTotal = 2;
     this.addChoices = [];
-    this.addSelectedChoice = 1;
+    this.addSelectedChoice = 0;
+    this.additionPool = [];
 
-    // Sub-Menu Shapes & Colors State
-    this.shapesSubIndex = 0; // 0: Sarang Bentuk, 1: Kuas Warna
+    // Game Bonds State (Sahabat 10)
+    this.bondsLevel = 1;
+    this.bondsChoices = [];
+    this.bondsSelectedChoice = 0;
+    this.currentBondsData = null;
+    this.bondsPool = [];
+
+    // Phonics State
+    this.phonicsLevel = 1;
+    this.phonicsChoices = [];
+    this.phonicsSelectedChoice = 0;
+    this.currentPhonicsData = null;
+    this.phonicsPool = [];
+
+    // Words State
+    this.wordsLevel = 1;
+    this.wordsChoices = [];
+    this.wordsSelectedChoice = 0;
+    this.currentWordsData = null;
+    this.wordsPool = [];
+    this.alphabetIndex = 0; // 0 - 25
+
+    // Shapes State
     this.shapeLevel = 1;
     this.shapeChoices = [];
-    this.shapeSelectedChoice = 1;
+    this.shapeSelectedChoice = 0;
     this.currentTargetShape = null;
+    this.shapesPool = [];
 
+    // Colors State
     this.colorLevel = 1;
     this.colorChoices = [];
-    this.colorSelectedChoice = 1;
+    this.colorSelectedChoice = 0;
     this.currentTargetColor = null;
+    this.colorsPool = [];
 
-    // Sub-Menu Logic Lab State
-    this.logicSubIndex = 0; // 0: Odd One Out, 1: Sequence
+    // Compare State (Banding Ukuran)
+    this.compareLevel = 1;
+    this.compareChoices = [];
+    this.compareSelectedChoice = 0;
+    this.currentCompareData = null;
+    this.comparePool = [];
+
+    // Odd One Out State
     this.oddLevel = 1;
     this.oddChoices = [];
     this.oddSelectedChoice = 0;
     this.currentOddData = null;
+    this.oddPool = [];
 
+    // Sequence State
     this.sequenceLevel = 1;
     this.sequenceChoices = [];
-    this.sequenceSelectedChoice = 1;
+    this.sequenceSelectedChoice = 0;
     this.currentSequenceData = null;
+    this.sequencePool = [];
+
+    // Pairs State (Detektif Pasangan)
+    this.pairsLevel = 1;
+    this.pairsChoices = [];
+    this.pairsSelectedChoice = 0;
+    this.currentPairsData = null;
+    this.pairsPool = [];
 
     this.initViews();
     this.attachEvents();
@@ -880,7 +1191,11 @@ class LearningHub {
         document.getElementById('view-game-addition').classList.add('active');
         this.initAdditionGame();
         break;
-            case 'MENU_ALPHABET':
+      case 'GAME_BONDS':
+        document.getElementById('view-game-bonds').classList.add('active');
+        this.initBondsGame();
+        break;
+      case 'MENU_ALPHABET':
         document.getElementById('view-menu-alphabet').classList.add('active');
         this.updateAlphabetMenuFocus();
         speakText("Dunia Abjad dan Literasi Ceria! Pilih permainan huruf!");
@@ -910,6 +1225,10 @@ class LearningHub {
         document.getElementById('view-game-colors').classList.add('active');
         this.initColorsGame();
         break;
+      case 'GAME_COMPARE':
+        document.getElementById('view-game-compare').classList.add('active');
+        this.initCompareGame();
+        break;
       case 'MENU_LOGIC':
         document.getElementById('view-menu-logic').classList.add('active');
         this.updateLogicMenuFocus();
@@ -923,18 +1242,25 @@ class LearningHub {
         document.getElementById('view-game-sequence').classList.add('active');
         this.initSequenceGame();
         break;
+      case 'GAME_PAIRS':
+        document.getElementById('view-game-pairs').classList.add('active');
+        this.initPairsGame();
+        break;
     }
     this.reportTVState();
   }
 
-    getTVState() {
+  getTVState() {
     let activeChoice = null;
     if (this.currentView === 'GAME_COUNTING') activeChoice = this.countSelectedChoice;
     else if (this.currentView === 'GAME_ADDITION') activeChoice = this.addSelectedChoice;
+    else if (this.currentView === 'GAME_BONDS') activeChoice = this.bondsSelectedChoice;
     else if (this.currentView === 'GAME_SHAPES') activeChoice = this.shapeSelectedChoice;
     else if (this.currentView === 'GAME_COLORS') activeChoice = this.colorSelectedChoice;
+    else if (this.currentView === 'GAME_COMPARE') activeChoice = this.compareSelectedChoice;
     else if (this.currentView === 'GAME_ODD') activeChoice = this.oddSelectedChoice;
     else if (this.currentView === 'GAME_SEQUENCE') activeChoice = this.sequenceSelectedChoice;
+    else if (this.currentView === 'GAME_PAIRS') activeChoice = this.pairsSelectedChoice;
     else if (this.currentView === 'GAME_PHONICS') activeChoice = this.phonicsSelectedChoice;
     else if (this.currentView === 'GAME_WORDS') activeChoice = this.wordsSelectedChoice;
 
@@ -948,12 +1274,15 @@ class LearningHub {
       activeChoice: activeChoice,
       countLevel: this.countLevel,
       addLevel: this.addLevel,
+      bondsLevel: this.bondsLevel,
       phonicsLevel: this.phonicsLevel,
       wordsLevel: this.wordsLevel,
       shapeLevel: this.shapeLevel,
       colorLevel: this.colorLevel,
+      compareLevel: this.compareLevel,
       oddLevel: this.oddLevel,
       sequenceLevel: this.sequenceLevel,
+      pairsLevel: this.pairsLevel,
       isInputLocked: this.isInputLocked,
       isCelebrationActive: this.isCelebrationActive,
       isVictoryActive: this.isVictoryActive,
@@ -1042,6 +1371,7 @@ class LearningHub {
   // ==============================================
   initPhonicsGame() {
     this.phonicsLevel = 1;
+    this.phonicsPool = shuffleArray(PHONICS_DATA);
     this.initStars('phonics-stars-container', 10);
     this.loadPhonicsLevel(this.phonicsLevel);
   }
@@ -1049,15 +1379,15 @@ class LearningHub {
   loadPhonicsLevel(lvl) {
     this.isInputLocked = false;
     document.getElementById('phonics-level').innerText = lvl;
-    const data = PHONICS_DATA[lvl - 1];
+    const data = this.phonicsPool[lvl - 1];
     this.currentPhonicsData = data;
 
     document.getElementById('phonics-instruction-text').innerText = `Manakah huruf ${data.letter}?`;
     document.getElementById('phonics-prompt-text').innerText = `🎯 Dengarkan suaranya: "${data.soundHint}"`;
 
     // Acak 3 pilihan huruf
-    this.phonicsChoices = [...data.choices].sort(() => Math.random() - 0.5);
-    this.phonicsSelectedChoice = 1;
+    this.phonicsChoices = shuffleArray(data.choices);
+    this.phonicsSelectedChoice = Math.floor(Math.random() * this.phonicsChoices.length);
 
     const container = document.getElementById('phonics-choices-container');
     container.innerHTML = '';
@@ -1138,6 +1468,7 @@ class LearningHub {
   // ==============================================
   initWordsGame() {
     this.wordsLevel = 1;
+    this.wordsPool = shuffleArray(WORDS_DATA);
     this.initStars('words-stars-container', 10);
     this.loadWordsLevel(this.wordsLevel);
   }
@@ -1145,7 +1476,7 @@ class LearningHub {
   loadWordsLevel(lvl) {
     this.isInputLocked = false;
     document.getElementById('words-level').innerText = lvl;
-    const data = WORDS_DATA[lvl - 1];
+    const data = this.wordsPool[lvl - 1];
     this.currentWordsData = data;
 
     document.getElementById('words-image-wrapper').innerHTML = `<img src="assets/images/alphabet/${data.image}" alt="${data.word}">`;
@@ -1153,8 +1484,8 @@ class LearningHub {
     document.getElementById('words-instruction-text').innerText = `Manakah tulisan kata ${data.word}?`;
 
     // Acak 3 pilihan kata
-    this.wordsChoices = [...data.choices].sort(() => Math.random() - 0.5);
-    this.wordsSelectedChoice = 1;
+    this.wordsChoices = shuffleArray(data.choices);
+    this.wordsSelectedChoice = Math.floor(Math.random() * this.wordsChoices.length);
 
     const container = document.getElementById('words-choices-container');
     container.innerHTML = '';
@@ -1234,7 +1565,7 @@ class LearningHub {
 
   // --- 3.2 SUB-MENU MATEMATIKA LOGIC ---
   updateMathFocus() {
-    document.querySelectorAll('.sub-card').forEach((card, idx) => {
+    document.querySelectorAll('#math-menu-grid .sub-card').forEach((card, idx) => {
       if (idx === this.mathIndex) {
         card.classList.add('focused');
       } else {
@@ -1249,7 +1580,7 @@ class LearningHub {
       this.mathIndex--;
       this.sound.playNavigate();
       this.updateMathFocus();
-    } else if (key === 'ArrowRight' && this.mathIndex < 1) {
+    } else if (key === 'ArrowRight' && this.mathIndex < 2) {
       this.mathIndex++;
       this.sound.playNavigate();
       this.updateMathFocus();
@@ -1259,6 +1590,8 @@ class LearningHub {
         this.showView('GAME_COUNTING');
       } else if (this.mathIndex === 1) {
         this.showView('GAME_ADDITION');
+      } else if (this.mathIndex === 2) {
+        this.showView('GAME_BONDS');
       }
     }
   }
@@ -1268,6 +1601,7 @@ class LearningHub {
   // ==============================================
   initCountingGame() {
     this.countLevel = 1;
+    this.countTargetPool = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     this.initStars('stars-container');
     this.loadCountingLevel(this.countLevel);
   }
@@ -1296,14 +1630,17 @@ class LearningHub {
     document.getElementById('current-level').innerText = lvl;
     this.isInputLocked = false;
 
+    const target = this.countTargetPool[lvl - 1];
+    this.currentCountTarget = target;
+
     // Render Dino
     const arena = document.getElementById('dino-arena');
     arena.innerHTML = '';
     arena.classList.remove('sparse', 'dense');
-    if (lvl <= 3) arena.classList.add('sparse');
-    else if (lvl >= 7) arena.classList.add('dense');
+    if (target <= 3) arena.classList.add('sparse');
+    else if (target >= 7) arena.classList.add('dense');
 
-    for (let i = 1; i <= lvl; i++) {
+    for (let i = 1; i <= target; i++) {
       const card = document.createElement('div');
       card.classList.add('dino-card');
       card.innerHTML = `
@@ -1314,11 +1651,11 @@ class LearningHub {
     }
 
     // Pilihan Telur
-    this.generateEggs('choices-container', lvl, (chosen) => {
+    this.generateEggs('choices-container', target, (chosen) => {
       this.submitCountingAnswer(chosen);
     });
 
-    this.countSelectedChoice = 1;
+    this.countSelectedChoice = Math.floor(Math.random() * 3);
     this.updateEggFocus('choices-container', this.countSelectedChoice);
     speakText(`Tingkat ${lvl}. Ada berapa dinosaurus?`);
   }
@@ -1327,8 +1664,8 @@ class LearningHub {
     const pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(n => n !== correct);
     pool.sort((a, b) => Math.abs(a - correct) - Math.abs(b - correct));
     const wrong1 = pool[0];
-    const wrong2 = pool[1];
-    const choices = [correct, wrong1, wrong2].sort(() => Math.random() - 0.5);
+    const wrong2 = pool[1] !== undefined ? pool[1] : (pool[2] || 1);
+    const choices = shuffleArray([correct, wrong1, wrong2]);
 
     if (containerId === 'choices-container') this.countChoices = choices;
     else this.addChoices = choices;
@@ -1345,7 +1682,7 @@ class LearningHub {
         else this.addSelectedChoice = idx;
         this.updateEggFocus(containerId, idx);
         onClickCallback(num);
-    this.reportTVState();
+        this.reportTVState();
       });
       container.appendChild(egg);
     });
@@ -1402,16 +1739,15 @@ class LearningHub {
     if (this.isInputLocked) return;
     const egg = document.getElementById(`choices-container-egg-${this.countSelectedChoice}`);
 
-    if (chosen === this.countLevel) {
+    if (chosen === this.currentCountTarget) {
       this.isInputLocked = true;
       egg.classList.add('correct');
       this.sound.playCorrect();
       this.confetti.fire(60);
 
-      const star = document.getElementById(`stars-container-star-${this.countLevel}`);
-      if (star) star.classList.add('earned');
+      this.updateStar(this.countLevel, 'stars-container');
 
-      speakText(`Hebat! Ada ${this.countLevel} dinosaurus!`);
+      speakText(`Hebat! Ada ${this.currentCountTarget} dinosaurus!`);
 
       setTimeout(() => {
         if (this.countLevel >= 10) {
@@ -1435,6 +1771,7 @@ class LearningHub {
   // ==============================================
   initAdditionGame() {
     this.addLevel = 1;
+    this.additionPool = shuffleArray(ADDITION_PROBLEMS);
     this.initStars('add-stars-container');
     this.loadAdditionLevel(this.addLevel);
   }
@@ -1444,21 +1781,7 @@ class LearningHub {
     document.getElementById('add-level').innerText = lvl;
     this.isInputLocked = false;
 
-    // Soal bergambar bertahap untuk anak 4 tahun
-    const additionProblems = [
-      { a: 1, b: 1 }, // Lvl 1: 1 + 1 = 2
-      { a: 2, b: 1 }, // Lvl 2: 2 + 1 = 3
-      { a: 1, b: 2 }, // Lvl 3: 1 + 2 = 3
-      { a: 2, b: 2 }, // Lvl 4: 2 + 2 = 4
-      { a: 3, b: 1 }, // Lvl 5: 3 + 1 = 4
-      { a: 3, b: 2 }, // Lvl 6: 3 + 2 = 5
-      { a: 2, b: 3 }, // Lvl 7: 2 + 3 = 5
-      { a: 4, b: 1 }, // Lvl 8: 4 + 1 = 5
-      { a: 3, b: 3 }, // Lvl 9: 3 + 3 = 6
-      { a: 4, b: 2 }  // Lvl 10: 4 + 2 = 6
-    ];
-
-    const curProblem = additionProblems[lvl - 1];
+    const curProblem = this.additionPool[lvl - 1];
     this.addNum1 = curProblem.a;
     this.addNum2 = curProblem.b;
     this.addTotal = curProblem.a + curProblem.b;
@@ -1481,9 +1804,9 @@ class LearningHub {
       this.submitAdditionAnswer(chosen);
     });
 
-    this.addSelectedChoice = 1;
+    this.addSelectedChoice = Math.floor(Math.random() * 3);
     this.updateEggFocus('add-choices-container', this.addSelectedChoice);
-    speakText(`${this.addNum1} ditambah ${this.addNum2}, totalnya berapa?`);
+    speakText(`Tingkat ${lvl}. ${this.addNum1} ditambah ${this.addNum2}, totalnya berapa?`);
   }
 
   handleAdditionKey(key) {
@@ -1525,7 +1848,8 @@ class LearningHub {
           this.showVictory();
         } else {
           this.showCelebration(`Benar! ${this.addNum1} + ${this.addNum2} = ${this.addTotal}!`, () => {
-            this.loadAdditionLevel(this.addLevel + 1);
+            this.addLevel++;
+            this.loadAdditionLevel(this.addLevel);
           });
         }
       }, 1200);
@@ -1533,6 +1857,141 @@ class LearningHub {
       this.sound.playOops();
       egg.classList.add('wrong');
       speakText("Coba hitung lagi ya!");
+      setTimeout(() => egg.classList.remove('wrong'), 500);
+    }
+  }
+
+  // ==============================================
+  // 5.1 GAME MODUL MATEMATIKA 3: SAHABAT 10 (TEN-FRAME)
+  // ==============================================
+  initBondsGame() {
+    this.bondsLevel = 1;
+    this.bondsPool = shuffleArray(BONDS_DATA);
+    this.initStars('bonds-stars-container', 10);
+    this.loadBondsLevel(this.bondsLevel);
+  }
+
+  loadBondsLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('bonds-level').innerText = lvl;
+    const data = this.bondsPool[lvl - 1];
+    this.currentBondsData = data;
+
+    // Render persamaan
+    document.getElementById('bonds-filled-num').innerText = data.filled;
+    document.getElementById('bonds-blank-num').innerText = '?';
+
+    // Render papan ten-frame 2x5 (10 slot)
+    const board = document.getElementById('ten-frame-board');
+    board.innerHTML = '';
+    for (let i = 0; i < 10; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'ten-frame-cell';
+      cell.id = `ten-frame-cell-${i}`;
+      if (i < data.filled) {
+        cell.classList.add('filled');
+        cell.innerHTML = '🥚';
+      }
+      board.appendChild(cell);
+    }
+
+    // Pilihan telur pelengkap 10 (1 benar + 2 distractor)
+    const correctMissing = data.missing;
+    const pool = [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(n => n !== correctMissing);
+    pool.sort((a, b) => Math.abs(a - correctMissing) - Math.abs(b - correctMissing));
+    const wrong1 = pool[0];
+    const wrong2 = pool[1] !== undefined ? pool[1] : (pool[2] || 1);
+    this.bondsChoices = shuffleArray([correctMissing, wrong1, wrong2]);
+    this.bondsSelectedChoice = Math.floor(Math.random() * this.bondsChoices.length);
+
+    const container = document.getElementById('bonds-choices-container');
+    container.innerHTML = '';
+    this.bondsChoices.forEach((num, idx) => {
+      const egg = document.createElement('div');
+      egg.className = `egg-choice ${idx === this.bondsSelectedChoice ? 'focused' : ''}`;
+      egg.id = `bonds-egg-${idx}`;
+      egg.innerText = num;
+      egg.addEventListener('click', () => {
+        this.bondsSelectedChoice = idx;
+        this.updateBondsFocus();
+        this.submitBondsAnswer(num);
+      });
+      container.appendChild(egg);
+    });
+
+    speakText(`Tingkat ${lvl}. Ada ${data.filled} telur. ${data.hint}`);
+  }
+
+  updateBondsFocus() {
+    document.querySelectorAll('#bonds-choices-container .egg-choice').forEach((egg, idx) => {
+      if (idx === this.bondsSelectedChoice) {
+        egg.classList.add('focused');
+        this.reportTVState();
+      } else {
+        egg.classList.remove('focused');
+      }
+    });
+  }
+
+  handleBondsKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.bondsSelectedChoice > 0) {
+      this.bondsSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateBondsFocus();
+    } else if (key === 'ArrowRight' && this.bondsSelectedChoice < this.bondsChoices.length - 1) {
+      this.bondsSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateBondsFocus();
+    } else if (key === 'ArrowUp') {
+      speakText(`Ada ${this.currentBondsData.filled} telur di sarang sepuluh. ${this.currentBondsData.hint}`);
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.bondsChoices[this.bondsSelectedChoice];
+      this.submitBondsAnswer(chosen);
+    }
+  }
+
+  submitBondsAnswer(chosen) {
+    if (this.isInputLocked) return;
+    const egg = document.getElementById(`bonds-egg-${this.bondsSelectedChoice}`);
+    const correct = this.currentBondsData.missing;
+
+    if (chosen === correct) {
+      this.isInputLocked = true;
+      egg.classList.add('correct');
+      this.sound.playCorrect();
+      this.confetti.fire(35);
+      this.updateStar(this.bondsLevel, 'bonds-stars-container');
+
+      // Update angka kosong jadi angka benar
+      document.getElementById('bonds-blank-num').innerText = chosen;
+
+      // Isi sisa slot ten-frame dengan kilau bonus!
+      for (let i = this.currentBondsData.filled; i < 10; i++) {
+        const cell = document.getElementById(`ten-frame-cell-${i}`);
+        if (cell) {
+          cell.classList.add('filled-bonus');
+          cell.innerHTML = '✨';
+        }
+      }
+
+      speakText(`Hebat sekali! Benar, ${this.currentBondsData.formula}! Sahabat sepuluh yang kompak!`);
+
+      setTimeout(() => {
+        if (this.bondsLevel >= 10) {
+          this.showVictory();
+        } else {
+          this.showCelebration(`${this.currentBondsData.formula}! Sahabat 10 Lengkap!`, () => {
+            this.bondsLevel++;
+            this.loadBondsLevel(this.bondsLevel);
+          });
+        }
+      }, 1200);
+    } else {
+      egg.classList.add('wrong');
+      this.sound.playOops();
+      speakText(`${this.currentBondsData.filled} ditambah ${chosen} belum sepuluh. Coba cari telur yang lain ya!`);
       setTimeout(() => egg.classList.remove('wrong'), 500);
     }
   }
@@ -1594,7 +2053,7 @@ class LearningHub {
       this.shapesSubIndex--;
       this.sound.playNavigate();
       this.updateShapesMenuFocus();
-    } else if (key === 'ArrowRight' && this.shapesSubIndex < 1) {
+    } else if (key === 'ArrowRight' && this.shapesSubIndex < 2) {
       this.shapesSubIndex++;
       this.sound.playNavigate();
       this.updateShapesMenuFocus();
@@ -1604,6 +2063,8 @@ class LearningHub {
         this.showView('GAME_SHAPES');
       } else if (this.shapesSubIndex === 1) {
         this.showView('GAME_COLORS');
+      } else if (this.shapesSubIndex === 2) {
+        this.showView('GAME_COMPARE');
       }
     }
   }
@@ -1613,6 +2074,7 @@ class LearningHub {
   // ==============================================
   initShapesGame() {
     this.shapeLevel = 1;
+    this.shapesPool = shuffleArray(SHAPES_DATA);
     this.initStars('shape-stars-container', 10);
     this.loadShapeLevel(this.shapeLevel);
   }
@@ -1620,7 +2082,7 @@ class LearningHub {
   loadShapeLevel(lvl) {
     this.isInputLocked = false;
     document.getElementById('shape-level').innerText = lvl;
-    const target = SHAPES_DATA[lvl - 1];
+    const target = this.shapesPool[lvl - 1];
     this.currentTargetShape = target;
 
     // Render siluet sarang
@@ -1631,9 +2093,9 @@ class LearningHub {
 
     // Buat 3 pilihan bentuk (1 benar + 2 distractor)
     const otherShapes = SHAPES_DATA.filter(s => s.id !== target.id);
-    const shuffledOthers = [...otherShapes].sort(() => Math.random() - 0.5);
-    this.shapeChoices = [target, shuffledOthers[0], shuffledOthers[1]].sort(() => Math.random() - 0.5);
-    this.shapeSelectedChoice = 1;
+    const shuffledOthers = shuffleArray(otherShapes);
+    this.shapeChoices = shuffleArray([target, shuffledOthers[0], shuffledOthers[1]]);
+    this.shapeSelectedChoice = Math.floor(Math.random() * this.shapeChoices.length);
 
     const container = document.getElementById('shape-choices-container');
     container.innerHTML = '';
@@ -1660,7 +2122,7 @@ class LearningHub {
     document.querySelectorAll('.shape-card-choice').forEach((card, idx) => {
       if (idx === this.shapeSelectedChoice) {
         card.classList.add('focused');
-    this.reportTVState();
+        this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1719,6 +2181,7 @@ class LearningHub {
   // ==============================================
   initColorsGame() {
     this.colorLevel = 1;
+    this.colorsPool = shuffleArray(COLORS_DATA);
     this.initStars('color-stars-container', 10);
     this.loadColorLevel(this.colorLevel);
   }
@@ -1726,7 +2189,7 @@ class LearningHub {
   loadColorLevel(lvl) {
     this.isInputLocked = false;
     document.getElementById('color-level').innerText = lvl;
-    const target = COLORS_DATA[lvl - 1];
+    const target = this.colorsPool[lvl - 1];
     this.currentTargetColor = target;
 
     // Render target display
@@ -1736,9 +2199,9 @@ class LearningHub {
 
     // Buat 3 pilihan warna (1 benar + 2 distractor)
     const otherColors = COLORS_DATA.filter(c => c.id !== target.id);
-    const shuffledOthers = [...otherColors].sort(() => Math.random() - 0.5);
-    this.colorChoices = [target, shuffledOthers[0], shuffledOthers[1]].sort(() => Math.random() - 0.5);
-    this.colorSelectedChoice = 1;
+    const shuffledOthers = shuffleArray(otherColors);
+    this.colorChoices = shuffleArray([target, shuffledOthers[0], shuffledOthers[1]]);
+    this.colorSelectedChoice = Math.floor(Math.random() * this.colorChoices.length);
 
     const container = document.getElementById('color-choices-container');
     container.innerHTML = '';
@@ -1765,7 +2228,7 @@ class LearningHub {
     document.querySelectorAll('.color-card-choice').forEach((card, idx) => {
       if (idx === this.colorSelectedChoice) {
         card.classList.add('focused');
-    this.reportTVState();
+        this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1814,6 +2277,107 @@ class LearningHub {
     }
   }
 
+  // ==============================================
+  // 6.3.1 GAME MODUL 5.2: BANDING UKURAN & KUANTITAS
+  // ==============================================
+  initCompareGame() {
+    this.compareLevel = 1;
+    this.comparePool = shuffleArray(COMPARE_DATA);
+    this.initStars('compare-stars-container', 10);
+    this.loadCompareLevel(this.compareLevel);
+  }
+
+  loadCompareLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('compare-level').innerText = lvl;
+    const data = this.comparePool[lvl - 1];
+    this.currentCompareData = data;
+
+    document.getElementById('compare-instruction-text').innerText = data.question;
+    document.getElementById('compare-prompt-text').innerText = `👀 ${data.question}`;
+
+    // Acak posisi item pilihan
+    this.compareChoices = shuffleArray(data.items);
+    this.compareSelectedChoice = Math.floor(Math.random() * this.compareChoices.length);
+
+    const container = document.getElementById('compare-choices-container');
+    container.innerHTML = '';
+    this.compareChoices.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = `compare-card-item ${idx === this.compareSelectedChoice ? 'focused' : ''}`;
+      card.id = `compare-choice-${idx}`;
+      card.innerHTML = `
+        <div class="compare-item-icon ${item.scale}">${item.icon}</div>
+        <div class="compare-item-name">${item.name}</div>
+        <div class="compare-item-desc">${item.desc || ''}</div>
+      `;
+      card.addEventListener('click', () => {
+        this.compareSelectedChoice = idx;
+        this.updateCompareFocus();
+        this.handleCompareKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Tingkat ${lvl}. ${data.speechQuestion}`);
+  }
+
+  updateCompareFocus() {
+    document.querySelectorAll('.compare-card-item').forEach((card, idx) => {
+      if (idx === this.compareSelectedChoice) {
+        card.classList.add('focused');
+        this.reportTVState();
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleCompareKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.compareSelectedChoice > 0) {
+      this.compareSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateCompareFocus();
+    } else if (key === 'ArrowRight' && this.compareSelectedChoice < this.compareChoices.length - 1) {
+      this.compareSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateCompareFocus();
+    } else if (key === 'ArrowUp') {
+      speakText(this.currentCompareData.speechQuestion);
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.compareChoices[this.compareSelectedChoice];
+      const card = document.getElementById(`compare-choice-${this.compareSelectedChoice}`);
+
+      if (chosen.id === this.currentCompareData.correctId) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.compareLevel, 'compare-stars-container');
+
+        speakText(this.currentCompareData.reason);
+
+        setTimeout(() => {
+          if (this.compareLevel >= 10) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Hebat! ${chosen.name} Jawaban yang Tepat!`, () => {
+              this.compareLevel++;
+              this.loadCompareLevel(this.compareLevel);
+            });
+          }
+        }, 1200);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`Coba perhatikan lagi ya! ${this.currentCompareData.speechQuestion}`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
 
   // ==============================================
   // 6.4 SUB-MENU LABORATORIUM LOGIKA CERIA
@@ -1834,7 +2398,7 @@ class LearningHub {
       this.logicSubIndex--;
       this.sound.playNavigate();
       this.updateLogicMenuFocus();
-    } else if (key === 'ArrowRight' && this.logicSubIndex < 1) {
+    } else if (key === 'ArrowRight' && this.logicSubIndex < 2) {
       this.logicSubIndex++;
       this.sound.playNavigate();
       this.updateLogicMenuFocus();
@@ -1844,6 +2408,8 @@ class LearningHub {
         this.showView('GAME_ODD');
       } else if (this.logicSubIndex === 1) {
         this.showView('GAME_SEQUENCE');
+      } else if (this.logicSubIndex === 2) {
+        this.showView('GAME_PAIRS');
       }
     }
   }
@@ -1853,6 +2419,7 @@ class LearningHub {
   // ==============================================
   initOddGame() {
     this.oddLevel = 1;
+    this.oddPool = shuffleArray(ODD_DATA);
     this.initStars('odd-stars-container', 10);
     this.loadOddLevel(this.oddLevel);
   }
@@ -1860,12 +2427,12 @@ class LearningHub {
   loadOddLevel(lvl) {
     this.isInputLocked = false;
     document.getElementById('odd-level').innerText = lvl;
-    const data = ODD_DATA[lvl - 1];
+    const data = this.oddPool[lvl - 1];
     this.currentOddData = data;
 
     // Acak posisi 4 kartu
-    this.oddChoices = [...data.items].sort(() => Math.random() - 0.5);
-    this.oddSelectedChoice = 0;
+    this.oddChoices = shuffleArray(data.items);
+    this.oddSelectedChoice = Math.floor(Math.random() * this.oddChoices.length);
 
     const container = document.getElementById('odd-choices-container');
     container.innerHTML = '';
@@ -1892,7 +2459,7 @@ class LearningHub {
     document.querySelectorAll('.odd-card-choice').forEach((card, idx) => {
       if (idx === this.oddSelectedChoice) {
         card.classList.add('focused');
-    this.reportTVState();
+        this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1947,6 +2514,7 @@ class LearningHub {
   // ==============================================
   initSequenceGame() {
     this.sequenceLevel = 1;
+    this.sequencePool = shuffleArray(SEQUENCE_DATA);
     this.initStars('sequence-stars-container', 10);
     this.loadSequenceLevel(this.sequenceLevel);
   }
@@ -1954,7 +2522,7 @@ class LearningHub {
   loadSequenceLevel(lvl) {
     this.isInputLocked = false;
     document.getElementById('sequence-level').innerText = lvl;
-    const data = SEQUENCE_DATA[lvl - 1];
+    const data = this.sequencePool[lvl - 1];
     this.currentSequenceData = data;
 
     // Render 3 petak urutan cerita (Langkah 1, Langkah 2, dan Slot 3)
@@ -1981,8 +2549,8 @@ class LearningHub {
 
     // Buat 3 pilihan jawaban (1 benar + 2 distractor)
     const allChoices = [data.correctChoice, ...data.distractors];
-    this.sequenceChoices = [...allChoices].sort(() => Math.random() - 0.5);
-    this.sequenceSelectedChoice = 1;
+    this.sequenceChoices = shuffleArray(allChoices);
+    this.sequenceSelectedChoice = Math.floor(Math.random() * this.sequenceChoices.length);
 
     const container = document.getElementById('sequence-choices-container');
     container.innerHTML = '';
@@ -2009,7 +2577,7 @@ class LearningHub {
     document.querySelectorAll('.sequence-choice-card').forEach((card, idx) => {
       if (idx === this.sequenceSelectedChoice) {
         card.classList.add('focused');
-    this.reportTVState();
+        this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -2069,6 +2637,120 @@ class LearningHub {
   }
 
   // ==============================================
+  // 6.6.1 GAME MODUL 7.2: DETEKTIF PASANGAN (PAIRS)
+  // ==============================================
+  initPairsGame() {
+    this.pairsLevel = 1;
+    this.pairsPool = shuffleArray(PAIRS_DATA);
+    this.initStars('pairs-stars-container', 10);
+    this.loadPairsLevel(this.pairsLevel);
+  }
+
+  loadPairsLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('pairs-level').innerText = lvl;
+    const data = this.pairsPool[lvl - 1];
+    this.currentPairsData = data;
+
+    // Target display
+    document.getElementById('pairs-instruction-text').innerText = data.prompt;
+    document.getElementById('pairs-target-icon').innerText = data.target.icon;
+    document.getElementById('pairs-target-name').innerText = data.target.name;
+
+    const blankSlot = document.getElementById('pairs-slot-blank');
+    blankSlot.classList.remove('matched');
+    document.getElementById('pairs-blank-icon').innerText = '❓';
+    document.getElementById('pairs-blank-name').innerText = 'Pasangannya?';
+
+    // Pilihan 3 benda (1 benar + 2 distractor)
+    const allChoices = [data.correctChoice, ...data.distractors];
+    this.pairsChoices = shuffleArray(allChoices);
+    this.pairsSelectedChoice = Math.floor(Math.random() * this.pairsChoices.length);
+
+    const container = document.getElementById('pairs-choices-container');
+    container.innerHTML = '';
+    this.pairsChoices.forEach((choice, idx) => {
+      const card = document.createElement('div');
+      card.className = `pairs-choice-card ${idx === this.pairsSelectedChoice ? 'focused' : ''}`;
+      card.id = `pairs-choice-${idx}`;
+      card.innerHTML = `
+        <div class="pairs-choice-icon">${choice.icon}</div>
+        <div class="pairs-choice-name">${choice.name}</div>
+      `;
+      card.addEventListener('click', () => {
+        this.pairsSelectedChoice = idx;
+        this.updatePairsFocus();
+        this.handlePairsKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Tingkat ${lvl}. ${data.prompt}`);
+  }
+
+  updatePairsFocus() {
+    document.querySelectorAll('.pairs-choice-card').forEach((card, idx) => {
+      if (idx === this.pairsSelectedChoice) {
+        card.classList.add('focused');
+        this.reportTVState();
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handlePairsKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.pairsSelectedChoice > 0) {
+      this.pairsSelectedChoice--;
+      this.sound.playNavigate();
+      this.updatePairsFocus();
+    } else if (key === 'ArrowRight' && this.pairsSelectedChoice < this.pairsChoices.length - 1) {
+      this.pairsSelectedChoice++;
+      this.sound.playNavigate();
+      this.updatePairsFocus();
+    } else if (key === 'ArrowUp') {
+      speakText(this.currentPairsData.prompt);
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.pairsChoices[this.pairsSelectedChoice];
+      const card = document.getElementById(`pairs-choice-${this.pairsSelectedChoice}`);
+
+      if (chosen.id === this.currentPairsData.correctChoice.id) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.pairsLevel, 'pairs-stars-container');
+
+        // Isi slot target
+        const blankSlot = document.getElementById('pairs-slot-blank');
+        blankSlot.classList.add('matched');
+        document.getElementById('pairs-blank-icon').innerText = chosen.icon;
+        document.getElementById('pairs-blank-name').innerText = chosen.name;
+
+        speakText(`Pintar sekali! ${this.currentPairsData.reason}`);
+
+        setTimeout(() => {
+          if (this.pairsLevel >= 10) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Pasangan Serasi Ditemukan!`, () => {
+              this.pairsLevel++;
+              this.loadPairsLevel(this.pairsLevel);
+            });
+          }
+        }, 1200);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`${chosen.name} bukan pasangan yang tepat untuk ${this.currentPairsData.target.name}. Ayo cari lagi ya!`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
+  // ==============================================
   // 7. SELEBRASI & KEMENANGAN OVERLAY
   // ==============================================
   showCelebration(msg, onNextCallback) {
@@ -2115,13 +2797,13 @@ class LearningHub {
     }
 
     // 2. Navigasi Berdasarkan Hirarki Layar (design.md)
-    if (this.currentView === 'GAME_COUNTING' || this.currentView === 'GAME_ADDITION') {
+    if (this.currentView === 'GAME_COUNTING' || this.currentView === 'GAME_ADDITION' || this.currentView === 'GAME_BONDS') {
       this.showView('MENU_MATH');
       return true;
-    } else if (this.currentView === 'GAME_SHAPES' || this.currentView === 'GAME_COLORS') {
+    } else if (this.currentView === 'GAME_SHAPES' || this.currentView === 'GAME_COLORS' || this.currentView === 'GAME_COMPARE') {
       this.showView('MENU_SHAPES');
       return true;
-    } else if (this.currentView === 'GAME_ODD' || this.currentView === 'GAME_SEQUENCE') {
+    } else if (this.currentView === 'GAME_ODD' || this.currentView === 'GAME_SEQUENCE' || this.currentView === 'GAME_PAIRS') {
       this.showView('MENU_LOGIC');
       return true;
     } else if (this.currentView === 'GAME_ALPHABET' || this.currentView === 'GAME_PHONICS' || this.currentView === 'GAME_WORDS') {
@@ -2187,6 +2869,9 @@ class LearningHub {
         case 'GAME_ADDITION':
           this.handleAdditionKey(e.key);
           break;
+        case 'GAME_BONDS':
+          this.handleBondsKey(e.key);
+          break;
         case 'MENU_ALPHABET':
           this.handleAlphabetMenuKey(e.key);
           break;
@@ -2208,6 +2893,9 @@ class LearningHub {
         case 'GAME_COLORS':
           this.handleColorsKey(e.key);
           break;
+        case 'GAME_COMPARE':
+          this.handleCompareKey(e.key);
+          break;
         case 'MENU_LOGIC':
           this.handleLogicMenuKey(e.key);
           break;
@@ -2216,6 +2904,9 @@ class LearningHub {
           break;
         case 'GAME_SEQUENCE':
           this.handleSequenceKey(e.key);
+          break;
+        case 'GAME_PAIRS':
+          this.handlePairsKey(e.key);
           break;
       }
     });

@@ -37,16 +37,16 @@
       <main class="hub-menu-grid" id="hub-menu-grid">
         <!-- Kartu 1: Matematika -->
         <div class="hub-card focused" id="hub-card-0" data-view="menu-math">
-          <div class="hub-card-badge">10 Tingkat</div>
+          <div class="hub-card-badge">3 Game</div>
           <div class="hub-card-icon">🧮</div>
           <h2>MATEMATIKA</h2>
-          <p>Berhitung Dino & Tambah</p>
+          <p>Hitung, Tambah & Sahabat 10</p>
           <div class="hub-card-btn">Buka Matematika ➜</div>
         </div>
 
         <!-- Kartu 2: Dunia Abjad -->
         <div class="hub-card" id="hub-card-1" data-view="menu-alphabet">
-          <div class="hub-card-badge">Cerdas</div>
+          <div class="hub-card-badge">3 Game</div>
           <div class="hub-card-icon">🔤</div>
           <h2>DUNIA ABJAD</h2>
           <p>Kereta, Tebak & Kata</p>
@@ -55,19 +55,19 @@
 
         <!-- Kartu 3: Warna & Bentuk -->
         <div class="hub-card" id="hub-card-2" data-view="menu-shapes">
-          <div class="hub-card-badge">Ceria</div>
+          <div class="hub-card-badge">3 Game</div>
           <div class="hub-card-icon">🎨</div>
           <h2>WARNA & BENTUK</h2>
-          <p>Sarang Bentuk & Kuas Warna</p>
+          <p>Bentuk, Warna & Ukuran</p>
           <div class="hub-card-btn">Buka Warna ➜</div>
         </div>
 
         <!-- Kartu 4: Lab Logika -->
         <div class="hub-card" id="hub-card-3" data-view="menu-logic">
-          <div class="hub-card-badge">Nalar</div>
+          <div class="hub-card-badge">3 Game</div>
           <div class="hub-card-icon">🧩</div>
           <h2>LAB LOGIKA</h2>
-          <p>Cari yang Beda & Urutan Cerita</p>
+          <p>Beda, Urutan & Pasangan</p>
           <div class="hub-card-btn">Buka Logika ➜</div>
         </div>
       </main>
@@ -106,6 +106,13 @@
           <div class="sub-card-icon">➕</div>
           <h3>2. Tambah Bergambar</h3>
           <p>Dino hijau + Dino kuning berkumpul bersama</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
+
+        <div class="sub-card" id="math-card-2" data-game="bonds">
+          <div class="sub-card-icon">🔟</div>
+          <h3>3. Sahabat 10</h3>
+          <p>Lengkapi sarang 10 telur agar genap sepuluh</p>
           <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
         </div>
       </main>
@@ -193,6 +200,13 @@
           <p>Mengenal warna primer & sekunder cerah</p>
           <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
         </div>
+
+        <div class="sub-card" id="shapes-subcard-2" data-game="compare">
+          <div class="sub-card-icon">⚖️</div>
+          <h3>3. Banding Ukuran</h3>
+          <p>Besar-Kecil, Panjang-Pendek & Banyak-Sedikit</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
       </main>
 
       <footer class="bottom-panel">
@@ -230,6 +244,13 @@
           <div class="sub-card-icon">⏳</div>
           <h3>2. Urutan Cerita</h3>
           <p>Tebak apa yang terjadi selanjutnya pada cerita</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
+
+        <div class="sub-card" id="logic-subcard-2" data-game="pairs">
+          <div class="sub-card-icon">🔗</div>
+          <h3>3. Detektif Pasangan</h3>
+          <p>Temukan benda yang berpasangan serasi</p>
           <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
         </div>
       </main>
@@ -307,6 +328,47 @@
           <span class="remote-hint-badge">◀ ▶</span> Geser Telur &nbsp;|&nbsp;
           <span class="remote-hint-badge">OK</span> Pilih Jumlah Total &nbsp;|&nbsp;
           <span class="remote-hint-badge">▲</span> Bantu Hitung &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 3.1 GAME: SAHABAT 10 (MODUL MATEMATIKA 3)      -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-bonds">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="bonds-level">1</span>/10
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🔟</span>
+          <span id="bonds-instruction-text">Ayo temukan Sahabat 10!</span>
+        </div>
+        <div class="stars-container" id="bonds-stars-container"></div>
+      </header>
+
+      <main class="bonds-arena" id="bonds-arena">
+        <div class="bonds-equation-bar" id="bonds-equation-bar">
+          <span class="bonds-num" id="bonds-filled-num">7</span>
+          <span class="bonds-operator">+</span>
+          <span class="bonds-num bonds-blank" id="bonds-blank-num">?</span>
+          <span class="bonds-operator">=</span>
+          <span class="bonds-num bonds-target">10</span>
+        </div>
+        <div class="ten-frame-board" id="ten-frame-board"></div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="choices-container" id="bonds-choices-container"></div>
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Telur &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pasang Pelengkap 10 &nbsp;|&nbsp;
+          <span class="remote-hint-badge">▲</span> Ulang Soal &nbsp;|&nbsp;
           <span class="remote-hint-badge">↩ Back</span> Keluar
         </div>
       </footer>
@@ -494,6 +556,42 @@
     </section>
 
     <!-- ============================================== -->
+    <!-- 6.4 GAME: BANDING UKURAN & KUANTITAS (MODUL 5.2) -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-compare">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="compare-level">1</span>/10
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">⚖️</span>
+          <span id="compare-instruction-text">Manakah yang LEBIH BESAR?</span>
+        </div>
+        <div class="stars-container" id="compare-stars-container"></div>
+      </header>
+
+      <main class="compare-arena" id="compare-arena">
+        <div class="compare-prompt-bubble" id="compare-prompt-bubble">
+          <span id="compare-prompt-text">👀 Perhatikan kedua benda, pilih sesuai pertanyaan!</span>
+        </div>
+        <div class="compare-cards-container" id="compare-choices-container"></div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Benda &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pilih Jawaban &nbsp;|&nbsp;
+          <span class="remote-hint-badge">▲</span> Ulang Pertanyaan &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
     <!-- 7. GAME: DETEKTIF BENDA (MODUL 6: ODD ONE OUT) -->
     <!-- ============================================== -->
     <section class="view-section" id="view-game-odd">
@@ -556,6 +654,50 @@
         <div class="hint-text">
           <span class="remote-hint-badge">◀ ▶</span> Geser Jawaban &nbsp;|&nbsp;
           <span class="remote-hint-badge">OK</span> Pilih Lanjutan Cerita &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 8.2 GAME: DETEKTIF PASANGAN (MODUL 7.2)        -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-pairs">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="pairs-level">1</span>/10
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🔗</span>
+          <span id="pairs-instruction-text">Benda apakah pasangan yang cocok?</span>
+        </div>
+        <div class="stars-container" id="pairs-stars-container"></div>
+      </header>
+
+      <main class="pairs-arena" id="pairs-arena">
+        <div class="pairs-display-stage">
+          <div class="pairs-card-target" id="pairs-card-target">
+            <div class="pairs-target-icon" id="pairs-target-icon">🔑</div>
+            <div class="pairs-target-name" id="pairs-target-name">KUNCI</div>
+          </div>
+          <div class="pairs-connector-arrow">➜</div>
+          <div class="pairs-card-target pairs-slot-blank" id="pairs-slot-blank">
+            <div class="pairs-target-icon" id="pairs-blank-icon">❓</div>
+            <div class="pairs-target-name" id="pairs-blank-name">Pasangannya?</div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="choices-container" id="pairs-choices-container"></div>
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Benda &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pasangkan &nbsp;|&nbsp;
+          <span class="remote-hint-badge">▲</span> Ulang Pertanyaan &nbsp;|&nbsp;
           <span class="remote-hint-badge">↩ Back</span> Keluar
         </div>
       </footer>
