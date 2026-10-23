@@ -1,3 +1,7 @@
+html {
+  font-size: 13.5px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -420,16 +424,17 @@ body {
 
 .celebration-card, .start-card {
   background: linear-gradient(135deg, #ffffff 0%, #f4f9ff 100%);
-  padding: 40px 60px;
-  border-radius: 40px;
+  padding: 16px 36px;
+  border-radius: 28px;
   text-align: center;
-  border: 8px solid #ffc107;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-  max-width: 750px;
+  border: 6px solid #ffc107;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   transform: scale(0.85);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -440,23 +445,23 @@ body {
 }
 
 .celebration-emoji, .start-dino, .trophy-emoji {
-  font-size: 6.5rem;
+  font-size: 3.5rem;
   animation: bounce-trophy 1.2s infinite alternate ease-in-out;
 }
 
 @keyframes bounce-trophy {
   from { transform: translateY(0) scale(1); }
-  to { transform: translateY(-16px) scale(1.15); }
+  to { transform: translateY(-10px) scale(1.1); }
 }
 
 .celebration-card h2, .start-card h1 {
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   color: #1e3a8a;
-  text-shadow: 0 3px 0 #93c5fd;
+  text-shadow: 0 2px 0 #93c5fd;
 }
 
 .celebration-card p, .start-card p {
-  font-size: 2.2rem;
+  font-size: 1.35rem;
   color: #374151;
   font-weight: 700;
 }
@@ -464,21 +469,21 @@ body {
 .celebration-btn, .start-button {
   background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
   color: #fff;
-  padding: 18px 45px;
-  border-radius: 28px;
-  font-size: 2rem;
-  border: 5px solid #86efac;
-  box-shadow: 0 10px 0 #14532d, 0 15px 30px rgba(0,0,0,0.3);
+  padding: 10px 32px;
+  border-radius: 20px;
+  font-size: 1.35rem;
+  border: 4px solid #86efac;
+  box-shadow: 0 6px 0 #14532d, 0 10px 20px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   cursor: pointer;
   animation: pulse-btn 1.5s infinite alternate ease-in-out;
 }
 
 .celebration-btn small {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #bbf7d0;
 }
 
@@ -489,12 +494,12 @@ body {
 
 .controls-guide {
   display: flex;
-  gap: 30px;
-  margin-top: 15px;
+  gap: 20px;
+  margin-top: 6px;
   background: #e2e8f0;
-  padding: 12px 24px;
-  border-radius: 18px;
-  font-size: 1.4rem;
+  padding: 8px 18px;
+  border-radius: 14px;
+  font-size: 1.1rem;
   color: #334155;
   font-weight: 700;
 }
@@ -502,14 +507,14 @@ body {
 .key-icon {
   background: #1e293b;
   color: #fff;
-  padding: 3px 10px;
-  border-radius: 8px;
+  padding: 2px 8px;
+  border-radius: 6px;
   font-weight: 900;
 }
 
 .stars-award {
-  font-size: 3rem;
-  margin: 10px 0;
+  font-size: 2.2rem;
+  margin: 6px 0;
 }
 
 /* Kanvas Konfeti */
