@@ -221,6 +221,19 @@ class SoundFX {
 }
 
 function speakText(text) {
+  if (!text) return;
+
+  // 1. Prioritaskan Android Native Text-to-Speech Bridge (Khusus Android TV & APK)
+  if (window.AndroidTTS && typeof window.AndroidTTS.speak === 'function') {
+    try {
+      window.AndroidTTS.speak(text);
+      return;
+    } catch (e) {
+      console.warn('Native AndroidTTS failed, fallback to Web Speech:', e);
+    }
+  }
+
+  // 2. Web Speech API (Untuk Browser PC / Chrome / Edge)
   if ('speechSynthesis' in window) {
     try {
       window.speechSynthesis.cancel();

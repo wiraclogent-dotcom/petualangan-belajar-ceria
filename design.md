@@ -81,3 +81,15 @@ Layar TV ruang keluarga dilihat dari jarak 2–3 meter. Seluruh elemen harus mem
    * Setiap jawaban benar disambut dengan akord musik ceria, karakter melompat, bintang terkumpul, dan semburan konfeti warna-warni.
 3. **Narasi Suara Bahasa Indonesia:**
    * Seluruh teks utama dibacakan dengan artikulasi santai dan ramah anak.
+
+---
+
+## 6. Standar Audio & Narasi Suara (Voice & Audio Pipeline)
+
+1. **Arsitektur Dual Voice Engine (PC vs TV):**
+   * **PC / Desktop Browser:** Menggunakan browser W3C **Web Speech API** (`window.speechSynthesis`) dengan aksen Bahasa Indonesia (`id-ID`).
+   * **Android TV / APK:** Karena Android System WebView tidak mendukung Web Speech API secara native, aplikasi mengintegrasikan **Native Android TextToSpeech Bridge (`window.AndroidTTS`)** via `@JavascriptInterface` yang terhubung ke mesin Google TTS (`com.google.android.tts`).
+   * Deklarasi `<queries><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>` wajib dicantumkan pada `AndroidManifest.xml` untuk kompatibilitas Android 11+ (API 30+).
+
+2. **Sintesis Efek Suara (Web Audio API):**
+   * Seluruh efek suara navigasi (geser, ketuk telur, nada benar, nada riang selebrasi) disintesis secara matematis menggunakan Web Audio API Oscillator (bebas jeda file audio eksternal dan 100% instan).

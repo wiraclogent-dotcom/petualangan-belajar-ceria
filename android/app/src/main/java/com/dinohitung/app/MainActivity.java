@@ -2,18 +2,26 @@ package com.dinohitung.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import java.util.Locale;
 
 public class MainActivity extends Activity {
+    private static final String TAG = "PetualanganBelajar";
     private WebView webView;
+    private TextToSpeech tts;
+    private boolean isTtsReady = false;
+    private String pendingSpeech = null;
     private static final String ONLINE_URL = "https://wiraclogent-dotcom.github.io/petualangan-belajar-ceria/";
     private static final String OFFLINE_URL = "file:///android_asset/index.html";
     private boolean isOfflineFallback = false;
@@ -27,6 +35,9 @@ public class MainActivity extends Activity {
 
         // Fullscreen Immersive Mode for TV
         hideSystemUI();
+
+        // Initialize Android Native TextToSpeech for TV
+        initTTS();
 
         webView = new WebView(this);
         setContentView(webView);
@@ -44,6 +55,9 @@ public class MainActivity extends Activity {
         webView.setFocusable(true);
         webView.setFocusableInTouchMode(true);
         webView.requestFocus();
+
+        // Expose Native Android TTS to JavaScript Single Page App
+        webView.addJavascriptInterface(new AndroidTTSBridge(), "AndroidTTS");
 
         // Enable standard web cache, check network for latest version
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
@@ -126,5 +140,74 @@ public class MainActivity extends Activity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void initTTS() {
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                Locale indonesian = new Locale("id", "ID");
+                int result = tts.setLanguage(indonesian);
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    result = tts.setLanguage(new Locale("id"));
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        result = tts.setLanguage(new Locale("in", "ID"));
+                        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            result = tts.setLanguage(Locale.getDefault());
+                        }
+                    }
+                }
+
+                // Child-friendly voice tone: slightly higher pitch and gentle pacing
+                tts.setPitch(1.15f);
+                tts.setSpeechRate(0.92f);
+                isTtsReady = true;
+                Log.d(TAG, "Android TTS ready with locale result: " + result);
+
+                if (pendingSpeech != null) {
+                    String toSpeak = pendingSpeech;
+                    pendingSpeech = null;
+                    tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, "TTS_PENDING_" + System.currentTimeMillis());
+                }
+            } else {
+                Log.e(TAG, "Android TTS initialization failed with status: " + status);
+            }
+        });
+    }
+
+    public class AndroidTTSBridge {
+        @JavascriptInterface
+        public void speak(String text) {
+            if (text == null || text.trim().isEmpty()) {
+                return;
+            }
+            if (tts != null && isTtsReady) {
+                tts.stop();
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "TTS_" + System.currentTimeMillis());
+            } else {
+                pendingSpeech = text;
+                Log.d(TAG, "TTS initializing, queued utterance: " + text);
+            }
+        }
+
+        @JavascriptInterface
+        public void stop() {
+            if (tts != null && isTtsReady) {
+                tts.stop();
+            }
+        }
+
+        @JavascriptInterface
+        public boolean isAvailable() {
+            return isTtsReady;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 }
