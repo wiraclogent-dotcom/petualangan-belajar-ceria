@@ -448,7 +448,16 @@ body {
 }
 
 .letter-illustration {
-  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 105px;
+}
+
+.letter-illustration img {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
   animation: dino-bounce 2.5s infinite ease-in-out;
 }
 

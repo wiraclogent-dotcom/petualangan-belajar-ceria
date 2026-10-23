@@ -82,34 +82,34 @@ const NUMBER_WORDS = [
   "Sebelas", "Dua Belas", "Tiga Belas", "Empat Belas"
 ];
 
-// Data Alfabet A - Z untuk Balita
+// Data Alfabet A - Z untuk Balita dengan Vektor SVG Microsoft Fluent
 const ALPHABET_DATA = [
-  { letter: "A", word: "APEL", emoji: "🍎", phonic: "A! A untuk Apel" },
-  { letter: "B", word: "BEBEK", emoji: "🦆", phonic: "B! B untuk Bebek" },
-  { letter: "C", word: "CERI", emoji: "🍒", phonic: "C! C untuk Ceri" },
-  { letter: "D", word: "DINO", emoji: "🦕", phonic: "D! D untuk Dinosaurus" },
-  { letter: "E", word: "ELANG", emoji: "🦅", phonic: "E! E untuk Elang" },
-  { letter: "F", word: "FLAMINGO", emoji: "🦩", phonic: "F! F untuk Flamingo" },
-  { letter: "G", word: "GAJAH", emoji: "🐘", phonic: "G! G untuk Gajah" },
-  { letter: "H", word: "HIU", emoji: "🦈", phonic: "H! H untuk Hiu" },
-  { letter: "I", word: "IKAN", emoji: "🐟", phonic: "I! I untuk Ikan" },
-  { letter: "J", word: "JERAPAH", emoji: "🦒", phonic: "J! J untuk Jerapah" },
-  { letter: "K", word: "KUCING", emoji: "🐱", phonic: "K! K untuk Kucing" },
-  { letter: "L", word: "LUMBA", emoji: "🐬", phonic: "L! L untuk Lumba-lumba" },
-  { letter: "M", word: "MOBIL", emoji: "🚗", phonic: "M! M untuk Mobil" },
-  { letter: "N", word: "NANAS", emoji: "🍍", phonic: "N! N untuk Nanas" },
-  { letter: "O", word: "ORANGUTAN", emoji: "🦧", phonic: "O! O untuk Orangutan" },
-  { letter: "P", word: "PESAWAT", emoji: "✈️", phonic: "P! P untuk Pesawat" },
-  { letter: "Q", word: "QURAN", emoji: "📖", phonic: "Q! Q untuk Quran" },
-  { letter: "R", word: "ROKET", emoji: "🚀", phonic: "R! R untuk Roket" },
-  { letter: "S", word: "SINGA", emoji: "🦁", phonic: "S! S untuk Singa" },
-  { letter: "T", word: "TRUK", emoji: "🚚", phonic: "T! T untuk Truk" },
-  { letter: "U", word: "UDANG", emoji: "🦐", phonic: "U! U untuk Udang" },
-  { letter: "V", word: "VAS", emoji: "🏺", phonic: "V! V untuk Vas Bunga" },
-  { letter: "W", word: "WORTEL", emoji: "🥕", phonic: "W! W untuk Wortel" },
-  { letter: "X", word: "XILOFON", emoji: "🎵", phonic: "X! X untuk Xilofon" },
-  { letter: "Y", word: "YOYO", emoji: "🪀", phonic: "Y! Y untuk Yoyo" },
-  { letter: "Z", word: "ZEBRA", emoji: "🦓", phonic: "Z! Z untuk Zebra" }
+  { file: "a.svg", letter: "A", word: "APEL", phonic: "A! A untuk Apel" },
+  { file: "b.svg", letter: "B", word: "BEBEK", phonic: "B! B untuk Bebek" },
+  { file: "c.svg", letter: "C", word: "CERI", phonic: "C! C untuk Ceri" },
+  { file: "d.svg", letter: "D", word: "DINO", phonic: "D! D untuk Dinosaurus" },
+  { file: "e.svg", letter: "E", word: "ELANG", phonic: "E! E untuk Elang" },
+  { file: "f.svg", letter: "F", word: "FLAMINGO", phonic: "F! F untuk Flamingo" },
+  { file: "g.svg", letter: "G", word: "GAJAH", phonic: "G! G untuk Gajah" },
+  { file: "h.svg", letter: "H", word: "HIU", phonic: "H! H untuk Hiu" },
+  { file: "i.svg", letter: "I", word: "IKAN", phonic: "I! I untuk Ikan" },
+  { file: "j.svg", letter: "J", word: "JERAPAH", phonic: "J! J untuk Jerapah" },
+  { file: "k.svg", letter: "K", word: "KUCING", phonic: "K! K untuk Kucing" },
+  { file: "l.svg", letter: "L", word: "LUMBA", phonic: "L! L untuk Lumba-lumba" },
+  { file: "m.svg", letter: "M", word: "MOBIL", phonic: "M! M untuk Mobil" },
+  { file: "n.svg", letter: "N", word: "NANAS", phonic: "N! N untuk Nanas" },
+  { file: "o.svg", letter: "O", word: "ORANGUTAN", phonic: "O! O untuk Orangutan" },
+  { file: "p.svg", letter: "P", word: "PESAWAT", phonic: "P! P untuk Pesawat" },
+  { file: "q.svg", letter: "Q", word: "MAHKOTA", phonic: "Q! Q untuk Mahkota Ratu" },
+  { file: "r.svg", letter: "R", word: "ROKET", phonic: "R! R untuk Roket" },
+  { file: "s.svg", letter: "S", word: "SINGA", phonic: "S! S untuk Singa" },
+  { file: "t.svg", letter: "T", word: "TRUK", phonic: "T! T untuk Truk" },
+  { file: "u.svg", letter: "U", word: "UDANG", phonic: "U! U untuk Udang" },
+  { file: "v.svg", letter: "V", word: "BIOLA", phonic: "V! V untuk Biola" },
+  { file: "w.svg", letter: "W", word: "WORTEL", phonic: "W! W untuk Wortel" },
+  { file: "x.svg", letter: "X", word: "MUSIK", phonic: "X! X untuk Tangga Nada" },
+  { file: "y.svg", letter: "Y", word: "YOYO", phonic: "Y! Y untuk Yoyo" },
+  { file: "z.svg", letter: "Z", word: "ZEBRA", phonic: "Z! Z untuk Zebra" }
 ];
 
 // ==============================================
@@ -718,7 +718,7 @@ class LearningHub {
     const item = ALPHABET_DATA[this.alphabetIndex];
     document.getElementById('current-letter-index').innerText = this.alphabetIndex + 1;
     document.getElementById('letter-giant').innerText = item.letter;
-    document.getElementById('letter-illustration').innerText = item.emoji;
+    document.getElementById('letter-illustration').innerHTML = `<img src="assets/images/alphabet/${item.file}" alt="${item.word}">`;
     document.getElementById('letter-word').innerText = item.word;
     document.getElementById('letter-phonic').innerText = item.phonic;
 
