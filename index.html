@@ -111,6 +111,45 @@
     </section>
 
     <!-- ============================================== -->
+    <!-- 1.2 SUB-MENU WARNA & BENTUK (PILAR 3)          -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-menu-shapes">
+      <header class="top-bar">
+        <div class="nav-back-btn" id="shapes-back-btn">
+          <span class="back-icon">◀</span> Kembali ke Menu Utama
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🎨</span>
+          <span>Pilih Permainan Warna & Bentuk:</span>
+        </div>
+      </header>
+
+      <main class="sub-menu-grid" id="shapes-menu-grid">
+        <div class="sub-card focused" id="shapes-subcard-0" data-game="shapes">
+          <div class="sub-card-icon">🔶</div>
+          <h3>1. Sarang Bentuk Ajaib</h3>
+          <p>Mencocokkan bentuk geometri 2D (Lingkaran, Persegi, Segitiga, dll)</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
+
+        <div class="sub-card" id="shapes-subcard-1" data-game="colors">
+          <div class="sub-card-icon">🌈</div>
+          <h3>2. Kuas Warna Ceria</h3>
+          <p>Mengenal warna primer & sekunder cerah</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Pilih Permainan &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Main &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Menu Utama
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
     <!-- 2. GAME: HITUNG DINOSAURUS (MODUL 1)           -->
     <!-- ============================================== -->
     <section class="view-section" id="view-game-counting">
@@ -212,6 +251,78 @@
           <span class="remote-hint-badge">◀ ▶</span> Ganti Huruf &nbsp;|&nbsp;
           <span class="remote-hint-badge">OK</span> Bunyikan Ulang &nbsp;|&nbsp;
           <span class="remote-hint-badge">↩ Back</span> Menu Utama
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 5. GAME: SARANG BENTUK AJAIB (MODUL 4)         -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-shapes">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="shape-level">1</span>/5
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🔶</span>
+          <span id="shape-instruction-text">Bentuk apakah yang cocok di sarang?</span>
+        </div>
+        <div class="stars-container" id="shape-stars-container"></div>
+      </header>
+
+      <main class="shapes-arena" id="shapes-arena">
+        <div class="shape-nest-slot" id="shape-nest-slot">
+          <div class="shape-nest-outline" id="shape-nest-outline"></div>
+          <div class="shape-nest-label" id="shape-nest-label">Sarang Bentuk</div>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="choices-container" id="shape-choices-container"></div>
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Bentuk &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pasang ke Sarang &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 6. GAME: KUAS WARNA CERIA (MODUL 5)            -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-colors">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="color-level">1</span>/6
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🎨</span>
+          <span id="color-instruction-text">Manakah warna MERAH?</span>
+        </div>
+        <div class="stars-container" id="color-stars-container"></div>
+      </header>
+
+      <main class="colors-arena" id="colors-arena">
+        <div class="color-target-display" id="color-target-display">
+          <div class="color-splash-preview" id="color-splash-preview">🎨</div>
+          <div class="color-prompt-badge" id="color-prompt-badge">MERAH / RED</div>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="choices-container" id="color-choices-container"></div>
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Warna &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pilih Warna &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
         </div>
       </footer>
     </section>

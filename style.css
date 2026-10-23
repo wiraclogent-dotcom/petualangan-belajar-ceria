@@ -866,3 +866,189 @@ body {
   pointer-events: none;
   z-index: 99;
 }
+
+/* =================================================== */
+/* 5. MODUL 4: SARANG BENTUK AJAIB                     */
+/* =================================================== */
+.shapes-arena {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
+  margin-top: 10px;
+}
+
+.shape-nest-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 4px dashed #94a3b8;
+  border-radius: 28px;
+  width: 210px;
+  height: 180px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.shape-nest-slot.matched {
+  border-color: #22c55e;
+  border-style: solid;
+  background: #f0fdf4;
+}
+
+.shape-nest-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+}
+
+.shape-nest-label {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.shape-card-choice {
+  width: 140px;
+  height: 125px;
+  background: #ffffff;
+  border: 4px solid #e2e8f0;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  padding: 8px;
+}
+
+.shape-card-choice .shape-preview {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shape-card-choice .shape-name-tag {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #334155;
+  margin-top: 4px;
+}
+
+.shape-card-choice.focused {
+  transform: translateY(-10px) scale(1.08);
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 6px #ffe600, 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.shape-card-choice.wrong {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.shape-card-choice.correct {
+  animation: correct-jump 0.8s ease;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+/* =================================================== */
+/* 6. MODUL 5: KUAS WARNA CERIA                        */
+/* =================================================== */
+.colors-arena {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
+  margin-top: 10px;
+}
+
+.color-target-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  padding: 18px 48px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  border: 4px solid #f1f5f9;
+}
+
+.color-splash-preview {
+  font-size: 4rem;
+  margin-bottom: 6px;
+}
+
+.color-prompt-badge {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #1e293b;
+  background: #f8fafc;
+  padding: 6px 24px;
+  border-radius: 16px;
+  border: 3px solid #e2e8f0;
+  letter-spacing: 1px;
+}
+
+.color-card-choice {
+  width: 145px;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 4px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  padding: 8px;
+}
+
+.color-card-choice .color-swatch-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 6px;
+}
+
+.color-card-choice .color-name-label {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.color-card-choice.focused {
+  transform: translateY(-10px) scale(1.08);
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 6px #ffe600, 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.color-card-choice.wrong {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.color-card-choice.correct {
+  animation: correct-jump 0.8s ease;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}

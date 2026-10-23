@@ -320,6 +320,107 @@ class ConfettiCannon {
   }
 }
 
+
+// ==============================================
+// 2.2 DATA BENTUK 2D (CAMBRIDGE EARLY YEARS)
+// ==============================================
+const SHAPES_DATA = [
+  {
+    id: 'circle',
+    name: 'Lingkaran',
+    english: 'Circle',
+    color: '#f43f5e',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><circle cx="50" cy="50" r="42" fill="#f43f5e"/><circle cx="38" cy="42" r="5" fill="#fff"/><circle cx="62" cy="42" r="5" fill="#fff"/><path d="M 40 60 Q 50 72 60 60" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="42" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'square',
+    name: 'Persegi',
+    english: 'Square',
+    color: '#3b82f6',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><rect x="14" y="14" width="72" height="72" rx="14" fill="#3b82f6"/><circle cx="38" cy="42" r="5" fill="#fff"/><circle cx="62" cy="42" r="5" fill="#fff"/><path d="M 40 60 Q 50 72 60 60" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><rect x="14" y="14" width="72" height="72" rx="14" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'triangle',
+    name: 'Segitiga',
+    english: 'Triangle',
+    color: '#22c55e',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,14 88,84 12,84" fill="#22c55e" stroke-linejoin="round" stroke="#22c55e" stroke-width="6"/><circle cx="42" cy="54" r="4.5" fill="#fff"/><circle cx="58" cy="54" r="4.5" fill="#fff"/><path d="M 44 68 Q 50 76 56 68" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,14 88,84 12,84" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6" stroke-linejoin="round"/></svg>`
+  },
+  {
+    id: 'star',
+    name: 'Bintang',
+    english: 'Star',
+    color: '#eab308',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,6 64,36 96,38 72,60 80,94 50,75 20,94 28,60 4,38 36,36" fill="#eab308" stroke-linejoin="round" stroke="#eab308" stroke-width="5"/><circle cx="43" cy="46" r="4" fill="#584200"/><circle cx="57" cy="46" r="4" fill="#584200"/><path d="M 44 56 Q 50 63 56 56" stroke="#584200" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,6 64,36 96,38 72,60 80,94 50,75 20,94 28,60 4,38 36,36" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6" stroke-linejoin="round"/></svg>`
+  },
+  {
+    id: 'rectangle',
+    name: 'Persegi Panjang',
+    english: 'Rectangle',
+    color: '#a855f7',
+    svg: `<svg viewBox="0 0 120 80" width="85" height="60"><rect x="10" y="10" width="100" height="60" rx="12" fill="#a855f7"/><circle cx="48" cy="36" r="4.5" fill="#fff"/><circle cx="72" cy="36" r="4.5" fill="#fff"/><path d="M 52 50 Q 60 58 68 50" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 120 80" width="100" height="70"><rect x="10" y="10" width="100" height="60" rx="12" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  }
+];
+
+// ==============================================
+// 2.3 DATA WARNA CERIA (CAMBRIDGE EARLY YEARS)
+// ==============================================
+const COLORS_DATA = [
+  {
+    id: 'red',
+    name: 'Merah',
+    english: 'Red',
+    hex: '#ef4444',
+    icon: '🍎',
+    itemText: 'Apel Merah'
+  },
+  {
+    id: 'blue',
+    name: 'Biru',
+    english: 'Blue',
+    hex: '#3b82f6',
+    icon: '🚙',
+    itemText: 'Mobil Biru'
+  },
+  {
+    id: 'yellow',
+    name: 'Kuning',
+    english: 'Yellow',
+    hex: '#eab308',
+    icon: '⭐',
+    itemText: 'Bintang Kuning'
+  },
+  {
+    id: 'green',
+    name: 'Hijau',
+    english: 'Green',
+    hex: '#22c55e',
+    icon: '🍃',
+    itemText: 'Daun Hijau'
+  },
+  {
+    id: 'orange',
+    name: 'Jingga / Oranye',
+    english: 'Orange',
+    hex: '#f97316',
+    icon: '🍊',
+    itemText: 'Jeruk Oranye'
+  },
+  {
+    id: 'purple',
+    name: 'Ungu',
+    english: 'Purple',
+    hex: '#a855f7',
+    icon: '🍇',
+    itemText: 'Anggur Ungu'
+  }
+];
+
 // ==============================================
 // 3. CORE ROUTER & LEARNING HUB MANAGER
 // ==============================================
@@ -347,6 +448,18 @@ class LearningHub {
     this.addTotal = 2;
     this.addChoices = [];
     this.addSelectedChoice = 1;
+
+    // Sub-Menu Shapes & Colors State
+    this.shapesSubIndex = 0; // 0: Sarang Bentuk, 1: Kuas Warna
+    this.shapeLevel = 1;
+    this.shapeChoices = [];
+    this.shapeSelectedChoice = 1;
+    this.currentTargetShape = null;
+
+    this.colorLevel = 1;
+    this.colorChoices = [];
+    this.colorSelectedChoice = 1;
+    this.currentTargetColor = null;
 
     this.initViews();
     this.attachEvents();
@@ -392,6 +505,19 @@ class LearningHub {
         document.getElementById('view-game-alphabet').classList.add('active');
         this.initAlphabetGame();
         break;
+      case 'MENU_SHAPES':
+        document.getElementById('view-menu-shapes').classList.add('active');
+        this.updateShapesMenuFocus();
+        speakText("Pilih permainan warna dan bentuk!");
+        break;
+      case 'GAME_SHAPES':
+        document.getElementById('view-game-shapes').classList.add('active');
+        this.initShapesGame();
+        break;
+      case 'GAME_COLORS':
+        document.getElementById('view-game-colors').classList.add('active');
+        this.initColorsGame();
+        break;
     }
   }
 
@@ -422,7 +548,7 @@ class LearningHub {
       } else if (this.hubIndex === 1) {
         this.showView('GAME_ALPHABET');
       } else if (this.hubIndex === 2) {
-        speakText("Segera hadir! Petualangan warna dan bentuk!");
+        this.showView('MENU_SHAPES');
       }
     }
   }
@@ -760,6 +886,243 @@ class LearningHub {
     }
   }
 
+
+  // ==============================================
+  // 6.1 SUB-MENU WARNA & BENTUK LOGIC
+  // ==============================================
+  updateShapesMenuFocus() {
+    document.querySelectorAll('#shapes-menu-grid .sub-card').forEach((card, idx) => {
+      if (idx === this.shapesSubIndex) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleShapesMenuKey(key) {
+    if (key === 'ArrowLeft' && this.shapesSubIndex > 0) {
+      this.shapesSubIndex--;
+      this.sound.playNavigate();
+      this.updateShapesMenuFocus();
+    } else if (key === 'ArrowRight' && this.shapesSubIndex < 1) {
+      this.shapesSubIndex++;
+      this.sound.playNavigate();
+      this.updateShapesMenuFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      this.sound.playNavigate();
+      if (this.shapesSubIndex === 0) {
+        this.showView('GAME_SHAPES');
+      } else if (this.shapesSubIndex === 1) {
+        this.showView('GAME_COLORS');
+      }
+    }
+  }
+
+  // ==============================================
+  // 6.2 GAME MODUL 4: SARANG BENTUK AJAIB
+  // ==============================================
+  initShapesGame() {
+    this.shapeLevel = 1;
+    this.initStars('shape-stars-container');
+    this.loadShapeLevel(this.shapeLevel);
+  }
+
+  loadShapeLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('shape-level').innerText = lvl;
+    const target = SHAPES_DATA[lvl - 1];
+    this.currentTargetShape = target;
+
+    // Render siluet sarang
+    const slot = document.getElementById('shape-nest-slot');
+    slot.classList.remove('matched');
+    document.getElementById('shape-nest-outline').innerHTML = target.silhouette;
+    document.getElementById('shape-nest-label').innerText = `Sarang ${target.name}`;
+
+    // Buat 3 pilihan bentuk (1 benar + 2 distractor)
+    const otherShapes = SHAPES_DATA.filter(s => s.id !== target.id);
+    const shuffledOthers = [...otherShapes].sort(() => Math.random() - 0.5);
+    this.shapeChoices = [target, shuffledOthers[0], shuffledOthers[1]].sort(() => Math.random() - 0.5);
+    this.shapeSelectedChoice = 1;
+
+    const container = document.getElementById('shape-choices-container');
+    container.innerHTML = '';
+    this.shapeChoices.forEach((choice, idx) => {
+      const card = document.createElement('div');
+      card.className = `shape-card-choice ${idx === this.shapeSelectedChoice ? 'focused' : ''}`;
+      card.id = `shape-choice-${idx}`;
+      card.innerHTML = `
+        <div class="shape-preview">${choice.svg}</div>
+        <div class="shape-name-tag">${choice.name}</div>
+      `;
+      card.addEventListener('click', () => {
+        this.shapeSelectedChoice = idx;
+        this.updateShapeFocus();
+        this.handleShapesKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Bentuk apakah yang cocok di sarang? Pasang ${target.name}! ${target.english}!`);
+  }
+
+  updateShapeFocus() {
+    document.querySelectorAll('.shape-card-choice').forEach((card, idx) => {
+      if (idx === this.shapeSelectedChoice) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleShapesKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.shapeSelectedChoice > 0) {
+      this.shapeSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateShapeFocus();
+    } else if (key === 'ArrowRight' && this.shapeSelectedChoice < this.shapeChoices.length - 1) {
+      this.shapeSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateShapeFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.shapeChoices[this.shapeSelectedChoice];
+      const card = document.getElementById(`shape-choice-${this.shapeSelectedChoice}`);
+      if (chosen.id === this.currentTargetShape.id) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.shapeLevel - 1, 'shape-stars-container');
+
+        const slot = document.getElementById('shape-nest-slot');
+        slot.classList.add('matched');
+        document.getElementById('shape-nest-outline').innerHTML = chosen.svg;
+        document.getElementById('shape-nest-label').innerText = `${chosen.name} Pas!`;
+
+        speakText(`Pintar sekali! Bentuk ${chosen.name}! ${chosen.english}!`);
+
+        setTimeout(() => {
+          if (this.shapeLevel >= 5) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Bentuk ${chosen.name} Masuk ke Sarang!`, () => {
+              this.shapeLevel++;
+              this.loadShapeLevel(this.shapeLevel);
+            });
+          }
+        }, 1100);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`Coba cari bentuk ${this.currentTargetShape.name} ya!`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
+  // ==============================================
+  // 6.3 GAME MODUL 5: KUAS WARNA CERIA
+  // ==============================================
+  initColorsGame() {
+    this.colorLevel = 1;
+    this.initStars('color-stars-container');
+    this.loadColorLevel(this.colorLevel);
+  }
+
+  loadColorLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('color-level').innerText = lvl;
+    const target = COLORS_DATA[lvl - 1];
+    this.currentTargetColor = target;
+
+    // Render target display
+    document.getElementById('color-splash-preview').innerHTML = `<span style="font-size: 4rem;">${target.icon}</span>`;
+    document.getElementById('color-prompt-badge').innerHTML = `<span style="color: ${target.hex};">${target.name.toUpperCase()}</span> / ${target.english.toUpperCase()}`;
+    document.getElementById('color-instruction-text').innerText = `Manakah warna ${target.name}?`;
+
+    // Buat 3 pilihan warna (1 benar + 2 distractor)
+    const otherColors = COLORS_DATA.filter(c => c.id !== target.id);
+    const shuffledOthers = [...otherColors].sort(() => Math.random() - 0.5);
+    this.colorChoices = [target, shuffledOthers[0], shuffledOthers[1]].sort(() => Math.random() - 0.5);
+    this.colorSelectedChoice = 1;
+
+    const container = document.getElementById('color-choices-container');
+    container.innerHTML = '';
+    this.colorChoices.forEach((choice, idx) => {
+      const card = document.createElement('div');
+      card.className = `color-card-choice ${idx === this.colorSelectedChoice ? 'focused' : ''}`;
+      card.id = `color-choice-${idx}`;
+      card.innerHTML = `
+        <div class="color-swatch-circle" style="background: ${choice.hex};"></div>
+        <div class="color-name-label">${choice.name}</div>
+      `;
+      card.addEventListener('click', () => {
+        this.colorSelectedChoice = idx;
+        this.updateColorFocus();
+        this.handleColorsKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Manakah warna ${target.name}? ${target.english}!`);
+  }
+
+  updateColorFocus() {
+    document.querySelectorAll('.color-card-choice').forEach((card, idx) => {
+      if (idx === this.colorSelectedChoice) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleColorsKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.colorSelectedChoice > 0) {
+      this.colorSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateColorFocus();
+    } else if (key === 'ArrowRight' && this.colorSelectedChoice < this.colorChoices.length - 1) {
+      this.colorSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateColorFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.colorChoices[this.colorSelectedChoice];
+      const card = document.getElementById(`color-choice-${this.colorSelectedChoice}`);
+      if (chosen.id === this.currentTargetColor.id) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.colorLevel - 1, 'color-stars-container');
+
+        speakText(`Pintar sekali! Ini warna ${chosen.name}! ${chosen.english}!`);
+
+        setTimeout(() => {
+          if (this.colorLevel >= 6) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Warna ${chosen.name} Berhasil Ditemukan!`, () => {
+              this.colorLevel++;
+              this.loadColorLevel(this.colorLevel);
+            });
+          }
+        }, 1100);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`Coba cari warna ${this.currentTargetColor.name} ya!`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
   // ==============================================
   // 7. SELEBRASI & KEMENANGAN OVERLAY
   // ==============================================
@@ -810,7 +1173,10 @@ class LearningHub {
     if (this.currentView === 'GAME_COUNTING' || this.currentView === 'GAME_ADDITION') {
       this.showView('MENU_MATH');
       return true;
-    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET') {
+    } else if (this.currentView === 'GAME_SHAPES' || this.currentView === 'GAME_COLORS') {
+      this.showView('MENU_SHAPES');
+      return true;
+    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET' || this.currentView === 'MENU_SHAPES') {
       this.showView('HUB');
       return true;
     } else if (this.currentView === 'HUB') {
@@ -873,6 +1239,15 @@ class LearningHub {
         case 'GAME_ALPHABET':
           this.handleAlphabetKey(e.key);
           break;
+        case 'MENU_SHAPES':
+          this.handleShapesMenuKey(e.key);
+          break;
+        case 'GAME_SHAPES':
+          this.handleShapesKey(e.key);
+          break;
+        case 'GAME_COLORS':
+          this.handleColorsKey(e.key);
+          break;
       }
     });
 
@@ -907,13 +1282,27 @@ class LearningHub {
     });
 
     // Klik Sub-Card Math
-    document.querySelectorAll('.sub-card').forEach((card, idx) => {
+    document.querySelectorAll('#math-menu-grid .sub-card').forEach((card, idx) => {
       card.addEventListener('click', () => {
         this.mathIndex = idx;
         this.updateMathFocus();
         this.handleMathKey('Enter');
       });
     });
+
+    // Klik Sub-Card Shapes
+    document.querySelectorAll('#shapes-menu-grid .sub-card').forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        this.shapesSubIndex = idx;
+        this.updateShapesMenuFocus();
+        this.handleShapesMenuKey('Enter');
+      });
+    });
+
+    const shapesBack = document.getElementById('shapes-back-btn');
+    if (shapesBack) {
+      shapesBack.addEventListener('click', () => this.navigateBack());
+    }
   }
 }
 
