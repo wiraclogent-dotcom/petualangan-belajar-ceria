@@ -1,53 +1,43 @@
-# 🦕 Dino Hitung Ceria - Game Edukasi TV Anak (4 Tahun)
+# 🌟 Petualangan Belajar Ceria - Game Edukasi TV Anak (Usia 4+ Tahun)
 
-Game edukasi berhitung sederhana bertema dinosaurus yang dirancang khusus untuk anak usia 4 tahun, dioperasikan menggunakan **Remote TV** (atau keyboard di laptop/PC).
+Platform edukasi interaktif untuk anak usia 4 tahun ke atas yang dimainkan di layar Smart TV menggunakan **Remote TV** (atau keyboard di PC/Laptop).
+
+👉 **Live Web Version:** [https://wiraclogent-dotcom.github.io/petualangan-belajar-ceria/](https://wiraclogent-dotcom.github.io/petualangan-belajar-ceria/)
 
 ---
 
-## 🎮 Cara Menjalankan Game di Smart TV
+## 🎮 Kategori & Modul Permainan
 
-1. **Jalankan Server di Laptop:**
-   * Cukup klik ganda (double click) file **`jalankan-game.bat`**.
-   * Game akan otomatis terbuka di browser laptop Anda untuk dicoba.
+### 1. 🧮 Matematika
+* **Hitung Dinosaurus (1 - 10):** Menghitung jumlah dinosaurus lucu di padang rumput ceria.
+* **Tambah Bergambar (1 - 10):** Visual penjumlahan dinosaurus hijau + kuning.
 
-2. **Buka di Smart TV (Android TV, Google TV, Samsung, LG):**
-   * Pastikan TV dan Laptop terhubung ke **jaringan Wi-Fi yang sama**.
-   * Buka aplikasi **Web Browser** di Smart TV Anda (misal: *Chrome, Browser Bawaan, atau Puffin TV*).
-   * Ketik alamat IP lokal laptop Anda di kolom alamat browser TV:
-     ```
-     http://192.168.1.6:8080
-     ```
-   * *(Tips: Bookmark atau jadikan halaman ini sebagai Favorit di browser TV agar ke depannya tinggal diklik!)*
+### 2. 🔤 Dunia Abjad
+* **Kereta Huruf A - Z:** Mengenalkan 26 alfabet dengan ilustrasi vektor Microsoft Fluent Emoji (A = Apel, B = Bebek, D = Dino) dan suara fonik bahasa Indonesia.
+
+### 3. 🎨 Warna & Bentuk (Segera Hadir)
+* Mencocokkan warna pelangi dan sarang bentuk geometri.
 
 ---
 
 ## 🕹️ Panduan Tombol Remote TV
 
-| Tombol Remote TV | Fungsi dalam Game |
+| Tombol Remote TV | Fungsi |
 | :--- | :--- |
-| **Panah Kiri (◀)** / **Kanan (▶)** | Memilih telur angka di bawah layar (ada sorotan cahaya berkilau) |
-| **Tombol OK / Enter (Tengah)** | Memilih jawaban / konfirmasi lanjut tingkat |
-| **Panah Atas (▲)** | **Fitur Bantu Hitung:** Menghitung dinosaurus satu per satu dengan suara dan nomor di atas kepala dino |
+| **Panah Kiri (◀) / Kanan (▶)** | Memilih kartu menu / telur angka / ganti huruf A-Z |
+| **Tombol OK / Tengah** | Masuk permainan / Pilih jawaban / Bunyikan suara |
+| **Panah Atas (▲) / Back** | Kembali ke Menu Utama / Bantuan hitung |
 
 ---
 
-## ⭐ Fitur Khusus untuk Anak Usia 4 Tahun
+## 📲 Cara Menjalankan di TV
 
-1. **10 Tingkat Bertahap (Level 1 - 10):**
-   * Dimulai dari 1 dinosaurus agar anak merasa percaya diri dan gembira.
-   * Bertahap bertambah hingga 10 dinosaurus.
-2. **Karakter Dinosaurus Lucu & Beragam:**
-   * T-Rex hijau ceria, Brachiosaurus leher panjang kuning, Triceratops biru, dan Stegosaurus oranye.
-3. **Ramah & Tanpa Frustrasi (No Punishing Game Over):**
-   * Jika salah memilih telur angka, telur hanya sedikit bergoyang lembut dan dinosaurus mengajak mencoba lagi. Anak tidak kehilangan skor atau nyawa.
-4. **Audio & Narasi:**
-   * Efek suara ceria menggunakan Web Audio bawaan browser (tanpa perlu download file suara besar).
-   * Fitur pembacaan angka bahasa Indonesia.
-5. **Perayaan Akhir:**
-   * Hujan konfeti bintang dan piala kejuaraan saat menyelesaikan 10 tingkat.
+1. **Via Browser TV (Tanpa Install):**
+   * Buka browser Smart TV Anda, lalu kunjungi:
+     ```
+     https://wiraclogent-dotcom.github.io/petualangan-belajar-ceria/
+     ```
 
----
-
-## 🚀 Rencana Pembaruan Bertahap (Next Updates)
-* Penambahan mini-game baru (contoh: *Dino Balap Mobil*, *Tebak Warna Dino*, atau *Dino Kasih Makan Buah*).
-* Penambahan mode hitung mundur atau pengurangan sederhana.
+2. **Via Aplikasi APK Android TV:**
+   * Jalankan `install-ke-tv.bat` di laptop untuk memasang ke TV via Wi-Fi.
+   * Aplikasi akan otomatis memuat pembaruan terbaru dari GitHub secara Over-The-Air (OTA) tanpa perlu install ulang APK.

@@ -1,10 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
-title Pasang Dino Hitung Ceria ke Android TV
+title Pasang Petualangan Belajar Ceria ke Android TV
 color 0A
 
 echo =======================================================================
-echo          PASANG DINO HITUNG CERIA KE ANDROID TV / GOOGLE TV
+echo     PASANG PETUALANGAN BELAJAR CERIA KE ANDROID TV / GOOGLE TV
 echo =======================================================================
 echo.
 echo Pastikan:

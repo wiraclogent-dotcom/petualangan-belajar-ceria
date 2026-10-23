@@ -14,7 +14,7 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     private WebView webView;
-    private static final String ONLINE_URL = "https://wiraclogent-dotcom.github.io/dino-hitung-ceria/";
+    private static final String ONLINE_URL = "https://wiraclogent-dotcom.github.io/petualangan-belajar-ceria/";
     private static final String OFFLINE_URL = "file:///android_asset/index.html";
     private boolean isOfflineFallback = false;
 
