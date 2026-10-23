@@ -363,7 +363,46 @@ const SHAPES_DATA = [
     english: 'Rectangle',
     color: '#a855f7',
     svg: `<svg viewBox="0 0 120 80" width="85" height="60"><rect x="10" y="10" width="100" height="60" rx="12" fill="#a855f7"/><circle cx="48" cy="36" r="4.5" fill="#fff"/><circle cx="72" cy="36" r="4.5" fill="#fff"/><path d="M 52 50 Q 60 58 68 50" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
-    silhouette: `<svg viewBox="0 0 120 80" width="100" height="70"><rect x="10" y="10" width="100" height="60" rx="12" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+    silhouette: `<svg viewBox="0 0 120 80" width="100" height="70"><rect x="10" y="10" width="100" height="60" rx="12" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`  },
+  {
+    id: 'heart',
+    name: 'Hati',
+    english: 'Heart',
+    color: '#ec4899',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><path d="M 50 85 C 20 60 5 40 5 25 C 5 10 20 5 35 15 C 43 22 50 30 50 30 C 50 30 57 22 65 15 C 80 5 95 10 95 25 C 95 40 80 60 50 85 Z" fill="#ec4899"/><circle cx="35" cy="35" r="4.5" fill="#fff"/><circle cx="65" cy="35" r="4.5" fill="#fff"/><path d="M 42 50 Q 50 58 58 50" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M 50 85 C 20 60 5 40 5 25 C 5 10 20 5 35 15 C 43 22 50 30 50 30 C 50 30 57 22 65 15 C 80 5 95 10 95 25 C 95 40 80 60 50 85 Z" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'oval',
+    name: 'Oval',
+    english: 'Oval',
+    color: '#06b6d4',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><ellipse cx="50" cy="50" rx="35" ry="46" fill="#06b6d4"/><circle cx="42" cy="42" r="4.5" fill="#fff"/><circle cx="58" cy="42" r="4.5" fill="#fff"/><path d="M 44 58 Q 50 66 56 58" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><ellipse cx="50" cy="50" rx="35" ry="46" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'diamond',
+    name: 'Belah Ketupat',
+    english: 'Diamond',
+    color: '#f97316',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,8 90,50 50,92 10,50" fill="#f97316"/><circle cx="42" cy="46" r="4.5" fill="#fff"/><circle cx="58" cy="46" r="4.5" fill="#fff"/><path d="M 44 60 Q 50 67 56 60" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,8 90,50 50,92 10,50" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'crescent',
+    name: 'Bulan Sabit',
+    english: 'Crescent',
+    color: '#fbbf24',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><path d="M 65 10 A 42 42 0 1 0 65 90 A 32 32 0 0 1 65 10 Z" fill="#fbbf24"/><circle cx="40" cy="45" r="4.5" fill="#78350f"/><path d="M 36 58 Q 42 66 48 58" stroke="#78350f" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M 65 10 A 42 42 0 1 0 65 90 A 32 32 0 0 1 65 10 Z" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'hexagon',
+    name: 'Segi Enam',
+    english: 'Hexagon',
+    color: '#6366f1',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,10 88,30 88,70 50,90 12,70 12,30" fill="#6366f1"/><circle cx="40" cy="45" r="4.5" fill="#fff"/><circle cx="60" cy="45" r="4.5" fill="#fff"/><path d="M 44 60 Q 50 67 56 60" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,10 88,30 88,70 50,90 12,70 12,30" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
   }
 ];
 
@@ -417,7 +456,38 @@ const COLORS_DATA = [
     english: 'Purple',
     hex: '#a855f7',
     icon: '🍇',
-    itemText: 'Anggur Ungu'
+    itemText: 'Anggur Ungu'  },
+  {
+    id: 'pink',
+    name: 'Merah Muda',
+    english: 'Pink',
+    hex: '#ec4899',
+    icon: '🌸',
+    itemText: 'Bunga Merah Muda'
+  },
+  {
+    id: 'brown',
+    name: 'Cokelat',
+    english: 'Brown',
+    hex: '#92400e',
+    icon: '🐻',
+    itemText: 'Beruang Cokelat'
+  },
+  {
+    id: 'white',
+    name: 'Putih',
+    english: 'White',
+    hex: '#e2e8f0',
+    icon: '🥛',
+    itemText: 'Susu Putih'
+  },
+  {
+    id: 'black',
+    name: 'Hitam',
+    english: 'Black',
+    hex: '#1e293b',
+    icon: '🐈‍⬛',
+    itemText: 'Kucing Hitam'
   }
 ];
 
@@ -479,7 +549,61 @@ const ODD_DATA = [
       { id: 'rabbit', name: 'Kelinci', icon: '🐰', isOdd: false },
       { id: 'lion', name: 'Singa', icon: '🦁', isOdd: true, reason: 'Singa hewan buas liar, yang lain hewan peliharaan jinak!' }
     ],
-    hint: 'Manakah hewan liar yang hidup di rimba hutan?'
+    hint: 'Manakah hewan liar yang hidup di rimba hutan?'  },
+  {
+    id: 6,
+    categoryName: 'Pakaian & Busana',
+    items: [
+      { id: 'shirt', name: 'Baju', icon: '👕', isOdd: false },
+      { id: 'pants', name: 'Celana', icon: '👖', isOdd: false },
+      { id: 'cap', name: 'Topi', icon: '🧢', isOdd: false },
+      { id: 'spoon', name: 'Sendok', icon: '🥄', isOdd: true, reason: 'Sendok adalah alat makan, yang lain pakaian!' }
+    ],
+    hint: 'Manakah benda yang bukan pakaian untuk dipakai?'
+  },
+  {
+    id: 7,
+    categoryName: 'Sayuran Sehat',
+    items: [
+      { id: 'carrot', name: 'Wortel', icon: '🥕', isOdd: false },
+      { id: 'broccoli', name: 'Brokoli', icon: '🥦', isOdd: false },
+      { id: 'corn', name: 'Jagung', icon: '🌽', isOdd: false },
+      { id: 'plane', name: 'Pesawat', icon: '✈️', isOdd: true, reason: 'Pesawat kendaraan terbang di langit, yang lain sayuran!' }
+    ],
+    hint: 'Manakah benda yang bukan sayuran sehat?'
+  },
+  {
+    id: 8,
+    categoryName: 'Benda di Langit',
+    items: [
+      { id: 'moon', name: 'Bulan', icon: '🌙', isOdd: false },
+      { id: 'star', name: 'Bintang', icon: '⭐', isOdd: false },
+      { id: 'cloud', name: 'Awan', icon: '☁️', isOdd: false },
+      { id: 'shoe', name: 'Sepatu', icon: '👟', isOdd: true, reason: 'Sepatu alas kaki untuk berjalan, yang lain ada di langit!' }
+    ],
+    hint: 'Manakah yang tidak ada di langit tinggi?'
+  },
+  {
+    id: 9,
+    categoryName: 'Alat Musik',
+    items: [
+      { id: 'guitar', name: 'Gitar', icon: '🎸', isOdd: false },
+      { id: 'trumpet', name: 'Terompet', icon: '🎺', isOdd: false },
+      { id: 'drum', name: 'Drum', icon: '🥁', isOdd: false },
+      { id: 'glass', name: 'Gelas', icon: '🥛', isOdd: true, reason: 'Gelas tempat untuk minum air, yang lain alat musik bernyanyi!' }
+    ],
+    hint: 'Manakah yang bukan alat musik berbunyi merdu?'
+  },
+  {
+    id: 10,
+    categoryName: 'Hewan Bisa Terbang',
+    items: [
+      { id: 'bird', name: 'Burung', icon: '🐦', isOdd: false },
+      { id: 'butterfly', name: 'Kupu-kupu', icon: '🦋', isOdd: false },
+      { id: 'bee', name: 'Lebah', icon: '🐝', isOdd: false },
+      { id: 'turtle', name: 'Kura-kura', icon: '🐢', isOdd: true, reason: 'Kura-kura berjalan lambat di tanah, yang lain punya sayap dan terbang!' }
+    ],
+    hint: 'Manakah hewan yang tidak bisa terbang di udara?'
   }
 ];
 
@@ -550,8 +674,105 @@ const SEQUENCE_DATA = [
       { id: 'skate', icon: '🛼', text: 'Sepatu Roda' },
       { id: 'moon', icon: '🌙', text: 'Bulan Sabit' }
     ],
-    explanation: 'Juara! Dari dalam kepompong, keluarlah kupu-kupu yang sangat indah!'
+    explanation: 'Juara! Dari dalam kepompong, keluarlah kupu-kupu yang sangat indah!'  },
+  {
+    id: 6,
+    title: 'Menggosok Gigi Bersih',
+    step1: { icon: '🪥', text: '1. Sikat Berbusa' },
+    step2: { icon: '🚰', text: '2. Kumur Air Bersih' },
+    targetPrompt: 'Setelah sikat gigi dan kumur, bagaimana giginya?',
+    correctChoice: { id: 'clean_teeth', icon: '✨', text: 'Gigi Bersih & Sehat!' },
+    distractors: [
+      { id: 'football', icon: '⚽', text: 'Bola Tendang' },
+      { id: 'tree', icon: '🌳', text: 'Pohon Rimbun' }
+    ],
+    explanation: 'Hebat! Setelah sikat gigi dan kumur, gigimu jadi putih bersih dan sehat!'
+  },
+  {
+    id: 7,
+    title: 'Membuat Roti Hangat',
+    step1: { icon: '🌾', text: '1. Gandum & Tepung' },
+    step2: { icon: '🍞', text: '2. Panggang di Oven' },
+    targetPrompt: 'Setelah dipanggang matang, jadi makanan apa?',
+    correctChoice: { id: 'sandwich', icon: '🥪', text: 'Roti Lezat Siap Makan!' },
+    distractors: [
+      { id: 'bike', icon: '🚲', text: 'Sepeda Onthel' },
+      { id: 'rain', icon: '🌧️', text: 'Hujan Deras' }
+    ],
+    explanation: 'Pintar! Dari tepung dan dipanggang di oven, terciptalah roti yang harum dan lezat!'
+  },
+  {
+    id: 8,
+    title: 'Hujan dan Pelangi Indah',
+    step1: { icon: '☁️', text: '1. Awan Mendung' },
+    step2: { icon: '🌧️', text: '2. Turun Hujan' },
+    targetPrompt: 'Setelah hujan reda dan matahari bersinar, muncul apa?',
+    correctChoice: { id: 'rainbow', icon: '🌈', text: 'Muncul Pelangi Indah!' },
+    distractors: [
+      { id: 'door', icon: '🚪', text: 'Pintu Kayu' },
+      { id: 'hammer', icon: '🔨', text: 'Palu Besi' }
+    ],
+    explanation: 'Tepat sekali! Setelah hujan reda dan disinari cahaya matahari, muncul pelangi berwarna-warni!'
+  },
+  {
+    id: 9,
+    title: 'Menyerut Pensil Tumpul',
+    step1: { icon: '✏️', text: '1. Pensil Tumpul' },
+    step2: { icon: '⚙️', text: '2. Putar di Serutan' },
+    targetPrompt: 'Setelah diserut, bagaimana pensilnya?',
+    correctChoice: { id: 'sharp_pencil', icon: '📝', text: 'Pensil Tajam Siap Tulis!' },
+    distractors: [
+      { id: 'apple', icon: '🍎', text: 'Apel Manis' },
+      { id: 'boat', icon: '⛵', text: 'Perahu Layar' }
+    ],
+    explanation: 'Luar biasa! Pensil yang diserut jadi runcing tajam dan siap untuk belajar menulis!'
+  },
+  {
+    id: 10,
+    title: 'Pesta Ulang Tahun Ceria',
+    step1: { icon: '🎂', text: '1. Nyalakan Lilin Kue' },
+    step2: { icon: '🕯️', text: '2. Tiup Lilin Bersama' },
+    targetPrompt: 'Setelah lilin ditiup, apa yang dilakukan?',
+    correctChoice: { id: 'presents', icon: '🎁', text: 'Buka Kado & Bergembira!' },
+    distractors: [
+      { id: 'rock', icon: '🪨', text: 'Batu Sungai' },
+      { id: 'truck', icon: '🚂', text: 'Kereta Api' }
+    ],
+    explanation: 'Hore juara! Lilin ditiup, semua tepuk tangan gembira dan membuka hadiah ulang tahun!'
   }
+];
+
+
+// ==============================================
+// 2.6 DATA TEBAK SUARA HURUF (PHONICS QUIZ)
+// ==============================================
+const PHONICS_DATA = [
+  { level: 1, letter: 'B', soundHint: 'Be! B untuk Bebek', choices: ['A', 'B', 'C'] },
+  { level: 2, letter: 'M', soundHint: 'Em! M untuk Mobil', choices: ['N', 'M', 'W'] },
+  { level: 3, letter: 'S', soundHint: 'Es! S untuk Singa', choices: ['S', 'C', 'Z'] },
+  { level: 4, letter: 'A', soundHint: 'A! A untuk Apel', choices: ['O', 'A', 'E'] },
+  { level: 5, letter: 'K', soundHint: 'Ka! K untuk Kucing', choices: ['H', 'K', 'L'] },
+  { level: 6, letter: 'D', soundHint: 'De! D untuk Dinosaurus', choices: ['B', 'P', 'D'] },
+  { level: 7, letter: 'P', soundHint: 'Pe! P untuk Pesawat', choices: ['P', 'Q', 'R'] },
+  { level: 8, letter: 'I', soundHint: 'I! I untuk Ikan', choices: ['T', 'I', 'L'] },
+  { level: 9, letter: 'R', soundHint: 'Er! R untuk Roket', choices: ['R', 'P', 'B'] },
+  { level: 10, letter: 'Z', soundHint: 'Zet! Z untuk Zebra', choices: ['N', 'S', 'Z'] }
+];
+
+// ==============================================
+// 2.7 DATA MEMBACA KATA BERGAMBAR (SIGHT WORDS)
+// ==============================================
+const WORDS_DATA = [
+  { level: 1, word: 'APEL', image: 'a.svg', helper: 'Buah manis warna merah', choices: ['APEL', 'AYAM', 'AWAN'] },
+  { level: 2, word: 'BEBEK', image: 'b.svg', helper: 'Hewan kwek-kwek berenang', choices: ['BEBEK', 'BUKU', 'BALON'] },
+  { level: 3, word: 'CERI', image: 'c.svg', helper: 'Buah kecil merah kembar', choices: ['CERI', 'CANGKIR', 'CELANA'] },
+  { level: 4, word: 'DINO', image: 'd.svg', helper: 'Sahabat purba kita', choices: ['DINO', 'DOMBA', 'DURIAN'] },
+  { level: 5, word: 'GAJAH', image: 'g.svg', helper: 'Hewan besar belalai panjang', choices: ['GAJAH', 'GITAR', 'GELAS'] },
+  { level: 6, word: 'IKAN', image: 'i.svg', helper: 'Berenang lincah di air', choices: ['IKAN', 'ITIK', 'INTAN'] },
+  { level: 7, word: 'KUCING', image: 'k.svg', helper: 'Hewan berbulu meong', choices: ['KUCING', 'KUDA', 'KERA'] },
+  { level: 8, word: 'MOBIL', image: 'm.svg', helper: 'Kendaraan roda empat', choices: ['MOBIL', 'MATA', 'MEJA'] },
+  { level: 9, word: 'PESAWAT', image: 'p.svg', helper: 'Terbang tinggi di awan', choices: ['PESAWAT', 'PINTU', 'POHON'] },
+  { level: 10, word: 'SINGA', image: 's.svg', helper: 'Raja rimba bersuara aum', choices: ['SINGA', 'SAPI', 'SENDOK'] }
 ];
 
 // ==============================================
@@ -566,6 +787,16 @@ class LearningHub {
     this.currentView = 'HUB'; // 'HUB', 'MENU_MATH', 'GAME_COUNTING', 'GAME_ADDITION', 'GAME_ALPHABET'
     this.hubIndex = 0; // 0: Matematika, 1: Abjad, 2: Warna
     this.mathIndex = 0; // 0: Hitung, 1: Tambah
+    this.alphabetSubIndex = 0; // 0: Kereta, 1: Phonics, 2: Words
+    this.phonicsLevel = 1;
+    this.phonicsChoices = [];
+    this.phonicsSelectedChoice = 1;
+    this.currentPhonicsData = null;
+
+    this.wordsLevel = 1;
+    this.wordsChoices = [];
+    this.wordsSelectedChoice = 1;
+    this.currentWordsData = null;
     this.alphabetIndex = 0; // 0 - 25
 
     // Game Counting State
@@ -646,6 +877,19 @@ class LearningHub {
         document.getElementById('view-game-addition').classList.add('active');
         this.initAdditionGame();
         break;
+            case 'MENU_ALPHABET':
+        document.getElementById('view-menu-alphabet').classList.add('active');
+        this.updateAlphabetMenuFocus();
+        speakText("Dunia Abjad dan Literasi Ceria! Pilih permainan huruf!");
+        break;
+      case 'GAME_PHONICS':
+        document.getElementById('view-game-phonics').classList.add('active');
+        this.initPhonicsGame();
+        break;
+      case 'GAME_WORDS':
+        document.getElementById('view-game-words').classList.add('active');
+        this.initWordsGame();
+        break;
       case 'GAME_ALPHABET':
         document.getElementById('view-game-alphabet').classList.add('active');
         this.initAlphabetGame();
@@ -704,11 +948,237 @@ class LearningHub {
       if (this.hubIndex === 0) {
         this.showView('MENU_MATH');
       } else if (this.hubIndex === 1) {
-        this.showView('GAME_ALPHABET');
+        this.showView('MENU_ALPHABET');
       } else if (this.hubIndex === 2) {
         this.showView('MENU_SHAPES');
       } else if (this.hubIndex === 3) {
         this.showView('MENU_LOGIC');
+      }
+    }
+  }
+
+  
+  // --- 3.2.1 SUB-MENU DUNIA ABJAD LOGIC ---
+  updateAlphabetMenuFocus() {
+    document.querySelectorAll('#alphabet-menu-grid .sub-card').forEach((card, idx) => {
+      if (idx === this.alphabetSubIndex) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleAlphabetMenuKey(key) {
+    if (key === 'ArrowLeft' && this.alphabetSubIndex > 0) {
+      this.alphabetSubIndex--;
+      this.sound.playNavigate();
+      this.updateAlphabetMenuFocus();
+    } else if (key === 'ArrowRight' && this.alphabetSubIndex < 2) {
+      this.alphabetSubIndex++;
+      this.sound.playNavigate();
+      this.updateAlphabetMenuFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      this.sound.playNavigate();
+      if (this.alphabetSubIndex === 0) {
+        this.showView('GAME_ALPHABET');
+      } else if (this.alphabetSubIndex === 1) {
+        this.showView('GAME_PHONICS');
+      } else if (this.alphabetSubIndex === 2) {
+        this.showView('GAME_WORDS');
+      }
+    }
+  }
+
+  // ==============================================
+  // 6.1 GAME MODUL ABJAD 2: TEBAK SUARA HURUF (PHONICS)
+  // ==============================================
+  initPhonicsGame() {
+    this.phonicsLevel = 1;
+    this.initStars('phonics-stars-container', 10);
+    this.loadPhonicsLevel(this.phonicsLevel);
+  }
+
+  loadPhonicsLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('phonics-level').innerText = lvl;
+    const data = PHONICS_DATA[lvl - 1];
+    this.currentPhonicsData = data;
+
+    document.getElementById('phonics-instruction-text').innerText = `Manakah huruf ${data.letter}?`;
+    document.getElementById('phonics-prompt-text').innerText = `🎯 Dengarkan suaranya: "${data.soundHint}"`;
+
+    // Acak 3 pilihan huruf
+    this.phonicsChoices = [...data.choices].sort(() => Math.random() - 0.5);
+    this.phonicsSelectedChoice = 1;
+
+    const container = document.getElementById('phonics-choices-container');
+    container.innerHTML = '';
+    this.phonicsChoices.forEach((char, idx) => {
+      const card = document.createElement('div');
+      card.className = `phonics-choice-card ${idx === this.phonicsSelectedChoice ? 'focused' : ''}`;
+      card.id = `phonics-choice-${idx}`;
+      card.innerText = char;
+      card.addEventListener('click', () => {
+        this.phonicsSelectedChoice = idx;
+        this.updatePhonicsFocus();
+        this.handlePhonicsKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Manakah huruf ${data.letter}? ${data.soundHint}`);
+  }
+
+  updatePhonicsFocus() {
+    document.querySelectorAll('.phonics-choice-card').forEach((card, idx) => {
+      if (idx === this.phonicsSelectedChoice) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handlePhonicsKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.phonicsSelectedChoice > 0) {
+      this.phonicsSelectedChoice--;
+      this.sound.playNavigate();
+      this.updatePhonicsFocus();
+    } else if (key === 'ArrowRight' && this.phonicsSelectedChoice < this.phonicsChoices.length - 1) {
+      this.phonicsSelectedChoice++;
+      this.sound.playNavigate();
+      this.updatePhonicsFocus();
+    } else if (key === 'ArrowUp') {
+      speakText(`Manakah huruf ${this.currentPhonicsData.letter}? ${this.currentPhonicsData.soundHint}`);
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.phonicsChoices[this.phonicsSelectedChoice];
+      const card = document.getElementById(`phonics-choice-${this.phonicsSelectedChoice}`);
+
+      if (chosen === this.currentPhonicsData.letter) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.phonicsLevel, 'phonics-stars-container');
+
+        speakText(`Hebat sekali! Benar, ini huruf ${chosen}!`);
+
+        setTimeout(() => {
+          if (this.phonicsLevel >= 10) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Huruf ${chosen} Berhasil Ditemukan!`, () => {
+              this.phonicsLevel++;
+              this.loadPhonicsLevel(this.phonicsLevel);
+            });
+          }
+        }, 1200);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`Itu huruf ${chosen}. Ayo cari huruf ${this.currentPhonicsData.letter} ya!`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
+  // ==============================================
+  // 6.2 GAME MODUL ABJAD 3: MEMBACA KATA BERGAMBAR (WORDS)
+  // ==============================================
+  initWordsGame() {
+    this.wordsLevel = 1;
+    this.initStars('words-stars-container', 10);
+    this.loadWordsLevel(this.wordsLevel);
+  }
+
+  loadWordsLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('words-level').innerText = lvl;
+    const data = WORDS_DATA[lvl - 1];
+    this.currentWordsData = data;
+
+    document.getElementById('words-image-wrapper').innerHTML = `<img src="assets/images/alphabet/${data.image}" alt="${data.word}">`;
+    document.getElementById('words-helper-label').innerText = data.helper;
+    document.getElementById('words-instruction-text').innerText = `Manakah tulisan kata ${data.word}?`;
+
+    // Acak 3 pilihan kata
+    this.wordsChoices = [...data.choices].sort(() => Math.random() - 0.5);
+    this.wordsSelectedChoice = 1;
+
+    const container = document.getElementById('words-choices-container');
+    container.innerHTML = '';
+    this.wordsChoices.forEach((word, idx) => {
+      const card = document.createElement('div');
+      card.className = `words-choice-card ${idx === this.wordsSelectedChoice ? 'focused' : ''}`;
+      card.id = `words-choice-${idx}`;
+      card.innerText = word;
+      card.addEventListener('click', () => {
+        this.wordsSelectedChoice = idx;
+        this.updateWordsFocus();
+        this.handleWordsKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Manakah kata ${data.word}? ${data.helper}`);
+  }
+
+  updateWordsFocus() {
+    document.querySelectorAll('.words-choice-card').forEach((card, idx) => {
+      if (idx === this.wordsSelectedChoice) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleWordsKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.wordsSelectedChoice > 0) {
+      this.wordsSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateWordsFocus();
+    } else if (key === 'ArrowRight' && this.wordsSelectedChoice < this.wordsChoices.length - 1) {
+      this.wordsSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateWordsFocus();
+    } else if (key === 'ArrowUp') {
+      speakText(`Manakah tulisan kata ${this.currentWordsData.word}?`);
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.wordsChoices[this.wordsSelectedChoice];
+      const card = document.getElementById(`words-choice-${this.wordsSelectedChoice}`);
+
+      if (chosen === this.currentWordsData.word) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.wordsLevel, 'words-stars-container');
+
+        // Dieja hurufnya
+        const spelled = chosen.split('').join(' ');
+        speakText(`Pintar sekali! ${spelled}, ${chosen}!`);
+
+        setTimeout(() => {
+          if (this.wordsLevel >= 10) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Kata ${chosen} Berhasil Dibaca!`, () => {
+              this.wordsLevel++;
+              this.loadWordsLevel(this.wordsLevel);
+            });
+          }
+        }, 1200);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`Itu kata ${chosen}. Ayo cari kata ${this.currentWordsData.word} ya!`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
       }
     }
   }
@@ -1091,7 +1561,7 @@ class LearningHub {
   // ==============================================
   initShapesGame() {
     this.shapeLevel = 1;
-    this.initStars('shape-stars-container', 5);
+    this.initStars('shape-stars-container', 10);
     this.loadShapeLevel(this.shapeLevel);
   }
 
@@ -1173,7 +1643,7 @@ class LearningHub {
         speakText(`Pintar sekali! Bentuk ${chosen.name}! ${chosen.english}!`);
 
         setTimeout(() => {
-          if (this.shapeLevel >= 5) {
+          if (this.shapeLevel >= 10) {
             this.showVictory();
           } else {
             this.showCelebration(`Bentuk ${chosen.name} Masuk ke Sarang!`, () => {
@@ -1196,7 +1666,7 @@ class LearningHub {
   // ==============================================
   initColorsGame() {
     this.colorLevel = 1;
-    this.initStars('color-stars-container', 6);
+    this.initStars('color-stars-container', 10);
     this.loadColorLevel(this.colorLevel);
   }
 
@@ -1272,7 +1742,7 @@ class LearningHub {
         speakText(`Pintar sekali! Ini warna ${chosen.name}! ${chosen.english}!`);
 
         setTimeout(() => {
-          if (this.colorLevel >= 6) {
+          if (this.colorLevel >= 10) {
             this.showVictory();
           } else {
             this.showCelebration(`Warna ${chosen.name} Berhasil Ditemukan!`, () => {
@@ -1328,7 +1798,7 @@ class LearningHub {
   // ==============================================
   initOddGame() {
     this.oddLevel = 1;
-    this.initStars('odd-stars-container', 5);
+    this.initStars('odd-stars-container', 10);
     this.loadOddLevel(this.oddLevel);
   }
 
@@ -1398,7 +1868,7 @@ class LearningHub {
         speakText(`Hebat sekali! ${chosen.reason}`);
 
         setTimeout(() => {
-          if (this.oddLevel >= 5) {
+          if (this.oddLevel >= 10) {
             this.showVictory();
           } else {
             this.showCelebration(`Detektif Cilik Berhasil Menemukan Jawaban!`, () => {
@@ -1421,7 +1891,7 @@ class LearningHub {
   // ==============================================
   initSequenceGame() {
     this.sequenceLevel = 1;
-    this.initStars('sequence-stars-container', 5);
+    this.initStars('sequence-stars-container', 10);
     this.loadSequenceLevel(this.sequenceLevel);
   }
 
@@ -1523,7 +1993,7 @@ class LearningHub {
         speakText(this.currentSequenceData.explanation);
 
         setTimeout(() => {
-          if (this.sequenceLevel >= 5) {
+          if (this.sequenceLevel >= 10) {
             this.showVictory();
           } else {
             this.showCelebration(`Urutan Cerita Berhasil Disusun!`, () => {
@@ -1597,7 +2067,10 @@ class LearningHub {
     } else if (this.currentView === 'GAME_ODD' || this.currentView === 'GAME_SEQUENCE') {
       this.showView('MENU_LOGIC');
       return true;
-    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET' || this.currentView === 'MENU_SHAPES' || this.currentView === 'MENU_LOGIC') {
+    } else if (this.currentView === 'GAME_ALPHABET' || this.currentView === 'GAME_PHONICS' || this.currentView === 'GAME_WORDS') {
+      this.showView('MENU_ALPHABET');
+      return true;
+    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'MENU_ALPHABET' || this.currentView === 'MENU_SHAPES' || this.currentView === 'MENU_LOGIC') {
       this.showView('HUB');
       return true;
     } else if (this.currentView === 'HUB') {
@@ -1657,8 +2130,17 @@ class LearningHub {
         case 'GAME_ADDITION':
           this.handleAdditionKey(e.key);
           break;
+        case 'MENU_ALPHABET':
+          this.handleAlphabetMenuKey(e.key);
+          break;
         case 'GAME_ALPHABET':
           this.handleAlphabetKey(e.key);
+          break;
+        case 'GAME_PHONICS':
+          this.handlePhonicsKey(e.key);
+          break;
+        case 'GAME_WORDS':
+          this.handleWordsKey(e.key);
           break;
         case 'MENU_SHAPES':
           this.handleShapesMenuKey(e.key);
@@ -1719,6 +2201,20 @@ class LearningHub {
         this.handleMathKey('Enter');
       });
     });
+
+        // Klik Sub-Card Alphabet
+    document.querySelectorAll('#alphabet-menu-grid .sub-card').forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        this.alphabetSubIndex = idx;
+        this.updateAlphabetMenuFocus();
+        this.handleAlphabetMenuKey('Enter');
+      });
+    });
+
+    const alphabetBack = document.getElementById('alphabet-back-btn');
+    if (alphabetBack) {
+      alphabetBack.addEventListener('click', () => this.navigateBack());
+    }
 
     // Klik Sub-Card Shapes
     document.querySelectorAll('#shapes-menu-grid .sub-card').forEach((card, idx) => {

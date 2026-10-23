@@ -46,11 +46,11 @@
 
         <!-- Kartu 2: Dunia Abjad -->
         <div class="hub-card" id="hub-card-1" data-view="menu-alphabet">
-          <div class="hub-card-badge">A - Z</div>
+          <div class="hub-card-badge">Cerdas</div>
           <div class="hub-card-icon">🔤</div>
           <h2>DUNIA ABJAD</h2>
-          <p>Kereta Huruf & Suara</p>
-          <div class="hub-card-btn">Buka Huruf A-Z ➜</div>
+          <p>Kereta, Tebak & Kata</p>
+          <div class="hub-card-btn">Buka Abjad ➜</div>
         </div>
 
         <!-- Kartu 3: Warna & Bentuk -->
@@ -120,7 +120,53 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- 1.2 SUB-MENU WARNA & BENTUK (PILAR 3)          -->
+    <!-- 1.2 SUB-MENU DUNIA ABJAD (PILAR 2)             -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-menu-alphabet">
+      <header class="top-bar">
+        <div class="nav-back-btn" id="alphabet-back-btn">
+          <span class="back-icon">◀</span> Kembali ke Menu Utama
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🔤</span>
+          <span>Dunia Abjad & Literasi Ceria</span>
+        </div>
+      </header>
+
+      <main class="sub-menu-grid" id="alphabet-menu-grid">
+        <div class="sub-card focused" id="alphabet-subcard-0" data-game="train">
+          <div class="sub-card-icon">🚂</div>
+          <h3>1. Kereta Huruf A-Z</h3>
+          <p>Mengenal bentuk 26 huruf dan suara fonik</p>
+          <span class="sub-play-btn">Buka Kereta [OK]</span>
+        </div>
+
+        <div class="sub-card" id="alphabet-subcard-1" data-game="phonics">
+          <div class="sub-card-icon">🎯</div>
+          <h3>2. Tebak Huruf Ceria</h3>
+          <p>Dengarkan suara fonik, tebak huruf yang benar</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
+
+        <div class="sub-card" id="alphabet-subcard-2" data-game="words">
+          <div class="sub-card-icon">📖</div>
+          <h3>3. Kata Bergambar</h3>
+          <p>Membaca kata dasar Cambridge bergambar</p>
+          <span class="sub-play-btn">Mainkan Sekarang [OK]</span>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Pilih Permainan &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Main &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Menu Utama
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 1.3 SUB-MENU WARNA & BENTUK (PILAR 3)          -->
     <!-- ============================================== -->
     <section class="view-section" id="view-menu-shapes">
       <header class="top-bar">
@@ -306,6 +352,78 @@
     <!-- ============================================== -->
     <!-- 5. GAME: SARANG BENTUK AJAIB (MODUL 4)         -->
     <!-- ============================================== -->
+    
+    <!-- ============================================== -->
+    <!-- 4.2 GAME: TEBAK SUARA HURUF (MODUL ABJAD 2)    -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-phonics">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="phonics-level">1</span>/10
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">📢</span>
+          <span id="phonics-instruction-text">Manakah huruf B?</span>
+        </div>
+        <div class="stars-container" id="phonics-stars-container"></div>
+      </header>
+
+      <main class="phonics-arena" id="phonics-arena">
+        <div class="phonics-prompt-bubble">
+          <span id="phonics-prompt-text">🎯 Dengarkan suaranya, pilih huruf yang tepat!</span>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="choices-container" id="phonics-choices-container"></div>
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Pilihan &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pilih Huruf &nbsp;|&nbsp;
+          <span class="remote-hint-badge">▲</span> Bunyikan Ulang &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 4.3 GAME: MEMBACA KATA BERGAMBAR (MODUL ABJAD 3) -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-words">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="words-level">1</span>/10
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">📖</span>
+          <span id="words-instruction-text">Manakah tulisan kata yang cocok?</span>
+        </div>
+        <div class="stars-container" id="words-stars-container"></div>
+      </header>
+
+      <main class="words-arena" id="words-arena">
+        <div class="words-card-display" id="words-card-display">
+          <div class="words-image-wrapper" id="words-image-wrapper"></div>
+          <div class="words-helper-label" id="words-helper-label">Benda apakah ini?</div>
+        </div>
+      </main>
+
+      <footer class="bottom-panel">
+        <div class="choices-container" id="words-choices-container"></div>
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Geser Kata &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Pilih Kata &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
     <section class="view-section" id="view-game-shapes">
       <header class="top-bar">
         <div class="nav-back-btn game-exit-btn">
@@ -313,7 +431,7 @@
         </div>
         <div class="level-badge">
           <span class="badge-label">Tingkat</span>
-          <span class="badge-value" id="shape-level">1</span>/5
+          <span class="badge-value" id="shape-level">1</span>/10
         </div>
         <div class="instruction-box">
           <span class="instruction-icon">🔶</span>
@@ -349,7 +467,7 @@
         </div>
         <div class="level-badge">
           <span class="badge-label">Tingkat</span>
-          <span class="badge-value" id="color-level">1</span>/6
+          <span class="badge-value" id="color-level">1</span>/10
         </div>
         <div class="instruction-box">
           <span class="instruction-icon">🎨</span>
@@ -385,7 +503,7 @@
         </div>
         <div class="level-badge">
           <span class="badge-label">Tingkat</span>
-          <span class="badge-value" id="odd-level">1</span>/5
+          <span class="badge-value" id="odd-level">1</span>/10
         </div>
         <div class="instruction-box">
           <span class="instruction-icon">🔍</span>
@@ -420,7 +538,7 @@
         </div>
         <div class="level-badge">
           <span class="badge-label">Tingkat</span>
-          <span class="badge-value" id="sequence-level">1</span>/5
+          <span class="badge-value" id="sequence-level">1</span>/10
         </div>
         <div class="instruction-box">
           <span class="instruction-icon">⏳</span>
