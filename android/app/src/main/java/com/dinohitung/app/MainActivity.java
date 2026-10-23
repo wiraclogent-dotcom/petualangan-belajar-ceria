@@ -94,6 +94,14 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
+        // Intercept TV remote physical Back button
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            if (event.getAction() == KeyEvent.ACTION_UP) {
+                triggerWebBack();
+            }
+            return true; // Always consume back key event so Android does not abruptly terminate the app
+        }
+
         // Forward TV remote DPAD and Enter keys to the WebView
         if (webView != null) {
             return webView.dispatchKeyEvent(event);
@@ -103,8 +111,18 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) {
-            webView.goBack();
+        triggerWebBack();
+    }
+
+    private void triggerWebBack() {
+        if (webView != null) {
+            // Call window.handleRemoteBack() in JavaScript single page app
+            webView.evaluateJavascript("window.handleRemoteBack ? window.handleRemoteBack() : false;", value -> {
+                // If handleRemoteBack returned false (already at root HUB menu), exit the app cleanly
+                if (!"true".equals(value)) {
+                    finish();
+                }
+            });
         } else {
             super.onBackPressed();
         }

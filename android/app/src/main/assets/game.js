@@ -428,8 +428,6 @@ class LearningHub {
       this.mathIndex++;
       this.sound.playNavigate();
       this.updateMathFocus();
-    } else if (key === 'ArrowUp') {
-      this.showView('HUB');
     } else if (key === 'Enter' || key === ' ') {
       this.sound.playNavigate();
       if (this.mathIndex === 0) {
@@ -742,11 +740,9 @@ class LearningHub {
         this.alphabetIndex++;
         this.renderAlphabetCard();
       }
-    } else if (key === 'Enter' || key === ' ') {
+    } else if (key === 'Enter' || key === ' ' || key === 'ArrowUp') {
       const item = ALPHABET_DATA[this.alphabetIndex];
       speakText(item.phonic);
-    } else if (key === 'ArrowUp') {
-      this.showView('HUB');
     }
   }
 
@@ -769,21 +765,52 @@ class LearningHub {
   }
 
   // ==============================================
+  // 7. SISTEM NAVIGASI MUNDUR RESMI (REMOTE BACK KEY)
+  // ==============================================
+  navigateBack() {
+    this.sound.playNavigate();
+
+    // 1. Jika pop-up selebrasi sedang aktif, tutup pop-up
+    if (this.isCelebrationActive) {
+      this.isCelebrationActive = false;
+      document.getElementById('celebration-overlay').classList.remove('active');
+      return true;
+    }
+    if (this.isVictoryActive) {
+      this.isVictoryActive = false;
+      document.getElementById('victory-overlay').classList.remove('active');
+      this.showView('HUB');
+      return true;
+    }
+
+    // 2. Navigasi Berdasarkan Hirarki Layar (design.md)
+    if (this.currentView === 'GAME_COUNTING' || this.currentView === 'GAME_ADDITION') {
+      this.showView('MENU_MATH');
+      return true;
+    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET') {
+      this.showView('HUB');
+      return true;
+    } else if (this.currentView === 'HUB') {
+      // Sudah di Menu Utama paling awal, return false agar sistem Android tahu bisa keluar
+      return false;
+    }
+    return false;
+  }
+
+  // ==============================================
   // 8. GLOBAL EVENT LISTENERS (TV REMOTE & KEYBOARD)
   // ==============================================
   attachEvents() {
     window.addEventListener('keydown', (e) => {
+      // Cegah scrolling default remote TV
       if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space', 'Enter'].includes(e.key)) {
         e.preventDefault();
       }
 
-      // Tombol Back di Remote TV (Escape)
-      if (e.key === 'Escape' || e.key === 'Backspace') {
-        if (this.currentView === 'GAME_COUNTING' || this.currentView === 'GAME_ADDITION') {
-          this.showView('MENU_MATH');
-        } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET') {
-          this.showView('HUB');
-        }
+      // TOMBOL BACK RESMI REMOTE TV (Escape, Backspace, GoBack, keyCode 4)
+      if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'Back' || e.key === 'GoBack' || e.keyCode === 4 || e.keyCode === 27) {
+        e.preventDefault();
+        this.navigateBack();
         return;
       }
 
@@ -828,11 +855,11 @@ class LearningHub {
 
     // Event Klik Mouse / Touch
     document.querySelectorAll('.game-exit-btn').forEach(btn => {
-      btn.addEventListener('click', () => this.showView('HUB'));
+      btn.addEventListener('click', () => this.navigateBack());
     });
 
     document.getElementById('math-back-btn').addEventListener('click', () => {
-      this.showView('HUB');
+      this.navigateBack();
     });
 
     document.getElementById('next-level-btn').addEventListener('click', () => {
@@ -866,6 +893,14 @@ class LearningHub {
     });
   }
 }
+
+// Handler global yang dipanggil langsung oleh Android TV APK (MainActivity)
+window.handleRemoteBack = () => {
+  if (window.app) {
+    return window.app.navigateBack();
+  }
+  return false;
+};
 
 window.addEventListener('DOMContentLoaded', () => {
   window.app = new LearningHub();
