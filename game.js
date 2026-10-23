@@ -421,6 +421,139 @@ const COLORS_DATA = [
   }
 ];
 
+
+// ==============================================
+// 2.4 DATA DETEKTIF BENDA (ODD ONE OUT)
+// ==============================================
+const ODD_DATA = [
+  {
+    id: 1,
+    categoryName: 'Buah-buahan',
+    items: [
+      { id: 'apple', name: 'Apel', icon: '🍎', isOdd: false },
+      { id: 'banana', name: 'Pisang', icon: '🍌', isOdd: false },
+      { id: 'strawberry', name: 'Stroberi', icon: '🍓', isOdd: false },
+      { id: 'car', name: 'Mobil', icon: '🚗', isOdd: true, reason: 'Mobil adalah kendaraan, yang lain buah-buahan!' }
+    ],
+    hint: 'Manakah benda yang bukan buah-buahan?'
+  },
+  {
+    id: 2,
+    categoryName: 'Hewan Laut',
+    items: [
+      { id: 'fish', name: 'Ikan', icon: '🐟', isOdd: false },
+      { id: 'octopus', name: 'Gurita', icon: '🐙', isOdd: false },
+      { id: 'crab', name: 'Kepiting', icon: '🦀', isOdd: false },
+      { id: 'eagle', name: 'Burung', icon: '🦅', isOdd: true, reason: 'Burung terbang di langit, yang lain hidup di laut!' }
+    ],
+    hint: 'Manakah hewan yang tidak berenang di laut?'
+  },
+  {
+    id: 3,
+    categoryName: 'Benda Panas',
+    items: [
+      { id: 'fire', name: 'Api', icon: '🔥', isOdd: false },
+      { id: 'sun', name: 'Matahari', icon: '☀️', isOdd: false },
+      { id: 'candle', name: 'Lilin', icon: '🕯️', isOdd: false },
+      { id: 'icecream', name: 'Es Krim', icon: '🍦', isOdd: true, reason: 'Es krim itu dingin, sedangkan yang lain panas!' }
+    ],
+    hint: 'Manakah benda yang dingin membeku?'
+  },
+  {
+    id: 4,
+    categoryName: 'Alat Belajar',
+    items: [
+      { id: 'pencil', name: 'Pensil', icon: '✏️', isOdd: false },
+      { id: 'book', name: 'Buku', icon: '📚', isOdd: false },
+      { id: 'ruler', name: 'Penggaris', icon: '📏', isOdd: false },
+      { id: 'basketball', name: 'Bola', icon: '🏀', isOdd: true, reason: 'Bola untuk olahraga, yang lain alat untuk belajar!' }
+    ],
+    hint: 'Manakah yang bukan peralatan belajar sekolah?'
+  },
+  {
+    id: 5,
+    categoryName: 'Hewan Peliharaan',
+    items: [
+      { id: 'cat', name: 'Kucing', icon: '🐱', isOdd: false },
+      { id: 'dog', name: 'Anjing', icon: '🐶', isOdd: false },
+      { id: 'rabbit', name: 'Kelinci', icon: '🐰', isOdd: false },
+      { id: 'lion', name: 'Singa', icon: '🦁', isOdd: true, reason: 'Singa hewan buas liar, yang lain hewan peliharaan jinak!' }
+    ],
+    hint: 'Manakah hewan liar yang hidup di rimba hutan?'
+  }
+];
+
+// ==============================================
+// 2.5 DATA DETEKTIF WAKTU (URUTAN CERITA)
+// ==============================================
+const SEQUENCE_DATA = [
+  {
+    id: 1,
+    title: 'Kelahiran Bayi Dino',
+    step1: { icon: '🥚', text: '1. Telur Utuh' },
+    step2: { icon: '🐣', text: '2. Telur Retak' },
+    targetPrompt: 'Setelah telur retak, apa yang keluar?',
+    correctChoice: { id: 'dino', icon: '🦖', text: 'Bayi Dino Menetas!' },
+    distractors: [
+      { id: 'stone', icon: '🪨', text: 'Batu Sungai' },
+      { id: 'glass', icon: '🥛', text: 'Gelas Air' }
+    ],
+    explanation: 'Pintar sekali! Setelah telur retak, bayi dinosaurus menetas keluar!'
+  },
+  {
+    id: 2,
+    title: 'Menanam Bunga Cantik',
+    step1: { icon: '🌱', text: '1. Biji di Pot' },
+    step2: { icon: '💧', text: '2. Disiram Air' },
+    targetPrompt: 'Setelah disiram air, apa yang tumbuh?',
+    correctChoice: { id: 'flower', icon: '🌸', text: 'Bunga Mekar Indah!' },
+    distractors: [
+      { id: 'spoon', icon: '🥄', text: 'Sendok Makan' },
+      { id: 'truck', icon: '🚚', text: 'Mobil Truk' }
+    ],
+    explanation: 'Hebat! Setelah biji disiram air, bunga cantik mekar berseri!'
+  },
+  {
+    id: 3,
+    title: 'Es Krim Terkena Panas',
+    step1: { icon: '🍦', text: '1. Es Krim Dingin' },
+    step2: { icon: '☀️', text: '2. Terik Matahari' },
+    targetPrompt: 'Kena panas matahari, apa yang terjadi pada es krim?',
+    correctChoice: { id: 'melt', icon: '🫠', text: 'Es Krim Meleleh!' },
+    distractors: [
+      { id: 'palm', icon: '🌴', text: 'Pohon Kelapa' },
+      { id: 'star', icon: '⭐', text: 'Bintang Emas' }
+    ],
+    explanation: 'Tepat sekali! Karena panas terik matahari, es krim jadi meleleh!'
+  },
+  {
+    id: 4,
+    title: 'Mencuci Baju Berlumpur',
+    step1: { icon: '🧦', text: '1. Baju Kotor' },
+    step2: { icon: '🧼', text: '2. Cuci di Mesin' },
+    targetPrompt: 'Setelah dicuci sabun, bagaimana bajunya?',
+    correctChoice: { id: 'clean', icon: '✨', text: 'Baju Bersih & Wangi!' },
+    distractors: [
+      { id: 'fish', icon: '🐟', text: 'Ikan Berenang' },
+      { id: 'plane', icon: '✈️', text: 'Pesawat Terbang' }
+    ],
+    explanation: 'Luar biasa! Setelah dicuci bersih, baju jadi harum dan berkilau!'
+  },
+  {
+    id: 5,
+    title: 'Metamorfosis Kupu-Kupu',
+    step1: { icon: '🐛', text: '1. Ulat Makan Daun' },
+    step2: { icon: '🪵', text: '2. Jadi Kepompong' },
+    targetPrompt: 'Setelah tidur di kepompong, ulat berubah jadi apa?',
+    correctChoice: { id: 'butterfly', icon: '🦋', text: 'Kupu-Kupu Indah!' },
+    distractors: [
+      { id: 'skate', icon: '🛼', text: 'Sepatu Roda' },
+      { id: 'moon', icon: '🌙', text: 'Bulan Sabit' }
+    ],
+    explanation: 'Juara! Dari dalam kepompong, keluarlah kupu-kupu yang sangat indah!'
+  }
+];
+
 // ==============================================
 // 3. CORE ROUTER & LEARNING HUB MANAGER
 // ==============================================
@@ -460,6 +593,18 @@ class LearningHub {
     this.colorChoices = [];
     this.colorSelectedChoice = 1;
     this.currentTargetColor = null;
+
+    // Sub-Menu Logic Lab State
+    this.logicSubIndex = 0; // 0: Odd One Out, 1: Sequence
+    this.oddLevel = 1;
+    this.oddChoices = [];
+    this.oddSelectedChoice = 0;
+    this.currentOddData = null;
+
+    this.sequenceLevel = 1;
+    this.sequenceChoices = [];
+    this.sequenceSelectedChoice = 1;
+    this.currentSequenceData = null;
 
     this.initViews();
     this.attachEvents();
@@ -518,6 +663,19 @@ class LearningHub {
         document.getElementById('view-game-colors').classList.add('active');
         this.initColorsGame();
         break;
+      case 'MENU_LOGIC':
+        document.getElementById('view-menu-logic').classList.add('active');
+        this.updateLogicMenuFocus();
+        speakText("Laboratorium Logika Ceria! Pilih permainan nalar!");
+        break;
+      case 'GAME_ODD':
+        document.getElementById('view-game-odd').classList.add('active');
+        this.initOddGame();
+        break;
+      case 'GAME_SEQUENCE':
+        document.getElementById('view-game-sequence').classList.add('active');
+        this.initSequenceGame();
+        break;
     }
   }
 
@@ -537,7 +695,7 @@ class LearningHub {
       this.hubIndex--;
       this.sound.playNavigate();
       this.updateHubFocus();
-    } else if (key === 'ArrowRight' && this.hubIndex < 2) {
+    } else if (key === 'ArrowRight' && this.hubIndex < 3) {
       this.hubIndex++;
       this.sound.playNavigate();
       this.updateHubFocus();
@@ -549,6 +707,8 @@ class LearningHub {
         this.showView('GAME_ALPHABET');
       } else if (this.hubIndex === 2) {
         this.showView('MENU_SHAPES');
+      } else if (this.hubIndex === 3) {
+        this.showView('MENU_LOGIC');
       }
     }
   }
@@ -1123,6 +1283,257 @@ class LearningHub {
     }
   }
 
+
+  // ==============================================
+  // 6.4 SUB-MENU LABORATORIUM LOGIKA CERIA
+  // ==============================================
+  updateLogicMenuFocus() {
+    document.querySelectorAll('#logic-menu-grid .sub-card').forEach((card, idx) => {
+      if (idx === this.logicSubIndex) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleLogicMenuKey(key) {
+    if (key === 'ArrowLeft' && this.logicSubIndex > 0) {
+      this.logicSubIndex--;
+      this.sound.playNavigate();
+      this.updateLogicMenuFocus();
+    } else if (key === 'ArrowRight' && this.logicSubIndex < 1) {
+      this.logicSubIndex++;
+      this.sound.playNavigate();
+      this.updateLogicMenuFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      this.sound.playNavigate();
+      if (this.logicSubIndex === 0) {
+        this.showView('GAME_ODD');
+      } else if (this.logicSubIndex === 1) {
+        this.showView('GAME_SEQUENCE');
+      }
+    }
+  }
+
+  // ==============================================
+  // 6.5 GAME MODUL 6: DETEKTIF BENDA (ODD ONE OUT)
+  // ==============================================
+  initOddGame() {
+    this.oddLevel = 1;
+    this.initStars('odd-stars-container');
+    this.loadOddLevel(this.oddLevel);
+  }
+
+  loadOddLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('odd-level').innerText = lvl;
+    const data = ODD_DATA[lvl - 1];
+    this.currentOddData = data;
+
+    // Acak posisi 4 kartu
+    this.oddChoices = [...data.items].sort(() => Math.random() - 0.5);
+    this.oddSelectedChoice = 0;
+
+    const container = document.getElementById('odd-choices-container');
+    container.innerHTML = '';
+    this.oddChoices.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = `odd-card-choice ${idx === this.oddSelectedChoice ? 'focused' : ''}`;
+      card.id = `odd-choice-${idx}`;
+      card.innerHTML = `
+        <div class="odd-icon">${item.icon}</div>
+        <div class="odd-name">${item.name}</div>
+      `;
+      card.addEventListener('click', () => {
+        this.oddSelectedChoice = idx;
+        this.updateOddFocus();
+        this.handleOddKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Tingkat ${lvl}. ${data.hint}`);
+  }
+
+  updateOddFocus() {
+    document.querySelectorAll('.odd-card-choice').forEach((card, idx) => {
+      if (idx === this.oddSelectedChoice) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleOddKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.oddSelectedChoice > 0) {
+      this.oddSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateOddFocus();
+    } else if (key === 'ArrowRight' && this.oddSelectedChoice < this.oddChoices.length - 1) {
+      this.oddSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateOddFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.oddChoices[this.oddSelectedChoice];
+      const card = document.getElementById(`odd-choice-${this.oddSelectedChoice}`);
+
+      if (chosen.isOdd) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.oddLevel - 1, 'odd-stars-container');
+
+        speakText(`Hebat sekali! ${chosen.reason}`);
+
+        setTimeout(() => {
+          if (this.oddLevel >= 5) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Detektif Cilik Berhasil Menemukan Jawaban!`, () => {
+              this.oddLevel++;
+              this.loadOddLevel(this.oddLevel);
+            });
+          }
+        }, 1200);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`${chosen.name} adalah ${this.currentOddData.categoryName}. Ayo cari yang berbeda ya!`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
+  // ==============================================
+  // 6.6 GAME MODUL 7: DETEKTIF WAKTU (URUTAN CERITA)
+  // ==============================================
+  initSequenceGame() {
+    this.sequenceLevel = 1;
+    this.initStars('sequence-stars-container');
+    this.loadSequenceLevel(this.sequenceLevel);
+  }
+
+  loadSequenceLevel(lvl) {
+    this.isInputLocked = false;
+    document.getElementById('sequence-level').innerText = lvl;
+    const data = SEQUENCE_DATA[lvl - 1];
+    this.currentSequenceData = data;
+
+    // Render 3 petak urutan cerita (Langkah 1, Langkah 2, dan Slot 3)
+    const strip = document.getElementById('sequence-story-strip');
+    strip.innerHTML = `
+      <div class="sequence-step-card">
+        <span class="sequence-step-badge">Mulai</span>
+        <div class="sequence-step-icon">${data.step1.icon}</div>
+        <div class="sequence-step-text">${data.step1.text}</div>
+      </div>
+      <div class="sequence-arrow">➜</div>
+      <div class="sequence-step-card">
+        <span class="sequence-step-badge">Lalu</span>
+        <div class="sequence-step-icon">${data.step2.icon}</div>
+        <div class="sequence-step-text">${data.step2.text}</div>
+      </div>
+      <div class="sequence-arrow">➜</div>
+      <div class="sequence-step-card target-slot" id="sequence-target-slot">
+        <span class="sequence-step-badge">Hasilnya?</span>
+        <div class="sequence-step-icon">❓</div>
+        <div class="sequence-step-text">Pilih Lanjutan</div>
+      </div>
+    `;
+
+    // Buat 3 pilihan jawaban (1 benar + 2 distractor)
+    const allChoices = [data.correctChoice, ...data.distractors];
+    this.sequenceChoices = [...allChoices].sort(() => Math.random() - 0.5);
+    this.sequenceSelectedChoice = 1;
+
+    const container = document.getElementById('sequence-choices-container');
+    container.innerHTML = '';
+    this.sequenceChoices.forEach((choice, idx) => {
+      const card = document.createElement('div');
+      card.className = `sequence-choice-card ${idx === this.sequenceSelectedChoice ? 'focused' : ''}`;
+      card.id = `sequence-choice-${idx}`;
+      card.innerHTML = `
+        <div class="seq-icon">${choice.icon}</div>
+        <div class="seq-name">${choice.text}</div>
+      `;
+      card.addEventListener('click', () => {
+        this.sequenceSelectedChoice = idx;
+        this.updateSequenceFocus();
+        this.handleSequenceKey('Enter');
+      });
+      container.appendChild(card);
+    });
+
+    speakText(`Cerita ${data.title}. ${data.targetPrompt}`);
+  }
+
+  updateSequenceFocus() {
+    document.querySelectorAll('.sequence-choice-card').forEach((card, idx) => {
+      if (idx === this.sequenceSelectedChoice) {
+        card.classList.add('focused');
+      } else {
+        card.classList.remove('focused');
+      }
+    });
+  }
+
+  handleSequenceKey(key) {
+    if (this.isInputLocked) return;
+
+    if (key === 'ArrowLeft' && this.sequenceSelectedChoice > 0) {
+      this.sequenceSelectedChoice--;
+      this.sound.playNavigate();
+      this.updateSequenceFocus();
+    } else if (key === 'ArrowRight' && this.sequenceSelectedChoice < this.sequenceChoices.length - 1) {
+      this.sequenceSelectedChoice++;
+      this.sound.playNavigate();
+      this.updateSequenceFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      const chosen = this.sequenceChoices[this.sequenceSelectedChoice];
+      const card = document.getElementById(`sequence-choice-${this.sequenceSelectedChoice}`);
+
+      if (chosen.id === this.currentSequenceData.correctChoice.id) {
+        this.isInputLocked = true;
+        card.classList.add('correct');
+        this.sound.playCorrect();
+        this.confetti.fire(35);
+        this.updateStar(this.sequenceLevel - 1, 'sequence-stars-container');
+
+        // Isi slot target
+        const slot = document.getElementById('sequence-target-slot');
+        slot.classList.add('filled');
+        slot.innerHTML = `
+          <span class="sequence-step-badge" style="background: #16a34a;">3. Selesai!</span>
+          <div class="sequence-step-icon">${chosen.icon}</div>
+          <div class="sequence-step-text" style="color: #15803d; font-weight: 900;">${chosen.text}</div>
+        `;
+
+        speakText(this.currentSequenceData.explanation);
+
+        setTimeout(() => {
+          if (this.sequenceLevel >= 5) {
+            this.showVictory();
+          } else {
+            this.showCelebration(`Urutan Cerita Berhasil Disusun!`, () => {
+              this.sequenceLevel++;
+              this.loadSequenceLevel(this.sequenceLevel);
+            });
+          }
+        }, 1200);
+      } else {
+        card.classList.add('wrong');
+        this.sound.playOops();
+        speakText(`Coba pikirkan lagi, apa yang terjadi selanjutnya ya?`);
+        setTimeout(() => card.classList.remove('wrong'), 500);
+      }
+    }
+  }
+
   // ==============================================
   // 7. SELEBRASI & KEMENANGAN OVERLAY
   // ==============================================
@@ -1176,7 +1587,10 @@ class LearningHub {
     } else if (this.currentView === 'GAME_SHAPES' || this.currentView === 'GAME_COLORS') {
       this.showView('MENU_SHAPES');
       return true;
-    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET' || this.currentView === 'MENU_SHAPES') {
+    } else if (this.currentView === 'GAME_ODD' || this.currentView === 'GAME_SEQUENCE') {
+      this.showView('MENU_LOGIC');
+      return true;
+    } else if (this.currentView === 'MENU_MATH' || this.currentView === 'GAME_ALPHABET' || this.currentView === 'MENU_SHAPES' || this.currentView === 'MENU_LOGIC') {
       this.showView('HUB');
       return true;
     } else if (this.currentView === 'HUB') {
@@ -1248,6 +1662,15 @@ class LearningHub {
         case 'GAME_COLORS':
           this.handleColorsKey(e.key);
           break;
+        case 'MENU_LOGIC':
+          this.handleLogicMenuKey(e.key);
+          break;
+        case 'GAME_ODD':
+          this.handleOddKey(e.key);
+          break;
+        case 'GAME_SEQUENCE':
+          this.handleSequenceKey(e.key);
+          break;
       }
     });
 
@@ -1303,6 +1726,19 @@ class LearningHub {
     if (shapesBack) {
       shapesBack.addEventListener('click', () => this.navigateBack());
     }
+
+    const logicBack = document.getElementById('logic-back-btn');
+    if (logicBack) {
+      logicBack.addEventListener('click', () => this.navigateBack());
+    }
+
+    document.querySelectorAll('#logic-menu-grid .sub-card').forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        this.logicSubIndex = idx;
+        this.updateLogicMenuFocus();
+        this.handleLogicMenuKey('Enter');
+      });
+    });
   }
 }
 

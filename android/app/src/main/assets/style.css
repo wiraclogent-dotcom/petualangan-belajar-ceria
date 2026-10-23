@@ -142,24 +142,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  padding: 10px 20px;
+  gap: 18px;
+  padding: 8px 16px;
 }
 
 .hub-card {
   position: relative;
-  width: 290px;
-  height: 330px;
+  width: 250px;
+  height: 320px;
   background: #ffffff;
-  border-radius: 28px;
-  padding: 24px 20px;
+  border-radius: 26px;
+  padding: 18px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   text-align: center;
   border: 5px solid #ffffff;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -167,41 +167,42 @@ body {
 .hub-card-badge {
   position: absolute;
   top: -12px;
-  right: 20px;
+  right: 16px;
   background: #f43f5e;
   color: #fff;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 12px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 900;
   box-shadow: 0 3px 0 #be123c;
 }
 
 .hub-card-icon {
-  font-size: 5rem;
-  margin-top: 10px;
+  font-size: 4rem;
+  margin-top: 6px;
   transition: transform 0.25s ease;
 }
 
 .hub-card h2 {
-  font-size: 2rem;
+  font-size: 1.65rem;
   color: #1e293b;
 }
 
 .hub-card p {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: #64748b;
   font-weight: 700;
+  line-height: 1.25;
 }
 
 .hub-card-btn {
   background: #f1f5f9;
   color: #334155;
-  padding: 8px 18px;
-  border-radius: 16px;
-  font-size: 1.2rem;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 1.05rem;
   font-weight: 900;
-  width: 90%;
+  width: 92%;
   transition: all 0.2s ease;
 }
 
@@ -1048,6 +1049,197 @@ body {
 }
 
 .color-card-choice.correct {
+  animation: correct-jump 0.8s ease;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+/* =================================================== */
+/* 7. MODUL 6: DETEKTIF BENDA (ODD ONE OUT)            */
+/* =================================================== */
+.odd-arena {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  margin-top: 10px;
+}
+
+.odd-prompt-bubble {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1e293b;
+  border: 3px solid #e2e8f0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.odd-card-choice {
+  width: 140px;
+  height: 140px;
+  background: #ffffff;
+  border: 4px solid #e2e8f0;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  padding: 8px;
+}
+
+.odd-card-choice .odd-icon {
+  font-size: 3.8rem;
+  margin-bottom: 4px;
+}
+
+.odd-card-choice .odd-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.odd-card-choice.focused {
+  transform: translateY(-10px) scale(1.08);
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 6px #ffe600, 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.odd-card-choice.wrong {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.odd-card-choice.correct {
+  animation: correct-jump 0.8s ease;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+/* =================================================== */
+/* 8. MODUL 7: DETEKTIF WAKTU (URUTAN CERITA)          */
+/* =================================================== */
+.sequence-arena {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  margin-top: 6px;
+}
+
+.sequence-story-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.sequence-step-card {
+  width: 150px;
+  height: 160px;
+  background: #ffffff;
+  border: 4px solid #38bdf8;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.sequence-step-badge {
+  background: #0284c7;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.sequence-step-icon {
+  font-size: 3.5rem;
+}
+
+.sequence-step-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #334155;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sequence-arrow {
+  font-size: 2rem;
+  color: #0284c7;
+  font-weight: 900;
+}
+
+.sequence-step-card.target-slot {
+  border: 4px dashed #94a3b8;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.sequence-step-card.target-slot.filled {
+  border-style: solid;
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.sequence-choice-card {
+  width: 145px;
+  height: 135px;
+  background: #ffffff;
+  border: 4px solid #e2e8f0;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  padding: 8px;
+}
+
+.sequence-choice-card .seq-icon {
+  font-size: 3.5rem;
+  margin-bottom: 4px;
+}
+
+.sequence-choice-card .seq-name {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #1e293b;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sequence-choice-card.focused {
+  transform: translateY(-10px) scale(1.08);
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 6px #ffe600, 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sequence-choice-card.wrong {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.sequence-choice-card.correct {
   animation: correct-jump 0.8s ease;
   border-color: #22c55e;
   background: #f0fdf4;
