@@ -851,6 +851,7 @@ class LearningHub {
   showView(viewName) {
     if (window.AndroidTTS && typeof window.AndroidTTS.stop === 'function') {
       try { window.AndroidTTS.stop(); } catch (e) {}
+    this.reportTVState();
     }
     if ('speechSynthesis' in window) {
       try { window.speechSynthesis.cancel(); } catch (e) {}
@@ -926,7 +927,17 @@ class LearningHub {
     this.reportTVState();
   }
 
-  getTVState() {
+    getTVState() {
+    let activeChoice = null;
+    if (this.currentView === 'GAME_COUNTING') activeChoice = this.countSelectedChoice;
+    else if (this.currentView === 'GAME_ADDITION') activeChoice = this.addSelectedChoice;
+    else if (this.currentView === 'GAME_SHAPES') activeChoice = this.shapeSelectedChoice;
+    else if (this.currentView === 'GAME_COLORS') activeChoice = this.colorSelectedChoice;
+    else if (this.currentView === 'GAME_ODD') activeChoice = this.oddSelectedChoice;
+    else if (this.currentView === 'GAME_SEQUENCE') activeChoice = this.sequenceSelectedChoice;
+    else if (this.currentView === 'GAME_PHONICS') activeChoice = this.phonicsSelectedChoice;
+    else if (this.currentView === 'GAME_WORDS') activeChoice = this.wordsSelectedChoice;
+
     return {
       view: this.currentView,
       hubIndex: this.hubIndex,
@@ -934,6 +945,7 @@ class LearningHub {
       alphabetSubIndex: this.alphabetSubIndex,
       shapesSubIndex: this.shapesSubIndex,
       logicSubIndex: this.logicSubIndex,
+      activeChoice: activeChoice,
       countLevel: this.countLevel,
       addLevel: this.addLevel,
       phonicsLevel: this.phonicsLevel,
@@ -1067,6 +1079,7 @@ class LearningHub {
     document.querySelectorAll('.phonics-choice-card').forEach((card, idx) => {
       if (idx === this.phonicsSelectedChoice) {
         card.classList.add('focused');
+    this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1163,6 +1176,7 @@ class LearningHub {
     document.querySelectorAll('.words-choice-card').forEach((card, idx) => {
       if (idx === this.wordsSelectedChoice) {
         card.classList.add('focused');
+    this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1328,6 +1342,7 @@ class LearningHub {
         else this.addSelectedChoice = idx;
         this.updateEggFocus(containerId, idx);
         onClickCallback(num);
+    this.reportTVState();
       });
       container.appendChild(egg);
     });
@@ -1641,6 +1656,7 @@ class LearningHub {
     document.querySelectorAll('.shape-card-choice').forEach((card, idx) => {
       if (idx === this.shapeSelectedChoice) {
         card.classList.add('focused');
+    this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1745,6 +1761,7 @@ class LearningHub {
     document.querySelectorAll('.color-card-choice').forEach((card, idx) => {
       if (idx === this.colorSelectedChoice) {
         card.classList.add('focused');
+    this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1870,6 +1887,7 @@ class LearningHub {
     document.querySelectorAll('.odd-card-choice').forEach((card, idx) => {
       if (idx === this.oddSelectedChoice) {
         card.classList.add('focused');
+    this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
@@ -1986,6 +2004,7 @@ class LearningHub {
     document.querySelectorAll('.sequence-choice-card').forEach((card, idx) => {
       if (idx === this.sequenceSelectedChoice) {
         card.classList.add('focused');
+    this.reportTVState();
       } else {
         card.classList.remove('focused');
       }
