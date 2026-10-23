@@ -56,7 +56,7 @@ jobs:
       - name: Build Android APK
         run: |
           cd android
-          gradle wrapper --gradle-version 8.2.2
+          gradle wrapper --gradle-version 8.5
           ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK Artifact
