@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#38bdf8"
+        android:pathData="M0,0h108v108h-108z"/>
+    <!-- Cute Dino head -->
+    <path
+        android:fillColor="#4ade80"
+        android:pathData="M30,55 A24,24 0 1,1 78,55 A24,24 0 1,1 30,55"/>
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M62,48 A5,5 0 1,1 72,48 A5,5 0 1,1 62,48"/>
+    <path
+        android:fillColor="#1e293b"
+        android:pathData="M65,48 A2.5,2.5 0 1,1 70,48 A2.5,2.5 0 1,1 65,48"/>
+    <path
+        android:fillColor="#facc15"
+        android:pathData="M40,70 A15,12 0 0,0 68,70 Z"/>
+</vector>

@@ -1,0 +1,521 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  font-family: 'Fredoka One', 'Nunito', cursive, sans-serif;
+  background-color: #2b75a0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1920px;
+  max-height: 1080px;
+  background: linear-gradient(180deg, #7ad3ff 0%, #a4e4ff 50%, #d8f5ff 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 24px 36px; /* Overscan margin aman untuk layar TV */
+}
+
+/* Langit & Awan */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sun {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle, #ffe135 0%, #ffb300 80%);
+  border-radius: 50%;
+  box-shadow: 0 0 45px rgba(255, 200, 0, 0.7);
+  animation: pulse-sun 4s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-sun {
+  0% { transform: scale(1); filter: brightness(1); }
+  100% { transform: scale(1.08); filter: brightness(1.15); }
+}
+
+.cloud {
+  position: absolute;
+  font-size: 5rem;
+  opacity: 0.85;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+  animation: float-cloud linear infinite;
+}
+
+.cloud-1 { top: 40px; animation-duration: 45s; }
+.cloud-2 { top: 120px; animation-duration: 65s; animation-delay: -20s; font-size: 6.5rem; }
+.cloud-3 { top: 70px; animation-duration: 55s; animation-delay: -35s; font-size: 4rem; }
+
+@keyframes float-cloud {
+  from { transform: translateX(-150px); }
+  to { transform: translateX(105vw); }
+}
+
+/* Top Bar Informasi */
+.top-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 28px;
+  box-shadow: 0 8px 24px rgba(0, 50, 100, 0.15);
+  border: 4px solid #fff;
+}
+
+.level-badge {
+  background: #ff5e7e;
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 2rem;
+  box-shadow: 0 5px 0 #c72b4c;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.badge-label {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+.instruction-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 2.2rem;
+  color: #1f3d59;
+  letter-spacing: 0.5px;
+}
+
+.instruction-icon {
+  font-size: 2.8rem;
+  animation: wiggle 2s infinite ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.stars-container {
+  display: flex;
+  gap: 6px;
+  font-size: 1.8rem;
+}
+
+.star {
+  color: #d1d5db;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.star.earned {
+  color: #ffc107;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.8));
+}
+
+/* Arena Dinosaurus */
+.dino-arena {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 10px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.dino-arena.dense {
+  gap: 14px;
+}
+
+.dino-arena.dense .dino-card svg {
+  width: 100px;
+  height: 100px;
+}
+
+.dino-arena.sparse .dino-card svg {
+  width: 155px;
+  height: 155px;
+}
+
+/* Kartu Dinosaurus */
+.dino-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.dino-card svg {
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.18));
+  transition: transform 0.25s ease;
+}
+
+/* Animasi lompat santai dinosaurus */
+.dino-card:nth-child(odd) {
+  animation: dino-bounce 3s infinite ease-in-out;
+}
+.dino-card:nth-child(even) {
+  animation: dino-bounce 3.4s infinite ease-in-out 0.5s;
+}
+
+@keyframes dino-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+/* Tag nomor di atas dinosaurus saat fitur "Bantu Hitung" aktif */
+.dino-number-tag {
+  position: absolute;
+  top: -24px;
+  background: #ffea00;
+  color: #d32f2f;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 900;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dino-card.counted .dino-number-tag {
+  transform: scale(1);
+}
+
+.dino-card.counted svg {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 20px rgba(255, 230, 0, 0.8));
+}
+
+/* Latar Belakang Gunung & Bukit Rumput */
+.ground-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mountains {
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background:
+    radial-gradient(ellipse at 25% 100%, #6eb388 0%, #4a8d67 60%, transparent 62%),
+    radial-gradient(ellipse at 70% 100%, #5ba878 0%, #3e7f58 65%, transparent 67%);
+  opacity: 0.6;
+}
+
+.grass-hill {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 140px;
+  background: linear-gradient(180deg, #4ade80 0%, #22c55e 40%, #16a34a 100%);
+  border-top: 8px solid #86efac;
+  border-radius: 50% 50% 0 0 / 25px 25px 0 0;
+}
+
+/* Panel Bawah (Pilihan Telur Angka) */
+.bottom-panel {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.hint-text {
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 6px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.remote-hint-badge {
+  background: #ffea00;
+  color: #111;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-weight: 900;
+  margin-right: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.choices-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* Telur Dinosaurus Pilihan Angka */
+.egg-choice {
+  position: relative;
+  width: 160px;
+  height: 185px;
+  background: radial-gradient(circle at 35% 30%, #fff7d6 0%, #ffd166 60%, #f4a261 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 7px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #7c2d12;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Bintik-bintik hiasan telur */
+.egg-choice::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 35px;
+  width: 22px;
+  height: 18px;
+  background: rgba(224, 115, 30, 0.3);
+  border-radius: 50%;
+}
+.egg-choice::after {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  right: 35px;
+  width: 32px;
+  height: 24px;
+  background: rgba(224, 115, 30, 0.3);
+  border-radius: 50%;
+}
+
+/* Indikator FOKUS REMOTE TV (Sangat Jelas & Bercahaya) */
+.egg-choice.focused {
+  transform: translateY(-24px) scale(1.18);
+  border-color: #00f0ff;
+  box-shadow:
+    0 0 0 10px #ffe600,
+    0 0 35px 12px rgba(255, 230, 0, 0.85),
+    0 25px 35px rgba(0, 0, 0, 0.4);
+  animation: egg-glow 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes egg-glow {
+  0% { transform: translateY(-22px) scale(1.16); box-shadow: 0 0 0 10px #ffe600, 0 0 25px 8px rgba(255, 230, 0, 0.8); }
+  100% { transform: translateY(-28px) scale(1.22); box-shadow: 0 0 0 12px #00f0ff, 0 0 45px 16px rgba(0, 240, 255, 0.9); }
+}
+
+/* Saat jawaban salah */
+.egg-choice.wrong {
+  animation: shake 0.5s ease-in-out;
+  background: radial-gradient(circle at 35% 30%, #ffd4d4 0%, #ff8080 60%, #d32f2f 100%);
+  color: #fff;
+  border-color: #ff3333;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-18px); }
+  40%, 80% { transform: translateX(18px); }
+}
+
+/* Saat jawaban benar */
+.egg-choice.correct {
+  animation: correct-jump 0.8s ease;
+  background: radial-gradient(circle at 35% 30%, #e0ffd4 0%, #52e052 60%, #15803d 100%);
+  color: #fff;
+  border-color: #22c55e;
+}
+
+@keyframes correct-jump {
+  0% { transform: scale(1.1); }
+  40% { transform: translateY(-40px) scale(1.3) rotate(-8deg); }
+  70% { transform: translateY(-10px) scale(1.2) rotate(8deg); }
+  100% { transform: translateY(-20px) scale(1.2); }
+}
+
+/* Pop-up Overlay Selebrasi */
+.celebration-overlay, .start-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 25, 55, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(6px);
+}
+
+.celebration-overlay.active, .start-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.celebration-card, .start-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f4f9ff 100%);
+  padding: 40px 60px;
+  border-radius: 40px;
+  text-align: center;
+  border: 8px solid #ffc107;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.celebration-overlay.active .celebration-card,
+.start-overlay.active .start-card {
+  transform: scale(1);
+}
+
+.celebration-emoji, .start-dino, .trophy-emoji {
+  font-size: 6.5rem;
+  animation: bounce-trophy 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes bounce-trophy {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-16px) scale(1.15); }
+}
+
+.celebration-card h2, .start-card h1 {
+  font-size: 3.5rem;
+  color: #1e3a8a;
+  text-shadow: 0 3px 0 #93c5fd;
+}
+
+.celebration-card p, .start-card p {
+  font-size: 2.2rem;
+  color: #374151;
+  font-weight: 700;
+}
+
+.celebration-btn, .start-button {
+  background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+  color: #fff;
+  padding: 18px 45px;
+  border-radius: 28px;
+  font-size: 2rem;
+  border: 5px solid #86efac;
+  box-shadow: 0 10px 0 #14532d, 0 15px 30px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  animation: pulse-btn 1.5s infinite alternate ease-in-out;
+}
+
+.celebration-btn small {
+  font-size: 1.2rem;
+  color: #bbf7d0;
+}
+
+@keyframes pulse-btn {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+.controls-guide {
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
+  background: #e2e8f0;
+  padding: 12px 24px;
+  border-radius: 18px;
+  font-size: 1.4rem;
+  color: #334155;
+  font-weight: 700;
+}
+
+.key-icon {
+  background: #1e293b;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.stars-award {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+/* Kanvas Konfeti */
+#confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}

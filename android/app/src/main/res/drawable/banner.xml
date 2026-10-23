@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path
+        android:fillColor="#2563eb"
+        android:pathData="M0,0h320v180h-320z"/>
+    <!-- Grass hill -->
+    <path
+        android:fillColor="#22c55e"
+        android:pathData="M0,140 Q160,110 320,140 L320,180 L0,180 Z"/>
+    <!-- Dino Silhouette / Shape -->
+    <path
+        android:fillColor="#facc15"
+        android:pathData="M160,80 A35,35 0 1,1 210,80 A35,35 0 1,1 160,80"/>
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M190,70 A8,8 0 1,1 200,70 A8,8 0 1,1 190,70"/>
+    <path
+        android:fillColor="#1e293b"
+        android:pathData="M194,70 A4,4 0 1,1 198,70 A4,4 0 1,1 194,70"/>
+    <!-- Stars -->
+    <path
+        android:fillColor="#fef08a"
+        android:pathData="M60,40 L65,52 L77,52 L67,60 L71,72 L60,64 L49,72 L53,60 L43,52 L55,52 Z"/>
+    <path
+        android:fillColor="#fef08a"
+        android:pathData="M260,35 L264,45 L274,45 L266,52 L269,62 L260,55 L251,62 L254,52 L246,45 L256,45 Z"/>
+</vector>

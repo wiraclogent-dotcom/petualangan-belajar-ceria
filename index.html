@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dino Hitung Ceria - Game TV Anak</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Langit, Matahari & Awan -->
+    <div class="sky">
+      <div class="sun"></div>
+      <div class="cloud cloud-1">☁️</div>
+      <div class="cloud cloud-2">☁️</div>
+      <div class="cloud cloud-3">☁️</div>
+    </div>
+
+    <!-- Header / Bar Informasi Atas -->
+    <header class="top-bar">
+      <div class="level-badge" id="level-indicator">
+        <span class="badge-label">Tingkat</span>
+        <span class="badge-value" id="current-level">1</span>/10
+      </div>
+
+      <div class="instruction-box">
+        <span class="instruction-icon">🦕</span>
+        <span id="instruction-text">Ada berapa dinosaurus?</span>
+      </div>
+
+      <div class="stars-container" id="stars-container">
+        <!-- 10 bintang pencapaian -->
+      </div>
+    </header>
+
+    <!-- Area Lapangan Dinosaurus -->
+    <main class="dino-arena" id="dino-arena">
+      <!-- Dinosaurus akan di-generate otomatis oleh script -->
+    </main>
+
+    <!-- Gunung & Rumput Latar Bawah -->
+    <div class="ground-layer">
+      <div class="mountains"></div>
+      <div class="grass-hill"></div>
+    </div>
+
+    <!-- Pilihan Jawaban di Bawah (Telur Dinosaurus) -->
+    <footer class="bottom-panel">
+      <div class="hint-text">
+        <span class="remote-hint-badge">◀ ▶</span> Geser Panah &nbsp;|&nbsp;
+        <span class="remote-hint-badge">OK</span> Pilih Jawaban &nbsp;|&nbsp;
+        <span class="remote-hint-badge">▲</span> Bantu Hitung
+      </div>
+      <div class="choices-container" id="choices-container">
+        <!-- 3 pilihan telur angka -->
+      </div>
+    </footer>
+
+    <!-- Overlay Pop-up Perayaan Setiap Level Selesai -->
+    <div class="celebration-overlay" id="celebration-overlay">
+      <div class="celebration-card">
+        <div class="celebration-emoji" id="celebration-emoji">⭐</div>
+        <h2 id="celebration-title">HEBAT SEKALI!</h2>
+        <p id="celebration-message">Benar! Ada 3 Dinosaurus!</p>
+        <div class="celebration-btn" id="next-level-btn">
+          <span>Lanjut ke Tingkat Berikutnya ➜</span>
+          <small>(Tekan OK di Remote)</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay Kemenangan Akhir (Level 10 Tamat) -->
+    <div class="celebration-overlay" id="victory-overlay">
+      <div class="celebration-card victory-card">
+        <div class="trophy-emoji">🏆</div>
+        <h2>SELAMAT! KAMU JUARA!</h2>
+        <p>Kamu sudah menyelesaikan semua 10 tingkat menghitung dinosaurus!</p>
+        <div class="stars-award" id="victory-stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</div>
+        <div class="celebration-btn" id="restart-btn">
+          <span>Main Lagi Dari Awal ↺</span>
+          <small>(Tekan OK di Remote)</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Petunjuk Mulai untuk Layar TV (Audio Autoplay Policy) -->
+    <div class="start-overlay active" id="start-overlay">
+      <div class="start-card">
+        <div class="start-dino">🦖</div>
+        <h1>DINO HITUNG CERIA</h1>
+        <p>Ayo berhitung bersama teman-teman Dinosaurus!</p>
+        <div class="start-button" id="start-btn">
+          <span>Tekan [ OK ] di Remote untuk Mulai</span>
+        </div>
+        <div class="controls-guide">
+          <div><span class="key-icon">◀ ▶</span> Pilih Telur Angka</div>
+          <div><span class="key-icon">OK</span> Memilih</div>
+          <div><span class="key-icon">▲</span> Dengar Hitungan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kanvas Efek Konfeti -->
+    <canvas id="confetti-canvas"></canvas>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
