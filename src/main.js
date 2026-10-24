@@ -52,7 +52,7 @@ export class LearningApp {
   }
 
   // Overlay helper delegations
-  initStars(containerId, max = 10) {
+  initStars(containerId, max = 20) {
     this.overlay.initStars(containerId, max);
   }
 
@@ -62,6 +62,10 @@ export class LearningApp {
 
   showCelebration(msg, onNextCallback) {
     this.overlay.showCelebration(msg, onNextCallback);
+  }
+
+  showCheckpoint(onNextCallback) {
+    this.overlay.showCheckpoint(onNextCallback);
   }
 
   showVictory() {

@@ -19,7 +19,7 @@ export class PhonicsGame {
       this.engine.voice.stopListening();
     }
     this.pool = shuffleArray(PHONICS_DATA);
-    this.engine.initStars('phonics-stars-container', 10);
+    this.engine.initStars('phonics-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -54,7 +54,7 @@ export class PhonicsGame {
       container.appendChild(card);
     });
 
-    speakText(`Manakah huruf ${data.letter}? ${data.soundHint}`);
+    speakText(`Dengarkan bunyinya: ${data.soundHint}. Manakah huruf ${data.letter}?`);
     this.engine.reportTVState();
   }
 
@@ -150,11 +150,16 @@ export class PhonicsGame {
         this.engine.confetti.fire(35);
         this.engine.updateStar(this.level, 'phonics-stars-container');
 
-        speakText(`Hebat sekali! Benar, ini huruf ${chosen}!`);
+        speakText(`Hebat sekali! Bunyi ${this.currentData.phoneme}, ini huruf ${chosen}!`);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Huruf ${chosen} Berhasil Ditemukan!`, () => {
               this.level++;
@@ -163,12 +168,18 @@ export class PhonicsGame {
           }
         }, 1200);
       } else {
-        if (card) {
-          card.classList.add('wrong');
-          setTimeout(() => card.classList.remove('wrong'), 500);
-        }
+        // Anti-tebak: Kunci input, visual oops, penjelasan suara fonik, lalu ganti pertanyaan baru
+        this.isInputLocked = true;
+        if (card) card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`Itu huruf ${chosen}. Ayo cari huruf ${this.currentData.letter} ya!`);
+        speakText(`Itu huruf ${chosen}. Dengarkan bunyinya lagi: ${this.currentData.phoneme}. Sekarang coba dengarkan suara yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = PHONICS_DATA.filter(p => p.letter !== this.currentData.letter);
+          const newPhonics = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+          this.pool[this.level - 1] = newPhonics;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

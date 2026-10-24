@@ -15,8 +15,13 @@ export class CountingGame {
 
   start() {
     this.level = 1;
-    this.targetPool = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    this.engine.initStars('stars-container', 10);
+    this.targetPool = [
+      ...shuffleArray([1, 2, 3, 4, 5]),
+      ...shuffleArray([6, 7, 8, 9, 10]),
+      ...shuffleArray([11, 12, 13, 14, 15]),
+      ...shuffleArray([16, 17, 18, 19, 20])
+    ];
+    this.engine.initStars('stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -31,8 +36,9 @@ export class CountingGame {
     // Render Dino
     const arena = document.getElementById('dino-arena');
     arena.innerHTML = '';
-    arena.classList.remove('sparse', 'dense');
+    arena.classList.remove('sparse', 'dense', 'very-dense');
     if (target <= 3) arena.classList.add('sparse');
+    else if (target >= 12) arena.classList.add('very-dense');
     else if (target >= 7) arena.classList.add('dense');
 
     for (let i = 1; i <= target; i++) {
@@ -55,7 +61,11 @@ export class CountingGame {
   }
 
   generateEggs(correct) {
-    const pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(n => n !== correct);
+    // Generate pool disesuaikan hingga 20
+    const pool = [];
+    for (let n = 1; n <= 20; n++) {
+      if (n !== correct) pool.push(n);
+    }
     pool.sort((a, b) => Math.abs(a - correct) - Math.abs(b - correct));
     const wrong1 = pool[0];
     const wrong2 = pool[1] !== undefined ? pool[1] : (pool[2] || 1);
@@ -131,7 +141,7 @@ export class CountingGame {
 
     if (chosen === this.currentTarget) {
       this.isInputLocked = true;
-      egg.classList.add('correct');
+      if (egg) egg.classList.add('correct');
       this.engine.sound.playCorrect();
       this.engine.confetti.fire(60);
 
@@ -139,8 +149,13 @@ export class CountingGame {
       speakText(`Hebat! Ada ${this.currentTarget} dinosaurus!`);
 
       setTimeout(() => {
-        if (this.level >= 10) {
+        if (this.level >= 20) {
           this.engine.showVictory();
+        } else if (this.level === 10) {
+          this.engine.showCheckpoint(() => {
+            this.level++;
+            this.loadLevel(this.level);
+          });
         } else {
           this.engine.showCelebration(`Ada ${this.currentTarget} Dinosaurus!`, () => {
             this.level++;
@@ -149,10 +164,24 @@ export class CountingGame {
         }
       }, 1200);
     } else {
-      egg.classList.add('wrong');
+      // Anti-tebak: Kunci input, beri visual & vokal edukatif, lalu reset ke target baru di tingkat yang sama
+      this.isInputLocked = true;
+      if (egg) egg.classList.add('wrong');
       this.engine.sound.playOops();
-      speakText(`Bukan ${chosen}. Ayo hitung dinosaurusnya bersama!`);
-      setTimeout(() => egg.classList.remove('wrong'), 500);
+      speakText(`Bukan ${chosen}. Coba perhatikan dinosaurus yang baru ini ya!`);
+
+      setTimeout(() => {
+        // Regenerasi soal baru di tingkat kesulitan yang sama
+        const tierMin = Math.floor((this.level - 1) / 5) * 5 + 1;
+        const tierMax = Math.min(20, tierMin + 4);
+        const candidates = [];
+        for (let i = tierMin; i <= tierMax; i++) {
+          if (i !== this.currentTarget) candidates.push(i);
+        }
+        const newTarget = candidates[Math.floor(Math.random() * candidates.length)] || this.currentTarget;
+        this.targetPool[this.level - 1] = newTarget;
+        this.loadLevel(this.level);
+      }, 1300);
     }
   }
 }

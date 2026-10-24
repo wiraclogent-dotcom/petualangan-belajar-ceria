@@ -16,7 +16,7 @@ export class ShapesGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(SHAPES_DATA);
-    this.engine.initStars('shape-stars-container', 10);
+    this.engine.initStars('shape-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -100,8 +100,13 @@ export class ShapesGame {
         speakText(`Pintar sekali! Bentuk ${chosen.name}! ${chosen.english}!`);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Bentuk ${chosen.name} Masuk ke Sarang!`, () => {
               this.level++;
@@ -110,10 +115,18 @@ export class ShapesGame {
           }
         }, 1100);
       } else {
+        // Anti-tebak: Kunci input, visual oops, penjelasan vokal, regenerasi soal baru
+        this.isInputLocked = true;
         card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`Coba cari bentuk ${this.currentTarget.name} ya!`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
+        speakText(`Itu bentuk ${chosen.name}. Coba pasang sarang bentuk yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = SHAPES_DATA.filter(s => s.id !== this.currentTarget.id);
+          const newShape = candidates[Math.floor(Math.random() * candidates.length)] || this.currentTarget;
+          this.pool[this.level - 1] = newShape;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

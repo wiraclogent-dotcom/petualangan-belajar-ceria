@@ -19,7 +19,7 @@ export class WordsGame {
       this.engine.voice.stopListening();
     }
     this.pool = shuffleArray(WORDS_DATA);
-    this.engine.initStars('words-stars-container', 10);
+    this.engine.initStars('words-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -155,8 +155,13 @@ export class WordsGame {
         speakText(`Pintar sekali! ${spelled}, ${chosen}!`);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Kata ${chosen} Berhasil Dibaca!`, () => {
               this.level++;
@@ -165,12 +170,18 @@ export class WordsGame {
           }
         }, 1200);
       } else {
-        if (card) {
-          card.classList.add('wrong');
-          setTimeout(() => card.classList.remove('wrong'), 500);
-        }
+        // Anti-tebak: Kunci input, visual oops, penjelasan vokal, regenerasi soal baru di tingkat ini
+        this.isInputLocked = true;
+        if (card) card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`Itu kata ${chosen}. Ayo cari kata ${this.currentData.word} ya!`);
+        speakText(`Itu kata ${chosen}. Sekarang coba perhatikan gambar yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = WORDS_DATA.filter(w => w.word !== this.currentData.word);
+          const newWord = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+          this.pool[this.level - 1] = newWord;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

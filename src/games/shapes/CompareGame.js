@@ -16,7 +16,7 @@ export class CompareGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(COMPARE_DATA);
-    this.engine.initStars('compare-stars-container', 10);
+    this.engine.initStars('compare-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -92,8 +92,13 @@ export class CompareGame {
         speakText(this.currentData.reason);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Hebat! ${chosen.name} Jawaban yang Tepat!`, () => {
               this.level++;
@@ -102,10 +107,18 @@ export class CompareGame {
           }
         }, 1200);
       } else {
+        // Anti-tebak: Kunci input, visual oops, penjelasan vokal, regenerasi soal perbandingan baru
+        this.isInputLocked = true;
         card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`Coba perhatikan lagi ya! ${this.currentData.speechQuestion}`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
+        speakText(`Belum tepat sayang. Coba perhatikan perbandingan yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = COMPARE_DATA.filter(c => c.id !== this.currentData.id);
+          const newComp = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+          this.pool[this.level - 1] = newComp;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

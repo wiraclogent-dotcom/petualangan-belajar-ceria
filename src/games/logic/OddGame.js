@@ -16,7 +16,7 @@ export class OddGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(ODD_DATA);
-    this.engine.initStars('odd-stars-container', 10);
+    this.engine.initStars('odd-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -86,8 +86,13 @@ export class OddGame {
         speakText(`Hebat sekali! ${chosen.reason}`);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Detektif Cilik Berhasil Menemukan Jawaban!`, () => {
               this.level++;
@@ -96,10 +101,18 @@ export class OddGame {
           }
         }, 1200);
       } else {
+        // Anti-tebak: Kunci input, visual oops, penjelasan kategori, regenerasi soal detektif baru
+        this.isInputLocked = true;
         card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`${chosen.name} adalah ${this.currentData.categoryName}. Ayo cari yang berbeda ya!`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
+        speakText(`${chosen.name} adalah ${this.currentData.categoryName}. Ayo cari yang berbeda di tantangan baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = ODD_DATA.filter(o => o.id !== this.currentData.id);
+          const newOdd = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+          this.pool[this.level - 1] = newOdd;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

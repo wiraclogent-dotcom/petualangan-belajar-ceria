@@ -30,7 +30,7 @@ export class OverlayController {
     }
   }
 
-  initStars(containerId, max = 10) {
+  initStars(containerId, max = 20) {
     const cont = document.getElementById(containerId);
     if (!cont) return;
     cont.innerHTML = '';
@@ -54,12 +54,35 @@ export class OverlayController {
   showCelebration(msg, onNextCallback) {
     this.isCelebrationActive = true;
     this.nextLevelCallback = onNextCallback;
+    const titleEl = document.getElementById('celebration-title');
+    const emojiEl = document.getElementById('celebration-emoji');
+    if (titleEl) titleEl.innerText = 'HEBAT SEKALI!';
+    if (emojiEl) emojiEl.innerText = '🎉';
     if (this.celebrationMsgEl) {
       this.celebrationMsgEl.innerText = msg;
     }
     if (this.celebrationEl) {
       this.celebrationEl.classList.add('active');
     }
+    this.engine.reportTVState();
+  }
+
+  showCheckpoint(onNextCallback) {
+    this.isCelebrationActive = true;
+    this.nextLevelCallback = onNextCallback;
+    const titleEl = document.getElementById('celebration-title');
+    const emojiEl = document.getElementById('celebration-emoji');
+    if (titleEl) titleEl.innerText = '🌟 CHECKPOINT TINGKAT 10! 🌟';
+    if (emojiEl) emojiEl.innerText = '🥤';
+    if (this.celebrationMsgEl) {
+      this.celebrationMsgEl.innerText = 'Luar biasa! Minum air dan istirahat sejenak ya!\nTekan OK jika sudah siap lanjut ke Tingkat 11!';
+    }
+    if (this.celebrationEl) {
+      this.celebrationEl.classList.add('active');
+    }
+    if (this.engine.confetti) this.engine.confetti.fire(100);
+    this.engine.sound.playVictory();
+    speakText('Luar biasa sayang! Kamu sudah menyelesaikan sepuluh tingkat! Waktunya minum air dan istirahat sejenak. Tekan OK jika sudah siap lanjut ya!');
     this.engine.reportTVState();
   }
 
@@ -76,6 +99,10 @@ export class OverlayController {
     if (this.celebrationEl) {
       this.celebrationEl.classList.remove('active');
     }
+    const titleEl = document.getElementById('celebration-title');
+    const emojiEl = document.getElementById('celebration-emoji');
+    if (titleEl) titleEl.innerText = 'HEBAT SEKALI!';
+    if (emojiEl) emojiEl.innerText = '🎉';
     if (this.nextLevelCallback) {
       const cb = this.nextLevelCallback;
       this.nextLevelCallback = null;

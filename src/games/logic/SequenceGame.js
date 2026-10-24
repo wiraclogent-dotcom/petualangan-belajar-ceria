@@ -16,7 +16,7 @@ export class SequenceGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(SEQUENCE_DATA);
-    this.engine.initStars('sequence-stars-container', 10);
+    this.engine.initStars('sequence-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -118,8 +118,13 @@ export class SequenceGame {
         speakText(this.currentData.explanation);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Urutan Cerita Berhasil Disusun!`, () => {
               this.level++;
@@ -128,10 +133,18 @@ export class SequenceGame {
           }
         }, 1200);
       } else {
+        // Anti-tebak: Kunci input, visual oops, penjelasan vokal, regenerasi cerita baru
+        this.isInputLocked = true;
         card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`Coba pikirkan lagi, apa yang terjadi selanjutnya ya?`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
+        speakText(`Belum tepat sayang. Coba perhatikan urutan cerita yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = SEQUENCE_DATA.filter(s => s.id !== this.currentData.id);
+          const newSeq = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+          this.pool[this.level - 1] = newSeq;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

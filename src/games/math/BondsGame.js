@@ -16,7 +16,7 @@ export class BondsGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(BONDS_DATA);
-    this.engine.initStars('bonds-stars-container', 10);
+    this.engine.initStars('bonds-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -128,8 +128,13 @@ export class BondsGame {
       speakText(`Hebat sekali! Benar, ${this.currentData.formula}! Sahabat sepuluh yang kompak!`);
 
       setTimeout(() => {
-        if (this.level >= 10) {
+        if (this.level >= 20) {
           this.engine.showVictory();
+        } else if (this.level === 10) {
+          this.engine.showCheckpoint(() => {
+            this.level++;
+            this.loadLevel(this.level);
+          });
         } else {
           this.engine.showCelebration(`${this.currentData.formula}! Sahabat 10 Lengkap!`, () => {
             this.level++;
@@ -138,10 +143,18 @@ export class BondsGame {
         }
       }, 1200);
     } else {
-      egg.classList.add('wrong');
+      // Anti-tebak: Kunci input, beri suara oops dan reset ke soal baru di tingkat ini
+      this.isInputLocked = true;
+      if (egg) egg.classList.add('wrong');
       this.engine.sound.playOops();
-      speakText(`${this.currentData.filled} ditambah ${chosen} belum sepuluh. Coba cari telur yang lain ya!`);
-      setTimeout(() => egg.classList.remove('wrong'), 500);
+      speakText(`${this.currentData.filled} ditambah ${chosen} belum sepuluh. Coba perhatikan sarang yang baru ini ya!`);
+
+      setTimeout(() => {
+        const candidates = BONDS_DATA.filter(b => b.filled !== this.currentData.filled);
+        const newBond = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+        this.pool[this.level - 1] = newBond;
+        this.loadLevel(this.level);
+      }, 1300);
     }
   }
 }

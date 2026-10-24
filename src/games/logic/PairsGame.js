@@ -16,7 +16,7 @@ export class PairsGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(PAIRS_DATA);
-    this.engine.initStars('pairs-stars-container', 10);
+    this.engine.initStars('pairs-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -105,8 +105,13 @@ export class PairsGame {
         speakText(`Pintar sekali! ${this.currentData.reason}`);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Pasangan Serasi Ditemukan!`, () => {
               this.level++;
@@ -115,10 +120,18 @@ export class PairsGame {
           }
         }, 1200);
       } else {
+        // Anti-tebak: Kunci input, visual oops, penjelasan vokal, regenerasi pasangan benda baru
+        this.isInputLocked = true;
         card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`${chosen.name} bukan pasangan yang tepat untuk ${this.currentData.target.name}. Ayo cari lagi ya!`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
+        speakText(`${chosen.name} bukan pasangan yang tepat untuk ${this.currentData.target.name}. Coba pasangkan benda yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = PAIRS_DATA.filter(p => p.id !== this.currentData.id);
+          const newPair = candidates[Math.floor(Math.random() * candidates.length)] || this.currentData;
+          this.pool[this.level - 1] = newPair;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

@@ -1,6 +1,7 @@
 /**
- * Data Bentuk 2D Geometri, Warna Ceria, dan Perbandingan Ukuran (Cambridge Early Years)
+ * Data Bentuk Geometri, Warna Ceria, dan Perbandingan Ukuran (20 Tingkat - Cambridge Early Years)
  */
+
 export const SHAPES_DATA = [
   {
     id: 'circle',
@@ -81,6 +82,86 @@ export const SHAPES_DATA = [
     color: '#6366f1',
     svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,10 88,30 88,70 50,90 12,70 12,30" fill="#6366f1"/><circle cx="40" cy="45" r="4.5" fill="#fff"/><circle cx="60" cy="45" r="4.5" fill="#fff"/><path d="M 44 60 Q 50 67 56 60" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
     silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,10 88,30 88,70 50,90 12,70 12,30" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'trapezoid',
+    name: 'Trapesium',
+    english: 'Trapezoid',
+    color: '#14b8a6',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="30,20 70,20 90,80 10,80" fill="#14b8a6"/><circle cx="42" cy="48" r="4.5" fill="#fff"/><circle cx="58" cy="48" r="4.5" fill="#fff"/><path d="M 44 62 Q 50 70 56 62" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="30,20 70,20 90,80 10,80" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'semicircle',
+    name: 'Setengah Lingkaran',
+    english: 'Semi-circle',
+    color: '#f43f5e',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><path d="M 12 70 A 38 38 0 0 1 88 70 Z" fill="#f43f5e"/><circle cx="40" cy="52" r="4.5" fill="#fff"/><circle cx="60" cy="52" r="4.5" fill="#fff"/><path d="M 44 62 Q 50 68 56 62" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><path d="M 12 70 A 38 38 0 0 1 88 70 Z" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'pentagon',
+    name: 'Segi Lima',
+    english: 'Pentagon',
+    color: '#8b5cf6',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,12 88,40 74,84 26,84 12,40" fill="#8b5cf6"/><circle cx="40" cy="48" r="4.5" fill="#fff"/><circle cx="60" cy="48" r="4.5" fill="#fff"/><path d="M 44 62 Q 50 70 56 62" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,12 88,40 74,84 26,84 12,40" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'octagon',
+    name: 'Segi Delapan',
+    english: 'Octagon',
+    color: '#dc2626',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="30,12 70,12 88,30 88,70 70,88 30,88 12,70 12,30" fill="#dc2626"/><circle cx="40" cy="46" r="4.5" fill="#fff"/><circle cx="60" cy="46" r="4.5" fill="#fff"/><path d="M 44 60 Q 50 68 56 60" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="30,12 70,12 88,30 88,70 70,88 30,88 12,70 12,30" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'cross',
+    name: 'Tanda Tambah',
+    english: 'Cross',
+    color: '#10b981',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="35,10 65,10 65,35 90,35 90,65 65,65 65,90 35,90 35,65 10,65 10,35 35,35" fill="#10b981"/><circle cx="44" cy="46" r="4" fill="#fff"/><circle cx="56" cy="46" r="4" fill="#fff"/><path d="M 46 56 Q 50 62 54 56" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="35,10 65,10 65,35 90,35 90,65 65,65 65,90 35,90 35,65 10,65 10,35 35,35" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'arrow_shape',
+    name: 'Panah',
+    english: 'Arrow',
+    color: '#0284c7',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,10 90,50 65,50 65,90 35,90 35,50 10,50" fill="#0284c7"/><circle cx="45" cy="42" r="4" fill="#fff"/><circle cx="55" cy="42" r="4" fill="#fff"/><path d="M 46 58 Q 50 64 54 58" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,10 90,50 65,50 65,90 35,90 35,50 10,50" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'cube',
+    name: 'Kubus Kotak',
+    english: 'Cube',
+    color: '#f59e0b',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,12 88,32 50,52 12,32" fill="#fbbf24"/><polygon points="12,32 50,52 50,90 12,70" fill="#d97706"/><polygon points="50,52 88,32 88,70 50,90" fill="#f59e0b"/><circle cx="44" cy="62" r="4" fill="#fff"/><circle cx="58" cy="62" r="4" fill="#fff"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,12 88,32 88,70 50,90 12,70 12,32" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'cylinder',
+    name: 'Tabung Kaleng',
+    english: 'Cylinder',
+    color: '#ec4899',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><rect x="22" y="30" width="56" height="50" fill="#db2777"/><ellipse cx="50" cy="80" rx="28" ry="12" fill="#db2777"/><ellipse cx="50" cy="30" rx="28" ry="12" fill="#f472b6"/><circle cx="42" cy="52" r="4" fill="#fff"/><circle cx="58" cy="52" r="4" fill="#fff"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><rect x="22" y="30" width="56" height="50" fill="#94a3b8" opacity="0.35"/><ellipse cx="50" cy="80" rx="28" ry="12" fill="#94a3b8" opacity="0.35"/><ellipse cx="50" cy="30" rx="28" ry="12" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'cone',
+    name: 'Kerucut Corong',
+    english: 'Cone',
+    color: '#e11d48',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><polygon points="50,10 82,78 18,78" fill="#e11d48"/><ellipse cx="50" cy="78" rx="32" ry="12" fill="#be123c"/><circle cx="44" cy="54" r="4" fill="#fff"/><circle cx="56" cy="54" r="4" fill="#fff"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><polygon points="50,10 82,78 18,78" fill="#94a3b8" opacity="0.35"/><ellipse cx="50" cy="78" rx="32" ry="12" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
+  },
+  {
+    id: 'sphere',
+    name: 'Bola Bulat',
+    english: 'Sphere',
+    color: '#3b82f6',
+    svg: `<svg viewBox="0 0 100 100" width="70" height="70"><defs><radialGradient id="sphereGrad" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#93c5fd"/><stop offset="60%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1e3a8a"/></radialGradient></defs><circle cx="50" cy="50" r="42" fill="url(#sphereGrad)"/><circle cx="42" cy="46" r="4" fill="#fff"/><circle cx="58" cy="46" r="4" fill="#fff"/></svg>`,
+    silhouette: `<svg viewBox="0 0 100 100" width="85" height="85"><circle cx="50" cy="50" r="42" fill="#94a3b8" opacity="0.35" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/></svg>`
   }
 ];
 
@@ -94,7 +175,17 @@ export const COLORS_DATA = [
   { id: 'pink', name: 'Merah Muda', english: 'Pink', hex: '#ec4899', icon: '🌸', itemText: 'Bunga Merah Muda' },
   { id: 'brown', name: 'Cokelat', english: 'Brown', hex: '#92400e', icon: '🐻', itemText: 'Beruang Cokelat' },
   { id: 'white', name: 'Putih', english: 'White', hex: '#e2e8f0', icon: '🥛', itemText: 'Susu Putih' },
-  { id: 'black', name: 'Hitam', english: 'Black', hex: '#1e293b', icon: '🐈‍⬛', itemText: 'Kucing Hitam' }
+  { id: 'black', name: 'Hitam', english: 'Black', hex: '#1e293b', icon: '🐈‍⬛', itemText: 'Kucing Hitam' },
+  { id: 'cyan', name: 'Biru Langit Muda', english: 'Sky Blue / Cyan', hex: '#06b6d4', icon: '💧', itemText: 'Tetesan Air Biru Muda' },
+  { id: 'lime', name: 'Hijau Lemon Muda', english: 'Lime Green', hex: '#84cc16', icon: '🍋', itemText: 'Jeruk Lemon Segar' },
+  { id: 'gold', name: 'Kuning Emas', english: 'Gold', hex: '#d97706', icon: '🏆', itemText: 'Piala Emas Juara' },
+  { id: 'silver', name: 'Perak Berkilau', english: 'Silver', hex: '#94a3b8', icon: '🪙', itemText: 'Koin Logam Perak' },
+  { id: 'indigo', name: 'Biru Nila Gelap', english: 'Indigo / Navy', hex: '#1e1b4b', icon: '🌌', itemText: 'Langit Malam Gelap' },
+  { id: 'magenta', name: 'Merah Fanta / Magenta', english: 'Magenta', hex: '#d946ef', icon: '🪅', itemText: 'Balon Pesta Ceria' },
+  { id: 'grey', name: 'Abu-Abu Sejuk', english: 'Grey', hex: '#64748b', icon: '🐘', itemText: 'Gajah Abu-abu' },
+  { id: 'beige', name: 'Warna Krem Lembut', english: 'Beige / Cream', hex: '#fef08a', icon: '🍞', itemText: 'Roti Gandum Krem' },
+  { id: 'turquoise', name: 'Hijau Toska Indah', english: 'Turquoise', hex: '#0d9488', icon: '🦚', itemText: 'Bulu Burung Merak' },
+  { id: 'maroon', name: 'Merah Marun Pekat', english: 'Maroon', hex: '#881337', icon: '🍷', itemText: 'Buah Delima Merah Marun' }
 ];
 
 export const COMPARE_DATA = [
@@ -206,6 +297,116 @@ export const COMPARE_DATA = [
     items: [
       { id: 'tower', name: 'Gedung Menara', icon: '🏙️', scale: 'scale-tall', desc: 'Tinggi Menjulang' },
       { id: 'cottage', name: 'Rumah Kecil', icon: '🏡', scale: 'scale-short', desc: 'Lebih Rendah' }
+    ]
+  },
+  {
+    id: 11,
+    question: 'Manakah benda yang LEBIH PANAS?',
+    speechQuestion: 'Manakah benda yang lebih panas?',
+    correctId: 'fire_hot',
+    reason: 'Tepat sekali! Kobaran api itu sangat panas membakar, sedangkan es batu itu dingin!',
+    items: [
+      { id: 'fire_hot', name: 'Api Membara', icon: '🔥', scale: 'scale-large', desc: 'Sangat Panas' },
+      { id: 'ice_cube', name: 'Es Batu', icon: '🧊', scale: 'scale-small', desc: 'Dingin Beku' }
+    ]
+  },
+  {
+    id: 12,
+    question: 'Manakah makanan yang LEBIH DINGIN?',
+    speechQuestion: 'Manakah makanan yang lebih dingin membeku?',
+    correctId: 'icecream_cold',
+    reason: 'Pintar! Es krim itu beku dingin menyegarkan, sedangkan sup itu hangat beruap!',
+    items: [
+      { id: 'soup_warm', name: 'Sup Hangat', icon: '🥣', scale: 'scale-medium', desc: 'Hangat Beruap' },
+      { id: 'icecream_cold', name: 'Es Krim Cone', icon: '🍦', scale: 'scale-small', desc: 'Dingin Beku' }
+    ]
+  },
+  {
+    id: 13,
+    question: 'Manakah tempat yang LEBIH LUAS?',
+    speechQuestion: 'Manakah tempat yang lebih luas untuk berlari?',
+    correctId: 'field_wide',
+    reason: 'Hebat! Lapangan rumput sangat luas membentang, sedangkan kamar tidur lebih sempit!',
+    items: [
+      { id: 'field_wide', name: 'Lapangan Bola', icon: '⚽', scale: 'scale-wide', desc: 'Sangat Luas' },
+      { id: 'bedroom', name: 'Kamar Tidur', icon: '🛏️', scale: 'scale-small', desc: 'Lebih Sempit' }
+    ]
+  },
+  {
+    id: 14,
+    question: 'Manakah cahaya yang LEBIH TERANG?',
+    speechQuestion: 'Manakah cahaya yang lebih terang benderang?',
+    correctId: 'sun_bright',
+    reason: 'Juara! Matahari siang menyinari seluruh bumi, sedangkan lilin sinarnya kecil!',
+    items: [
+      { id: 'sun_bright', name: 'Matahari', icon: '☀️', scale: 'scale-large', desc: 'Terang Benderang' },
+      { id: 'candle_small', name: 'Lilin Kecil', icon: '🕯️', scale: 'scale-small', desc: 'Cahaya Redup' }
+    ]
+  },
+  {
+    id: 15,
+    question: 'Manakah tempat air yang LEBIH DALAM?',
+    speechQuestion: 'Manakah tempat air yang lebih dalam?',
+    correctId: 'ocean_deep',
+    reason: 'Benar sekali! Lautan samudra sangat dalam, sedangkan genangan air sangat dangkal!',
+    items: [
+      { id: 'ocean_deep', name: 'Lautan Biru', icon: '🌊', scale: 'scale-large', desc: 'Sangat Dalam' },
+      { id: 'puddle_shallow', name: 'Genangan Air', icon: '💧', scale: 'scale-small', desc: 'Dangkal di Jalan' }
+    ]
+  },
+  {
+    id: 16,
+    question: 'Manakah benda yang LEBIH TEBAL?',
+    speechQuestion: 'Manakah benda yang lebih tebal lembarannya?',
+    correctId: 'thick_book',
+    reason: 'Luar biasa! Kamus tebal punya ratusan halaman, sedangkan selembar kertas sangat tipis!',
+    items: [
+      { id: 'thick_book', name: 'Kamus Tebal', icon: '📕', scale: 'scale-large', desc: 'Sangat Tebal' },
+      { id: 'paper_thin', name: 'Selembar Kertas', icon: '📄', scale: 'scale-small', desc: 'Tipis Ringan' }
+    ]
+  },
+  {
+    id: 17,
+    question: 'Manakah benda yang LEBIH TIPIS?',
+    speechQuestion: 'Manakah yang lebih tipis?',
+    correctId: 'leaf_thin',
+    reason: 'Pintar! Daun pohon sangat tipis melayang, sedangkan balok kayu tebal dan padat!',
+    items: [
+      { id: 'wood_block', name: 'Balok Kayu', icon: '🪵', scale: 'scale-medium', desc: 'Tebal Padat' },
+      { id: 'leaf_thin', name: 'Daun Pohon', icon: '🍃', scale: 'scale-small', desc: 'Lebih Tipis' }
+    ]
+  },
+  {
+    id: 18,
+    question: 'Manakah hewan yang terbang LEBIH TINGGI?',
+    speechQuestion: 'Manakah yang dapat berada lebih tinggi di angkasa?',
+    correctId: 'eagle_high',
+    reason: 'Hebat! Burung elang terbang tinggi menembus awan, sedangkan katak hanya melompat rendah!',
+    items: [
+      { id: 'eagle_high', name: 'Burung Elang', icon: '🦅', scale: 'scale-tall', desc: 'Terbang Tinggi' },
+      { id: 'frog_low', name: 'Katak Kolam', icon: '🐸', scale: 'scale-short', desc: 'Lompat Rendah' }
+    ]
+  },
+  {
+    id: 19,
+    question: 'Manakah keranjang yang isinya LEBIH BANYAK apel?',
+    speechQuestion: 'Manakah yang isinya lebih banyak buah apel?',
+    correctId: 'many_apples',
+    reason: 'Tepat sekali! Keranjang ini berisi 8 apel banyak, yang satunya hanya ada 2 sedikit!',
+    items: [
+      { id: 'few_apples', name: '2 Apel', icon: '🍎🍎', scale: 'scale-small', desc: 'Sedikit (2)' },
+      { id: 'many_apples', name: '8 Apel', icon: '🍎🍎🍎🍎', scale: 'scale-medium', desc: 'Banyak (8)' }
+    ]
+  },
+  {
+    id: 20,
+    question: 'Manakah kendaraan yang melaju LEBIH CEPAT?',
+    speechQuestion: 'Manakah kendaraan yang melaju paling cepat di dunia?',
+    correctId: 'jet_plane',
+    reason: 'Juara umum! Pesawat jet supersonik terbang sangat cepat secepat kilat!',
+    items: [
+      { id: 'jet_plane', name: 'Pesawat Jet', icon: '🚀', scale: 'scale-large', desc: 'Sangat Cepat' },
+      { id: 'tricycle', name: 'Sepeda Roda Tiga', icon: '🚲', scale: 'scale-small', desc: 'Lambat Santai' }
     ]
   }
 ];

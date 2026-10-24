@@ -73,5 +73,6 @@ export const DINO_SVGS = [
 export const NUMBER_WORDS = [
   "", "Satu", "Dua", "Tiga", "Empat", "Lima",
   "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh",
-  "Sebelas", "Dua Belas", "Tiga Belas", "Empat Belas"
+  "Sebelas", "Dua Belas", "Tiga Belas", "Empat Belas", "Lima Belas",
+  "Enam Belas", "Tujuh Belas", "Delapan Belas", "Sembilan Belas", "Dua Puluh"
 ];

@@ -18,8 +18,14 @@ export class AdditionGame {
 
   start() {
     this.level = 1;
-    this.pool = shuffleArray(ADDITION_PROBLEMS);
-    this.engine.initStars('add-stars-container', 10);
+    // Acak per-tier agar kurva belajar bertahap dari 1-5 hingga 10
+    this.pool = [
+      ...shuffleArray(ADDITION_PROBLEMS.slice(0, 5)),
+      ...shuffleArray(ADDITION_PROBLEMS.slice(5, 10)),
+      ...shuffleArray(ADDITION_PROBLEMS.slice(10, 15)),
+      ...shuffleArray(ADDITION_PROBLEMS.slice(15, 20))
+    ];
+    this.engine.initStars('add-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -56,7 +62,10 @@ export class AdditionGame {
   }
 
   generateEggs(correct) {
-    const pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(n => n !== correct);
+    const pool = [];
+    for (let n = 1; n <= 15; n++) {
+      if (n !== correct) pool.push(n);
+    }
     pool.sort((a, b) => Math.abs(a - correct) - Math.abs(b - correct));
     const wrong1 = pool[0];
     const wrong2 = pool[1] !== undefined ? pool[1] : (pool[2] || 1);
@@ -111,7 +120,7 @@ export class AdditionGame {
 
     if (chosen === this.total) {
       this.isInputLocked = true;
-      egg.classList.add('correct');
+      if (egg) egg.classList.add('correct');
       this.engine.sound.playCorrect();
       this.engine.confetti.fire(60);
 
@@ -119,8 +128,13 @@ export class AdditionGame {
       speakText(`Pintar sekali! ${this.num1} ditambah ${this.num2} sama dengan ${this.total}!`);
 
       setTimeout(() => {
-        if (this.level >= 10) {
+        if (this.level >= 20) {
           this.engine.showVictory();
+        } else if (this.level === 10) {
+          this.engine.showCheckpoint(() => {
+            this.level++;
+            this.loadLevel(this.level);
+          });
         } else {
           this.engine.showCelebration(`Benar! ${this.num1} + ${this.num2} = ${this.total}!`, () => {
             this.level++;
@@ -129,10 +143,21 @@ export class AdditionGame {
         }
       }, 1200);
     } else {
+      // Anti-tebak: visual oops, audio edukatif, regenerasi soal baru di tingkat yang sama
+      this.isInputLocked = true;
+      if (egg) egg.classList.add('wrong');
       this.engine.sound.playOops();
-      egg.classList.add('wrong');
-      speakText("Coba hitung lagi ya!");
-      setTimeout(() => egg.classList.remove('wrong'), 500);
+      speakText(`Bukan ${chosen}. Coba perhatikan soal penjumlahan yang baru ini ya!`);
+
+      setTimeout(() => {
+        const tierStart = Math.floor((this.level - 1) / 5) * 5;
+        const candidates = ADDITION_PROBLEMS.slice(tierStart, tierStart + 5).filter(
+          p => p.a !== this.num1 || p.b !== this.num2
+        );
+        const newProblem = candidates[Math.floor(Math.random() * candidates.length)] || this.pool[this.level - 1];
+        this.pool[this.level - 1] = newProblem;
+        this.loadLevel(this.level);
+      }, 1300);
     }
   }
 }

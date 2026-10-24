@@ -16,7 +16,7 @@ export class ColorsGame {
   start() {
     this.level = 1;
     this.pool = shuffleArray(COLORS_DATA);
-    this.engine.initStars('color-stars-container', 10);
+    this.engine.initStars('color-stars-container', 20);
     this.loadLevel(this.level);
   }
 
@@ -93,8 +93,13 @@ export class ColorsGame {
         speakText(`Pintar sekali! Ini warna ${chosen.name}! ${chosen.english}!`);
 
         setTimeout(() => {
-          if (this.level >= 10) {
+          if (this.level >= 20) {
             this.engine.showVictory();
+          } else if (this.level === 10) {
+            this.engine.showCheckpoint(() => {
+              this.level++;
+              this.loadLevel(this.level);
+            });
           } else {
             this.engine.showCelebration(`Warna ${chosen.name} Berhasil Ditemukan!`, () => {
               this.level++;
@@ -103,10 +108,18 @@ export class ColorsGame {
           }
         }, 1100);
       } else {
+        // Anti-tebak: Kunci input, visual oops, penjelasan vokal, regenerasi warna baru
+        this.isInputLocked = true;
         card.classList.add('wrong');
         this.engine.sound.playOops();
-        speakText(`Coba cari warna ${this.currentTarget.name} ya!`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
+        speakText(`Itu warna ${chosen.name}. Coba cari warna yang baru ini ya!`);
+
+        setTimeout(() => {
+          const candidates = COLORS_DATA.filter(c => c.id !== this.currentTarget.id);
+          const newColor = candidates[Math.floor(Math.random() * candidates.length)] || this.currentTarget;
+          this.pool[this.level - 1] = newColor;
+          this.loadLevel(this.level);
+        }, 1300);
       }
     }
   }

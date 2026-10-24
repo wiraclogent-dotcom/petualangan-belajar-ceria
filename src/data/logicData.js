@@ -1,6 +1,7 @@
 /**
- * Data Lab Logika Cambridge: Detektif Benda, Urutan Cerita, Detektif Pasangan, Phonics, dan Sight Words
+ * Data Lab Logika Cambridge: Detektif Benda, Urutan Cerita, Detektif Pasangan, Phonics, dan Sight Words (20 Tingkat)
  */
+
 export const ODD_DATA = [
   {
     id: 1,
@@ -9,7 +10,7 @@ export const ODD_DATA = [
       { id: 'apple', name: 'Apel', icon: '🍎', isOdd: false },
       { id: 'banana', name: 'Pisang', icon: '🍌', isOdd: false },
       { id: 'strawberry', name: 'Stroberi', icon: '🍓', isOdd: false },
-      { id: 'car', name: 'Mobil', icon: '🚗', isOdd: true, reason: 'Mobil adalah kendaraan, yang lain buah-buahan!' }
+      { id: 'car', name: 'Mobil', icon: '🚗', isOdd: true, reason: 'Mobil adalah kendaraan di jalan, yang lain buah-buahan manis!' }
     ],
     hint: 'Manakah benda yang bukan buah-buahan?'
   },
@@ -20,7 +21,7 @@ export const ODD_DATA = [
       { id: 'fish', name: 'Ikan', icon: '🐟', isOdd: false },
       { id: 'octopus', name: 'Gurita', icon: '🐙', isOdd: false },
       { id: 'crab', name: 'Kepiting', icon: '🦀', isOdd: false },
-      { id: 'eagle', name: 'Burung', icon: '🦅', isOdd: true, reason: 'Burung terbang di langit, yang lain hidup di laut!' }
+      { id: 'eagle', name: 'Burung', icon: '🦅', isOdd: true, reason: 'Burung terbang di angkasa, yang lain hidup berenang di laut!' }
     ],
     hint: 'Manakah hewan yang tidak berenang di laut?'
   },
@@ -31,7 +32,7 @@ export const ODD_DATA = [
       { id: 'fire', name: 'Api', icon: '🔥', isOdd: false },
       { id: 'sun', name: 'Matahari', icon: '☀️', isOdd: false },
       { id: 'candle', name: 'Lilin', icon: '🕯️', isOdd: false },
-      { id: 'icecream', name: 'Es Krim', icon: '🍦', isOdd: true, reason: 'Es krim itu dingin, sedangkan yang lain panas!' }
+      { id: 'icecream', name: 'Es Krim', icon: '🍦', isOdd: true, reason: 'Es krim itu dingin beku, sedangkan yang lain panas membara!' }
     ],
     hint: 'Manakah benda yang dingin membeku?'
   },
@@ -42,7 +43,7 @@ export const ODD_DATA = [
       { id: 'pencil', name: 'Pensil', icon: '✏️', isOdd: false },
       { id: 'book', name: 'Buku', icon: '📚', isOdd: false },
       { id: 'ruler', name: 'Penggaris', icon: '📏', isOdd: false },
-      { id: 'basketball', name: 'Bola', icon: '🏀', isOdd: true, reason: 'Bola untuk olahraga, yang lain alat untuk belajar!' }
+      { id: 'basketball', name: 'Bola', icon: '🏀', isOdd: true, reason: 'Bola untuk bermain olahraga, yang lain alat untuk belajar!' }
     ],
     hint: 'Manakah yang bukan peralatan belajar sekolah?'
   },
@@ -53,7 +54,7 @@ export const ODD_DATA = [
       { id: 'cat', name: 'Kucing', icon: '🐱', isOdd: false },
       { id: 'dog', name: 'Anjing', icon: '🐶', isOdd: false },
       { id: 'rabbit', name: 'Kelinci', icon: '🐰', isOdd: false },
-      { id: 'lion', name: 'Singa', icon: '🦁', isOdd: true, reason: 'Singa hewan buas liar, yang lain hewan peliharaan jinak!' }
+      { id: 'lion', name: 'Singa', icon: '🦁', isOdd: true, reason: 'Singa hewan liar di rimba, yang lain hewan peliharaan jinak!' }
     ],
     hint: 'Manakah hewan liar yang hidup di rimba hutan?'
   },
@@ -64,7 +65,7 @@ export const ODD_DATA = [
       { id: 'shirt', name: 'Baju', icon: '👕', isOdd: false },
       { id: 'pants', name: 'Celana', icon: '👖', isOdd: false },
       { id: 'cap', name: 'Topi', icon: '🧢', isOdd: false },
-      { id: 'spoon', name: 'Sendok', icon: '🥄', isOdd: true, reason: 'Sendok adalah alat makan, yang lain pakaian!' }
+      { id: 'spoon', name: 'Sendok', icon: '🥄', isOdd: true, reason: 'Sendok adalah alat makan, yang lain pakaian untuk dipakai!' }
     ],
     hint: 'Manakah benda yang bukan pakaian untuk dipakai?'
   },
@@ -75,7 +76,7 @@ export const ODD_DATA = [
       { id: 'carrot', name: 'Wortel', icon: '🥕', isOdd: false },
       { id: 'broccoli', name: 'Brokoli', icon: '🥦', isOdd: false },
       { id: 'corn', name: 'Jagung', icon: '🌽', isOdd: false },
-      { id: 'plane', name: 'Pesawat', icon: '✈️', isOdd: true, reason: 'Pesawat kendaraan terbang di langit, yang lain sayuran!' }
+      { id: 'plane', name: 'Pesawat', icon: '✈️', isOdd: true, reason: 'Pesawat kendaraan terbang di langit, yang lain sayuran bergizi!' }
     ],
     hint: 'Manakah benda yang bukan sayuran sehat?'
   },
@@ -86,7 +87,7 @@ export const ODD_DATA = [
       { id: 'moon', name: 'Bulan', icon: '🌙', isOdd: false },
       { id: 'star', name: 'Bintang', icon: '⭐', isOdd: false },
       { id: 'cloud', name: 'Awan', icon: '☁️', isOdd: false },
-      { id: 'shoe', name: 'Sepatu', icon: '👟', isOdd: true, reason: 'Sepatu alas kaki untuk berjalan, yang lain ada di langit!' }
+      { id: 'shoe', name: 'Sepatu', icon: '👟', isOdd: true, reason: 'Sepatu alas kaki untuk berjalan, yang lain ada di langit tinggi!' }
     ],
     hint: 'Manakah yang tidak ada di langit tinggi?'
   },
@@ -111,6 +112,116 @@ export const ODD_DATA = [
       { id: 'turtle', name: 'Kura-kura', icon: '🐢', isOdd: true, reason: 'Kura-kura berjalan lambat di tanah, yang lain punya sayap dan terbang!' }
     ],
     hint: 'Manakah hewan yang tidak bisa terbang di udara?'
+  },
+  {
+    id: 11,
+    categoryName: 'Kendaraan Darat',
+    items: [
+      { id: 'bus', name: 'Bus', icon: '🚌', isOdd: false },
+      { id: 'motor', name: 'Sepeda Motor', icon: '🏍️', isOdd: false },
+      { id: 'car2', name: 'Mobil', icon: '🚗', isOdd: false },
+      { id: 'ship', name: 'Kapal Laut', icon: '🚢', isOdd: true, reason: 'Kapal berlayar di laut, yang lain kendaraan di jalan darat!' }
+    ],
+    hint: 'Manakah kendaraan yang tidak melaju di jalan darat?'
+  },
+  {
+    id: 12,
+    categoryName: 'Peralatan Mandi',
+    items: [
+      { id: 'soap', name: 'Sabun', icon: '🧼', isOdd: false },
+      { id: 'shampoo', name: 'Sampo', icon: '🧴', isOdd: false },
+      { id: 'towel', name: 'Handuk', icon: '🛁', isOdd: false },
+      { id: 'notebook2', name: 'Buku', icon: '📚', isOdd: true, reason: 'Buku untuk dibaca dan belajar, yang lain peralatan mandi agar harum!' }
+    ],
+    hint: 'Manakah benda yang bukan peralatan mandi?'
+  },
+  {
+    id: 13,
+    categoryName: 'Makanan Manis',
+    items: [
+      { id: 'donut', name: 'Donat', icon: '🍩', isOdd: false },
+      { id: 'cake', name: 'Kue', icon: '🍰', isOdd: false },
+      { id: 'choco', name: 'Cokelat', icon: '🍫', isOdd: false },
+      { id: 'chili', name: 'Cabai', icon: '🌶️', isOdd: true, reason: 'Cabai rasanya pedas membakar, yang lain makanan manis lezat!' }
+    ],
+    hint: 'Manakah yang rasanya pedas dan bukan makanan manis?'
+  },
+  {
+    id: 14,
+    categoryName: 'Hewan Berkaki Empat',
+    items: [
+      { id: 'cow', name: 'Sapi', icon: '🐄', isOdd: false },
+      { id: 'horse', name: 'Kuda', icon: '🐎', isOdd: false },
+      { id: 'goat', name: 'Kambing', icon: '🐐', isOdd: false },
+      { id: 'chicken', name: 'Ayam', icon: '🐔', isOdd: true, reason: 'Ayam punya dua kaki dan sayap, yang lain hewan berkaki empat!' }
+    ],
+    hint: 'Manakah hewan yang kakinya hanya ada dua?'
+  },
+  {
+    id: 15,
+    categoryName: 'Alat Kebersihan',
+    items: [
+      { id: 'broom', name: 'Sapu', icon: '🧹', isOdd: false },
+      { id: 'bucket', name: 'Ember', icon: '🪣', isOdd: false },
+      { id: 'trash', name: 'Tempat Sampah', icon: '🗑️', isOdd: false },
+      { id: 'plate', name: 'Piring', icon: '🍽️', isOdd: true, reason: 'Piring untuk wadah makan lezat, yang lain alat pembersih rumah!' }
+    ],
+    hint: 'Manakah benda yang bukan alat untuk membersihkan rumah?'
+  },
+  {
+    id: 16,
+    categoryName: 'Barang Elektronik',
+    items: [
+      { id: 'tv_elec', name: 'Televisi', icon: '📺', isOdd: false },
+      { id: 'fridge', name: 'Kulkas', icon: '🧊', isOdd: false },
+      { id: 'lamp', name: 'Lampu', icon: '💡', isOdd: false },
+      { id: 'pillow_odd', name: 'Bantal', icon: '🛋️', isOdd: true, reason: 'Bantal empuk untuk tidur, yang lain barang elektronik berdaya listrik!' }
+    ],
+    hint: 'Manakah benda yang tidak memakai tenaga listrik?'
+  },
+  {
+    id: 17,
+    categoryName: 'Hewan Buas Rimba',
+    items: [
+      { id: 'tiger', name: 'Harimau', icon: '🐅', isOdd: false },
+      { id: 'croc', name: 'Buaya', icon: '🐊', isOdd: false },
+      { id: 'bear', name: 'Beruang', icon: '🐻', isOdd: false },
+      { id: 'rabbit2', name: 'Kelinci', icon: '🐰', isOdd: true, reason: 'Kelinci lucu pemakan wortel, yang lain hewan buas pemangsa!' }
+    ],
+    hint: 'Manakah hewan jinak kesayangan yang tidak buas?'
+  },
+  {
+    id: 18,
+    categoryName: 'Peralatan Makan',
+    items: [
+      { id: 'spoon2', name: 'Sendok', icon: '🥄', isOdd: false },
+      { id: 'fork2', name: 'Garpu', icon: '🍴', isOdd: false },
+      { id: 'bowl', name: 'Mangkuk', icon: '🥣', isOdd: false },
+      { id: 'hat', name: 'Topi', icon: '🎩', isOdd: true, reason: 'Topi aksesoris di kepala, yang lain peralatan makan di meja!' }
+    ],
+    hint: 'Manakah benda yang bukan alat untuk makan?'
+  },
+  {
+    id: 19,
+    categoryName: 'Serangga Mungil',
+    items: [
+      { id: 'ant_odd', name: 'Semut', icon: '🐜', isOdd: false },
+      { id: 'fly', name: 'Lalat', icon: '🪰', isOdd: false },
+      { id: 'mosquito', name: 'Nyamuk', icon: '🦟', isOdd: false },
+      { id: 'elephant_odd', name: 'Gajah', icon: '🐘', isOdd: true, reason: 'Gajah hewan raksasa berbelalai, yang lain serangga bertubuh mungil!' }
+    ],
+    hint: 'Manakah hewan berbadan besar yang bukan serangga?'
+  },
+  {
+    id: 20,
+    categoryName: 'Gejala Alam di Langit',
+    items: [
+      { id: 'rain_odd', name: 'Hujan', icon: '🌧️', isOdd: false },
+      { id: 'lightning', name: 'Petir', icon: '⚡', isOdd: false },
+      { id: 'rainbow_odd', name: 'Pelangi', icon: '🌈', isOdd: false },
+      { id: 'robot', name: 'Robot', icon: '🤖', isOdd: true, reason: 'Robot mesin buatan manusia, yang lain gejala alam di langit luas!' }
+    ],
+    hint: 'Manakah yang bukan peristiwa alam di langit?'
   }
 ];
 
@@ -244,6 +355,136 @@ export const SEQUENCE_DATA = [
       { id: 'truck', icon: '🚂', text: 'Kereta Api' }
     ],
     explanation: 'Hore juara! Lilin ditiup, semua tepuk tangan gembira dan membuka hadiah ulang tahun!'
+  },
+  {
+    id: 11,
+    title: 'Memasak Nasi Pulen',
+    step1: { icon: '🌾', text: '1. Cuci Beras Bersih' },
+    step2: { icon: '🍚', text: '2. Masak di Panci' },
+    targetPrompt: 'Setelah beras matang dimasak, jadi apa?',
+    correctChoice: { id: 'cooked_rice', icon: '🍛', text: 'Nasi Hangat Lezat Siap Makan!' },
+    distractors: [
+      { id: 'kite', icon: '🪁', text: 'Layang-layang' },
+      { id: 'shoe_seq', icon: '👞', text: 'Sepatu Kulit' }
+    ],
+    explanation: 'Pintar sekali! Beras yang dimasak matang menjadi nasi pulen yang lezat untuk disantap!'
+  },
+  {
+    id: 12,
+    title: 'Mengirim Surat Kasih Sayang',
+    step1: { icon: '✍️', text: '1. Tulis Surat Manis' },
+    step2: { icon: '✉️', text: '2. Masukkan Amplop & Pos' },
+    targetPrompt: 'Setelah dikirim pak pos, surat tiba di mana?',
+    correctChoice: { id: 'delivered_letter', icon: '🏠', text: 'Sampai di Rumah Nenek!' },
+    distractors: [
+      { id: 'plane_seq', icon: '🚀', text: 'Roket Luar Angkasa' },
+      { id: 'football_seq', icon: '⚽', text: 'Bola Sepak' }
+    ],
+    explanation: 'Hebat! Surat yang dikirim pak pos akhirnya tiba dengan selamat di rumah nenek tersayang!'
+  },
+  {
+    id: 13,
+    title: 'Membangun Menara Balok',
+    step1: { icon: '🧱', text: '1. Kumpulkan Balok Kayu' },
+    step2: { icon: '🏗️', text: '2. Susun Tinggi ke Atas' },
+    targetPrompt: 'Setelah balok disusun rapi ke atas, jadi apa?',
+    correctChoice: { id: 'castle_seq', icon: '🏰', text: 'Istana Balok Megah Berdiri!' },
+    distractors: [
+      { id: 'fish_seq', icon: '🐟', text: 'Ikan Koi' },
+      { id: 'carrot_seq', icon: '🥕', text: 'Wortel Jingga' }
+    ],
+    explanation: 'Juara! Balok-balok kayu yang disusun tinggi kini menjadi istana mainan yang sangat megah!'
+  },
+  {
+    id: 14,
+    title: 'Mandi Pagi Segar',
+    step1: { icon: '🚿', text: '1. Basahi Tubuh dengan Air' },
+    step2: { icon: '🧼', text: '2. Gosok Sabun Harum' },
+    targetPrompt: 'Setelah dibilas bersih, bagaimana tubuh kita?',
+    correctChoice: { id: 'fresh_body', icon: '🌟', text: 'Badan Segar, Harum & Ceria!' },
+    distractors: [
+      { id: 'hammer_seq', icon: '🔨', text: 'Palu Besi' },
+      { id: 'car_seq', icon: '🚗', text: 'Mobil Sedan' }
+    ],
+    explanation: 'Tepat sekali! Setelah mandi dan digosok sabun, tubuh kita menjadi harum, segar, dan sehat!'
+  },
+  {
+    id: 15,
+    title: 'Memakai Sepatu Rapi',
+    step1: { icon: '🧦', text: '1. Pasang Kaus Kaki' },
+    step2: { icon: '👟', text: '2. Masukkan Kaki ke Sepatu' },
+    targetPrompt: 'Setelah kaki masuk, apa yang dilakukan pada tali sepatu?',
+    correctChoice: { id: 'tie_shoes', icon: '🎀', text: 'Ikat Tali Sepatu Rapi Siap Jalan!' },
+    distractors: [
+      { id: 'moon_seq', icon: '🌙', text: 'Bulan Sabit' },
+      { id: 'drum_seq', icon: '🥁', text: 'Alat Musik Drum' }
+    ],
+    explanation: 'Luar biasa! Setelah tali sepatu diikat rapi, kamu siap berangkat sekolah dengan aman!'
+  },
+  {
+    id: 16,
+    title: 'Memetik Buah Apel di Kebun',
+    step1: { icon: '🌳', text: '1. Pohon Apel Berbuah' },
+    step2: { icon: '🧺', text: '2. Petik ke Keranjang' },
+    targetPrompt: 'Setelah apel dicuci bersih, apa yang kita lakukan?',
+    correctChoice: { id: 'eat_apple', icon: '🍎', text: 'Nikmati Apel Segar & Manis!' },
+    distractors: [
+      { id: 'guitar_seq', icon: '🎸', text: 'Gitar Melodi' },
+      { id: 'boat_seq', icon: '⛵', text: 'Perahu Layar' }
+    ],
+    explanation: 'Pintar! Apel merah yang dipetik dan dicuci bersih langsung bisa dinikmati dengan lezat!'
+  },
+  {
+    id: 17,
+    title: 'Balon Udara Terbang Tinggi',
+    step1: { icon: '🎈', text: '1. Balon Udara di Lapangan' },
+    step2: { icon: '🔥', text: '2. Nyalakan Api Pemanas' },
+    targetPrompt: 'Setelah udara panas mengisi balon, apa yang terjadi?',
+    correctChoice: { id: 'balloon_fly', icon: '☁️', text: 'Balon Terbang Tinggi ke Awan!' },
+    distractors: [
+      { id: 'anchor', icon: '⚓', text: 'Jangkar Kapal' },
+      { id: 'cactus', icon: '🌵', text: 'Kaktus Berduri' }
+    ],
+    explanation: 'Hebat sekali! Udara panas membuat balon terangkat dan terbang menjelajah langit biru!'
+  },
+  {
+    id: 18,
+    title: 'Merapikan Tempat Tidur',
+    step1: { icon: '⏰', text: '1. Bangun Pagi Segar' },
+    step2: { icon: '🛏️', text: '2. Lipat Selimut Rapi' },
+    targetPrompt: 'Setelah bantal ditata rapi, bagaimana kamarnya?',
+    correctChoice: { id: 'clean_room', icon: '✨', text: 'Kamar Bersih & Nyaman Dilihat!' },
+    distractors: [
+      { id: 'bicycle', icon: '🚲', text: 'Sepeda Gunung' },
+      { id: 'icecream_seq', icon: '🍦', text: 'Es Krim Vanila' }
+    ],
+    explanation: 'Juara! Anak pintar selalu merapikan tempat tidurnya sendiri agar kamar selalu bersih dan rapi!'
+  },
+  {
+    id: 19,
+    title: 'Membuat Segelas Jus Jeruk',
+    step1: { icon: '🍊', text: '1. Kupas Jeruk Segar' },
+    step2: { icon: '🥤', text: '2. Peras Air Jeruk Manis' },
+    targetPrompt: 'Setelah air jeruk diperas ke dalam gelas, jadi apa?',
+    correctChoice: { id: 'orange_juice', icon: '🍹', text: 'Segelas Jus Jeruk Manis & Segar!' },
+    distractors: [
+      { id: 'book_seq', icon: '📖', text: 'Buku Dongeng' },
+      { id: 'umbrella_seq', icon: '☂️', text: 'Payung Hujan' }
+    ],
+    explanation: 'Tepat sekali! Air jeruk manis yang diperas menjadi minuman jus buah yang kaya vitamin C!'
+  },
+  {
+    id: 20,
+    title: 'Matahari Senja Terbenam',
+    step1: { icon: '☀️', text: '1. Siang Hari yang Terik' },
+    step2: { icon: '🌇', text: '2. Senja Lembayung Jingga' },
+    targetPrompt: 'Setelah matahari tenggelam sempurna, waktu berganti jadi apa?',
+    correctChoice: { id: 'night_stars', icon: '🌃', text: 'Malam Berbintang & Waktu Tidur!' },
+    distractors: [
+      { id: 'swimming', icon: '🏊', text: 'Berenang di Danau' },
+      { id: 'lawnmower', icon: '🚜', text: 'Traktor Sawah' }
+    ],
+    explanation: 'Luar biasa! Setelah senja berganti malam, bintang-bintang bersinar dan saatnya beristirahat tidur nyenyak!'
   }
 ];
 
@@ -357,31 +598,161 @@ export const PAIRS_DATA = [
       { id: 'tv', name: 'Televisi', icon: '📺' }
     ],
     reason: 'Ikan berenang riang gembira di dalam air!'
+  },
+  {
+    id: 11,
+    target: { id: 'lamp', name: 'LAMPU MEJA', icon: '💡' },
+    prompt: 'LAMPU MEJA dinyalakan dicolok ke mana?',
+    correctChoice: { id: 'plug', name: 'Stopkontak', icon: '🔌' },
+    distractors: [
+      { id: 'apple_pair', name: 'Apel', icon: '🍎' },
+      { id: 'hat_pair', name: 'Topi', icon: '🧢' }
+    ],
+    reason: 'Lampu meja dinyalakan dengan menghubungkan colokan ke stopkontak!'
+  },
+  {
+    id: 12,
+    target: { id: 'bed', name: 'KASUR TIDUR', icon: '🛏️' },
+    prompt: 'KASUR TIDUR selalu berpasangan dengan apa?',
+    correctChoice: { id: 'pillow_pair', name: 'Bantal Empuk', icon: '🛋️' },
+    distractors: [
+      { id: 'drum_pair', name: 'Drum', icon: '🥁' },
+      { id: 'fork_pair', name: 'Garpu', icon: '🍴' }
+    ],
+    reason: 'Kasur empuk berpasangan dengan bantal agar tidur nyaman!'
+  },
+  {
+    id: 13,
+    target: { id: 'envelope', name: 'AMPLOP SURAT', icon: '✉️' },
+    prompt: 'AMPLOP SURAT ditempelkan apa sebelum dikirim?',
+    correctChoice: { id: 'stamp', name: 'Prangko', icon: '📮' },
+    distractors: [
+      { id: 'car_pair', name: 'Mobil', icon: '🚗' },
+      { id: 'spoon_pair', name: 'Sendok', icon: '🥄' }
+    ],
+    reason: 'Amplop surat ditempeli prangko agar bisa diantar oleh pak pos!'
+  },
+  {
+    id: 14,
+    target: { id: 'hammer_pair', name: 'PALU BESI', icon: '🔨' },
+    prompt: 'PALU BESI digunakan untuk memukul apa?',
+    correctChoice: { id: 'nail', name: 'Paku', icon: '🔩' },
+    distractors: [
+      { id: 'glass_pair', name: 'Gelas', icon: '🥛' },
+      { id: 'flower_pair', name: 'Bunga', icon: '🌸' }
+    ],
+    reason: 'Palu besi digunakan untuk memukul paku kayu dengan kuat!'
+  },
+  {
+    id: 15,
+    target: { id: 'book_pair', name: 'BUKU BACAAN', icon: '📚' },
+    prompt: 'BUKU BACAAN disimpan dengan rapi di mana?',
+    correctChoice: { id: 'bookshelf', name: 'Rak Buku', icon: '🪵' },
+    distractors: [
+      { id: 'fish_pair', name: 'Ikan', icon: '🐟' },
+      { id: 'shoe_pair', name: 'Sepatu', icon: '👟' }
+    ],
+    reason: 'Buku-buku bacaan ditata rapi di atas rak buku perpustakaan!'
+  },
+  {
+    id: 16,
+    target: { id: 'pants_pair', name: 'CELANA PANJANG', icon: '👖' },
+    prompt: 'CELANA PANJANG dipasangkan apa di pinggang?',
+    correctChoice: { id: 'belt', name: 'Ikat Pinggang', icon: '🎗️' },
+    distractors: [
+      { id: 'cup_pair', name: 'Cangkir', icon: '☕' },
+      { id: 'clock_pair', name: 'Jam Dinding', icon: '⏰' }
+    ],
+    reason: 'Celana panjang dipasangi ikat pinggang agar pas dan rapi!'
+  },
+  {
+    id: 17,
+    target: { id: 'raincoat', name: 'JAS HUJAN', icon: '🧥' },
+    prompt: 'JAS HUJAN dipakai bersama apa saat banjir becek?',
+    correctChoice: { id: 'boots', name: 'Sepatu Bot', icon: '👢' },
+    distractors: [
+      { id: 'guitar_pair', name: 'Gitar', icon: '🎸' },
+      { id: 'pencil_pair', name: 'Pensil', icon: '✏️' }
+    ],
+    reason: 'Jas hujan dan sepatu bot melindungi tubuh kita dari cipratan air!'
+  },
+  {
+    id: 18,
+    target: { id: 'stove', name: 'KOMPOR DAPUR', icon: '🔥' },
+    prompt: 'KOMPOR DAPUR digunakan untuk memasak dengan apa?',
+    correctChoice: { id: 'pan_pair', name: 'Panci & Wajan', icon: '🍳' },
+    distractors: [
+      { id: 'pillow_pair2', name: 'Bantal', icon: '🛋️' },
+      { id: 'kite_pair', name: 'Layangan', icon: '🪁' }
+    ],
+    reason: 'Kompor dapur memasak masakan lezat di dalam panci dan wajan!'
+  },
+  {
+    id: 19,
+    target: { id: 'glasses', name: 'KACAMATA', icon: '👓' },
+    prompt: 'KACAMATA disimpan dengan aman di dalam apa?',
+    correctChoice: { id: 'glasses_case', name: 'Kotak Kacamata', icon: '💼' },
+    distractors: [
+      { id: 'bucket_pair', name: 'Ember Air', icon: '🪣' },
+      { id: 'tire_pair', name: 'Ban Mobil', icon: '🛞' }
+    ],
+    reason: 'Kacamata disimpan di dalam kotaknya agar kacanya tidak tergores!'
+  },
+  {
+    id: 20,
+    target: { id: 'whiteboard', name: 'PAPAN TULIS', icon: '📋' },
+    prompt: 'PAPAN TULIS ditulis menggunakan apa?',
+    correctChoice: { id: 'marker', name: 'Spidol Warna', icon: '🖊️' },
+    distractors: [
+      { id: 'soap_pair', name: 'Sabun Mandi', icon: '🧼' },
+      { id: 'spoon_pair2', name: 'Sendok Makan', icon: '🥄' }
+    ],
+    reason: 'Papan tulis digunakan bapak ibu guru menulis dengan spidol warna!'
   }
 ];
 
 export const PHONICS_DATA = [
-  { level: 1, letter: 'B', soundHint: 'Be! B untuk Bebek', choices: ['A', 'B', 'C'] },
-  { level: 2, letter: 'M', soundHint: 'Em! M untuk Mobil', choices: ['N', 'M', 'W'] },
-  { level: 3, letter: 'S', soundHint: 'Es! S untuk Singa', choices: ['S', 'C', 'Z'] },
-  { level: 4, letter: 'A', soundHint: 'A! A untuk Apel', choices: ['O', 'A', 'E'] },
-  { level: 5, letter: 'K', soundHint: 'Ka! K untuk Kucing', choices: ['H', 'K', 'L'] },
-  { level: 6, letter: 'D', soundHint: 'De! D untuk Dinosaurus', choices: ['B', 'P', 'D'] },
-  { level: 7, letter: 'P', soundHint: 'Pe! P untuk Pesawat', choices: ['P', 'Q', 'R'] },
-  { level: 8, letter: 'I', soundHint: 'I! I untuk Ikan', choices: ['T', 'I', 'L'] },
-  { level: 9, letter: 'R', soundHint: 'Er! R untuk Roket', choices: ['R', 'P', 'B'] },
-  { level: 10, letter: 'Z', soundHint: 'Zet! Z untuk Zebra', choices: ['N', 'S', 'Z'] }
+  { level: 1, letter: 'B', soundHint: 'Bunyi /b/... beh, beh, Bebek!', phoneme: 'beh', choices: ['A', 'B', 'C'] },
+  { level: 2, letter: 'M', soundHint: 'Bunyi /m/... mmm, mmm, Mobil!', phoneme: 'mmm', choices: ['N', 'M', 'W'] },
+  { level: 3, letter: 'S', soundHint: 'Bunyi /s/... sss seperti ular, Singa!', phoneme: 'sss', choices: ['S', 'C', 'Z'] },
+  { level: 4, letter: 'A', soundHint: 'Bunyi /a/... ah, ah, Apel!', phoneme: 'ah', choices: ['O', 'A', 'E'] },
+  { level: 5, letter: 'K', soundHint: 'Bunyi /k/... keh, keh, Kucing!', phoneme: 'keh', choices: ['H', 'K', 'L'] },
+  { level: 6, letter: 'D', soundHint: 'Bunyi /d/... deh, deh, Dinosaurus!', phoneme: 'deh', choices: ['B', 'P', 'D'] },
+  { level: 7, letter: 'P', soundHint: 'Bunyi /p/... puh, puh, Pesawat!', phoneme: 'puh', choices: ['P', 'Q', 'R'] },
+  { level: 8, letter: 'I', soundHint: 'Bunyi /i/... ih, ih, Ikan!', phoneme: 'ih', choices: ['T', 'I', 'L'] },
+  { level: 9, letter: 'R', soundHint: 'Bunyi /r/... rrr seperti roket meluncur!', phoneme: 'rrr', choices: ['R', 'P', 'B'] },
+  { level: 10, letter: 'Z', soundHint: 'Bunyi /z/... zzz dengung lebah, Zebra!', phoneme: 'zzz', choices: ['N', 'S', 'Z'] },
+  { level: 11, letter: 'T', soundHint: 'Bunyi /t/... teh, teh, Truk!', phoneme: 'teh', choices: ['T', 'F', 'I'] },
+  { level: 12, letter: 'L', soundHint: 'Bunyi /l/... lll, lll, Lumba-lumba!', phoneme: 'lll', choices: ['L', 'I', 'J'] },
+  { level: 13, letter: 'N', soundHint: 'Bunyi /n/... nnn baling-baling, Nanas!', phoneme: 'nnn', choices: ['N', 'M', 'H'] },
+  { level: 14, letter: 'U', soundHint: 'Bunyi /u/... uh, uh, Udang!', phoneme: 'uh', choices: ['U', 'V', 'O'] },
+  { level: 15, letter: 'G', soundHint: 'Bunyi /g/... geh, geh, Gajah!', phoneme: 'geh', choices: ['G', 'C', 'Q'] },
+  { level: 16, letter: 'H', soundHint: 'Bunyi /h/... hhh hembusan nafas, Hiu!', phoneme: 'hhh', choices: ['H', 'K', 'N'] },
+  { level: 17, letter: 'J', soundHint: 'Bunyi /j/... jeh, jeh, Jerapah!', phoneme: 'jeh', choices: ['J', 'L', 'I'] },
+  { level: 18, letter: 'C', soundHint: 'Bunyi /c/... ceh, ceh, Ceri!', phoneme: 'ceh', choices: ['C', 'G', 'O'] },
+  { level: 19, letter: 'O', soundHint: 'Bunyi /o/... oh, oh, Orangutan!', phoneme: 'oh', choices: ['O', 'Q', 'D'] },
+  { level: 20, letter: 'F', soundHint: 'Bunyi /f/... fff tiupan angin, Flamingo!', phoneme: 'fff', choices: ['F', 'E', 'T'] }
 ];
 
 export const WORDS_DATA = [
   { level: 1, word: 'APEL', image: 'a.svg', helper: 'Buah manis warna merah', choices: ['APEL', 'AYAM', 'AWAN'] },
   { level: 2, word: 'BEBEK', image: 'b.svg', helper: 'Hewan kwek-kwek berenang', choices: ['BEBEK', 'BUKU', 'BALON'] },
   { level: 3, word: 'CERI', image: 'c.svg', helper: 'Buah kecil merah kembar', choices: ['CERI', 'CANGKIR', 'CELANA'] },
-  { level: 4, word: 'DINO', image: 'd.svg', helper: 'Sahabat purba kita', choices: ['DINO', 'DOMBA', 'DURIAN'] },
+  { level: 4, word: 'DINO', image: 'd.svg', helper: 'Sahabat purba bertelur', choices: ['DINO', 'DOMBA', 'DURIAN'] },
   { level: 5, word: 'GAJAH', image: 'g.svg', helper: 'Hewan besar belalai panjang', choices: ['GAJAH', 'GITAR', 'GELAS'] },
   { level: 6, word: 'IKAN', image: 'i.svg', helper: 'Berenang lincah di air', choices: ['IKAN', 'ITIK', 'INTAN'] },
   { level: 7, word: 'KUCING', image: 'k.svg', helper: 'Hewan berbulu meong', choices: ['KUCING', 'KUDA', 'KERA'] },
   { level: 8, word: 'MOBIL', image: 'm.svg', helper: 'Kendaraan roda empat', choices: ['MOBIL', 'MATA', 'MEJA'] },
   { level: 9, word: 'PESAWAT', image: 'p.svg', helper: 'Terbang tinggi di awan', choices: ['PESAWAT', 'PINTU', 'POHON'] },
-  { level: 10, word: 'SINGA', image: 's.svg', helper: 'Raja rimba bersuara aum', choices: ['SINGA', 'SAPI', 'SENDOK'] }
+  { level: 10, word: 'SINGA', image: 's.svg', helper: 'Raja rimba bersuara aum', choices: ['SINGA', 'SAPI', 'SENDOK'] },
+  { level: 11, word: 'HIU', image: 'h.svg', helper: 'Ikan perkasa di lautan', choices: ['HIU', 'HATI', 'HUJAN'] },
+  { level: 12, word: 'JERAPAH', image: 'j.svg', helper: 'Hewan leher paling tinggi', choices: ['JERAPAH', 'JERUK', 'JAMUR'] },
+  { level: 13, word: 'LUMBA', image: 'l.svg', helper: 'Sahabat laut lincah melompat', choices: ['LUMBA', 'LEBAH', 'LILIN'] },
+  { level: 14, word: 'NANAS', image: 'n.svg', helper: 'Buah bersisik mahkota daun', choices: ['NANAS', 'NAGA', 'NASI'] },
+  { level: 15, word: 'ORANGUTAN', image: 'o.svg', helper: 'Primata cerdas di pepohonan', choices: ['ORANGUTAN', 'ONTA', 'OMBAK'] },
+  { level: 16, word: 'ROKET', image: 'r.svg', helper: 'Meluncur cepat ke angkasa', choices: ['ROKET', 'ROTI', 'RUSA'] },
+  { level: 17, word: 'TRUK', image: 't.svg', helper: 'Mobil angkut muatan berat', choices: ['TRUK', 'TOPI', 'TALI'] },
+  { level: 18, word: 'UDANG', image: 'u.svg', helper: 'Hewan laut berkulit jingga', choices: ['UDANG', 'ULAR', 'UNTA'] },
+  { level: 19, word: 'WORTEL', image: 'w.svg', helper: 'Sayur jingga makanan kelinci', choices: ['WORTEL', 'WAJAN', 'WAYANG'] },
+  { level: 20, word: 'ZEBRA', image: 'z.svg', helper: 'Kuda belang hitam dan putih', choices: ['ZEBRA', 'ZIGZAG', 'ZONA'] }
 ];

@@ -513,8 +513,12 @@ body {
 
 .stars-container {
   display: flex;
-  gap: 4px;
-  font-size: 1.3rem;
+  gap: 2.5px;
+  font-size: 1.05rem;
+  max-width: 440px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .star {
@@ -552,6 +556,22 @@ body {
 .dino-arena.dense .dino-card svg {
   width: 80px;
   height: 80px;
+}
+
+.dino-arena.very-dense {
+  gap: 6px;
+  max-width: 1000px;
+}
+
+.dino-arena.very-dense .dino-card svg {
+  width: 60px;
+  height: 60px;
+}
+
+.dino-arena.very-dense .dino-number-tag {
+  width: 22px;
+  height: 22px;
+  font-size: 0.85rem;
 }
 
 .dino-arena.sparse .dino-card svg {
