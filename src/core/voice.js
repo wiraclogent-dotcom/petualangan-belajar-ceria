@@ -99,6 +99,13 @@ export class VoiceController {
   }
 
   startListening({ targetWord = '', targetLetter = '', onMatch = null, onNoMatch = null, onError = null, hintText = '' }) {
+    const now = Date.now();
+    if (this.lastStartTime && (now - this.lastStartTime) < 800) {
+      console.log('VOICE: Debouncing rapid voice requests');
+      return false;
+    }
+    this.lastStartTime = now;
+
     this.currentTargetWord = targetWord;
     this.currentTargetLetter = targetLetter;
     this.onMatchCallback = onMatch;

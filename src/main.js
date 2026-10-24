@@ -255,6 +255,11 @@ export class LearningApp {
 
   attachEvents() {
     window.addEventListener('keydown', (e) => {
+      // Ignore key repeat to prevent rapid multiple triggers on TV remote
+      if (e.repeat && ['ArrowUp', 'Enter', 'Space'].includes(e.key)) {
+        return;
+      }
+
       // Prevent scrolling default remote TV
       if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space', 'Enter'].includes(e.key)) {
         e.preventDefault();
