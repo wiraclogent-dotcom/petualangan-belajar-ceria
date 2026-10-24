@@ -96,7 +96,7 @@ export class ColorsGame {
           if (this.level >= 10) {
             this.engine.showVictory();
           } else {
-            this.showCelebration(`Warna ${chosen.name} Berhasil Ditemukan!`, () => {
+            this.engine.showCelebration(`Warna ${chosen.name} Berhasil Ditemukan!`, () => {
               this.level++;
               this.loadLevel(this.level);
             });

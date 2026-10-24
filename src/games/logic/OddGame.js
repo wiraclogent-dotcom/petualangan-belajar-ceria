@@ -89,7 +89,7 @@ export class OddGame {
           if (this.level >= 10) {
             this.engine.showVictory();
           } else {
-            this.showCelebration(`Detektif Cilik Berhasil Menemukan Jawaban!`, () => {
+            this.engine.showCelebration(`Detektif Cilik Berhasil Menemukan Jawaban!`, () => {
               this.level++;
               this.loadLevel(this.level);
             });

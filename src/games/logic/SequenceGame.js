@@ -121,7 +121,7 @@ export class SequenceGame {
           if (this.level >= 10) {
             this.engine.showVictory();
           } else {
-            this.showCelebration(`Urutan Cerita Berhasil Disusun!`, () => {
+            this.engine.showCelebration(`Urutan Cerita Berhasil Disusun!`, () => {
               this.level++;
               this.loadLevel(this.level);
             });

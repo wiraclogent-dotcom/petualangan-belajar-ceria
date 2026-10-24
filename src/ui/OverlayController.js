@@ -63,6 +63,13 @@ export class OverlayController {
     this.engine.reportTVState();
   }
 
+  hideCelebration() {
+    this.isCelebrationActive = false;
+    if (this.celebrationEl) {
+      this.celebrationEl.classList.remove('active');
+    }
+  }
+
   dismissCelebration() {
     if (!this.isCelebrationActive) return;
     this.isCelebrationActive = false;
@@ -84,6 +91,13 @@ export class OverlayController {
     if (this.victoryEl) this.victoryEl.classList.add('active');
     speakText('Hore! Selamat! Kamu berhasil menyelesaikan semua tingkat!');
     this.engine.reportTVState();
+  }
+
+  hideVictory() {
+    this.isVictoryActive = false;
+    if (this.victoryEl) {
+      this.victoryEl.classList.remove('active');
+    }
   }
 
   dismissVictory() {

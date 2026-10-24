@@ -108,7 +108,7 @@ export class PairsGame {
           if (this.level >= 10) {
             this.engine.showVictory();
           } else {
-            this.showCelebration(`Pasangan Serasi Ditemukan!`, () => {
+            this.engine.showCelebration(`Pasangan Serasi Ditemukan!`, () => {
               this.level++;
               this.loadLevel(this.level);
             });
