@@ -82,6 +82,17 @@ public class MainActivity extends Activity {
                     view.loadUrl(OFFLINE_URL);
                 }
             }
+
+            @Override
+            public boolean onRenderProcessGone(WebView view, android.webkit.RenderProcessGoneDetail detail) {
+                Log.w(TAG, "WebView render process gone. Crashed: " + (detail != null && detail.didCrash()));
+                if (webView != null) {
+                    webView.destroy();
+                    recreate();
+                    return true;
+                }
+                return super.onRenderProcessGone(view, detail);
+            }
         });
 
         webView.setWebChromeClient(new WebChromeClient());

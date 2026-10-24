@@ -202,6 +202,12 @@ export class LearningApp {
 
     cancelSpeech();
 
+    // Safety: pastikan input game aktif tidak terkunci saat navigasi mundur
+    const curGame = this.games[this.currentView];
+    if (curGame) {
+      curGame.isInputLocked = false;
+    }
+
     // 1. Pop-up overlay
     if (this.overlay.isCelebrationActive) {
       this.overlay.hideCelebration();
@@ -280,6 +286,19 @@ window.handleRemoteBack = () => {
   }
   return false;
 };
+
+// Global error boundary & failsafe
+window.addEventListener('error', (e) => {
+  console.error('GLOBAL_APP_ERROR:', e.message, e.filename, e.lineno);
+  if (window.app && window.app.games) {
+    const cur = window.app.games[window.app.currentView];
+    if (cur) cur.isInputLocked = false;
+  }
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('GLOBAL_PROMISE_REJECTION:', e.reason);
+});
 
 // Initialize app when DOM is ready
 if (document.readyState === 'loading') {
