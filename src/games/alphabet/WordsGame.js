@@ -1,6 +1,6 @@
 import { WORDS_DATA } from '../../data/logicData.js';
 import { shuffleArray } from '../../core/randomizer.js';
-import { speakText } from '../../core/tts.js';
+import { speakText, cancelSpeech } from '../../core/tts.js';
 
 export class WordsGame {
   constructor(engine) {
@@ -15,6 +15,9 @@ export class WordsGame {
 
   start() {
     this.level = 1;
+    if (this.engine.voice) {
+      this.engine.voice.stopListening();
+    }
     this.pool = shuffleArray(WORDS_DATA);
     this.engine.initStars('words-stars-container', 10);
     this.loadLevel(this.level);
@@ -44,6 +47,7 @@ export class WordsGame {
       card.id = `words-choice-${idx}`;
       card.innerText = word;
       card.addEventListener('click', () => {
+        if (this.isInputLocked) return;
         this.selectedChoice = idx;
         this.updateFocus();
         this.handleKey('Enter');
@@ -63,8 +67,60 @@ export class WordsGame {
     this.engine.reportTVState();
   }
 
+  triggerVoiceInput() {
+    if (this.isInputLocked || !this.engine.voice) return;
+
+    cancelSpeech();
+    const data = this.currentData;
+
+    this.engine.voice.startListening({
+      targetWord: data.word,
+      targetLetter: '',
+      hintText: `Katakan kata: "${data.word}"`,
+      onMatch: (spoken, isMatch) => {
+        if (this.isInputLocked) return;
+
+        // 1. Cek kecocokan langsung dengan target jawaban
+        if (isMatch) {
+          const targetIdx = this.choices.indexOf(data.word);
+          if (targetIdx !== -1) {
+            this.selectedChoice = targetIdx;
+            this.updateFocus();
+            this.handleKey('Enter');
+            return;
+          }
+        }
+
+        // 2. Cek apakah ucapan anak menyebut salah satu pilihan lain di layar
+        let matchedChoiceIdx = -1;
+        for (let i = 0; i < this.choices.length; i++) {
+          const wordChoice = this.choices[i];
+          if (this.engine.voice.fuzzyMatch(spoken, wordChoice, '')) {
+            matchedChoiceIdx = i;
+            break;
+          }
+        }
+
+        if (matchedChoiceIdx !== -1) {
+          this.selectedChoice = matchedChoiceIdx;
+          this.updateFocus();
+          this.handleKey('Enter');
+        } else {
+          speakText(`Ayo coba lagi, sebutkan kata ${data.word}!`);
+        }
+      },
+      onError: (err) => {
+        console.warn('Voice error in WordsGame:', err);
+      }
+    });
+  }
+
   handleKey(key) {
     if (this.isInputLocked) return;
+
+    if (this.engine.voice && this.engine.voice.isListening && (key === 'ArrowLeft' || key === 'ArrowRight')) {
+      this.engine.voice.stopListening();
+    }
 
     if (key === 'ArrowLeft' && this.selectedChoice > 0) {
       this.selectedChoice--;
@@ -75,14 +131,19 @@ export class WordsGame {
       this.engine.sound.playNavigate();
       this.updateFocus();
     } else if (key === 'ArrowUp') {
-      speakText(`Manakah tulisan kata ${this.currentData.word}?`);
+      // Tombol Mic / Panah Atas remote untuk membaca lisan
+      this.triggerVoiceInput();
     } else if (key === 'Enter' || key === ' ') {
+      if (this.engine.voice) {
+        this.engine.voice.stopListening();
+      }
+
       const chosen = this.choices[this.selectedChoice];
       const card = document.getElementById(`words-choice-${this.selectedChoice}`);
 
       if (chosen === this.currentData.word) {
         this.isInputLocked = true;
-        card.classList.add('correct');
+        if (card) card.classList.add('correct');
         this.engine.sound.playCorrect();
         this.engine.confetti.fire(35);
         this.engine.updateStar(this.level, 'words-stars-container');
@@ -101,10 +162,12 @@ export class WordsGame {
           }
         }, 1200);
       } else {
-        card.classList.add('wrong');
+        if (card) {
+          card.classList.add('wrong');
+          setTimeout(() => card.classList.remove('wrong'), 500);
+        }
         this.engine.sound.playOops();
         speakText(`Itu kata ${chosen}. Ayo cari kata ${this.currentData.word} ya!`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
       }
     }
   }

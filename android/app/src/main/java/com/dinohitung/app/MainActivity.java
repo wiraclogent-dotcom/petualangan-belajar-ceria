@@ -1,7 +1,12 @@
 package com.dinohitung.app;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,6 +19,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends Activity {
@@ -22,6 +28,9 @@ public class MainActivity extends Activity {
     private TextToSpeech tts;
     private boolean isTtsReady = false;
     private String pendingSpeech = null;
+    private SpeechRecognizer speechRecognizer;
+    private Intent speechIntent;
+    private boolean isListening = false;
     private static final String ONLINE_URL = "https://wiraclogent-dotcom.github.io/petualangan-belajar-ceria/";
     private static final String OFFLINE_URL = "file:///android_asset/index.html";
     private boolean isOfflineFallback = false;
@@ -36,8 +45,14 @@ public class MainActivity extends Activity {
         // Fullscreen Immersive Mode for TV
         hideSystemUI();
 
+        // Request runtime permission for remote microphone
+        checkRecordAudioPermission();
+
         // Initialize Android Native TextToSpeech for TV
         initTTS();
+
+        // Initialize Android Native SpeechRecognizer for TV Remote Mic
+        initSpeechRecognizer();
 
         webView = new WebView(this);
         setContentView(webView);
@@ -60,8 +75,9 @@ public class MainActivity extends Activity {
         webView.setFocusableInTouchMode(true);
         webView.requestFocus();
 
-        // Expose Native Android TTS to JavaScript Single Page App
+        // Expose Native Android TTS & Voice Recognition to JavaScript Single Page App
         webView.addJavascriptInterface(new AndroidTTSBridge(), "AndroidTTS");
+        webView.addJavascriptInterface(new AndroidVoiceBridge(), "AndroidVoice");
 
         // Enable standard web cache, check network for latest version
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
@@ -129,6 +145,16 @@ public class MainActivity extends Activity {
                 triggerWebBack();
             }
             return true; // Always consume back key event so Android does not abruptly terminate the app
+        }
+
+        // Intercept TV remote physical Mic / Voice Assistant button (KeyCode 231 / 84 / 219)
+        if (event.getKeyCode() == KeyEvent.KEYCODE_VOICE_ASSIST ||
+            event.getKeyCode() == KeyEvent.KEYCODE_SEARCH ||
+            event.getKeyCode() == 219 /* KEYCODE_ASSIST */) {
+            if (event.getAction() == KeyEvent.ACTION_UP) {
+                sendJs("window.onRemoteMicPressed && window.onRemoteMicPressed();");
+            }
+            return true; // Consume event to prevent Google Assistant overlay from disrupting game
         }
 
         // Forward TV remote DPAD and Enter keys to the WebView
@@ -239,11 +265,157 @@ public class MainActivity extends Activity {
         }
     }
 
+    public class AndroidVoiceBridge {
+        @JavascriptInterface
+        public void startListening() {
+            runOnUiThread(() -> startListeningInternal());
+        }
+
+        @JavascriptInterface
+        public void stopListening() {
+            runOnUiThread(() -> stopListeningInternal());
+        }
+
+        @JavascriptInterface
+        public boolean isAvailable() {
+            return SpeechRecognizer.isRecognitionAvailable(MainActivity.this);
+        }
+    }
+
+    private void checkRecordAudioPermission() {
+        if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.RECORD_AUDIO}, 101);
+        }
+    }
+
+    private void initSpeechRecognizer() {
+        runOnUiThread(() -> {
+            try {
+                if (SpeechRecognizer.isRecognitionAvailable(this)) {
+                    speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+                    speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "id-ID");
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 5);
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
+
+                    speechRecognizer.setRecognitionListener(new RecognitionListener() {
+                        @Override
+                        public void onReadyForSpeech(Bundle params) {
+                            isListening = true;
+                            sendJs("window.onVoiceReady && window.onVoiceReady();");
+                        }
+
+                        @Override
+                        public void onBeginningOfSpeech() {
+                            sendJs("window.onVoiceStart && window.onVoiceStart();");
+                        }
+
+                        @Override
+                        public void onRmsChanged(float rmsdB) {}
+
+                        @Override
+                        public void onBufferReceived(byte[] buffer) {}
+
+                        @Override
+                        public void onEndOfSpeech() {
+                            isListening = false;
+                            sendJs("window.onVoiceEnd && window.onVoiceEnd();");
+                        }
+
+                        @Override
+                        public void onError(int error) {
+                            isListening = false;
+                            Log.w(TAG, "SpeechRecognizer error: " + error);
+                            sendJs("window.onVoiceError && window.onVoiceError(" + error + ");");
+                        }
+
+                        @Override
+                        public void onResults(Bundle results) {
+                            isListening = false;
+                            ArrayList<String> matches = results != null ? results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) : null;
+                            if (matches != null && !matches.isEmpty()) {
+                                String mainMatch = matches.get(0).replace("'", "\\'");
+                                StringBuilder sb = new StringBuilder("[");
+                                for (int i = 0; i < matches.size(); i++) {
+                                    sb.append("'").append(matches.get(i).replace("'", "\\'")).append("'");
+                                    if (i < matches.size() - 1) sb.append(",");
+                                }
+                                sb.append("]");
+                                sendJs("window.onVoiceResult && window.onVoiceResult('" + mainMatch + "', " + sb.toString() + ");");
+                            } else {
+                                sendJs("window.onVoiceResult && window.onVoiceResult('', []);");
+                            }
+                        }
+
+                        @Override
+                        public void onPartialResults(Bundle partialResults) {
+                            ArrayList<String> matches = partialResults != null ? partialResults.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) : null;
+                            if (matches != null && !matches.isEmpty()) {
+                                String partial = matches.get(0).replace("'", "\\'");
+                                sendJs("window.onVoicePartial && window.onVoicePartial('" + partial + "');");
+                            }
+                        }
+
+                        @Override
+                        public void onEvent(int eventType, Bundle params) {}
+                    });
+                } else {
+                    Log.w(TAG, "SpeechRecognizer not available on this device");
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Error initializing SpeechRecognizer", e);
+            }
+        });
+    }
+
+    private void startListeningInternal() {
+        if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            checkRecordAudioPermission();
+            sendJs("window.onVoiceError && window.onVoiceError(9);");
+            return;
+        }
+
+        if (speechRecognizer != null && speechIntent != null) {
+            try {
+                if (isListening) {
+                    speechRecognizer.cancel();
+                }
+                speechRecognizer.startListening(speechIntent);
+            } catch (Exception e) {
+                Log.e(TAG, "Error starting SpeechRecognizer", e);
+                sendJs("window.onVoiceError && window.onVoiceError(-1);");
+            }
+        } else {
+            sendJs("window.onVoiceError && window.onVoiceError(10);");
+        }
+    }
+
+    private void stopListeningInternal() {
+        if (speechRecognizer != null) {
+            try {
+                speechRecognizer.stopListening();
+            } catch (Exception e) {}
+            isListening = false;
+        }
+    }
+
+    private void sendJs(String code) {
+        runOnUiThread(() -> {
+            if (webView != null) {
+                webView.evaluateJavascript(code, null);
+            }
+        });
+    }
+
     @Override
     protected void onDestroy() {
         if (tts != null) {
             tts.stop();
             tts.shutdown();
+        }
+        if (speechRecognizer != null) {
+            speechRecognizer.destroy();
         }
         super.onDestroy();
     }

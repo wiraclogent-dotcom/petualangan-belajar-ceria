@@ -4,6 +4,7 @@ import { ConfettiCannon } from './core/confetti.js';
 import { speakText, cancelSpeech } from './core/tts.js';
 import { HubController } from './ui/HubController.js';
 import { OverlayController } from './ui/OverlayController.js';
+import { VoiceController } from './core/voice.js';
 
 import { CountingGame } from './games/math/CountingGame.js';
 import { AdditionGame } from './games/math/AdditionGame.js';
@@ -27,6 +28,7 @@ export class LearningApp {
     this.confetti = new ConfettiCannon(document.getElementById('confetti-canvas'));
     this.overlay = new OverlayController(this);
     this.hub = new HubController(this);
+    this.voice = new VoiceController(this);
 
     this.currentView = 'HUB';
 
@@ -72,6 +74,12 @@ export class LearningApp {
 
   showView(viewName) {
     cancelSpeech();
+    if (this.voice) {
+      this.voice.stopListening();
+    }
+    if (this.voice) {
+      this.voice.stopListening();
+    }
 
     this.currentView = viewName;
     document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
@@ -182,6 +190,7 @@ export class LearningApp {
       sequenceLevel: this.games.GAME_SEQUENCE ? this.games.GAME_SEQUENCE.level : 1,
       pairsLevel: this.games.GAME_PAIRS ? this.games.GAME_PAIRS.level : 1,
       isInputLocked: isInputLocked,
+      isVoiceListening: this.voice ? this.voice.isListening : false,
       isCelebrationActive: this.overlay.isCelebrationActive,
       isVictoryActive: this.overlay.isVictoryActive,
       lastSpeech: window.lastSpokenText || null
@@ -201,6 +210,9 @@ export class LearningApp {
     } catch (e) {}
 
     cancelSpeech();
+    if (this.voice) {
+      this.voice.stopListening();
+    }
 
     // Safety: pastikan input game aktif tidak terkunci saat navigasi mundur
     const curGame = this.games[this.currentView];

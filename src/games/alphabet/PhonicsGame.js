@@ -1,6 +1,6 @@
 import { PHONICS_DATA } from '../../data/logicData.js';
 import { shuffleArray } from '../../core/randomizer.js';
-import { speakText } from '../../core/tts.js';
+import { speakText, cancelSpeech } from '../../core/tts.js';
 
 export class PhonicsGame {
   constructor(engine) {
@@ -15,6 +15,9 @@ export class PhonicsGame {
 
   start() {
     this.level = 1;
+    if (this.engine.voice) {
+      this.engine.voice.stopListening();
+    }
     this.pool = shuffleArray(PHONICS_DATA);
     this.engine.initStars('phonics-stars-container', 10);
     this.loadLevel(this.level);
@@ -43,6 +46,7 @@ export class PhonicsGame {
       card.id = `phonics-choice-${idx}`;
       card.innerText = char;
       card.addEventListener('click', () => {
+        if (this.isInputLocked) return;
         this.selectedChoice = idx;
         this.updateFocus();
         this.handleKey('Enter');
@@ -62,8 +66,60 @@ export class PhonicsGame {
     this.engine.reportTVState();
   }
 
+  triggerVoiceInput() {
+    if (this.isInputLocked || !this.engine.voice) return;
+
+    cancelSpeech();
+    const data = this.currentData;
+
+    this.engine.voice.startListening({
+      targetWord: data.soundHint,
+      targetLetter: data.letter,
+      hintText: `Katakan huruf "${data.letter}"`,
+      onMatch: (spoken, isMatch) => {
+        if (this.isInputLocked) return;
+
+        // 1. Cek kecocokan langsung dengan target jawaban
+        if (isMatch) {
+          const targetIdx = this.choices.indexOf(data.letter);
+          if (targetIdx !== -1) {
+            this.selectedChoice = targetIdx;
+            this.updateFocus();
+            this.handleKey('Enter');
+            return;
+          }
+        }
+
+        // 2. Cek apakah ucapan anak menyebut salah satu pilihan lain di layar
+        let matchedChoiceIdx = -1;
+        for (let i = 0; i < this.choices.length; i++) {
+          const ch = this.choices[i];
+          if (this.engine.voice.fuzzyMatch(spoken, ch, ch)) {
+            matchedChoiceIdx = i;
+            break;
+          }
+        }
+
+        if (matchedChoiceIdx !== -1) {
+          this.selectedChoice = matchedChoiceIdx;
+          this.updateFocus();
+          this.handleKey('Enter');
+        } else {
+          speakText(`Ayo coba lagi, sebutkan huruf ${data.letter}!`);
+        }
+      },
+      onError: (err) => {
+        console.warn('Voice error in PhonicsGame:', err);
+      }
+    });
+  }
+
   handleKey(key) {
     if (this.isInputLocked) return;
+
+    if (this.engine.voice && this.engine.voice.isListening && (key === 'ArrowLeft' || key === 'ArrowRight')) {
+      this.engine.voice.stopListening();
+    }
 
     if (key === 'ArrowLeft' && this.selectedChoice > 0) {
       this.selectedChoice--;
@@ -74,14 +130,19 @@ export class PhonicsGame {
       this.engine.sound.playNavigate();
       this.updateFocus();
     } else if (key === 'ArrowUp') {
-      speakText(`Manakah huruf ${this.currentData.letter}? ${this.currentData.soundHint}`);
+      // Tombol Mic / Panah Atas remote untuk bicara
+      this.triggerVoiceInput();
     } else if (key === 'Enter' || key === ' ') {
+      if (this.engine.voice) {
+        this.engine.voice.stopListening();
+      }
+
       const chosen = this.choices[this.selectedChoice];
       const card = document.getElementById(`phonics-choice-${this.selectedChoice}`);
 
       if (chosen === this.currentData.letter) {
         this.isInputLocked = true;
-        card.classList.add('correct');
+        if (card) card.classList.add('correct');
         this.engine.sound.playCorrect();
         this.engine.confetti.fire(35);
         this.engine.updateStar(this.level, 'phonics-stars-container');
@@ -99,10 +160,12 @@ export class PhonicsGame {
           }
         }, 1200);
       } else {
-        card.classList.add('wrong');
+        if (card) {
+          card.classList.add('wrong');
+          setTimeout(() => card.classList.remove('wrong'), 500);
+        }
         this.engine.sound.playOops();
         speakText(`Itu huruf ${chosen}. Ayo cari huruf ${this.currentData.letter} ya!`);
-        setTimeout(() => card.classList.remove('wrong'), 500);
       }
     }
   }
