@@ -1,0 +1,22 @@
+{
+  "name": "askagame",
+  "version": "1.0.0",
+  "description": "Platform edukasi interaktif untuk anak usia 4 tahun ke atas yang dimainkan di layar Smart TV menggunakan **Remote TV** (atau keyboard di PC/Laptop).",
+  "main": "src/main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "bugs": {
+    "url": "https://github.com/wiraclogent-dotcom/petualangan-belajar-ceria/issues"
+  },
+  "homepage": "https://github.com/wiraclogent-dotcom/petualangan-belajar-ceria#readme",
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
+}

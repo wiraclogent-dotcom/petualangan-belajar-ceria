@@ -1,5 +1,7 @@
 # Ignored files
-tools/
+node_modules/
+dist/
+tools/platform-tools/
 *.apk
 *.log
 *.png
