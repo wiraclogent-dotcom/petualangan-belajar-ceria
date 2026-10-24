@@ -63,8 +63,7 @@ askagame/
 ├── android/                   # Native Android TV wrapper (APK)
 ├── index.html                 # Entry point Vite
 ├── vite.config.js             # Konfigurasi bundler
-├── jalankan-game.bat          # Pintasan menjalankan server dev lokal
-└── install-ke-tv.bat          # Pintasan pasang APK ke TV via ADB Wi-Fi
+└── package.json               # Konfigurasi dependensi & npm scripts
 ```
 
 ---
@@ -86,14 +85,15 @@ npm run build
 npm run preview
 ```
 
-### Menguji Langsung ke Xiaomi Smart TV
+### Integrasi Smart TV (Xiaomi TV)
 ```bash
-# Status game TV (JSON <150ms)
-node tools/tv_controller.js state
+# Buka aplikasi di TV
+npm run tv:launch
 
-# Kirim tombol remote (left, right, ok, back, up, down)
-node tools/tv_controller.js key ok
+# Cek status game di TV secara real-time (JSON <150ms)
+npm run tv:state
 
-# Tangkap layar langsung dari TV
-node tools/tv_controller.js shot
+# Pasang APK ke TV via Wi-Fi ADB
+npm run tv:install
+```
 ```

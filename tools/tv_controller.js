@@ -111,6 +111,8 @@ Usage:
   node tools/tv_controller.js key <keyname>   - Send remote key (left/right/up/down/ok/back) & returns new state
   node tools/tv_controller.js speech [count]  - Get last spoken TTS utterances
   node tools/tv_controller.js shot [file.png] - Take screencap on-demand
+  node tools/tv_controller.js launch          - Launch the app on Android TV
+  node tools/tv_controller.js install [path]  - Install APK to Android TV via ADB
 `);
   process.exit(0);
 }
@@ -132,6 +134,20 @@ switch (cmd) {
   case 'shot':
     console.log(JSON.stringify(takeScreenshot(arg1), null, 2));
     break;
+  case 'launch':
+    adb('shell am start -n com.dinohitung.app/.MainActivity');
+    console.log(JSON.stringify({ status: 'Launched com.dinohitung.app/.MainActivity' }));
+    break;
+  case 'install': {
+    const apk = arg1 || 'dist/app-debug.apk';
+    if (!fs.existsSync(apk)) {
+      console.error(`Error: APK file not found at ${apk}`);
+      process.exit(1);
+    }
+    const installOut = adb(`install -r "${apk}"`, 30000);
+    console.log(JSON.stringify({ status: 'APK Installed', output: installOut.trim() }));
+    break;
+  }
   default:
     console.error(`Unknown command: ${cmd}`);
     process.exit(1);

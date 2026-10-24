@@ -10,7 +10,10 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --host"
+    "preview": "vite preview --host",
+    "tv:state": "node tools/tv_controller.js state",
+    "tv:launch": "node tools/tv_controller.js launch",
+    "tv:install": "node tools/tv_controller.js install"
   },
   "bugs": {
     "url": "https://github.com/wiraclogent-dotcom/petualangan-belajar-ceria/issues"
