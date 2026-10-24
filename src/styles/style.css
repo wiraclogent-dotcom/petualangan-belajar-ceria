@@ -142,23 +142,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 18px;
-  padding: 8px 16px;
+  gap: 14px;
+  padding: 8px 12px;
 }
 
 .hub-card {
   position: relative;
-  width: 250px;
-  height: 320px;
+  width: 215px;
+  height: 310px;
   background: #ffffff;
-  border-radius: 26px;
-  padding: 18px 14px;
+  border-radius: 24px;
+  padding: 16px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  border: 5px solid #ffffff;
+  border: 4.5px solid #ffffff;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1799,3 +1799,265 @@ body {
   font-weight: 900;
   color: #1e293b;
 }
+
+/* =================================================== */
+/* 9. STYLES: DINO CODER (KODING CILIK USIA 4 TAHUN)    */
+/* =================================================== */
+.coding-arena {
+  flex: 1;
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6px 16px;
+  height: calc(100vh - 160px);
+}
+
+.coding-grid-wrapper {
+  background: #bbf7d0;
+  border: 6px solid #86efac;
+  border-radius: 26px;
+  padding: 12px;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.08), 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.coding-grid-arena {
+  display: grid;
+  gap: 8px;
+  width: 440px;
+  height: 440px;
+}
+
+.coding-grid-cell {
+  background: #4ade80;
+  border: 3.5px solid #22c55e;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 4px 0 #15803d;
+  transition: all 0.2s ease;
+}
+
+.coding-grid-cell.obs-rock {
+  background: #cbd5e1;
+  border-color: #94a3b8;
+  box-shadow: 0 4px 0 #64748b;
+}
+
+.coding-grid-cell.obs-tree {
+  background: #86efac;
+  border-color: #22c55e;
+  box-shadow: 0 4px 0 #15803d;
+}
+
+.coding-grid-cell.obs-water {
+  background: #7dd3fc;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 0 #0284c7;
+}
+
+.coding-grid-cell.cell-dino {
+  background: #fef08a;
+  border-color: #eab308;
+  box-shadow: 0 0 16px rgba(234, 179, 8, 0.7), 0 4px 0 #ca8a04;
+}
+
+.dino-avatar-token {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell-entity {
+  font-size: 2.5rem;
+  user-select: none;
+}
+
+.bounce-target {
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.pulse-item {
+  animation: pulse-ring 1.5s infinite;
+}
+
+.coding-sidebar {
+  flex: 1;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 26px;
+  padding: 16px 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.coding-ribbon-title,
+.coding-palette-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.coding-ribbon-title small {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.coding-program-ribbon {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px;
+  min-height: 78px;
+  background: #f8fafc;
+  border: 3px dashed #cbd5e1;
+  border-radius: 16px;
+  align-items: center;
+}
+
+.ribbon-placeholder {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+.program-block-chip {
+  background: #38bdf8;
+  color: #fff;
+  border-radius: 14px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 0 #0284c7;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.chip-step-num {
+  background: rgba(0, 0, 0, 0.2);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.program-block-chip.executing {
+  background: #eab308;
+  box-shadow: 0 0 20px #facc15, 0 4px 0 #ca8a04;
+  transform: scale(1.1);
+}
+
+.program-block-chip.error {
+  background: #ef4444;
+  box-shadow: 0 0 20px #f87171, 0 4px 0 #dc2626;
+  animation: shake 0.5s;
+}
+
+.coding-palette-list {
+  display: flex;
+  gap: 10px;
+}
+
+.palette-block-btn {
+  flex: 1;
+  background: #ffffff;
+  border: 3.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #1e293b;
+  box-shadow: 0 4px 0 #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.palette-block-btn .block-icon {
+  font-size: 2rem;
+}
+
+.palette-block-btn.focused {
+  border-color: #38bdf8;
+  background: #f0f9ff;
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6), 0 5px 0 #0284c7;
+}
+
+.coding-action-bar {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.coding-action-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coding-action-btn.run-btn {
+  background: #22c55e;
+  color: #fff;
+  box-shadow: 0 5px 0 #15803d;
+  border: 3.5px solid #22c55e;
+}
+
+.coding-action-btn.run-btn .remote-shortcut {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  font-weight: 800;
+}
+
+.coding-action-btn.run-btn.focused {
+  background: #16a34a;
+  border-color: #fbbf24;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.7), 0 5px 0 #15803d;
+}
+
+.coding-action-btn.delete-btn {
+  background: #f1f5f9;
+  color: #475569;
+  border: 3.5px solid #cbd5e1;
+  box-shadow: 0 4px 0 #94a3b8;
+}
+
+.coding-action-btn.delete-btn.focused {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #b91c1c;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), 0 4px 0 #b91c1c;
+}
+

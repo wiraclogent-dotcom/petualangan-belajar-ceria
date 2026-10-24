@@ -69,6 +69,14 @@
           <p>Beda, Urutan & Pasangan</p>
           <div class="hub-card-btn">Buka Logika ➜</div>
         </div>
+        <!-- Kartu 5: Coding Cilik -->
+        <div class="hub-card" id="hub-card-4" data-view="game-coding">
+          <div class="hub-card-badge">20 Level</div>
+          <div class="hub-card-icon">🤖</div>
+          <h2>DINO CODER</h2>
+          <p>Petualangan Jejak Coding</p>
+          <div class="hub-card-btn">Mulai Coding ➜</div>
+        </div>
       </main>
 
       <footer class="hub-footer">
@@ -700,6 +708,70 @@
           <span class="remote-hint-badge">OK</span> Pasangkan &nbsp;|&nbsp;
           <span class="remote-hint-badge">▲</span> Ulang Pertanyaan &nbsp;|&nbsp;
           <span class="remote-hint-badge">↩ Back</span> Keluar
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 9. GAME: DINO CODER (KODING CILIK USIA 4 TAHUN) -->
+    <!-- ============================================== -->
+    <section class="view-section" id="view-game-coding">
+      <header class="top-bar">
+        <div class="nav-back-btn game-exit-btn">
+          <span class="back-icon">🏠</span> Menu
+        </div>
+        <div class="level-badge">
+          <span class="badge-label">Tingkat</span>
+          <span class="badge-value" id="coding-level">1</span>/20
+        </div>
+        <div class="instruction-box">
+          <span class="instruction-icon">🤖</span>
+          <span id="coding-title-text">Langkah Pertama</span> &nbsp;|&nbsp;
+          <span id="coding-prompt-text" style="color: #0284c7; font-weight: 800;">Target: Apel</span>
+        </div>
+        <div class="stars-container" id="coding-stars-container"></div>
+      </header>
+
+      <main class="coding-arena" id="coding-arena">
+        <!-- ZONA KIRI: PETA GRID PERJALANAN DINO -->
+        <div class="coding-grid-wrapper">
+          <div class="coding-grid-arena" id="coding-grid-arena"></div>
+        </div>
+
+        <!-- ZONA KANAN: PITA PERINTAH & BALOK KODE -->
+        <div class="coding-sidebar">
+          <div class="coding-ribbon-title">
+            <span>📜 Pita Langkah Dino:</span>
+            <small>(Urutan Kode)</small>
+          </div>
+          <div class="coding-program-ribbon" id="coding-program-ribbon"></div>
+
+          <div class="coding-palette-title">
+            <span>🧩 Pilihan Balok Arah:</span>
+          </div>
+          <div class="coding-palette-list" id="coding-palette-list"></div>
+
+          <div class="coding-action-bar">
+            <div class="coding-action-btn run-btn" id="coding-run-btn">
+              <span class="btn-icon">▶️</span>
+              <span class="btn-text">JALANKAN!</span>
+              <small class="remote-shortcut">(Tekan ▲ Remote)</small>
+            </div>
+            <div class="coding-action-btn delete-btn" id="coding-delete-btn">
+              <span class="btn-icon">❌</span>
+              <span class="btn-text">Hapus</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="bottom-panel coding-footer">
+        <div class="hint-text">
+          <span class="remote-hint-badge">◀ ▶</span> Pilih Balok &nbsp;|&nbsp;
+          <span class="remote-hint-badge">OK</span> Masukkan Balok &nbsp;|&nbsp;
+          <span class="remote-hint-badge">▲</span> Jalankan Dino &nbsp;|&nbsp;
+          <span class="remote-hint-badge">▼</span> Ke Tombol Aksi &nbsp;|&nbsp;
+          <span class="remote-hint-badge">↩ Back</span> Hapus / Menu
         </div>
       </footer>
     </section>

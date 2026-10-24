@@ -88,7 +88,7 @@ export class HubController {
       this.hubIndex--;
       this.engine.sound.playNavigate();
       this.updateHubFocus();
-    } else if (key === 'ArrowRight' && this.hubIndex < 3) {
+    } else if (key === 'ArrowRight' && this.hubIndex < 4) {
       this.hubIndex++;
       this.engine.sound.playNavigate();
       this.updateHubFocus();
@@ -98,6 +98,7 @@ export class HubController {
       else if (this.hubIndex === 1) this.engine.showView('MENU_ALPHABET');
       else if (this.hubIndex === 2) this.engine.showView('MENU_SHAPES');
       else if (this.hubIndex === 3) this.engine.showView('MENU_LOGIC');
+      else if (this.hubIndex === 4) this.engine.showView('GAME_CODING');
     }
   }
 

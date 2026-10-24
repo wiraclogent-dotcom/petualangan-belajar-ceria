@@ -21,6 +21,7 @@ import { CompareGame } from './games/shapes/CompareGame.js';
 import { OddGame } from './games/logic/OddGame.js';
 import { SequenceGame } from './games/logic/SequenceGame.js';
 import { PairsGame } from './games/logic/PairsGame.js';
+import { DinoCoderGame } from './games/coding/DinoCoderGame.js';
 
 export class LearningApp {
   constructor() {
@@ -44,7 +45,8 @@ export class LearningApp {
       'GAME_COMPARE': new CompareGame(this),
       'GAME_ODD': new OddGame(this),
       'GAME_SEQUENCE': new SequenceGame(this),
-      'GAME_PAIRS': new PairsGame(this)
+      'GAME_PAIRS': new PairsGame(this),
+      'GAME_CODING': new DinoCoderGame(this)
     };
 
     this.attachEvents();
@@ -164,6 +166,10 @@ export class LearningApp {
         document.getElementById('view-game-pairs').classList.add('active');
         this.games.GAME_PAIRS.start();
         break;
+      case 'GAME_CODING':
+        document.getElementById('view-game-coding').classList.add('active');
+        this.games.GAME_CODING.start();
+        break;
     }
 
     this.reportTVState();
@@ -247,6 +253,9 @@ export class LearningApp {
       return true;
     } else if (['GAME_ALPHABET', 'GAME_PHONICS', 'GAME_WORDS'].includes(this.currentView)) {
       this.showView('MENU_ALPHABET');
+      return true;
+    } else if (this.currentView === 'GAME_CODING') {
+      this.showView('HUB');
       return true;
     } else if (['MENU_MATH', 'MENU_ALPHABET', 'MENU_SHAPES', 'MENU_LOGIC'].includes(this.currentView)) {
       this.showView('HUB');
