@@ -58,8 +58,11 @@ export class TrainGame {
             }
           }, 1800);
         } else {
-          speakText(`Ayo coba lagi, ucapkan ${item.word}!`);
+          speakText(`Hampir! Yuk dekatkan remote dan ucapkan ${item.word}!`);
         }
+      },
+      onNoMatch: () => {
+        speakText(`Suaramu belum terdengar sayang. Yuk coba dekatkan remote dan ucapkan ${item.word}!`);
       },
       onError: (err) => {
         console.warn('Voice error in TrainGame:', err);

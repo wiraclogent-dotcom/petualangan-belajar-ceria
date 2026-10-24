@@ -105,8 +105,11 @@ export class PhonicsGame {
           this.updateFocus();
           this.handleKey('Enter');
         } else {
-          speakText(`Ayo coba lagi, sebutkan huruf ${data.letter}!`);
+          speakText(`Hampir! Yuk dekatkan remote dan ucapkan huruf ${data.letter}!`);
         }
+      },
+      onNoMatch: () => {
+        speakText(`Suaramu belum terdengar sayang. Yuk coba sebutkan huruf ${data.letter}!`);
       },
       onError: (err) => {
         console.warn('Voice error in PhonicsGame:', err);

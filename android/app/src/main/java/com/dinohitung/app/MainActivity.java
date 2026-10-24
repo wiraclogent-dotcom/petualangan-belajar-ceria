@@ -1,8 +1,10 @@
 package com.dinohitung.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
     private TextToSpeech tts;
     private boolean isTtsReady = false;
     private String pendingSpeech = null;
+    private AudioManager audioManager;
     private SpeechRecognizer speechRecognizer;
     private Intent speechIntent;
     private boolean isListening = false;
@@ -47,6 +50,8 @@ public class MainActivity extends Activity {
 
         // Request runtime permission for remote microphone
         checkRecordAudioPermission();
+
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         // Initialize Android Native TextToSpeech for TV
         initTTS();
@@ -151,7 +156,7 @@ public class MainActivity extends Activity {
         if (event.getKeyCode() == KeyEvent.KEYCODE_VOICE_ASSIST ||
             event.getKeyCode() == KeyEvent.KEYCODE_SEARCH ||
             event.getKeyCode() == 219 /* KEYCODE_ASSIST */) {
-            if (event.getAction() == KeyEvent.ACTION_UP) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
                 sendJs("window.onRemoteMicPressed && window.onRemoteMicPressed();");
             }
             return true; // Consume event to prevent Google Assistant overlay from disrupting game
@@ -288,6 +293,16 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void resetAudioRouting() {
+        if (audioManager != null) {
+            try {
+                audioManager.stopBluetoothSco();
+                audioManager.setBluetoothScoOn(false);
+                audioManager.setMode(AudioManager.MODE_NORMAL);
+            } catch (Exception e) {}
+        }
+    }
+
     private void initSpeechRecognizer() {
         runOnUiThread(() -> {
             try {
@@ -296,8 +311,13 @@ public class MainActivity extends Activity {
                     speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                     speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                     speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "id-ID");
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "id-ID");
+                    speechIntent.putExtra("android.speech.extra.EXTRA_ADDITIONAL_LANGUAGES", new String[]{"id-ID", "in-ID", "id"});
                     speechIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 5);
                     speechIntent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 2000L);
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 2200L);
+                    speechIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 3000L);
 
                     speechRecognizer.setRecognitionListener(new RecognitionListener() {
                         @Override
@@ -312,7 +332,11 @@ public class MainActivity extends Activity {
                         }
 
                         @Override
-                        public void onRmsChanged(float rmsdB) {}
+                        public void onRmsChanged(float rmsdB) {
+                            if (rmsdB > 0) {
+                                sendJs("window.onVoiceRms && window.onVoiceRms(" + rmsdB + ");");
+                            }
+                        }
 
                         @Override
                         public void onBufferReceived(byte[] buffer) {}
@@ -326,6 +350,7 @@ public class MainActivity extends Activity {
                         @Override
                         public void onError(int error) {
                             isListening = false;
+                            resetAudioRouting();
                             Log.w(TAG, "SpeechRecognizer error: " + error);
                             sendJs("window.onVoiceError && window.onVoiceError(" + error + ");");
                         }
@@ -333,6 +358,7 @@ public class MainActivity extends Activity {
                         @Override
                         public void onResults(Bundle results) {
                             isListening = false;
+                            resetAudioRouting();
                             ArrayList<String> matches = results != null ? results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) : null;
                             if (matches != null && !matches.isEmpty()) {
                                 String mainMatch = matches.get(0).replace("'", "\\'");
@@ -376,17 +402,45 @@ public class MainActivity extends Activity {
             return;
         }
 
+        // Activate Bluetooth SCO so Xiaomi Bluetooth Remote Mic streams audio
+        if (audioManager != null) {
+            try {
+                audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+                audioManager.startBluetoothSco();
+                audioManager.setBluetoothScoOn(true);
+            } catch (Exception e) {
+                Log.w(TAG, "Bluetooth SCO error: " + e.getMessage());
+            }
+        }
+
         if (speechRecognizer != null && speechIntent != null) {
             try {
                 if (isListening) {
                     speechRecognizer.cancel();
                 }
-                speechRecognizer.startListening(speechIntent);
+                // Short 120ms settling time for Bluetooth audio stream buffer
+                if (webView != null) {
+                    webView.postDelayed(() -> {
+                        try {
+                            if (speechRecognizer != null && speechIntent != null) {
+                                speechRecognizer.startListening(speechIntent);
+                            }
+                        } catch (Exception e) {
+                            Log.e(TAG, "Error starting SpeechRecognizer", e);
+                            resetAudioRouting();
+                            sendJs("window.onVoiceError && window.onVoiceError(-1);");
+                        }
+                    }, 120);
+                } else {
+                    speechRecognizer.startListening(speechIntent);
+                }
             } catch (Exception e) {
-                Log.e(TAG, "Error starting SpeechRecognizer", e);
+                Log.e(TAG, "Error resetting SpeechRecognizer", e);
+                resetAudioRouting();
                 sendJs("window.onVoiceError && window.onVoiceError(-1);");
             }
         } else {
+            resetAudioRouting();
             sendJs("window.onVoiceError && window.onVoiceError(10);");
         }
     }
@@ -398,6 +452,7 @@ public class MainActivity extends Activity {
             } catch (Exception e) {}
             isListening = false;
         }
+        resetAudioRouting();
     }
 
     private void sendJs(String code) {

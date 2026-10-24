@@ -106,8 +106,11 @@ export class WordsGame {
           this.updateFocus();
           this.handleKey('Enter');
         } else {
-          speakText(`Ayo coba lagi, sebutkan kata ${data.word}!`);
+          speakText(`Hampir! Yuk dekatkan remote dan ucapkan kata ${data.word}!`);
         }
+      },
+      onNoMatch: () => {
+        speakText(`Suaramu belum terdengar sayang. Yuk coba dekatkan remote dan bilang kata ${data.word}!`);
       },
       onError: (err) => {
         console.warn('Voice error in WordsGame:', err);

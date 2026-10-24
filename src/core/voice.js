@@ -4,6 +4,7 @@
  * dan Web Speech Recognition (di Browser PC/Laptop).
  * Dilengkapi Child-Friendly Indonesian Fuzzy Matching (Levenshtein & Phonetic Tolerance).
  */
+import { speakText } from './tts.js';
 
 export class VoiceController {
   constructor(engine) {
@@ -13,6 +14,7 @@ export class VoiceController {
     this.currentTargetWord = '';
     this.currentTargetLetter = '';
     this.onMatchCallback = null;
+    this.onNoMatchCallback = null;
     this.onErrorCallback = null;
 
     this.indicatorEl = document.getElementById('voice-indicator');
@@ -46,6 +48,17 @@ export class VoiceController {
       console.log('VOICE: Speech started');
     };
 
+    window.onVoiceRms = (rms) => {
+      if (this.isListening && rms > 0) {
+        const bars = document.querySelectorAll('.wave-bar');
+        const scale = Math.min(1 + rms / 3.2, 3.2);
+        bars.forEach((b, idx) => {
+          b.style.height = `${Math.min(28, 8 * scale + (idx % 2) * 4)}px`;
+          b.style.background = '#22c55e'; // Hijau terang saat mic menangkap audio aktif
+        });
+      }
+    };
+
     window.onVoiceEnd = () => {
       console.log('VOICE: Speech ended');
     };
@@ -59,7 +72,17 @@ export class VoiceController {
       console.warn('VOICE: Error code', errorCode);
       this.hideIndicator();
       this.isListening = false;
-      if (this.onErrorCallback) this.onErrorCallback(errorCode);
+
+      // Error 6 = SPEECH_TIMEOUT, Error 7 = NO_MATCH (suara anak pelan atau belum terdengar)
+      if (errorCode === 6 || errorCode === 7) {
+        if (this.onNoMatchCallback) {
+          this.onNoMatchCallback();
+        } else {
+          speakText(`Suaramu belum terdengar sayang. Yuk coba dekatkan remote dan bilang lagi!`);
+        }
+      } else if (this.onErrorCallback) {
+        this.onErrorCallback(errorCode);
+      }
     };
 
     // 2. Hook tombol fisik Mic pada Remote TV (KeyCode 231 / 84)
@@ -75,10 +98,11 @@ export class VoiceController {
     };
   }
 
-  startListening({ targetWord = '', targetLetter = '', onMatch = null, onError = null, hintText = '' }) {
+  startListening({ targetWord = '', targetLetter = '', onMatch = null, onNoMatch = null, onError = null, hintText = '' }) {
     this.currentTargetWord = targetWord;
     this.currentTargetLetter = targetLetter;
     this.onMatchCallback = onMatch;
+    this.onNoMatchCallback = onNoMatch;
     this.onErrorCallback = onError;
 
     this.showIndicator(true, hintText || `Katakan: "${targetWord || targetLetter}"`);
@@ -122,12 +146,16 @@ export class VoiceController {
           console.warn('Web Speech error:', e);
           this.hideIndicator();
           this.isListening = false;
-          if (this.onErrorCallback) this.onErrorCallback(e);
+          if (this.onNoMatchCallback) {
+            this.onNoMatchCallback();
+          } else if (this.onErrorCallback) {
+            this.onErrorCallback(e);
+          }
         };
 
         this.recognition.onend = () => {
           this.isListening = false;
-          setTimeout(() => this.hideIndicator(), 800);
+          setTimeout(() => this.hideIndicator(), 500);
         };
 
         this.recognition.start();
@@ -174,6 +202,11 @@ export class VoiceController {
     if (this.indicatorEl) {
       this.indicatorEl.classList.remove('active');
     }
+    const bars = document.querySelectorAll('.wave-bar');
+    bars.forEach(b => {
+      b.style.height = '';
+      b.style.background = '';
+    });
   }
 
   handleRecognitionResults(candidates = []) {
@@ -181,7 +214,11 @@ export class VoiceController {
     this.isListening = false;
 
     if (!candidates || candidates.length === 0) {
-      if (this.onErrorCallback) this.onErrorCallback('NO_SPEECH');
+      if (this.onNoMatchCallback) {
+        this.onNoMatchCallback();
+      } else if (this.onErrorCallback) {
+        this.onErrorCallback('NO_SPEECH');
+      }
       return;
     }
 
@@ -204,8 +241,9 @@ export class VoiceController {
 
   /**
    * Child-friendly Indonesian Fuzzy Matcher
-   * Mentolerir pengucapan cadel / anak kecil:
-   * - "Apew" cocok dengan "Apel"
+   * Mentolerir pengucapan cadel / anak usia dini:
+   * - "Apew" / "Ape" cocok dengan "Apel"
+   * - "Bebe" / "Bek" cocok dengan "Bebek"
    * - "Cewi" cocok dengan "Ceri"
    * - "Gajah" cocok dengan "G" / "Gajah"
    */
@@ -221,38 +259,42 @@ export class VoiceController {
     if (word && spoken === word) return true;
     if (letter && spoken === letter) return true;
 
-    // 2. Substring Match (e.g. "buah apel" mengandung "apel", atau "huruf b" mengandung "b")
-    if (word && (spoken.includes(word) || (word.length >= 4 && word.includes(spoken)))) return true;
+    // 2. Substring & Prefix Match (e.g. "buah apel" mengandung "apel", "bebe" awalan "bebek")
+    if (word) {
+      if (spoken.includes(word) || (word.length >= 4 && word.includes(spoken))) return true;
+      if (spoken.length >= 3 && word.startsWith(spoken)) return true;
+      if (word.length >= 3 && spoken.startsWith(word.substring(0, 3))) return true;
+    }
     if (letter && spoken.startsWith(letter)) return true;
 
     // 3. Kamus Fonik Anak Bahasa Indonesia
     const letterAliases = {
-      a: ['a', 'aa', 'ah', 'apel', 'ha'],
-      b: ['b', 'be', 'beh', 'bebek', 'bek'],
-      c: ['c', 'ce', 'ceh', 'ceri', 'se'],
-      d: ['d', 'de', 'deh', 'dino', 'dinosaurus'],
-      e: ['e', 'eh', 'elang'],
+      a: ['a', 'aa', 'ah', 'apel', 'ha', 'apa'],
+      b: ['b', 'be', 'beh', 'bebek', 'bek', 'bi'],
+      c: ['c', 'ce', 'ceh', 'ceri', 'se', 'ci'],
+      d: ['d', 'de', 'deh', 'dino', 'dinosaurus', 'di'],
+      e: ['e', 'eh', 'elang', 'ek'],
       f: ['f', 'ef', 'fe', 'flamingo'],
-      g: ['g', 'ge', 'gajah'],
+      g: ['g', 'ge', 'gajah', 'gi'],
       h: ['h', 'ha', 'hah', 'hiu'],
-      i: ['i', 'ih', 'ikan'],
-      j: ['j', 'je', 'jerapah'],
-      k: ['k', 'ka', 'kah', 'kucing'],
-      l: ['l', 'el', 'lumba'],
-      m: ['m', 'em', 'mobil'],
-      n: ['n', 'en', 'nanas'],
+      i: ['i', 'ih', 'ikan', 'ik'],
+      j: ['j', 'je', 'jerapah', 'ji'],
+      k: ['k', 'ka', 'kah', 'kucing', 'ki'],
+      l: ['l', 'el', 'lumba', 'li'],
+      m: ['m', 'em', 'mobil', 'mi'],
+      n: ['n', 'en', 'nanas', 'ni'],
       o: ['o', 'oh', 'orangutan'],
-      p: ['p', 'pe', 'pesawat'],
-      q: ['q', 'ki', 'mahkota', 'queen'],
-      r: ['r', 'er', 'roket'],
-      s: ['s', 'es', 'singa'],
-      t: ['t', 'te', 'truk'],
+      p: ['p', 'pe', 'pesawat', 'pi'],
+      q: ['q', 'ki', 'mahkota', 'queen', 'kui'],
+      r: ['r', 'er', 'roket', 'ri'],
+      s: ['s', 'es', 'singa', 'si'],
+      t: ['t', 'te', 'truk', 'ti'],
       u: ['u', 'uh', 'udang'],
-      v: ['v', 've', 'biola'],
-      w: ['w', 'we', 'wortel'],
-      x: ['x', 'eks', 'musik'],
-      y: ['y', 'ye', 'yoyo'],
-      z: ['z', 'zet', 'zebra']
+      v: ['v', 've', 'biola', 'vi'],
+      w: ['w', 'we', 'wortel', 'wi'],
+      x: ['x', 'eks', 'musik', 'ks'],
+      y: ['y', 'ye', 'yoyo', 'yi'],
+      z: ['z', 'zet', 'zebra', 'zi']
     };
 
     if (letter && letterAliases[letter]) {
@@ -261,15 +303,15 @@ export class VoiceController {
       }
     }
 
-    // 4. Levenshtein Distance Similarity (Toleransi lafal anak >= 70%)
+    // 4. Levenshtein Distance Similarity (Toleransi tinggi lafal anak >= 58%)
     if (word && word.length >= 3) {
       const sim = this.similarity(spoken, word);
-      if (sim >= 0.70) return true;
+      if (sim >= 0.58) return true;
 
       // Substitusi umum anak: 'r' -> 'l', 'r' -> 'w', 's' -> 'c'
       const childSpoken = spoken.replace(/w/g, 'l').replace(/l/g, 'r');
       const childWord = word.replace(/w/g, 'l').replace(/l/g, 'r');
-      if (childSpoken === childWord || this.similarity(childSpoken, childWord) >= 0.70) {
+      if (childSpoken === childWord || this.similarity(childSpoken, childWord) >= 0.58) {
         return true;
       }
     }
