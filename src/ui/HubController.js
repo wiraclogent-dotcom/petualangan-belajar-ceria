@@ -6,6 +6,7 @@ export class HubController {
     this.alphabetSubIndex = 0; // 0: Kereta, 1: Phonics, 2: Words
     this.shapesSubIndex = 0; // 0: Sarang Bentuk, 1: Kuas Warna, 2: Banding Ukuran
     this.logicSubIndex = 0; // 0: Detektif Benda, 1: Urutan Cerita, 2: Detektif Pasangan
+    this.creativeSubIndex = 0; // 0: Arsitek Rel, 1: Brankas, 2: Pabrik, 3: Labirin
 
     this.attachDomEvents();
   }
@@ -56,6 +57,15 @@ export class HubController {
       });
     });
 
+    // Sub-cards Creative click
+    document.querySelectorAll('#creative-menu-grid .sub-card').forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        this.creativeSubIndex = idx;
+        this.updateCreativeMenuFocus();
+        this.handleCreativeMenuKey('Enter');
+      });
+    });
+
     // Back buttons
     const mathBack = document.getElementById('math-back-btn');
     if (mathBack) mathBack.addEventListener('click', () => this.engine.navigateBack());
@@ -68,6 +78,9 @@ export class HubController {
 
     const logicBack = document.getElementById('logic-back-btn');
     if (logicBack) logicBack.addEventListener('click', () => this.engine.navigateBack());
+
+    const creativeBack = document.getElementById('creative-back-btn');
+    if (creativeBack) creativeBack.addEventListener('click', () => this.engine.navigateBack());
 
     document.querySelectorAll('.game-exit-btn').forEach(btn => {
       btn.addEventListener('click', () => this.engine.navigateBack());
@@ -98,7 +111,7 @@ export class HubController {
       else if (this.hubIndex === 1) this.engine.showView('MENU_ALPHABET');
       else if (this.hubIndex === 2) this.engine.showView('MENU_SHAPES');
       else if (this.hubIndex === 3) this.engine.showView('MENU_LOGIC');
-      else if (this.hubIndex === 4) this.engine.showView('GAME_CODING');
+      else if (this.hubIndex === 4) this.engine.showView('MENU_CREATIVE');
     }
   }
 
@@ -203,6 +216,38 @@ export class HubController {
       if (this.logicSubIndex === 0) this.engine.showView('GAME_ODD');
       else if (this.logicSubIndex === 1) this.engine.showView('GAME_SEQUENCE');
       else if (this.logicSubIndex === 2) this.engine.showView('GAME_PAIRS');
+    }
+  }
+
+  // --- 6. CREATIVE MISSIONS SUB-MENU FOCUS & KEYS ---
+  updateCreativeMenuFocus() {
+    document.querySelectorAll('#creative-menu-grid .sub-card').forEach((card, idx) => {
+      if (idx === this.creativeSubIndex) card.classList.add('focused');
+      else card.classList.remove('focused');
+    });
+    this.engine.reportTVState();
+  }
+
+  handleCreativeMenuKey(key) {
+    if (key === 'ArrowLeft' && this.creativeSubIndex > 0) {
+      this.creativeSubIndex--;
+      this.engine.sound.playNavigate();
+      this.updateCreativeMenuFocus();
+    } else if (key === 'ArrowRight' && this.creativeSubIndex < 3) {
+      this.creativeSubIndex++;
+      this.engine.sound.playNavigate();
+      this.updateCreativeMenuFocus();
+    } else if (key === 'Enter' || key === ' ') {
+      this.engine.sound.playNavigate();
+      if (this.creativeSubIndex === 0) {
+        this.engine.showView('GAME_TRAIN_TRACK');
+      } else if (this.creativeSubIndex === 1) {
+        this.engine.showView('GAME_SECRET_AGENT');
+      } else if (this.creativeSubIndex === 2) {
+        this.engine.showView('GAME_ROBO_SORTER');
+      } else if (this.creativeSubIndex === 3) {
+        this.engine.showView('GAME_GRID_MAZE');
+      }
     }
   }
 }

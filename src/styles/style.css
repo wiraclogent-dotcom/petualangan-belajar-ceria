@@ -28,27 +28,85 @@ html {
 
 body {
   font-family: 'Nunito', 'Lexend', system-ui, -apple-system, sans-serif;
-  background-color: #2b75a0;
+  background-color: #0b1120;
   overflow: hidden;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 #game-container {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1920px;
-  max-height: 1080px;
+  width: 1280px;
+  height: 720px;
+  flex-shrink: 0;
   background: linear-gradient(180deg, #7ad3ff 0%, #a4e4ff 50%, #d8f5ff 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   padding: 16px 36px; /* Overscan aman untuk TV */
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 10px #1e293b, 0 0 0 12px #334155;
+  transform-origin: center center;
+  transition: transform 0.15s ease-out;
+}
+
+/* TV Frame Badge untuk Browser PC */
+.tv-frame-badge {
+  position: fixed;
+  top: 14px;
+  right: 18px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  color: #38bdf8;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.tv-frame-badge .tv-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Khusus Native Android TV APK (Otomatis Fullscreen Edge-to-Edge) */
+body.is-tv-native {
+  background-color: #2b75a0;
+}
+
+body.is-tv-native #game-container {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none !important;
+}
+
+body.is-tv-native .tv-frame-badge {
+  display: none !important;
 }
 
 /* Langit & Awan Latar */
@@ -900,19 +958,26 @@ body {
 
 .celebration-card {
   background: linear-gradient(135deg, #ffffff 0%, #f4f9ff 100%);
-  padding: 16px 36px;
+  padding: 20px 32px;
   border-radius: 28px;
   text-align: center;
   border: 6px solid #ffc107;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
   max-width: 600px;
+  width: 90%;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  box-sizing: border-box;
   transform: scale(0.85);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.celebration-card.victory-card {
+  max-width: 640px;
+  padding: 24px 36px;
 }
 
 .celebration-overlay.active .celebration-card {
@@ -968,8 +1033,29 @@ body {
 }
 
 .stars-award {
-  font-size: 2.2rem;
-  margin: 6px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 540px;
+  margin: 10px auto 14px;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.victory-star-icon {
+  display: inline-block;
+  font-size: 1.85rem;
+  filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.4));
+  animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes starPop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* Kanvas Konfeti */
@@ -2155,4 +2241,1319 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), 0 4px 0 #b91c1c;
 }
+
+/* =================================================== */
+/* 1.5 SUB-MENU GRID: 4 ITEMS (TANTANGAN KREATIF)      */
+/* =================================================== */
+.sub-menu-grid.sub-menu-grid-4 {
+  gap: 20px;
+  padding: 10px 24px;
+}
+
+.sub-menu-grid.sub-menu-grid-4 .sub-card {
+  width: 275px;
+  height: 270px;
+  padding: 18px 14px 14px;
+}
+
+/* =================================================== */
+/* 9. TRAIN TRACK ARCHITECT (ARSITEK REL KERETA)       */
+/* =================================================== */
+#view-game-train-track.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 8px 16px 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.train-track-stage-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
+  margin: 6px 0;
+}
+
+/* Kolom Kiri: Pilihan Balok Rel Vertikal */
+.train-track-sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 4px 18px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: #0369a1;
+  letter-spacing: 1px;
+}
+
+.train-track-choices-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.train-track-choices-vertical .track-choice-card {
+  position: relative;
+  width: 220px;
+  height: 148px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: 4px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 0 #cbd5e1, 0 8px 18px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s, box-shadow 0.2s;
+}
+
+.choice-num-badge {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 900;
+  padding: 3px 14px;
+  border-radius: 14px;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.choice-track-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.train-track-choices-vertical .track-choice-card.focused {
+  border-color: #f59e0b;
+  background: #fffbeb;
+  transform: scale(1.06) translateX(10px);
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.6), 0 8px 0 #d97706;
+}
+
+.train-track-choices-vertical .track-choice-card.correct {
+  border-color: #10b981;
+  background: #ecfdf5;
+  transform: scale(1.08) translateX(10px);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.75), 0 8px 0 #059669;
+}
+
+.train-track-choices-vertical .track-choice-card.wrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+  animation: cardShake 0.45s ease-in-out;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 8px 0 #b91c1c;
+}
+
+/* Kolom Kanan: Panggung Arena Kereta Api Luas */
+.train-track-arena {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+#railway-arena-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 540px;
+  border-radius: 26px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12), inset 0 2px 8px rgba(255, 255, 255, 0.85);
+  background: #dcfce7;
+  overflow: hidden;
+  display: block;
+}
+
+.train-track-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.track-choice-card.wrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+  animation: trackWiggle 0.4s ease-in-out;
+}
+
+@keyframes trackWiggle {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px) rotate(-3deg); }
+  40% { transform: translateX(10px) rotate(3deg); }
+  60% { transform: translateX(-6px) rotate(-2deg); }
+  80% { transform: translateX(6px) rotate(2deg); }
+}
+
+/* =================================================== */
+/* 10. SECRET AGENT VAULT (BRANKAS RAHASIA)           */
+/* =================================================== */
+#view-game-secret-agent.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 8px 16px 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.agent-game-stage-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
+  margin: 6px 0;
+}
+
+/* Kolom Kiri: Papan Kunci Sandi Angka (Cipher Pad) */
+.agent-cipher-sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.agent-cipher-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 4px 18px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cipher-keys-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cipher-key-card {
+  position: relative;
+  width: 220px;
+  height: 94px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: 4px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 6px 0 #cbd5e1, 0 8px 18px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.key-number-badge {
+  width: 52px;
+  height: 52px;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 900;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.35);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.key-letter-display {
+  font-size: 3.4rem;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  letter-spacing: 1px;
+}
+
+.cipher-key-card.focused {
+  border-color: #f59e0b;
+  background: #fffbeb;
+  transform: scale(1.06) translateX(10px);
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.6), 0 8px 0 #d97706;
+}
+
+.cipher-key-card.correct {
+  border-color: #10b981;
+  background: #ecfdf5;
+  transform: scale(1.08) translateX(10px);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.75), 0 8px 0 #059669;
+}
+
+.cipher-key-card.wrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+  animation: cardShake 0.45s ease-in-out;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 8px 0 #b91c1c;
+}
+
+/* Kolom Kanan: Panggung Brankas Robotik */
+.agent-vault-arena {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  padding: 0;
+}
+
+.agent-vault-cabinet {
+  width: 100%;
+  height: 100%;
+  max-height: 540px;
+  background: linear-gradient(155deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 28px;
+  border: 5px solid #475569;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), inset 0 2px 6px rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 16px 20px;
+}
+
+.vault-metal-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.vault-bolt {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  user-select: none;
+}
+
+.bolt-tl { top: 2px; left: 4px; }
+.bolt-tr { top: 2px; right: 4px; }
+.bolt-bl { bottom: 2px; left: 4px; }
+.bolt-br { bottom: 2px; right: 4px; }
+
+/* Monitor Clue & Slots */
+.vault-screen-panel {
+  background: #090d16;
+  border: 3px solid #334155;
+  border-radius: 22px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.1);
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.vault-clue-badge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 2px solid #0284c7;
+  border-radius: 30px;
+  padding: 6px 24px;
+}
+
+.clue-icon {
+  font-size: 3.2rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.clue-label {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #38bdf8;
+  letter-spacing: 2px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.vault-slots-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.vault-word-slot {
+  width: 92px;
+  height: 98px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 3.6rem;
+  font-weight: 900;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.slot-revealed {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 3px solid #475569;
+}
+
+.slot-filled {
+  background: #064e3b;
+  color: #34d399;
+  border: 3px solid #10b981;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  animation: slotPopIn 0.35s ease;
+}
+
+.slot-active-lock {
+  background: #451a03;
+  color: #fbbf24;
+  border: 3px dashed #f59e0b;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+  animation: slotPulse 1.2s infinite ease-in-out;
+}
+
+.slot-pending-lock {
+  background: #181e29;
+  color: #64748b;
+  border: 3px dashed #334155;
+  opacity: 0.7;
+}
+
+.slot-scan-beam {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #fbbf24;
+  box-shadow: 0 0 10px #f59e0b;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  animation: scanDown 1.5s infinite ease-in-out;
+}
+
+@keyframes scanDown {
+  0% { top: 6px; opacity: 0.3; }
+  50% { top: 88px; opacity: 1; }
+  100% { top: 6px; opacity: 0.3; }
+}
+
+@keyframes slotPulse {
+  0%, 100% { transform: scale(1); border-color: #f59e0b; }
+  50% { transform: scale(1.05); border-color: #fbbf24; box-shadow: 0 0 35px rgba(251, 191, 36, 0.7); }
+}
+
+@keyframes slotPopIn {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Mekanisme Kunci & Dial Putar */
+.vault-lock-mechanism {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.vault-dial-wheel {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #475569 0%, #1e293b 70%, #0f172a 100%);
+  border: 6px solid #64748b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vault-dial-wheel.spinning {
+  animation: wheelRotate 1.5s infinite linear;
+}
+
+@keyframes wheelRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.wheel-spoke {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #94a3b8;
+}
+
+.spoke-1 { transform: rotate(0deg); }
+.spoke-2 { transform: rotate(60deg); }
+.spoke-3 { transform: rotate(120deg); }
+
+.wheel-center-core {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 3px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.lock-status-icon {
+  font-size: 1.8rem;
+}
+
+.vault-status-led {
+  font-family: 'Fredoka', 'Nunito', monospace;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  padding: 10px 24px;
+  border-radius: 14px;
+  text-transform: uppercase;
+}
+
+.led-amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+.led-green {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.5);
+}
+
+/* Bagian Dalam Brankas (Saat Terbuka) */
+.vault-interior-vault {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #1e1b4b 0%, #0f172a 100%);
+  z-index: 10;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 6px solid #fbbf24;
+  box-shadow: inset 0 0 50px rgba(251, 191, 36, 0.3), 0 0 40px rgba(251, 191, 36, 0.5);
+  animation: zoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.secret-reward-sparkle {
+  font-size: 2.8rem;
+  animation: pulseSparkle 1s infinite alternate;
+}
+
+@keyframes pulseSparkle {
+  from { transform: scale(0.9); opacity: 0.8; }
+  to { transform: scale(1.15); opacity: 1; }
+}
+
+.secret-reward-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.reward-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fef08a;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.reward-item {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 4px 16px rgba(251, 191, 36, 0.6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.secret-agent-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+/* =================================================== */
+/* 11. ROBO-FACTORY SORTER (PABRIK PEMILAH)            */
+/* =================================================== */
+#view-game-robo-sorter.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 8px 16px 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.robo-sorter-arena {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  margin: 6px 0;
+  padding: 0;
+}
+
+.factory-stage-wrapper {
+  width: 100%;
+  height: 100%;
+  max-height: 540px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 28px;
+  border: 5px solid #334155;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.1);
+  padding: 18px 24px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Chutes Pemilah (Kiri & Kanan) */
+.sorter-chute {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+}
+
+.chute-funnel {
+  width: 100%;
+  border-radius: 24px;
+  border: 4px solid #475569;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.chute-left .chute-funnel {
+  border-color: #0284c7;
+  background: linear-gradient(160deg, #0c4a6e 0%, #075985 100%);
+}
+
+.chute-right .chute-funnel {
+  border-color: #ea580c;
+  background: linear-gradient(160deg, #7c2d12 0%, #9a3412 100%);
+}
+
+.sorter-chute.side-focused .chute-funnel {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.7), 0 8px 0 #d97706;
+  border-color: #f59e0b;
+}
+
+.chute-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.chute-icon {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.chute-shape-svg {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 16px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.chute-name {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.chute-remote-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.remote-btn-pill {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.05rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.remote-num-pill {
+  background: #f59e0b;
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 1.1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  border: 2px solid #ffffff;
+}
+
+/* Konveyor Tengah */
+.sorter-center-conveyor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 4px 0;
+  min-width: 0;
+}
+
+.factory-scanner-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #090d16;
+  border: 2px solid #38bdf8;
+  border-radius: 18px;
+  padding: 8px 32px;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+.scanner-light-strip {
+  width: 140px;
+  height: 4px;
+  background: #38bdf8;
+  border-radius: 2px;
+  box-shadow: 0 0 10px #38bdf8;
+  animation: scanPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes scanPulse {
+  0%, 100% { opacity: 0.4; transform: scaleX(0.7); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+.scanner-status-label {
+  font-family: 'Fredoka', 'Nunito', monospace;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #7dd3fc;
+  letter-spacing: 2px;
+}
+
+.conveyor-track-assembly {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #090d16;
+  border-radius: 22px;
+  border: 4px solid #334155;
+  box-shadow: inset 0 6px 20px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.conveyor-rollers {
+  position: absolute;
+  bottom: 12px;
+  width: 88%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.8rem;
+  opacity: 0.45;
+  animation: spinRollers 3s infinite linear;
+}
+
+@keyframes spinRollers {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Palet Pengantar Huruf */
+.conveyor-pallet {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
+}
+
+.conveyor-pallet.enter-drop {
+  animation: dropFromTop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dropFromTop {
+  0% { transform: translateY(-160px) scale(0.6); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.pallet-letter-card {
+  width: 160px;
+  height: 160px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 6px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.9);
+  transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s;
+}
+
+.pallet-char {
+  font-size: 7.2rem;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  line-height: 1;
+}
+
+.pallet-letter-card.card-correct {
+  border-color: #10b981;
+  background: #ecfdf5;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+}
+
+/* Piston Pemilah */
+.pusher-ram {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 120px;
+  background: linear-gradient(90deg, #64748b, #475569);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 8;
+}
+
+.ram-left {
+  left: 10px;
+  border-right: 4px solid #94a3b8;
+}
+
+.ram-right {
+  right: 10px;
+  border-left: 4px solid #94a3b8;
+}
+
+.ram-left.fire-push {
+  transform: translateY(-50%) translateX(75px);
+}
+
+.ram-right.fire-push {
+  transform: translateY(-50%) translateX(-75px);
+}
+
+/* Animasi Meluncur & Penolakan */
+.conveyor-pallet.slide-into-left {
+  transform: translateX(-360px) scale(0.6);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease;
+}
+
+.conveyor-pallet.slide-into-right {
+  transform: translateX(360px) scale(0.6);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease;
+}
+
+.conveyor-pallet.reject-bounce-left {
+  animation: bounceRejectLeft 0.5s ease-in-out;
+}
+
+.conveyor-pallet.reject-bounce-right {
+  animation: bounceRejectRight 0.5s ease-in-out;
+}
+
+@keyframes bounceRejectLeft {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-80px) rotate(-6deg); }
+  60% { transform: translateX(30px) rotate(3deg); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes bounceRejectRight {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(80px) rotate(6deg); }
+  60% { transform: translateX(-30px) rotate(-3deg); }
+  100% { transform: translateX(0); }
+}
+
+.chute-funnel.chute-success {
+  animation: chuteSuccessFlash 0.6s ease;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.8) !important;
+}
+
+@keyframes chuteSuccessFlash {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+}
+
+.chute-funnel.chute-wrong {
+  animation: chuteWrongShake 0.45s ease-in-out;
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.7) !important;
+}
+
+@keyframes chuteWrongShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.robo-sorter-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+/* =================================================== */
+/* 12. GRID MAZE PATROL (PATROLI LABIRIN)             */
+/* =================================================== */
+#view-game-grid-maze.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 8px 16px 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.grid-maze-stage-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
+  margin: 6px 0;
+}
+
+/* Kolom Kiri: Sidebar Clue */
+.grid-maze-sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.maze-clue-card {
+  width: 100%;
+  height: 100%;
+  max-height: 540px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 4px solid #cbd5e1;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px;
+  box-sizing: border-box;
+}
+
+.maze-clue-header {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0284c7;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: #e0f2fe;
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.maze-clue-icon {
+  font-size: 4.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  margin: 2px 0;
+}
+
+.maze-target-badge {
+  width: 90px;
+  height: 90px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+  border: 4px solid #ffffff;
+}
+
+.badge-letter {
+  font-size: 4.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  line-height: 1;
+}
+
+.maze-clue-name {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  letter-spacing: 1px;
+}
+
+.maze-goal-destination {
+  background: #f8fafc;
+  border: 2px dashed #94a3b8;
+  border-radius: 16px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.dest-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+.dest-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+}
+
+/* Kolom Kanan: Panggung Labirin Ubin */
+.grid-maze-arena {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  padding: 0;
+}
+
+.maze-board-wrapper {
+  width: 100%;
+  height: 100%;
+  max-height: 540px;
+  background: #ecfdf5;
+  border-radius: 28px;
+  border: 5px solid #10b981;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), inset 0 2px 8px rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.maze-grid-board {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 12px;
+  position: relative;
+}
+
+.maze-cell {
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  user-select: none;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.cell-wall {
+  background: #d1fae5;
+  border: 3px solid #6ee7b7;
+  box-shadow: 0 4px 0 #a7f3d0;
+}
+
+.cell-bush {
+  font-size: 3rem;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.15));
+}
+
+.cell-start {
+  background: #fef08a;
+  border: 3px solid #eab308;
+  box-shadow: 0 6px 0 #ca8a04;
+}
+
+.cell-flag {
+  font-size: 3.2rem;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+.cell-goal {
+  background: #ffedd5;
+  border: 3px solid #f97316;
+  box-shadow: 0 6px 0 #ea580c;
+  animation: goalGlow 1.5s infinite alternate;
+}
+
+@keyframes goalGlow {
+  from { box-shadow: 0 0 15px rgba(249, 115, 22, 0.4); }
+  to { box-shadow: 0 0 30px rgba(249, 115, 22, 0.8); }
+}
+
+.cell-goal-icon {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+.cell-target-road {
+  background: #ffffff;
+  border: 4px solid #cbd5e1;
+  box-shadow: 0 6px 0 #94a3b8;
+}
+
+.cell-letter {
+  font-size: 3.6rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.cell-target-road.tile-visited {
+  background: #fffbeb !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.65), 0 6px 0 #d97706 !important;
+}
+
+.cell-target-road.tile-visited .cell-letter {
+  color: #d97706 !important;
+}
+
+.tile-sparkle {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 1.4rem;
+  animation: pulseSparkle 0.8s infinite alternate;
+}
+
+/* Mobil Patroli */
+.patrol-car-token {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+  transition: left 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.car-sprite {
+  font-size: 3.8rem;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  display: block;
+}
+
+.car-beacon-light {
+  position: absolute;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 15px #ef4444;
+  animation: beaconFlash 0.5s infinite alternate;
+}
+
+@keyframes beaconFlash {
+  from { opacity: 0.3; background: #3b82f6; box-shadow: 0 0 10px #3b82f6; }
+  to { opacity: 1; background: #ef4444; box-shadow: 0 0 20px #ef4444; }
+}
+
+.patrol-car-token.car-bump {
+  animation: carBumpWiggle 0.35s ease-in-out;
+}
+
+@keyframes carBumpWiggle {
+  0%, 100% { transform: scale(1) rotate(0); }
+  30% { transform: scale(0.9) rotate(-8deg); }
+  70% { transform: scale(0.9) rotate(8deg); }
+}
+
+.patrol-car-token.car-celebrate {
+  animation: carSpinJump 1.2s ease;
+}
+
+@keyframes carSpinJump {
+  0% { transform: scale(1) translateY(0); }
+  40% { transform: scale(1.3) translateY(-30px) rotate(15deg); }
+  80% { transform: scale(1.1) translateY(0) rotate(-10deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.grid-maze-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+
 

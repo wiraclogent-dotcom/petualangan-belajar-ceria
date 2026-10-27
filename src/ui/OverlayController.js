@@ -111,10 +111,27 @@ export class OverlayController {
     this.engine.reportTVState();
   }
 
-  showVictory() {
+  showVictory(starsCount = 10) {
     this.isVictoryActive = true;
     if (this.engine.sound) this.engine.sound.playVictory();
     if (this.engine.confetti) this.engine.confetti.fire(160);
+
+    const starsEl = document.getElementById('victory-stars');
+    if (starsEl) {
+      const count = (typeof starsCount === 'number' && starsCount > 0) ? Math.min(starsCount, 15) : 10;
+      starsEl.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('span');
+        s.className = 'victory-star-icon';
+        s.innerText = '⭐';
+        s.style.animationDelay = `${i * 0.05}s`;
+        if (count > 10) {
+          s.style.fontSize = '1.5rem';
+        }
+        starsEl.appendChild(s);
+      }
+    }
+
     if (this.victoryEl) this.victoryEl.classList.add('active');
     speakText('Hore! Selamat! Kamu berhasil menyelesaikan semua tingkat!');
     this.engine.reportTVState();

@@ -8,10 +8,15 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;family=Lexend:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
-  <script type="module" crossorigin src="./assets/index-CohHM-6c.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DZINxdAf.css">
+  <script type="module" crossorigin src="./assets/index-D6W7zvsT.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-mKxnEbT8.css">
 </head>
 <body>
+<!-- Indikator Frame TV (Khusus Tampilan di Browser PC / Localhost) -->
+<div class="tv-frame-badge" id="tv-frame-badge">
+  <span class="tv-dot"></span>
+  <span>Xiaomi TV 720p Frame (1280 × 720) • 16:9</span>
+</div>
 <div id="game-container">
 <!-- Langit, Matahari & Awan Latar -->
 <div class="sky">
@@ -67,12 +72,12 @@
 <p>Beda, Urutan &amp; Pasangan</p>
 <div class="hub-card-btn">Main ➜</div>
 </div>
-<!-- Kartu 5: Coding Cilik -->
-<div class="hub-card" data-view="game-coding" id="hub-card-4">
-<div class="hub-card-badge">20 Level</div>
-<div class="hub-card-icon">🤖</div>
-<h2>DINO CODER</h2>
-<p>Petualangan Jejak Coding</p>
+<!-- Kartu 5: Tantangan Kreatif & Motorik -->
+<div class="hub-card" data-view="menu-creative" id="hub-card-4">
+<div class="hub-card-badge">4 Game Seru</div>
+<div class="hub-card-icon">🚂</div>
+<h2>TANTANGAN KREATIF</h2>
+<p>Rel Kereta, Brankas &amp; Pabrik</p>
 <div class="hub-card-btn">Main ➜</div>
 </div>
 </main>
@@ -204,6 +209,57 @@
 <div class="sub-card-icon">🔗</div>
 <h3>3. Detektif Pasangan</h3>
 <p>Temukan benda yang berpasangan serasi</p>
+<span class="sub-play-btn">Main ➜</span>
+</div>
+</main>
+<footer class="bottom-panel">
+<div class="hint-text">
+<span class="remote-hint-badge">◀ ▶</span> Pilih Permainan  | 
+          <span class="remote-hint-badge">OK</span> Main  | 
+          <span class="remote-hint-badge">↩ Back</span> Menu Utama
+        </div>
+</footer>
+</section>
+<!-- ============================================== -->
+<!-- 1.5 SUB-MENU TANTANGAN KREATIF & MOTORIK       -->
+<!-- ============================================== -->
+<section class="view-section" id="view-menu-creative">
+<header class="top-bar">
+<div class="nav-back-btn" id="creative-back-btn"><span class="back-icon">🏠</span> Menu Utama</div>
+<div class="instruction-box"><span class="instruction-icon">🚂</span><span>Tantangan Kreatif &amp; Motorik Ceria</span></div>
+<div class="menu-category-pill"><span>⭐ 4 Permainan ⭐</span></div>
+</header>
+<main class="sub-menu-grid sub-menu-grid-4" id="creative-menu-grid">
+<!-- Game 1: Train Track Architect -->
+<div class="sub-card focused" data-game="train-track" id="creative-card-0">
+<div class="sub-card-badge">15 Level</div>
+<div class="sub-card-icon">🚂</div>
+<h3>1. Arsitek Rel Kereta</h3>
+<p>Susun rel huruf I, L, T, S &amp; bunyikan uap kereta!</p>
+<span class="sub-play-btn">Main ➜</span>
+</div>
+<!-- Game 2: Secret Agent Vault -->
+<div class="sub-card" data-game="secret-agent" id="creative-card-1">
+<div class="sub-card-badge">12 Level</div>
+<div class="sub-card-icon">🕵️</div>
+<h3>2. Brankas Rahasia</h3>
+<p>Buka brankas robot dengan sandi angka remote!</p>
+<span class="sub-play-btn">Main ➜</span>
+</div>
+<!-- Game 3: Robo-Factory Sorter -->
+<div class="sub-card" data-game="robo-sorter" id="creative-card-2">
+<div class="sub-card-badge">15 Level</div>
+<div class="sub-card-icon">🏭</div>
+<h3>3. Pabrik Pemilah</h3>
+<p>Pilah huruf garis lurus vs melengkung di konveyor!</p>
+<span class="sub-play-btn">Main ➜</span>
+</div>
+<!-- Game 4: Grid Maze Patrol -->
+<div class="sub-card" data-game="grid-maze" id="creative-card-3">
+<div class="sub-card-badge">15 Level</div>
+<div class="sub-card-icon">🚓</div>
+<h3>4. Patroli Labirin</h3>
+<p>Telusuri labirin raksasa huruf &amp; injak lampu fonik!</p>
 <span class="sub-play-btn">Main ➜</span>
 </div>
 </main>
@@ -610,64 +666,143 @@
 </footer>
 </section>
 <!-- ============================================== -->
-<!-- 9. GAME: DINO CODER (KODING CILIK USIA 4 TAHUN) -->
+<!-- 9. GAME: TRAIN TRACK ARCHITECT (ARSITEK REL)   -->
 <!-- ============================================== -->
-<section class="view-section" id="view-game-coding">
+<section class="view-section" id="view-game-train-track">
 <header class="top-bar">
 <div class="nav-back-btn game-exit-btn">
 <span class="back-icon">🏠</span> Menu
-        </div>
+</div>
 <div class="level-badge">
 <span class="badge-label">Tingkat</span>
-<span class="badge-value" id="coding-level">1</span>/20
-        </div>
+<span class="badge-value" id="train-track-level">1</span>/15
+</div>
 <div class="instruction-box">
-<span class="instruction-icon">🤖</span>
-<span id="coding-prompt-text" style="color: #0284c7; font-weight: 900;">Target: Apel</span>
-<span id="coding-title-text" style="display: none;"></span>
+<span class="instruction-icon">🚂</span>
+<span id="train-track-instruction-text">Sambungkan Rel yang Putus!</span>
 </div>
-<div class="stars-container" id="coding-stars-container"></div>
+<div class="stars-container" id="train-track-stars-container"></div>
 </header>
-<main class="coding-arena" id="coding-arena">
-<!-- ZONA KIRI: PETA GRID PERJALANAN DINO -->
-<div class="coding-grid-wrapper">
-<div class="coding-grid-arena" id="coding-grid-arena"></div>
+<div class="train-track-stage-layout">
+<aside class="train-track-sidebar">
+<div class="sidebar-header">
+<span class="sidebar-title">PILIH REL</span>
 </div>
-<!-- ZONA KANAN: PITA PERINTAH & BALOK KODE -->
-<div class="coding-sidebar">
-<div class="coding-ribbon-title">
-<span>📜 Pita Langkah Dino:</span>
-<small>(Urutan Kode)</small>
+<div class="choices-container train-track-choices-vertical" id="train-track-choices-container"></div>
+</aside>
+<main class="train-track-arena" id="train-track-arena"></main>
 </div>
-<div class="coding-program-ribbon" id="coding-program-ribbon"></div>
-<div class="coding-palette-title">
-<span>🧩 Pilihan Balok Arah:</span>
+<footer class="bottom-panel train-track-footer">
+<div class="hint-text" id="train-track-hint-text">
+<span class="remote-hint-badge">1</span>
+<span class="remote-hint-badge">2</span>
+<span class="remote-hint-badge">3</span> Pilih Rel &nbsp;|&nbsp;
+<span class="remote-hint-badge">▲ ▼</span> Geser &nbsp;|&nbsp;
+<span class="remote-hint-badge">OK</span> Pasang &nbsp;|&nbsp;
+<span class="remote-hint-badge">↩ Back</span> Keluar
 </div>
-<div class="coding-palette-list" id="coding-palette-list"></div>
-<div class="coding-action-bar">
-<div class="coding-action-btn run-btn" id="coding-run-btn">
-<span class="btn-icon">▶️</span>
-<span class="btn-text">JALANKAN!</span>
-<small class="remote-shortcut">(Tekan ▲ Remote)</small>
-</div>
-<div class="coding-action-btn delete-btn" id="coding-delete-btn">
-<span class="btn-icon">❌</span>
-<span class="btn-text">Hapus</span>
-</div>
-</div>
-</div>
-</main>
-<footer class="bottom-panel coding-footer">
-<div class="hint-text">
-<span class="remote-hint-badge">◀ ▶</span> Pilih Balok  | 
-          <span class="remote-hint-badge">OK</span> Masukkan Balok  | 
-          <span class="remote-hint-badge">▲</span> Jalankan Dino  | 
-          <span class="remote-hint-badge">▼</span> Ke Tombol Aksi  | 
-          <span class="remote-hint-badge">↩ Back</span> Hapus / Menu
-        </div>
 </footer>
 </section>
-<!-- Gunung & Rumput Latar Bawah -->
+<!-- ============================================== -->
+<!-- 10. GAME: SECRET AGENT VAULT (BRANKAS RAHASIA) -->
+<!-- ============================================== -->
+<section class="view-section" id="view-game-secret-agent">
+<header class="top-bar">
+<div class="nav-back-btn game-exit-btn">
+<span class="back-icon">🏠</span> Menu
+</div>
+<div class="level-badge">
+<span class="badge-label">Misi</span>
+<span class="badge-value" id="secret-agent-level">1</span>/12
+</div>
+<div class="instruction-box">
+<span class="instruction-icon">🕵️</span>
+<span id="secret-agent-instruction-text">Buka Brankas Rahasia!</span>
+</div>
+<div class="stars-container" id="secret-agent-stars-container"></div>
+</header>
+<div class="agent-game-stage-layout">
+<!-- Kolom Kiri: Papan Kunci Sandi Angka (Cipher Pad) -->
+<aside class="agent-cipher-sidebar">
+<div class="sidebar-header agent-cipher-header">
+<span class="sidebar-title">KUNCI KODE SANDI</span>
+</div>
+<div class="cipher-keys-container" id="secret-agent-cipher-container"></div>
+</aside>
+<!-- Kolom Kanan: Panggung Brankas Baja Robotik -->
+<main class="agent-vault-arena" id="secret-agent-vault-stage"></main>
+</div>
+<footer class="bottom-panel secret-agent-footer">
+<div class="hint-text" id="secret-agent-hint-text">
+<span class="remote-hint-badge">1</span>
+<span class="remote-hint-badge">2</span>
+<span class="remote-hint-badge">3</span> Kunci Sandi &nbsp;|&nbsp;
+<span class="remote-hint-badge">▲ ▼</span>
+<span class="remote-hint-badge">◀ ▶</span> Geser &nbsp;|&nbsp;
+<span class="remote-hint-badge">OK</span> Masukkan &nbsp;|&nbsp;
+<span class="remote-hint-badge">↩ Back</span> Keluar
+</div>
+</footer>
+</section>
+<!-- ============================================== -->
+<!-- 11. GAME: ROBO-FACTORY SORTER (PABRIK PEMILAH) -->
+<!-- ============================================== -->
+<section class="view-section" id="view-game-robo-sorter">
+<header class="top-bar">
+<div class="nav-back-btn game-exit-btn">
+<span class="back-icon">🏠</span> Menu
+</div>
+<div class="level-badge">
+<span class="badge-label">Tingkat</span>
+<span class="badge-value" id="robo-sorter-level">1</span>/15
+</div>
+<div class="instruction-box">
+<span class="instruction-icon">🏭</span>
+<span id="robo-sorter-instruction-text">Pabrik Pemilah: Lurus atau Melengkung?</span>
+</div>
+<div class="stars-container" id="robo-sorter-stars-container"></div>
+</header>
+<main class="robo-sorter-arena" id="robo-sorter-arena"></main>
+<footer class="bottom-panel robo-sorter-footer">
+<div class="hint-text" id="robo-sorter-hint-text">
+<span class="remote-hint-badge">◀ Kiri / 1</span> Tong Kiri &nbsp;|&nbsp;
+<span class="remote-hint-badge">Kanan ▶ / 2</span> Tong Kanan &nbsp;|&nbsp;
+<span class="remote-hint-badge">OK</span> Masukkan &nbsp;|&nbsp;
+<span class="remote-hint-badge">↩ Back</span> Keluar
+</div>
+</footer>
+</section>
+<!-- ============================================== -->
+<!-- 12. GAME: GRID MAZE PATROL (PATROLI LABIRIN)   -->
+<!-- ============================================== -->
+<section class="view-section" id="view-game-grid-maze">
+<header class="top-bar">
+<div class="nav-back-btn game-exit-btn">
+<span class="back-icon">🏠</span> Menu
+</div>
+<div class="level-badge">
+<span class="badge-label">Tingkat</span>
+<span class="badge-value" id="grid-maze-level">1</span>/15
+</div>
+<div class="instruction-box">
+<span class="instruction-icon">🚓</span>
+<span id="grid-maze-instruction-text">Patroli Jejak Huruf A</span>
+</div>
+<div class="stars-container" id="grid-maze-stars-container"></div>
+</header>
+<div class="grid-maze-stage-layout">
+<!-- Kolom Kiri: Clue Target Huruf & Tujuan -->
+<aside class="grid-maze-sidebar" id="grid-maze-sidebar"></aside>
+<!-- Kolom Kanan: Panggung Labirin Ubin Abjad -->
+<main class="grid-maze-arena" id="grid-maze-arena"></main>
+</div>
+<footer class="bottom-panel grid-maze-footer">
+<div class="hint-text" id="grid-maze-hint-text">
+<span class="remote-hint-badge">▲ ▼ ◀ ▶</span> Kemudikan Mobil Patroli &nbsp;|&nbsp;
+<span class="remote-hint-badge">↩ Back</span> Keluar
+</div>
+</footer>
+</section>
 <div class="ground-layer">
 <div class="mountains"></div>
 <div class="grass-hill"></div>
@@ -692,7 +827,7 @@
 </div>
 <h2>SELAMAT! KAMU JUARA!</h2>
 <p>Semua tantangan berhasil kamu selesaikan!</p>
-<div class="stars-award" id="victory-stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</div>
+<div class="stars-award" id="victory-stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</div>
 <div class="celebration-btn" id="restart-btn">
 <span>Kembali ke Menu Utama 🏠</span>
 <small>(Tekan OK di Remote)</small>
@@ -716,6 +851,6 @@
 </div>
 <!-- Kanvas Konfeti -->
 <canvas id="confetti-canvas"></canvas>
-</div>
+</div>
 </body>
 </html>

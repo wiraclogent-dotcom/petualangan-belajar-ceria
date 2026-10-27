@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const ADB = path.join(__dirname, 'platform-tools', 'adb.exe');
-const TV_DEVICE = '192.168.1.7:5555';
+const TV_DEVICE = '192.168.1.6:5555';
 
 function ensureConnected() {
   try {

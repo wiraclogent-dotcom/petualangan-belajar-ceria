@@ -21,7 +21,10 @@ import { CompareGame } from './games/shapes/CompareGame.js';
 import { OddGame } from './games/logic/OddGame.js';
 import { SequenceGame } from './games/logic/SequenceGame.js';
 import { PairsGame } from './games/logic/PairsGame.js';
-import { DinoCoderGame } from './games/coding/DinoCoderGame.js';
+import { TrainTrackGame } from './games/creative/TrainTrackGame.js';
+import { SecretAgentGame } from './games/creative/SecretAgentGame.js';
+import { RoboSorterGame } from './games/creative/RoboSorterGame.js';
+import { GridMazeGame } from './games/creative/GridMazeGame.js';
 
 export class LearningApp {
   constructor() {
@@ -46,11 +49,45 @@ export class LearningApp {
       'GAME_ODD': new OddGame(this),
       'GAME_SEQUENCE': new SequenceGame(this),
       'GAME_PAIRS': new PairsGame(this),
-      'GAME_CODING': new DinoCoderGame(this)
+      'GAME_TRAIN_TRACK': new TrainTrackGame(this),
+      'GAME_SECRET_AGENT': new SecretAgentGame(this),
+      'GAME_ROBO_SORTER': new RoboSorterGame(this),
+      'GAME_GRID_MAZE': new GridMazeGame(this)
     };
 
     this.attachEvents();
     this.initViews();
+    this.initTVScaler();
+  }
+
+  initTVScaler() {
+    const container = document.getElementById('game-container');
+    if (!container) return;
+
+    const adjustScale = () => {
+      const isNativeTV = (window.innerWidth === 1280 && window.innerHeight === 720) || (window.AndroidTTS !== undefined);
+
+      if (isNativeTV) {
+        document.body.classList.add('is-tv-native');
+        container.style.transform = '';
+        return;
+      }
+
+      document.body.classList.remove('is-tv-native');
+      const targetW = 1280;
+      const targetH = 720;
+      const paddingX = 48;
+      const paddingY = 48;
+
+      const availableW = Math.max(window.innerWidth - paddingX, 320);
+      const availableH = Math.max(window.innerHeight - paddingY, 200);
+
+      const scale = Math.min(availableW / targetW, availableH / targetH);
+      container.style.transform = `scale(${scale})`;
+    };
+
+    window.addEventListener('resize', adjustScale);
+    adjustScale();
   }
 
   // Overlay helper delegations
@@ -70,8 +107,8 @@ export class LearningApp {
     this.overlay.showCheckpoint(onNextCallback);
   }
 
-  showVictory() {
-    this.overlay.showVictory();
+  showVictory(starsCount) {
+    this.overlay.showVictory(starsCount);
   }
 
   initViews() {
@@ -166,9 +203,26 @@ export class LearningApp {
         document.getElementById('view-game-pairs').classList.add('active');
         this.games.GAME_PAIRS.start();
         break;
-      case 'GAME_CODING':
-        document.getElementById('view-game-coding').classList.add('active');
-        this.games.GAME_CODING.start();
+      case 'MENU_CREATIVE':
+        document.getElementById('view-menu-creative').classList.add('active');
+        this.hub.updateCreativeMenuFocus();
+        speakText('Tantangan Kreatif Ceria! Pilih misi seru!');
+        break;
+      case 'GAME_TRAIN_TRACK':
+        document.getElementById('view-game-train-track').classList.add('active');
+        this.games.GAME_TRAIN_TRACK.start();
+        break;
+      case 'GAME_SECRET_AGENT':
+        document.getElementById('view-game-secret-agent').classList.add('active');
+        this.games.GAME_SECRET_AGENT.start();
+        break;
+      case 'GAME_ROBO_SORTER':
+        document.getElementById('view-game-robo-sorter').classList.add('active');
+        this.games.GAME_ROBO_SORTER.start();
+        break;
+      case 'GAME_GRID_MAZE':
+        document.getElementById('view-game-grid-maze').classList.add('active');
+        this.games.GAME_GRID_MAZE.start();
         break;
     }
 
@@ -187,6 +241,7 @@ export class LearningApp {
       alphabetSubIndex: this.hub.alphabetSubIndex,
       shapesSubIndex: this.hub.shapesSubIndex,
       logicSubIndex: this.hub.logicSubIndex,
+      creativeSubIndex: this.hub.creativeSubIndex,
       activeChoice: activeChoice,
       countLevel: this.games.GAME_COUNTING ? this.games.GAME_COUNTING.level : 1,
       addLevel: this.games.GAME_ADDITION ? this.games.GAME_ADDITION.level : 1,
@@ -199,6 +254,10 @@ export class LearningApp {
       oddLevel: this.games.GAME_ODD ? this.games.GAME_ODD.level : 1,
       sequenceLevel: this.games.GAME_SEQUENCE ? this.games.GAME_SEQUENCE.level : 1,
       pairsLevel: this.games.GAME_PAIRS ? this.games.GAME_PAIRS.level : 1,
+      trainTrackLevel: this.games.GAME_TRAIN_TRACK ? this.games.GAME_TRAIN_TRACK.level : 1,
+      secretAgentLevel: this.games.GAME_SECRET_AGENT ? this.games.GAME_SECRET_AGENT.level : 1,
+      roboSorterLevel: this.games.GAME_ROBO_SORTER ? this.games.GAME_ROBO_SORTER.level : 1,
+      gridMazeLevel: this.games.GAME_GRID_MAZE ? this.games.GAME_GRID_MAZE.level : 1,
       isInputLocked: isInputLocked,
       isVoiceListening: this.voice ? this.voice.isListening : false,
       isCelebrationActive: this.overlay.isCelebrationActive,
@@ -254,10 +313,10 @@ export class LearningApp {
     } else if (['GAME_ALPHABET', 'GAME_PHONICS', 'GAME_WORDS'].includes(this.currentView)) {
       this.showView('MENU_ALPHABET');
       return true;
-    } else if (this.currentView === 'GAME_CODING') {
-      this.showView('HUB');
+    } else if (['GAME_TRAIN_TRACK', 'GAME_SECRET_AGENT', 'GAME_ROBO_SORTER', 'GAME_GRID_MAZE'].includes(this.currentView)) {
+      this.showView('MENU_CREATIVE');
       return true;
-    } else if (['MENU_MATH', 'MENU_ALPHABET', 'MENU_SHAPES', 'MENU_LOGIC'].includes(this.currentView)) {
+    } else if (['MENU_MATH', 'MENU_ALPHABET', 'MENU_SHAPES', 'MENU_LOGIC', 'MENU_CREATIVE'].includes(this.currentView)) {
       this.showView('HUB');
       return true;
     } else if (this.currentView === 'HUB') {
@@ -302,6 +361,8 @@ export class LearningApp {
         this.hub.handleShapesMenuKey(e.key);
       } else if (this.currentView === 'MENU_LOGIC') {
         this.hub.handleLogicMenuKey(e.key);
+      } else if (this.currentView === 'MENU_CREATIVE') {
+        this.hub.handleCreativeMenuKey(e.key);
       } else if (this.games[this.currentView]) {
         this.games[this.currentView].handleKey(e.key);
       }
